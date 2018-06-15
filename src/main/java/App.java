@@ -460,7 +460,8 @@ public class App {
         mainTree.left.right.right = new TreeNode(10);
 //        System.out.println(printkdistanceNode(mainTree, mainTree.right, 3));
 
-//        System.out.println(shortestToChar("loveleetcode", 'e'));
+        ShortestDistanceToACharacter shortestDistanceToACharacter = new ShortestDistanceToACharacter();
+        System.out.println(shortestDistanceToACharacter.shortestToChar("loveleetcode", 'e'));
 
 //        System.out.println(convertToBase7(100));
 
@@ -1102,7 +1103,41 @@ public class App {
 //        RemoveKDigits removeKDigits = new RemoveKDigits();
 //        removeKDigits.removeKdigits("10200", 1);
 
-        LargestRectangleInHistogram largestRectangleInHistogram = new LargestRectangleInHistogram();
-        largestRectangleInHistogram.largestRectangleArea(new int[]{6, 2, 5, 4, 5, 1, 6});
+//        LargestRectangleInHistogram largestRectangleInHistogram = new LargestRectangleInHistogram();
+//        largestRectangleInHistogram.largestRectangleArea(new int[]{6, 2, 5, 4, 5, 1, 6});
+
+//        MaximalRectangle maximalRectangle = new MaximalRectangle();
+//        maximalRectangle.maximalRectangle(new char[][]{
+//                {'1', '0', '1', '0', '0'},
+//                {'1', '0', '1', '1', '1'},
+//                {'1', '1', '1', '1', '1'},
+//                {'1', '0', '0', '1', '0'}});
+
+//        MaximalSquare maximalSquare = new MaximalSquare();
+//        maximalSquare.maximalSquare(new char[][]{
+//                {'1', '0', '1', '0', '0'},
+//                {'1', '0', '1', '1', '1'},
+//                {'1', '1', '1', '1', '1'},
+//                {'1', '0', '0', '1', '1'}});
+
+//        LargestPlusSign largestPlusSign = new LargestPlusSign();
+//        largestPlusSign.orderOfLargestPlusSignTwo(5, new int[][]{{4, 2}, {2, 4}});
+
+//        MaximizeDistanceToClosestPerson maximizeDistanceToClosestPerson = new MaximizeDistanceToClosestPerson();
+//        maximizeDistanceToClosestPerson.maxDistToClosest(new int[]{1, 0, 0, 0});
+
+//        BoldWordsInString boldWordsInString = new BoldWordsInString();
+//        boldWordsInString.boldWords(new String[]{"ab", "bc"}, "aabcd");
+
+//        SentenceSimilarityII sentenceSimilarityII = new SentenceSimilarityII();
+//        sentenceSimilarityII.areSentencesSimilarTwo(new String[]{"great", "acting", "skills"},
+//                new String[]{"cool", "drama", "talent"},
+//                new String[][]{{"great", "good"}, {"fine", "good"}, {"good", "cool"}, {"acting", "drama"}, {"skills", "talent"}});
+
+//        SentenceSimilarityI sentenceSimilarityI = new SentenceSimilarityI();
+//        sentenceSimilarityI.areSentencesSimilar(new String[]{"great", "acting", "skills"},
+//                new String[]{"fine", "drama", "talent"},
+//                new String[][]{{"great", "good"}, {"fine", "good"}, {"acting", "drama"}, {"skills", "talent"}});
     }
+
 }

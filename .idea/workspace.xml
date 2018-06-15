@@ -37,8 +37,8 @@
           <file leaf-file-name="AllPractices.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="18">
-                  <caret line="5071" selection-start-line="5071" selection-end-line="5071" />
+                <state relative-caret-position="145">
+                  <caret line="2608" column="5" selection-start-line="2608" selection-start-column="5" selection-end-line="2608" selection-end-column="5" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -46,29 +46,23 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="TrappingRainWater.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/practice/problem/TrappingRainWater.java">
+          <file leaf-file-name="ShortestDistanceToACharacter.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/practice/problem/ShortestDistanceToACharacter.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="225">
-                  <caret line="15" column="39" lean-forward="true" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="39" />
+                <state relative-caret-position="75">
+                  <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="18" selection-end-column="19" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="MaximalRectangle.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/practice/problem/MaximalRectangle.java">
+          <file leaf-file-name="LoggerRateLimiter.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/java/practice/problem/LoggerRateLimiter.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="90">
-                  <caret line="6" column="7" selection-end-line="8" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="LargestRectangleInHistogram.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/java/practice/problem/LargestRectangleInHistogram.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="210">
-                  <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
+                <state relative-caret-position="298">
+                  <caret line="22" column="7" lean-forward="true" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -76,8 +70,8 @@
           <file leaf-file-name="App.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/App.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="231">
-                  <caret line="1105" selection-start-line="1105" selection-end-line="1105" />
+                <state relative-caret-position="137">
+                  <caret line="463" column="70" selection-start-line="463" selection-start-column="70" selection-end-line="463" selection-end-column="70" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -113,9 +107,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>prev</find>
-      <find>reverselist</find>
-      <find>swap nodes</find>
       <find>pre</find>
       <find>insertionSortList</find>
       <find>mergetwo</find>
@@ -129,13 +120,11 @@
       <find>network</find>
       <find>findcheap</find>
       <find>findmi</find>
-      <find>shortest</find>
       <find>tra</find>
       <find>traprain</find>
       <find>trapr</find>
       <find>preorder</find>
       <find>traver</find>
-      <find>*</find>
       <find>removeinvalid</find>
       <find>update</find>
       <find>clone</find>
@@ -143,6 +132,11 @@
       <find>inorder</find>
       <find>trapping</find>
       <find>undire</find>
+      <find>indexof</find>
+      <find>sentence</find>
+      <find>*</find>
+      <find>shortest</find>
+      <find>shortestto</find>
     </findStrings>
     <replaceStrings>
       <replace>digitLineMap</replace>
@@ -492,17 +486,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/practice/problem/MergeTwoLists.java" />
-        <option value="$PROJECT_DIR$/src/main/java/practice/problem/ReverseWordsInAString.java" />
-        <option value="$PROJECT_DIR$/src/main/java/practice/problem/ValidateBinarySearchTree.java" />
-        <option value="$PROJECT_DIR$/src/main/java/practice/problem/CuttOffTreesForGolfEvent.java" />
-        <option value="$PROJECT_DIR$/src/main/java/practice/problem/CutOffTreesForGolfEvent.java" />
-        <option value="$PROJECT_DIR$/src/main/java/practice/problem/BoundaryOfBinaryTree.java" />
-        <option value="$PROJECT_DIR$/src/main/java/practice/problem/PalindromePartitioningII.java" />
-        <option value="$PROJECT_DIR$/src/main/java/practice/problem/PartitionLabels.java" />
-        <option value="$PROJECT_DIR$/src/main/java/practice/problem/AddTwoNumbersII.java" />
-        <option value="$PROJECT_DIR$/src/main/java/practice/problem/RotateList.java" />
-        <option value="$PROJECT_DIR$/src/main/java/practice/problem/SplitLinkedListInParts.java" />
         <option value="$PROJECT_DIR$/src/main/java/practice/problem/LinkedListComponents.java" />
         <option value="$PROJECT_DIR$/src/main/java/practice/problem/MovingAverageFromDataStream.java" />
         <option value="$PROJECT_DIR$/src/main/java/practice/problem/MovingAverage.java" />
@@ -525,7 +508,6 @@
         <option value="$PROJECT_DIR$/src/main/java/practice/problem/BinaryTreePostTraversal.java" />
         <option value="$PROJECT_DIR$/src/main/java/practice/problem/BinaryTreeInorderTraversal.java" />
         <option value="$PROJECT_DIR$/src/main/java/practice/problem/NextGreaterElementII.java" />
-        <option value="$PROJECT_DIR$/src/main/java/practice/domain/NestedInteger.java" />
         <option value="$PROJECT_DIR$/src/main/java/practice/problem/VerifyPreorderSequenceinBinarySearchTree.java" />
         <option value="$PROJECT_DIR$/src/main/java/practice/problem/SimplifyPath.java" />
         <option value="$PROJECT_DIR$/src/main/java/practice/problem/VerifyPreorderSequenceinBinaryTree.java" />
@@ -538,11 +520,23 @@
         <option value="$PROJECT_DIR$/src/main/java/practice/problem/CourseSchedule.java" />
         <option value="$PROJECT_DIR$/src/main/java/practice/problem/CloneGraph.java" />
         <option value="$PROJECT_DIR$/src/main/java/practice/problem/FindLargestValueInEachTreeRow.java" />
-        <option value="$PROJECT_DIR$/src/main/java/practice/AllPractices.java" />
         <option value="$PROJECT_DIR$/src/main/java/practice/problem/TrappingRainWater.java" />
-        <option value="$PROJECT_DIR$/src/main/java/practice/problem/MaximalRectangle.java" />
-        <option value="$PROJECT_DIR$/src/main/java/App.java" />
         <option value="$PROJECT_DIR$/src/main/java/practice/problem/LargestRectangleInHistogram.java" />
+        <option value="$PROJECT_DIR$/src/main/java/practice/problem/MaximalRectangle.java" />
+        <option value="$PROJECT_DIR$/src/main/java/practice/problem/MaximalSquare.java" />
+        <option value="$PROJECT_DIR$/src/main/java/practice/problem/LargestPlusSign.java" />
+        <option value="$PROJECT_DIR$/src/main/java/practice/problem/ClosestBinarySearchTreeValue.java" />
+        <option value="$PROJECT_DIR$/src/main/java/practice/problem/StrobogrammaticNumber.java" />
+        <option value="$PROJECT_DIR$/src/main/java/practice/problem/MaximizeDistanceToClosestPerson.java" />
+        <option value="$PROJECT_DIR$/src/main/java/practice/problem/SentenceSimilarityI.java" />
+        <option value="$PROJECT_DIR$/src/main/java/practice/problem/BoldWordsInString.java" />
+        <option value="$PROJECT_DIR$/src/main/java/practice/problem/SentenceSimilarityII.java" />
+        <option value="$PROJECT_DIR$/src/main/java/practice/problem/FindAnagramMappings.java" />
+        <option value="$PROJECT_DIR$/src/main/java/practice/domain/NestedInteger.java" />
+        <option value="$PROJECT_DIR$/src/main/java/practice/AllPractices.java" />
+        <option value="$PROJECT_DIR$/src/main/java/practice/problem/ShortestDistanceToACharacter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/App.java" />
+        <option value="$PROJECT_DIR$/src/main/java/practice/problem/LoggerRateLimiter.java" />
       </list>
     </option>
   </component>
@@ -565,8 +559,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -607,6 +600,15 @@
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="practice" type="462c0819:PsiDirectoryNode" />
+              <item name="domain" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="algorithmPractice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="algorithmPractice" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="practice" type="462c0819:PsiDirectoryNode" />
               <item name="problem" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -626,11 +628,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="map&#9;PSI&#9;JAVA://java.util.Map&#10;reverselink&#9;FILE&#9;file:///Users/tang/Documents/workspace/algorithmPractice/src/main/java/practice/problem/ReverseLinkedListII.java&#10;treeset&#9;PSI&#9;JAVA://java.util.TreeSet&#10;priori&#9;FILE&#9;jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/src.zip!/java/util/PriorityQueue.java&#10;{&#9;null&#9;null&#10;biginteger&#9;PSI&#9;JAVA://java.math.BigInteger" />
+    <property name="SearchEverywhereHistoryKey" value="String&#9;FILE&#9;jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/rt.jar!/java/lang/String.class&#10;map&#9;PSI&#9;JAVA://java.util.Map&#10;reverselink&#9;FILE&#9;file:///Users/tang/Documents/workspace/algorithmPractice/src/main/java/practice/problem/ReverseLinkedListII.java&#10;treeset&#9;PSI&#9;JAVA://java.util.TreeSet&#10;priori&#9;FILE&#9;jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/src.zip!/java/util/PriorityQueue.java&#10;{&#9;null&#9;null&#10;biginteger&#9;PSI&#9;JAVA://java.math.BigInteger" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
@@ -927,6 +930,7 @@
       <workItem from="1528915452942" duration="11079000" />
       <workItem from="1528942077031" duration="8000" />
       <workItem from="1528942116426" duration="20984000" />
+      <workItem from="1529007442161" duration="17138000" />
     </task>
     <servers />
   </component>
@@ -957,7 +961,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="438452000" />
+    <option name="totallyTimeSpent" value="455590000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
@@ -972,12 +976,11 @@
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="0" />
       <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Build" order="0" weight="0.32948717" />
       <window_info anchor="right" id="Database" order="4" />
       <window_info id="Structure" order="5" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="10" weight="0.25" />
       <window_info id="UI Designer" order="2" />
-      <window_info anchor="bottom" id="Debug" order="12" sideWeight="0.49928468" weight="0.43717948" />
+      <window_info active="true" anchor="bottom" id="Debug" order="12" sideWeight="0.49928468" visible="true" weight="0.43717948" />
       <window_info anchor="bottom" id="TODO" order="15" />
       <window_info anchor="bottom" id="Messages" order="5" weight="0.32948717" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
@@ -995,6 +998,7 @@
       <window_info anchor="right" id="Commander" order="9" weight="0.4" />
       <window_info anchor="right" id="Coverage" order="12" side_tool="true" weight="0.3297568" />
       <window_info anchor="bottom" id="Cvs" order="13" weight="0.25" />
+      <window_info anchor="bottom" id="Build" order="0" weight="0.32948717" />
       <window_info anchor="bottom" id="Message" order="9" />
       <window_info anchor="bottom" id="Inspection" order="14" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="11" weight="0.24964234" />
@@ -1102,31 +1106,25 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>2630</line>
-          <properties />
-          <option name="timeStamp" value="125" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
           <line>1993</line>
           <properties />
           <option name="timeStamp" value="138" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>3042</line>
+          <line>3015</line>
           <properties />
           <option name="timeStamp" value="165" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>3128</line>
+          <line>3101</line>
           <properties />
           <option name="timeStamp" value="177" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>3223</line>
+          <line>3196</line>
           <properties />
           <option name="timeStamp" value="190" />
         </line-breakpoint>
@@ -1162,7 +1160,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>3274</line>
+          <line>3247</line>
           <properties />
           <option name="timeStamp" value="210" />
         </line-breakpoint>
@@ -1174,43 +1172,43 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>3459</line>
+          <line>3432</line>
           <properties />
           <option name="timeStamp" value="232" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>3489</line>
+          <line>3462</line>
           <properties />
           <option name="timeStamp" value="237" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>3484</line>
+          <line>3457</line>
           <properties />
           <option name="timeStamp" value="238" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>3435</line>
+          <line>3408</line>
           <properties />
           <option name="timeStamp" value="245" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>3439</line>
+          <line>3412</line>
           <properties />
           <option name="timeStamp" value="246" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>3776</line>
+          <line>3749</line>
           <properties />
           <option name="timeStamp" value="267" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>3957</line>
+          <line>3930</line>
           <properties />
           <option name="timeStamp" value="278" />
         </line-breakpoint>
@@ -1234,79 +1232,79 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>4769</line>
+          <line>4742</line>
           <properties />
           <option name="timeStamp" value="339" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/App.java</url>
-          <line>793</line>
+          <line>794</line>
           <properties />
           <option name="timeStamp" value="358" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>4903</line>
+          <line>4876</line>
           <properties />
           <option name="timeStamp" value="360" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>4979</line>
+          <line>4952</line>
           <properties />
           <option name="timeStamp" value="366" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>4988</line>
+          <line>4961</line>
           <properties />
           <option name="timeStamp" value="367" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>4994</line>
+          <line>4967</line>
           <properties />
           <option name="timeStamp" value="369" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>4983</line>
+          <line>4956</line>
           <properties />
           <option name="timeStamp" value="370" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>5010</line>
+          <line>4983</line>
           <properties />
           <option name="timeStamp" value="371" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>5018</line>
+          <line>4991</line>
           <properties />
           <option name="timeStamp" value="372" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>5028</line>
+          <line>5001</line>
           <properties />
           <option name="timeStamp" value="374" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>5035</line>
+          <line>5008</line>
           <properties />
           <option name="timeStamp" value="376" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>5012</line>
+          <line>4985</line>
           <properties />
           <option name="timeStamp" value="377" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>5025</line>
+          <line>4998</line>
           <properties />
           <option name="timeStamp" value="378" />
         </line-breakpoint>
@@ -1342,19 +1340,19 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>5112</line>
+          <line>5085</line>
           <properties />
           <option name="timeStamp" value="400" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>5121</line>
+          <line>5094</line>
           <properties />
           <option name="timeStamp" value="401" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/App.java</url>
-          <line>869</line>
+          <line>870</line>
           <properties />
           <option name="timeStamp" value="402" />
         </line-breakpoint>
@@ -1396,25 +1394,25 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>5196</line>
+          <line>5169</line>
           <properties />
           <option name="timeStamp" value="411" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>5161</line>
+          <line>5134</line>
           <properties />
           <option name="timeStamp" value="412" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>5178</line>
+          <line>5151</line>
           <properties />
           <option name="timeStamp" value="413" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>5190</line>
+          <line>5163</line>
           <properties />
           <option name="timeStamp" value="414" />
         </line-breakpoint>
@@ -1426,73 +1424,73 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>5219</line>
+          <line>5192</line>
           <properties />
           <option name="timeStamp" value="416" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>5234</line>
+          <line>5207</line>
           <properties />
           <option name="timeStamp" value="417" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>5268</line>
+          <line>5241</line>
           <properties />
           <option name="timeStamp" value="418" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>5275</line>
+          <line>5248</line>
           <properties />
           <option name="timeStamp" value="420" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>5252</line>
+          <line>5225</line>
           <properties />
           <option name="timeStamp" value="421" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>5310</line>
+          <line>5283</line>
           <properties />
           <option name="timeStamp" value="423" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>5305</line>
+          <line>5278</line>
           <properties />
           <option name="timeStamp" value="424" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>5318</line>
+          <line>5291</line>
           <properties />
           <option name="timeStamp" value="426" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>5345</line>
+          <line>5318</line>
           <properties />
           <option name="timeStamp" value="427" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>5371</line>
+          <line>5344</line>
           <properties />
           <option name="timeStamp" value="429" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>5362</line>
+          <line>5335</line>
           <properties />
           <option name="timeStamp" value="430" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>5364</line>
+          <line>5337</line>
           <properties />
           <option name="timeStamp" value="432" />
         </line-breakpoint>
@@ -1510,7 +1508,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/App.java</url>
-          <line>918</line>
+          <line>919</line>
           <properties />
           <option name="timeStamp" value="435" />
         </line-breakpoint>
@@ -1534,49 +1532,49 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>5385</line>
+          <line>5358</line>
           <properties />
           <option name="timeStamp" value="439" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>5381</line>
+          <line>5354</line>
           <properties />
           <option name="timeStamp" value="440" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>5401</line>
+          <line>5374</line>
           <properties />
           <option name="timeStamp" value="441" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>4803</line>
+          <line>4776</line>
           <properties />
           <option name="timeStamp" value="442" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>3597</line>
+          <line>3570</line>
           <properties />
           <option name="timeStamp" value="510" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>3593</line>
+          <line>3566</line>
           <properties />
           <option name="timeStamp" value="511" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>3611</line>
+          <line>3584</line>
           <properties />
           <option name="timeStamp" value="512" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>3694</line>
+          <line>3667</line>
           <properties />
           <option name="timeStamp" value="530" />
         </line-breakpoint>
@@ -1594,55 +1592,55 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>3729</line>
+          <line>3702</line>
           <properties />
           <option name="timeStamp" value="543" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>3740</line>
+          <line>3713</line>
           <properties />
           <option name="timeStamp" value="545" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>2840</line>
+          <line>2813</line>
           <properties />
           <option name="timeStamp" value="550" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>4597</line>
+          <line>4570</line>
           <properties />
           <option name="timeStamp" value="561" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>2912</line>
+          <line>2885</line>
           <properties />
           <option name="timeStamp" value="564" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>4519</line>
+          <line>4492</line>
           <properties />
           <option name="timeStamp" value="565" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>4533</line>
+          <line>4506</line>
           <properties />
           <option name="timeStamp" value="566" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>4884</line>
+          <line>4857</line>
           <properties />
           <option name="timeStamp" value="573" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java</url>
-          <line>3712</line>
+          <line>3685</line>
           <properties />
           <option name="timeStamp" value="576" />
         </line-breakpoint>
@@ -1834,7 +1832,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/App.java</url>
-          <line>1081</line>
+          <line>1082</line>
           <properties />
           <option name="timeStamp" value="655" />
         </line-breakpoint>
@@ -1892,8 +1890,110 @@
           <properties />
           <option name="timeStamp" value="669" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/practice/problem/MaximalRectangle.java</url>
+          <line>22</line>
+          <properties />
+          <option name="timeStamp" value="671" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/practice/problem/MaximalRectangle.java</url>
+          <line>31</line>
+          <properties />
+          <option name="timeStamp" value="672" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/practice/problem/MaximalRectangle.java</url>
+          <line>13</line>
+          <properties />
+          <option name="timeStamp" value="673" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/practice/problem/MaximalSquare.java</url>
+          <line>9</line>
+          <properties />
+          <option name="timeStamp" value="674" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/practice/problem/LargestPlusSign.java</url>
+          <line>15</line>
+          <properties />
+          <option name="timeStamp" value="676" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/practice/problem/LargestPlusSign.java</url>
+          <line>12</line>
+          <properties />
+          <option name="timeStamp" value="677" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/practice/problem/LargestPlusSign.java</url>
+          <line>23</line>
+          <properties />
+          <option name="timeStamp" value="678" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/practice/problem/LargestPlusSign.java</url>
+          <line>41</line>
+          <properties />
+          <option name="timeStamp" value="679" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/practice/problem/BoldWordsInString.java</url>
+          <line>16</line>
+          <properties />
+          <option name="timeStamp" value="683" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/practice/problem/SentenceSimilarityII.java</url>
+          <line>39</line>
+          <properties />
+          <option name="timeStamp" value="685" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/practice/problem/SentenceSimilarityII.java</url>
+          <line>31</line>
+          <properties />
+          <option name="timeStamp" value="686" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/practice/problem/SentenceSimilarityI.java</url>
+          <line>21</line>
+          <properties />
+          <option name="timeStamp" value="689" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/practice/problem/SentenceSimilarityII.java</url>
+          <line>61</line>
+          <properties />
+          <option name="timeStamp" value="691" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/practice/problem/SentenceSimilarityII.java</url>
+          <line>53</line>
+          <properties />
+          <option name="timeStamp" value="692" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/practice/problem/SentenceSimilarityII.java</url>
+          <line>19</line>
+          <properties />
+          <option name="timeStamp" value="693" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/practice/problem/ShortestDistanceToACharacter.java</url>
+          <line>8</line>
+          <properties />
+          <option name="timeStamp" value="694" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/practice/problem/ShortestDistanceToACharacter.java</url>
+          <line>26</line>
+          <properties />
+          <option name="timeStamp" value="696" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="670" />
+      <option name="time" value="697" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
@@ -1998,87 +2098,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/practice/problem/PartitionLabels.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/practice/problem/AddTwoNumbersII.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="20" column="9" lean-forward="true" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/practice/problem/ReverseLinkedListII.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/practice/problem/RotateList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="8" selection-start-line="7" selection-start-column="8" selection-end-line="8" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/practice/problem/SplitLinkedListInParts.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/practice/problem/LinkedListComponents.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/practice/problem/MovingAverage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="16" column="25" lean-forward="true" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/src.zip!/java/util/Map.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="708" column="21" lean-forward="true" selection-start-line="708" selection-start-column="21" selection-end-line="708" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/practice/problem/KillProcess.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="16" column="35" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/practice/domain/NumArray.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="37" lean-forward="true" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/practice/domain/NumMatrix.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="42" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/src.zip!/java/util/TreeSet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="434" column="13" selection-start-line="434" selection-start-column="13" selection-end-line="434" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/practice/problem/MaxSumOfRectangleNoLargerThanK.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -2202,9 +2221,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-37">
           <caret line="13" column="34" lean-forward="true" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2235,13 +2251,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/practice/domain/NestedInteger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="31" lean-forward="true" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -2344,44 +2353,153 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/practice/problem/LargestRectangleInHistogram.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="5071" selection-start-line="5071" selection-end-line="5071" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="90">
+          <caret line="6" column="47" lean-forward="true" selection-start-line="6" selection-start-column="47" selection-end-line="6" selection-end-column="47" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/practice/problem/TrappingRainWater.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="39" lean-forward="true" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="39" />
+        <state relative-caret-position="120">
+          <caret line="8" column="23" lean-forward="true" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/practice/problem/MaximalRectangle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="7" selection-end-line="8" />
+        <state relative-caret-position="176">
+          <caret line="18" column="22" lean-forward="true" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/App.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/practice/problem/MaximalSquare.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="1105" selection-start-line="1105" selection-end-line="1105" />
+        <state relative-caret-position="75">
+          <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="17" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/practice/problem/LargestPlusSign.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="34" column="8" lean-forward="true" selection-start-line="34" selection-start-column="8" selection-end-line="55" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/practice/problem/ClosestBinarySearchTreeValue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/practice/problem/StrobogrammaticNumber.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="48" lean-forward="true" selection-start-line="16" selection-end-line="17" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/practice/problem/LargestRectangleInHistogram.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/practice/problem/MaximizeDistanceToClosestPerson.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
+        <state relative-caret-position="195">
+          <caret line="13" column="26" lean-forward="true" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/rt.jar!/java/lang/String.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="553" column="26" selection-start-line="553" selection-start-column="19" selection-end-line="553" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#36011#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/practice/problem/BoldWordsInString.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/practice/domain/NestedInteger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/practice/problem/FindAnagramMappings.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="17" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/practice/problem/SentenceSimilarityII.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/practice/problem/SentenceSimilarityI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/practice/AllPractices.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="2608" column="5" selection-start-line="2608" selection-start-column="5" selection-end-line="2608" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/App.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="463" column="70" selection-start-line="463" selection-start-column="70" selection-end-line="463" selection-end-column="70" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/practice/problem/ShortestDistanceToACharacter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="18" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/practice/problem/LoggerRateLimiter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="22" column="7" lean-forward="true" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
