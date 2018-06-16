@@ -460,8 +460,8 @@ public class App {
         mainTree.left.right.right = new TreeNode(10);
 //        System.out.println(printkdistanceNode(mainTree, mainTree.right, 3));
 
-        ShortestDistanceToACharacter shortestDistanceToACharacter = new ShortestDistanceToACharacter();
-        System.out.println(shortestDistanceToACharacter.shortestToChar("loveleetcode", 'e'));
+//        ShortestDistanceToACharacter shortestDistanceToACharacter = new ShortestDistanceToACharacter();
+//        System.out.println(shortestDistanceToACharacter.shortestToChar("loveleetcode", 'e'));
 
 //        System.out.println(convertToBase7(100));
 
@@ -1138,6 +1138,33 @@ public class App {
 //        sentenceSimilarityI.areSentencesSimilar(new String[]{"great", "acting", "skills"},
 //                new String[]{"fine", "drama", "talent"},
 //                new String[][]{{"great", "good"}, {"fine", "good"}, {"acting", "drama"}, {"skills", "talent"}});
+
+//        FlipGameII flipGameII = new FlipGameII();
+//        System.out.println(flipGameII.canWin("++++"));
+
+//        ShortestWordDistanceII shortestWordDistanceII = new ShortestWordDistanceII(new String[]{"practice", "makes", "perfect", "coding", "makes"});
+//        shortestWordDistanceII.shortest("makes", "coding");
+
+//        ShortestWordDistanceIII shortestWordDistanceIII = new ShortestWordDistanceIII();
+//        shortestWordDistanceIII.shortestWordDistance(new String[]{"practice", "makes", "perfect", "coding", "makes"}, "makes", "makes");
+
+//        InvertBinaryTree invertBinaryTree = new InvertBinaryTree();
+//        invertBinaryTree.invertTreeStack(node1);
+
+//        MergeTwoBinaryTrees mergeTwoBinaryTrees = new MergeTwoBinaryTrees();
+//        mergeTwoBinaryTrees.mergeTreesDfs(node1, mainTree);
+
+//        UniqueBinarySearchTreesII uniqueBinarySearchTreesII = new UniqueBinarySearchTreesII();
+//        uniqueBinarySearchTreesII.generateTrees(3);
+
+//        BalanceBinaryTree balanceBinaryTree = new BalanceBinaryTree();
+//        balanceBinaryTree.isBalanced(node1);
+
+//        LowestCommonAncestorOfABinaryTree lowestCommonAncestorOfABinaryTree = new LowestCommonAncestorOfABinaryTree();
+//        lowestCommonAncestorOfABinaryTree.lowestCommonAncestorIterative(node1, node1.left, node1.right.right);
+
+        MaximumBinaryTree maximumBinaryTree = new MaximumBinaryTree();
+        maximumBinaryTree.constructMaximumBinaryTreeIterative(new int[]{3, 2, 1, 6, 0, 5});
     }
 
 }

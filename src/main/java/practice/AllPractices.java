@@ -178,16 +178,7 @@ public class AllPractices {
     }
 
 
-    // 235. Lowest Common Ancestor of a Binary Search Tree
-    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        if (root.val > p.val && root.val > q.val) {
-            return lowestCommonAncestor(root.left, p, q);
-        } else if (root.val < p.val && root.val < q.val) {
-            return lowestCommonAncestor(root.right, p, q);
-        } else {
-            return root;
-        }
-    }
+
 
     public int removeElement(int[] nums, int val) {
         int m = 0;
@@ -424,17 +415,7 @@ public class AllPractices {
         return v == 0 && h == 0;
     }
 
-    // 617. Merge Two Binary Trees
-    public TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
-        if (t1 == null && t2 == null) return null;
-        int val = (t1 == null ? 0 : t1.val) + (t2 == null ? 0 : t2.val);
-        TreeNode newNode = new TreeNode(val);
 
-        newNode.left = mergeTrees(t1 == null ? null : t1.left, t2 == null ? null : t2.left);
-        newNode.right = mergeTrees(t1 == null ? null : t1.right, t2 == null ? null : t2.right);
-
-        return newNode;
-    }
 
     // 728. Self Dividing Numbers
     public List<Integer> selfDividingNumbers(int left, int right) {
@@ -1414,18 +1395,7 @@ public class AllPractices {
         return false;
     }
 
-    // 110. Balanced Binary Tree
-    public boolean isBalanced(TreeNode root) {
-        return isBalancedDepth(root) != -1;
-    }
 
-    private int isBalancedDepth(TreeNode root) {
-        if (root == null) return 0;
-        int l = isBalancedDepth(root.left), r = isBalancedDepth(root.right);
-        if (l == -1 || r == -1) return -1;
-        if (Math.abs(l - r) > 1) return -1;
-        return 1 + Math.max(l, r);
-    }
 
     // 1. Two Sum
     public int[] twoSum(int[] nums, int target) {
@@ -1989,55 +1959,6 @@ public class AllPractices {
         return depth;
     }
 
-    // 104. Maximum Depth of Binary Tree
-    public int maxDepth(TreeNode root) {
-        if (root == null) return 0;
-        int leftDepth = maxDepth(root.left);
-        int rightDepth = maxDepth(root.right);
-        return Math.max(leftDepth, rightDepth) + 1;
-    }
-
-    public int maxDepthBfs(TreeNode root) {
-        if (root == null) return 0;
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.offer(root);
-        int level = 0;
-        while (!queue.isEmpty()) {
-            int size = queue.size();
-            for (int i = 0; i < size; i++) {
-                TreeNode node = queue.poll();
-                if (node.left != null)
-                    queue.offer(node.left);
-                if (node.right != null)
-                    queue.offer(node.right);
-            }
-            level++;
-        }
-        return level;
-    }
-
-    public int maxDepthDfs(TreeNode root) {
-        if (root == null) return 0;
-        Stack<TreeNode> treeNodeStack = new Stack<>();
-        Stack<Integer> valueStack = new Stack<>();
-        treeNodeStack.push(root);
-        valueStack.push(1);
-        int max = 0;
-        while (!treeNodeStack.isEmpty()) {
-            TreeNode node = treeNodeStack.pop();
-            int temp = valueStack.pop();
-            max = Math.max(temp, max);
-            if (node.left != null) {
-                treeNodeStack.push(node.left);
-                valueStack.push(temp + 1);
-            }
-            if (node.right != null) {
-                treeNodeStack.push(node.right);
-                valueStack.push(temp + 1);
-            }
-        }
-        return max;
-    }
 
     // 234. Palindrome Linked List
     public boolean isPalindrome(ListNode head) {
@@ -3019,41 +2940,7 @@ public class AllPractices {
             return false;
     }
 
-    //101. Symmetric Tree
-    public boolean isSymmetric(TreeNode root) {
-        return root == null || isSymmetricHelper(root.left, root.right);
-    }
 
-    public boolean isSymmetricHelper(TreeNode left, TreeNode right) {
-        if (left == null || right == null) {
-            return left == right;
-        }
-        if (left.val != right.val) {
-            return false;
-        }
-        return isSymmetricHelper(left.left, right.right) && isSymmetricHelper(left.right, right.left);
-    }
-
-    public boolean isSymmetricIterative(TreeNode root) {
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.add(root);
-        queue.add(root);
-        while (!queue.isEmpty()) {
-            TreeNode t1 = queue.poll();
-            TreeNode t2 = queue.poll();
-            if (t1 == null && t2 == null)
-                continue;
-            if (t1 == null || t2 == null)
-                return false;
-            if (t1.val != t2.val)
-                return false;
-            queue.add(t1.left);
-            queue.add(t2.right);
-            queue.add(t1.right);
-            queue.add(t2.left);
-        }
-        return true;
-    }
 
     // 191. Number of 1 Bits
     public int hammingWeight(int n) {
@@ -4542,14 +4429,7 @@ public class AllPractices {
         return -1;
     }
 
-    // 236. Lowest Common Ancestor of a Binary Tree
-    public TreeNode lowestCommonAncestor236(TreeNode root, TreeNode p, TreeNode q) {
-        if (root == null || root == p || root == q)
-            return root;
-        TreeNode left = lowestCommonAncestor236(root.left, p, q);
-        TreeNode right = lowestCommonAncestor236(root.right, p, q);
-        return left != null && right != null ? root : (left != null ? left : right);
-    }
+
 
     // 55. Jump Game
     public boolean canJump(int[] nums) {
@@ -5043,7 +4923,6 @@ public class AllPractices {
     }
 
 
-
     // 239. Sliding Window Maximum
     public int[] maxSlidingWindow(int[] nums, int k) {
 //        if (nums == null || k <= 0)
@@ -5433,10 +5312,6 @@ public class AllPractices {
         levelOrderDfsHelper(result, root.left, level + 1);
         levelOrderDfsHelper(result, root.right, level + 1);
     }
-
-
-
-
 
 
 }
