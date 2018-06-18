@@ -53,8 +53,6 @@ public class App {
 //
         ListNode l3 = mergeTwoLists.mergeTwoListsIter(l1, l2);
 ////        int length = removeElement(ints2, 1);
-//        int[] ints3 = new int[]{1, 3, 5, 6, 12, 9};
-//        int rob = rob(ints3);
 //        int[] ints4 = new int[]{1, 3, 5, 6};
 ////        int[] plusOne = plusOne(ints4);
 ////        getRow(3);
@@ -345,8 +343,29 @@ public class App {
 //        System.out.println(compress(new char[]{'a', 'a', 'b', 'c', 'c', 'c', 'c', 'c', 'c', 'c', 'c', 'c', 'c', 'c', 'c'}));
 
         mainTree.right.right = new TreeNode(6);
-//        System.out.println(hasPathSum(mainTree, 14));
+//        PathSum pathSum = new PathSum();
+//        System.out.println(pathSum.hasPathSumIterative(mainTree, 14));
+
+//        TreeNode pathSumII = new TreeNode(5);
+//        pathSumII.left = new TreeNode(4);
+//        pathSumII.left.left = new TreeNode(11);
+//        pathSumII.left.left.left = new TreeNode(7);
+//        pathSumII.left.left.right = new TreeNode(2);
+//        pathSumII.right = new TreeNode(8);
+//        pathSumII.right.left = new TreeNode(13);
+//        pathSumII.right.right = new TreeNode(4);
+//        pathSumII.right.right.left = new TreeNode(5);
+//        pathSumII.right.right.right = new TreeNode(1);
 //
+//        PathSumII pathSumII1 = new PathSumII();
+//        pathSumII1.pathSum(pathSumII, 22);
+
+//        PathSumIII pathSumIII = new PathSumIII();
+//        pathSumIII.pathSum(mainTree, 8);
+
+//        PathSumIV pathSumIV = new PathSumIV();
+//        pathSumIV.pathSum(new int[]{113, 214, 225, 311, 322, 346});
+
 //        System.out.println(isIsomorphic("title", "paper"));
 
 //        MyStack myStack = new MyStack();
@@ -479,7 +498,11 @@ public class App {
 
 //        System.out.println(getSum(10,9));
 
-//        System.out.println(romanToInt("MCMXCIV"));
+//        RomanToInt romanToInt = new RomanToInt();
+//        System.out.println(romanToInt.romanToInt("MCMXCIV"));
+
+//        IntToRoman intToRoman = new IntToRoman();
+//        intToRoman.intToRoman(1998);
 
 //        moveZeroes(new int[]{1, 0, 3, 0, 12, 0, 5});
 
@@ -694,7 +717,8 @@ public class App {
 
 //        System.out.println(longestSubstring("ababdbbcababab", 2));
 
-//        System.out.println(buildTree(new int[]{3, 9, 20, 15, 7}, new int[]{9, 3, 15, 20, 7}));
+//        ConstructBinaryTreefromPreorderandInorderTraversal constructBinaryTreefromPreorderandInorderTraversal = new ConstructBinaryTreefromPreorderandInorderTraversal();
+//        System.out.println(constructBinaryTreefromPreorderandInorderTraversal.buildTreeTwo(new int[]{3, 9, 20, 15, 7}, new int[]{9, 3, 15, 20, 7}));
 
         ListNode listNodeRemoveFromEnd = new ListNode(1);
         listNodeRemoveFromEnd.next = new ListNode(2);
@@ -988,7 +1012,8 @@ public class App {
 //        SerializeDeserializeBinarySearchTree serializeDeserializeBinarySearchTree = new SerializeDeserializeBinarySearchTree();
 //        serializeDeserializeBinarySearchTree.deserialize(serializeDeserializeBinarySearchTree.serialize(node1));
 
-//        System.out.println(ap.buildTreeInorderPostorderTwo(new int[]{1, 2, 3, 5, 6, 7, 9}, new int[]{1, 3, 2, 6, 9, 7, 5}));
+//        ConstructBinaryTreefromInorderandPostorderTraversal constructBinaryTreefromInorderandPostorderTraversal = new ConstructBinaryTreefromInorderandPostorderTraversal();
+//        System.out.println(constructBinaryTreefromInorderandPostorderTraversal.buildTree(new int[]{1, 2, 3, 5, 6, 7, 9}, new int[]{1, 3, 2, 6, 9, 7, 5}));
 
 //        System.out.println(ap.findMedianSortedArrays(new int[]{8, 9, 10, 20}, new int[]{1, 3, 5, 7, 9, 11, 13}));
 
@@ -1163,8 +1188,103 @@ public class App {
 //        LowestCommonAncestorOfABinaryTree lowestCommonAncestorOfABinaryTree = new LowestCommonAncestorOfABinaryTree();
 //        lowestCommonAncestorOfABinaryTree.lowestCommonAncestorIterative(node1, node1.left, node1.right.right);
 
-        MaximumBinaryTree maximumBinaryTree = new MaximumBinaryTree();
-        maximumBinaryTree.constructMaximumBinaryTreeIterative(new int[]{3, 2, 1, 6, 0, 5});
+//        MaximumBinaryTree maximumBinaryTree = new MaximumBinaryTree();
+//        maximumBinaryTree.constructMaximumBinaryTreeIterative(new int[]{3, 2, 1, 6, 0, 5});
+
+        TreeNode completeNode = new TreeNode(10);
+        completeNode.left = new TreeNode(6);
+        completeNode.right = new TreeNode(12);
+        completeNode.left.left = new TreeNode(2);
+        completeNode.left.right = new TreeNode(9);
+
+//        CountCompleteTreeNodes countCompleteTreeNodes = new CountCompleteTreeNodes();
+//        countCompleteTreeNodes.countNodes(completeNode);
+
+//        CountPrimes countPrimes = new CountPrimes();
+//        countPrimes.countPrimes(8);
+//        countPrimes.getAllPrime(50);
+
+//        FlattenBinaryTreeToLinkedList flattenBinaryTreeToLinkedList = new FlattenBinaryTreeToLinkedList();
+//        flattenBinaryTreeToLinkedList.flattenIterative(node1);
+
+        TreeNode rob3 = new TreeNode(2);
+        rob3.left = new TreeNode(1);
+        rob3.left.left = new TreeNode(3);
+        rob3.left.left.left = new TreeNode(4);
+
+//        HouseRobberIII houseRobberIII = new HouseRobberIII();
+//        houseRobberIII.rob(rob3);
+
+//        HouseRobber houseRobber = new HouseRobber();
+//        houseRobber.rob(new int[]{2, 7, 9, 3, 1, 20});
+
+        TreeNode uniValue = new TreeNode(5);
+        uniValue.left = new TreeNode(1);
+        uniValue.left.left = new TreeNode(5);
+        uniValue.left.right = new TreeNode(5);
+        uniValue.right = new TreeNode(5);
+        uniValue.right.right = new TreeNode(5);
+
+//        CountUnivalueSubtrees countUnivalueSubtrees = new CountUnivalueSubtrees();
+//        countUnivalueSubtrees.countUnivalSubtrees(uniValue);
+
+        TreeLinkNode populating2 = new TreeLinkNode(1);
+        populating2.left = new TreeLinkNode(2);
+        populating2.right = new TreeLinkNode(3);
+        populating2.left.left = new TreeLinkNode(4);
+        populating2.left.right = new TreeLinkNode(5);
+        populating2.right.right = new TreeLinkNode(7);
+
+//        PopulatingNextRightPointersInEachNodeII populatingNextRightPointersInEachNodeII = new PopulatingNextRightPointersInEachNodeII();
+//        populatingNextRightPointersInEachNodeII.connect(populating2);
+
+//        InorderSuccessorInBST inorderSuccessorInBST = new InorderSuccessorInBST();
+//        inorderSuccessorInBST.inorderSuccessor(node1, node1.right);
+
+        TreeNode upsideDown = new TreeNode(1);
+        upsideDown.left = new TreeNode(2);
+        upsideDown.left.left = new TreeNode(4);
+        upsideDown.left.right = new TreeNode(5);
+        upsideDown.right = new TreeNode(3);
+
+//        BinaryTreeUpsideDown binaryTreeUpsideDown = new BinaryTreeUpsideDown();
+//        binaryTreeUpsideDown.upsideDownBinaryTree(upsideDown);
+
+//        PrintBinaryTree printBinaryTree = new PrintBinaryTree();
+//        printBinaryTree.printTree(node1);
+
+//        SumRootToLeafNumbers sumRootToLeafNumbers = new SumRootToLeafNumbers();
+//        sumRootToLeafNumbers.sumNumbersIterative(node1);
+
+//        DeleteNodeInBST deleteNodeInBST = new DeleteNodeInBST();
+//        deleteNodeInBST.deleteNode(node1, 6);
+
+//        FindDuplicateSubtrees findDuplicateSubtrees = new FindDuplicateSubtrees();
+//        findDuplicateSubtrees.findDuplicateSubtrees(uniValue);
+
+//        ClosestBinarySearchTreeValue closestBinarySearchTreeValue = new ClosestBinarySearchTreeValue();
+//        closestBinarySearchTreeValue.closestValue(node1, 8.8);
+
+//        FindLeavesOfBinaryTree findLeavesOfBinaryTree = new FindLeavesOfBinaryTree();
+//        findLeavesOfBinaryTree.findLeaves(mainTree);
+
+//        ClosestBinarySearchTreeValueII closestBinarySearchTreeValueII = new ClosestBinarySearchTreeValueII();
+//        closestBinarySearchTreeValueII.closestKValuesTwoIterative(node1, 9.5, 2);
+
+//        ZigZagConversion zigZagConversion = new ZigZagConversion();
+//        zigZagConversion.convert("PAYPALISHIRING", 4);
+
+//        ValidParenthesisString validParenthesisString = new ValidParenthesisString();
+//        validParenthesisString.checkValidStringTwo("()(*))");
+
+//        ReversePairsLC reversePairsLC = new ReversePairsLC();
+//        reversePairsLC.reversePairs(new int[]{2, 4, 1, 3, 5});
+
+//        ReversePairs reversePairs = new ReversePairs();
+//        reversePairs.reversePairs(new int[]{2, 4, 3, 5, 1});
+
+        CountOfSmallerNumbersAfterSelf countOfSmallerNumbersAfterSelf = new CountOfSmallerNumbersAfterSelf();
+        countOfSmallerNumbersAfterSelf.countSmaller(new int[]{5, 2, 6, 1});
     }
 
 }

@@ -102,26 +102,7 @@ public class AllPractices {
         return result;
     }
 
-    public int pathSum(TreeNode root, int sum) {
-        Map<Integer, Integer> preSum = new HashMap<>();
-        preSum.put(0, 1);
-        return helper(root, 0, sum, preSum);
-    }
 
-    public int helper(TreeNode root, int currSum, int target, Map<Integer, Integer> preSum) {
-        if (root == null) {
-            return 0;
-        }
-
-        currSum += root.val;
-        int res = preSum.getOrDefault(currSum - target, 0);
-        preSum.put(currSum, preSum.getOrDefault(currSum, 0) + 1);
-        int left = helper(root.left, currSum, target, preSum);
-        int right = helper(root.right, currSum, target, preSum);
-        res += left + right;
-        preSum.put(currSum, preSum.get(currSum) - 1);
-        return res;
-    }
 
     public ListNode deleteDuplicates(ListNode head) {
         ListNode current = head;
@@ -189,16 +170,6 @@ public class AllPractices {
             }
         }
         return m;
-    }
-
-    public int rob(int[] nums) {
-        int prevNo = 0, prevYes = 0;
-        for (int n : nums) {
-            int temp = prevNo;
-            prevNo = Math.max(prevNo, prevYes);
-            prevYes = n + temp;
-        }
-        return Math.max(prevNo, prevYes);
     }
 
     public int[] plusOne(int[] digits) {
@@ -657,20 +628,7 @@ public class AllPractices {
         return result;
     }
 
-    // 204. Count Primes
-    public int countPrimes(int n) {
-        boolean[] notPrime = new boolean[n];
-        int count = 0;
-        for (int i = 2; i < n; i++) {
-            if (notPrime[i] == false) {
-                count++;
-                for (int j = 2; i * j < n; j++) {
-                    notPrime[i * j] = true;
-                }
-            }
-        }
-        return count;
-    }
+
 
     // 784. Letter Case Permutation
     public List<String> letterCasePermutation(String S) {
@@ -1566,12 +1524,7 @@ public class AllPractices {
         return index;
     }
 
-    // 112. Path Sum
-    public boolean hasPathSum(TreeNode root, int sum) {
-        if (root == null) return false;
-        if (root.left == null && root.right == null && sum - root.val == 0) return true;
-        return hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val);
-    }
+
 
     // 141. Linked List Cycle
     public boolean hasCycle(ListNode head) {
@@ -2666,41 +2619,7 @@ public class AllPractices {
         return b == 0 ? a : getSum(a ^ b, (a & b) << 1);
     }
 
-    // 13. Roman to Integer
-    public int romanToInt(String s) {
-        int res = 0;
-        if (s.length() == 0) return 0;
-        for (int i = 0; i < s.length() - 1; i++) {
-            int cur = getVal(s.charAt(i));
-            int next = getVal(s.charAt(i + 1));
-            if (cur < next) {
-                res -= cur;
-            } else {
-                res += cur;
-            }
-        }
-        return res + getVal(s.charAt(s.length() - 1));
-    }
 
-    private int getVal(char c) {
-        switch (c) {
-            case 'M':
-                return 1000;
-            case 'D':
-                return 500;
-            case 'C':
-                return 100;
-            case 'L':
-                return 50;
-            case 'X':
-                return 10;
-            case 'V':
-                return 5;
-            case 'I':
-                return 1;
-        }
-        throw new IllegalArgumentException("unknown character");
-    }
 
     // 283. Move Zeroes
     public void moveZeroes(int[] nums) {
@@ -4142,21 +4061,7 @@ public class AllPractices {
         }
     }
 
-    // 116. Populating Next Right Pointers in Each Node
-    public void connect(TreeLinkNode root) {
-        TreeLinkNode levelStart = root;
-        while (levelStart != null) {
-            TreeLinkNode cur = levelStart;
-            while (cur != null) {
-                if (cur.left != null)
-                    cur.left.next = cur.right;
-                if (cur.right != null && cur.next != null)
-                    cur.right.next = cur.next.left;
-                cur = cur.next;
-            }
-            levelStart = levelStart.left;
-        }
-    }
+
 
     // 395. Longest Substring with At Least K Repeating Characters
     public int longestSubstring(String s, int k) {
@@ -4186,26 +4091,7 @@ public class AllPractices {
         return end - start;
     }
 
-    // 105. Construct Binary Tree from Preorder and Inorder Traversal
-    public TreeNode buildTree(int[] preorder, int[] inorder) {
-        return buildTreeHelper(0, 0, inorder.length - 1, preorder, inorder);
-    }
 
-    private TreeNode buildTreeHelper(int preStart, int inStart, int inEnd, int[] preorder, int[] inorder) {
-        if (preStart > preorder.length - 1 || inStart > inEnd) {
-            return null;
-        }
-        TreeNode root = new TreeNode(preorder[preStart]);
-        int inIndex = 0;
-        for (int i = inStart; i <= inEnd; i++) {
-            if (inorder[i] == root.val) {
-                inIndex = i;
-            }
-        }
-        root.left = buildTreeHelper(preStart + 1, inStart, inIndex - 1, preorder, inorder);
-        root.right = buildTreeHelper(preStart + inIndex - inStart + 1, inIndex + 1, inEnd, preorder, inorder);
-        return root;
-    }
 
     // 19. Remove Nth Node From End of List
     public ListNode removeNthFromEnd(ListNode head, int n) {
