@@ -11,6 +11,9 @@ public class LRUCache {
         DLinkedNode post;
     }
 
+    /**
+     * Always add the new node right after head;
+     */
     private void addNode(DLinkedNode node) {
         node.pre = head;
         node.post = head.post;
@@ -18,6 +21,9 @@ public class LRUCache {
         head.post = node;
     }
 
+    /**
+     * Remove an existing node from the linked list.
+     */
     private void removeNode(DLinkedNode node) {
         DLinkedNode pre = node.pre;
         DLinkedNode post = node.post;
@@ -25,12 +31,16 @@ public class LRUCache {
         post.pre = pre;
     }
 
+    // pop the current tail.
     private DLinkedNode popTail() {
         DLinkedNode res = tail.pre;
         this.removeNode(res);
         return res;
     }
 
+    /**
+     * Move certain node in between to the head.
+     */
     private void moveToHead(DLinkedNode node) {
         this.removeNode(node);
         this.addNode(node);

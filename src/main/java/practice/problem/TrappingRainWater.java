@@ -20,4 +20,23 @@ public class TrappingRainWater {
         }
         return result;
     }
+
+    public int trapTwo(int[] height) {
+        if (height.length < 3)
+            return 0;
+        int a = 0, b = height.length - 1;
+        int max = 0, leftMax = 0, rightMax = 0;
+        while (a <= b) {
+            leftMax = Math.max(leftMax, height[a]);
+            rightMax = Math.max(rightMax, height[b]);
+            if (leftMax < rightMax) {
+                max += leftMax - height[a];
+                a++;
+            } else {
+                max += rightMax - height[b];
+                b--;
+            }
+        }
+        return max;
+    }
 }

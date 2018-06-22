@@ -83,26 +83,6 @@ public class AllPractices {
         return res;
     }
 
-    public int climbStairs(int n) {
-        if (n <= 0)
-            return 0;
-        if (n == 1)
-            return 1;
-        if (n == 2)
-            return 2;
-
-        int a = 1;
-        int b = 2;
-        int result = 0;
-        for (int i = 3; i <= n; i++) {
-            result = a + b;
-            a = b;
-            b = result;
-        }
-        return result;
-    }
-
-
 
     public ListNode deleteDuplicates(ListNode head) {
         ListNode current = head;
@@ -131,18 +111,6 @@ public class AllPractices {
         return low;
     }
 
-    public boolean isUgly(int num) {
-        if (num > 0) {
-            for (int i = 2; i < 6; i++) {
-                while (num % i == 0) {
-                    num /= i;
-                }
-            }
-            return num == 1;
-        } else {
-            return false;
-        }
-    }
 
     public double findMaxAverage(int[] nums, int k) {
         long sum = 0;
@@ -157,8 +125,6 @@ public class AllPractices {
         }
         return max / 1.0 / k;
     }
-
-
 
 
     public int removeElement(int[] nums, int val) {
@@ -244,9 +210,6 @@ public class AllPractices {
         return new String(chars);
     }
 
-    public boolean isPowerOfFour(int num) {
-        return num > 0 && (num & (num - 1)) == 0 && num % 3 == 1;
-    }
 
     int result = 0;
 
@@ -387,7 +350,6 @@ public class AllPractices {
     }
 
 
-
     // 728. Self Dividing Numbers
     public List<Integer> selfDividingNumbers(int left, int right) {
         List<Integer> list = new ArrayList<>();
@@ -448,18 +410,6 @@ public class AllPractices {
         return new int[]{res, cur};
     }
 
-    // 557. Reverse Words in a String III
-    public String reverseWordsIII(String s) {
-        String[] splitedString = s.split(" ");
-        for (int i = 0; i < splitedString.length; i++) {
-            splitedString[i] = new StringBuilder(splitedString[i]).reverse().toString();
-        }
-        StringBuilder result = new StringBuilder();
-        for (String str : splitedString) {
-            result.append(str + " ");
-        }
-        return result.toString().trim();
-    }
 
     // 669. Trim a Binary Search Tree
     public TreeNode trimBST(TreeNode root, int L, int R) {
@@ -540,10 +490,6 @@ public class AllPractices {
         return a.equals(b) ? -1 : Integer.max(a.length(), b.length());
     }
 
-    // 693. Binary Number with Alternating Bits
-    public boolean hasAlternatingBits(int n) {
-        return ((n ^= n / 2) & n + 1) == 0;
-    }
 
     // 292. Nim Game
     public boolean canWinNim(int n) {
@@ -560,17 +506,6 @@ public class AllPractices {
         return count;
     }
 
-    // 338. Counting Bits
-    public int[] countBits(int num) {
-        int[] f = new int[num + 1];
-        for (int i = 1; i <= num; i++) {
-            int x = i >> 1;
-            int a = f[x];
-            int b = i & 1;
-            f[i] = a + b;
-        }
-        return f;
-    }
 
     // 796. Rotate String
     public boolean rotateString(String A, String B) {
@@ -628,24 +563,6 @@ public class AllPractices {
         return result;
     }
 
-
-
-    // 784. Letter Case Permutation
-    public List<String> letterCasePermutation(String S) {
-        LinkedList<String> r = new LinkedList<>();
-        r.add(S);
-        for (int i = 0; i < S.length(); i++) {
-            char c = S.charAt(i);
-            if (Character.isLetter(c)) {
-                for (int size = r.size(); size > 0; size--) {
-                    String s = r.poll(), left = s.substring(0, i), right = s.substring(i + 1);
-                    r.add(left + Character.toLowerCase(c) + right);
-                    r.add(left + Character.toUpperCase(c) + right);
-                }
-            }
-        }
-        return r;
-    }
 
     // 832. Flipping an Image
     public int[][] flipAndInvertImage(int[][] A) {
@@ -1036,17 +953,6 @@ public class AllPractices {
         return i == n ? letters[0] : letters[i];
     }
 
-    // 746. Min Cost Climbing Stairs
-    public int minCostClimbingStairs(int[] cost) {
-        int length = cost.length;
-        int dp0 = 0, dp1 = 0, dp2 = 0;
-        for (int i = 2; i <= length; i++) {
-            dp2 = Math.min(dp0 + cost[i - 2], dp1 + cost[i - 1]);
-            dp0 = dp1;
-            dp1 = dp2;
-        }
-        return dp2;
-    }
 
     // 14. Longest Common Prefix
     public String longestCommonPrefix(String[] strs) {
@@ -1079,65 +985,6 @@ public class AllPractices {
         return pre;
     }
 
-    // 264. Ugly Number II
-    public int nthUglyNumber(int n) {
-//        int[] ugly = new int[n];
-//        ugly[0] = 1;
-//        int c2 = 0, c3 = 0, c5 = 0;
-//        for (int i = 1; i < n; i++) {
-//            while (ugly[c2] * 2 <= ugly[i - 1]) {
-//                c2++;
-//            }
-//            while (ugly[c3] * 3 <= ugly[i - 1]) {
-//                c3++;
-//            }
-//            while (ugly[c5] * 5 <= ugly[i - 1]) {
-//                c5++;
-//            }
-//            ugly[i] = Math.min(ugly[c2] * 2, Math.min(ugly[c3] * 3, ugly[c5] * 5));
-//        }
-//        return ugly[n - 1];
-
-//        if (n == 1) return 1;
-//        PriorityQueue<Long> q = new PriorityQueue<>();
-//        q.add(1l);
-//
-//        for (long i = 1; i < n; i++) {
-//            long tmp = q.poll();
-//            while (!q.isEmpty() && q.peek() == tmp) {
-//                tmp = q.poll();
-//            }
-//            q.add(tmp * 2);
-//            q.add(tmp * 3);
-//            q.add(tmp * 5);
-//        }
-//        return q.poll().intValue();
-
-        TreeSet<Long> res = new TreeSet<>();
-        res.add(1l);
-        for (int i = 0; i < n - 1; ++i) {
-            long first = res.pollFirst();
-            res.add(first * 2);
-            res.add(first * 3);
-            res.add(first * 5);
-        }
-        return res.first().intValue();
-    }
-
-    // 674. Longest Continuous Increasing Subsequence
-    public int findLengthOfLCIS(int[] nums) {
-        if (nums == null || nums.length == 0) return 0;
-        int curlength = 1, maxlength = 1;
-        for (int i = 0; i < nums.length - 1; i++) {
-            if (nums[i] < nums[i + 1]) {
-                curlength++;
-                maxlength = Math.max(maxlength, curlength);
-            } else {
-                curlength = 1;
-            }
-        }
-        return maxlength;
-    }
 
     // 671. Second Minimum Node In a Binary Tree
     public int findSecondMinimumValue(TreeNode root) {
@@ -1235,15 +1082,6 @@ public class AllPractices {
         return res[n][k];
     }
 
-    // get_max_profit
-    public int getMaxProfit(int[] nums) {
-        int min = nums[0], profit = 0;
-        for (int i = 1; i < nums.length; i++) {
-            min = Math.min(nums[i], min);
-            profit = Math.max(nums[i] - min, profit);
-        }
-        return profit;
-    }
 
     // getProductsOfAllIntsExceptAtIndex
     public int[] getProductsOfAllIntsExceptAtIndex(int[] input) {
@@ -1355,20 +1193,6 @@ public class AllPractices {
 
 
 
-    // 1. Two Sum
-    public int[] twoSum(int[] nums, int target) {
-        int[] result = new int[2];
-        Map<Integer, Integer> map = new HashMap<>();
-        for (int i = 0; i < nums.length; i++) {
-            if (map.containsKey(target - nums[i])) {
-                result[1] = i;
-                result[0] = map.get(target - nums[i]);
-                return result;
-            }
-            map.put(nums[i], i);
-        }
-        return result;
-    }
 
     // 459. Repeated Substring Pattern
     public boolean repeatedSubstringPattern(String s) {
@@ -1525,20 +1349,6 @@ public class AllPractices {
     }
 
 
-
-    // 141. Linked List Cycle
-    public boolean hasCycle(ListNode head) {
-        if (head == null) return false;
-        ListNode walker = head;
-        ListNode runner = head;
-        while (runner.next != null && runner.next.next != null) {
-            walker = walker.next;
-            runner = runner.next.next;
-            if (walker == runner) return true;
-        }
-        return false;
-    }
-
     // 205. Isomorphic Strings
     public boolean isIsomorphic(String s, String t) {
 //        if (s == null || s.length() <= 1) return true;
@@ -1694,78 +1504,8 @@ public class AllPractices {
         return list;
     }
 
-    // 76. Minimum Window Substring
-    public String minWindow(String s, String t) {
-        if (t.length() > s.length()) return "";
-        Map<Character, Integer> map = new HashMap<>();
-        for (char c : t.toCharArray()) {
-            map.put(c, map.getOrDefault(c, 0) + 1);
-        }
-        int counter = map.size();
-        int begin = 0, end = 0, head = 0;
-        int len = Integer.MAX_VALUE;
 
-        while (end < s.length()) {
-            char c = s.charAt(end);
-            if (map.containsKey(c)) {
-                map.put(c, map.get(c) - 1);
-                if (map.get(c) == 0)
-                    counter--;
-            }
-            end++;
 
-            while (counter == 0) {
-                char cBegin = s.charAt(begin);
-                if (map.containsKey(cBegin)) {
-                    map.put(cBegin, map.get(cBegin) + 1);
-                    if (map.get(cBegin) > 0)
-                        counter++;
-                }
-                if (end - begin < len) {
-                    len = end - begin;
-                    head = begin;
-                }
-                begin++;
-            }
-
-        }
-        if (len == Integer.MAX_VALUE) return "";
-        return s.substring(head, head + len);
-    }
-
-    // 3. Longest Substring Without Repeating Characters
-    public int lengthOfLongestSubstring(String s) {
-        if (s.length() == 0) return 0;
-        Map<Character, Integer> map = new HashMap<>();
-        int begin = 0, end = 0, counter = 0, d = 0;
-        while (end < s.length()) {
-            char cEnd = s.charAt(end);
-            map.put(cEnd, map.getOrDefault(cEnd, 0) + 1);
-            if (map.get(cEnd) > 1)
-                counter++;
-            end++;
-
-            while (counter > 0) {
-                char cBegin = s.charAt(begin);
-                if (map.get(cBegin) > 1)
-                    counter--;
-                map.put(cBegin, map.get(cBegin) - 1);
-                begin++;
-            }
-            d = Math.max(d, end - begin);
-        }
-        return d;
-
-//        int max = 0;
-//        for (int i = 0, j = 0; i < s.length(); i++) {
-//            if (map.containsKey(s.charAt(i))) {
-//                j = Math.max(j, map.get(s.charAt(i)) + 1);
-//            }
-//            map.put(s.charAt(i), i);
-//            max = Math.max(max, i - j + 1);
-//        }
-//        return max;
-    }
 
     // 30. Substring with Concatenation of All Words
     public List<Integer> findSubstring(String s, String[] words) {
@@ -2166,18 +1906,6 @@ public class AllPractices {
         return res;
     }
 
-    // 190. Reverse Bits
-    public int reverseBits(int n) {
-        int result = 0;
-        for (int i = 0; i < 32; i++) {
-            result += n & 1;
-            n >>>= 1;
-            if (i < 31) {
-                result <<= 1;
-            }
-        }
-        return result;
-    }
 
     // 581. Shortest Unsorted Continuous Subarray
     public int findUnsortedSubarray(int[] nums) {
@@ -2358,34 +2086,6 @@ public class AllPractices {
         return res;
     }
 
-    // 461. Hamming Distance
-    public int hammingDistance(int x, int y) {
-        return Integer.bitCount(x ^ y);
-    }
-
-    // 389. Find the Difference
-    public char findTheDifference(String s, String t) {
-        int charCode = t.charAt(s.length());
-        for (int i = 0; i < s.length(); i++) {
-            charCode -= (int) s.charAt(i);
-            charCode += (int) t.charAt(i);
-        }
-        return (char) charCode;
-    }
-
-    // 53. Maximum Subarray
-    public int maxSubArray(int[] nums) {
-        int n = nums.length;
-        int[] dp = new int[n];
-        dp[0] = nums[0];
-        int max = dp[0];
-        for (int i = 1; i < n; i++) {
-//            dp[i] = nums[i] + (dp[i - 1] > 0 ? dp[i - 1] : 0);
-            dp[i] = nums[i] > dp[i - 1] + nums[i] ? nums[i] : nums[i] + dp[i - 1];
-            max = Math.max(max, dp[i]);
-        }
-        return max;
-    }
 
     // Remove Alternate Duplicate characters from a char array you have to do it in Place.Like keeping only the odd occurences of each character.
     public String removeAlternateDuplicate(String input) {
@@ -2600,26 +2300,6 @@ public class AllPractices {
         return res;
     }
 
-    // 136. Single Number
-    public int singleNumber(int[] nums) {
-        int res = 0;
-        Arrays.sort(nums);
-        for (int i = 0; i < nums.length; i++) {
-            if (i % 2 == 0) {
-                res += nums[i];
-            } else {
-                res -= nums[i];
-            }
-        }
-        return res;
-    }
-
-    // 371. Sum of Two Integers
-    public int getSum(int a, int b) {
-        return b == 0 ? a : getSum(a ^ b, (a & b) << 1);
-    }
-
-
 
     // 283. Move Zeroes
     public void moveZeroes(int[] nums) {
@@ -2634,36 +2314,6 @@ public class AllPractices {
         }
     }
 
-    // 169. Majority Element
-    public int majorityElement(int[] nums) {
-        Map<Integer, Integer> map = new HashMap<>();
-        Map.Entry<Integer, Integer> res = null;
-        for (int n : nums) {
-            map.put(n, map.getOrDefault(n, 0) + 1);
-        }
-        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-            if (entry.getValue() > nums.length / 2) {
-                res = entry;
-            }
-        }
-        return res.getKey();
-    }
-
-    public int majorityElementMoore(int[] nums) {
-        int len = nums.length, candidate = nums[0], count = 1;
-        for (int i = 1; i < len; i++) {
-            if (nums[i] == candidate) {
-                count++;
-            } else {
-                count--;
-                if (count == 0) {
-                    candidate = nums[i];
-                    count = 1;
-                }
-            }
-        }
-        return candidate;
-    }
 
     // 122. Best Time to Buy and Sell Stock II
     public int maxProfitTwo(int[] prices) {
@@ -2720,42 +2370,6 @@ public class AllPractices {
         return -1;
     }
 
-    // 206. Reverse Linked List
-    public ListNode reverseList(ListNode head) {
-        ListNode newHead = null;
-        while (head != null) {
-            ListNode next = head.next;
-            head.next = newHead;
-            newHead = head;
-            head = next;
-        }
-        return newHead;
-    }
-
-    public ListNode reverseListRecursive(ListNode head) {
-        /* recursive solution */
-        return reverseListInt(head, null);
-    }
-
-    private ListNode reverseListInt(ListNode head, ListNode newHead) {
-        if (head == null)
-            return newHead;
-        ListNode next = head.next;
-        head.next = newHead;
-        return reverseListInt(next, head);
-    }
-
-    // 268. Missing Number
-    public int missingNumber(int[] nums) {
-        Arrays.sort(nums);
-        int sum = nums.length;
-        int missing = 0;
-        for (int i = 0; i < nums.length; i++) {
-            sum += i;
-            missing += nums[i];
-        }
-        return sum - missing;
-    }
 
     // 108. Convert Sorted Array to Binary Search Tree
     public TreeNode sortedArrayToBST(int[] nums) {
@@ -2792,43 +2406,6 @@ public class AllPractices {
         return treeNode;
     }
 
-    // 350. Intersection of Two Arrays II
-    public int[] intersect(int[] nums1, int[] nums2) {
-//        Map<Integer, Integer> map = new HashMap<>();
-//        List<Integer> res = new ArrayList<>();
-//        for (int i = 0; i < nums1.length; i++) {
-//            map.put(nums1[i], map.getOrDefault(nums1[i], 0) + 1);
-//        }
-//        for (int i = 0; i < nums2.length; i++) {
-//            if (map.containsKey(nums2[i]) && map.get(nums2[i]) > 0) {
-//                res.add(nums2[i]);
-//                map.put(nums2[i], map.get(nums2[i]) - 1);
-//            }
-//        }
-//
-//        int[] result = res.stream().mapToInt(i -> i).toArray();
-//        return result;
-
-        Arrays.sort(nums1);
-        Arrays.sort(nums2);
-        int n1 = 0, n2 = 0;
-        List<Integer> list = new ArrayList<>();
-        while (n1 < nums1.length && n2 < nums2.length) {
-            if (nums1[n1] < nums2[n2]) {
-                n1++;
-            } else {
-                if (nums1[n1] > nums2[n2]) {
-                    n2++;
-                } else {
-                    list.add(nums1[n1]);
-                    n1++;
-                    n2++;
-                }
-            }
-        }
-        int[] result = list.stream().mapToInt(i -> i).toArray();
-        return result;
-    }
 
     // 202. Happy Number
     public boolean isHappy(int n) {
@@ -2849,27 +2426,6 @@ public class AllPractices {
         return false;
     }
 
-    // 326. Power of Three
-    public boolean isPowerOfThree(int n) {
-        if (n <= 0) return false;
-        double r = Math.log10(n) / Math.log10(3);
-        if (r % 1 == 0)
-            return true;
-        else
-            return false;
-    }
-
-
-
-    // 191. Number of 1 Bits
-    public int hammingWeight(int n) {
-        int ones = 0;
-        while (n != 0) {
-            ones = ones + (n & 1);
-            n >>>= 1;
-        }
-        return ones;
-    }
 
     public List<Integer> cellCompete(int[] states, int days) {
         // WRITE YOUR CODE HERE
@@ -3281,22 +2837,6 @@ public class AllPractices {
         }
     }
 
-    // 78. Subsets
-    public List<List<Integer>> subsets(int[] nums) {
-        List<List<Integer>> result = new ArrayList<>();
-        Arrays.sort(nums);
-        subsetsHelper(result, new ArrayList<>(), nums, 0);
-        return result;
-    }
-
-    private void subsetsHelper(List<List<Integer>> list, List<Integer> tempList, int[] nums, int start) {
-        list.add(new ArrayList<>(tempList));
-        for (int i = start; i < nums.length; i++) {
-            tempList.add(nums[i]);
-            subsetsHelper(list, tempList, nums, i + 1);
-            tempList.remove(tempList.size() - 1);
-        }
-    }
 
     // 90. Subsets II
     public List<List<Integer>> subsetsWithDup(int[] nums) {
@@ -3446,43 +2986,6 @@ public class AllPractices {
         return res;
     }
 
-    // 230. Kth Smallest Element in a BST
-    int kthSmallestCount = 0, kthSmallestVal = 0;
-    List<Integer> kthSmallestRes = new ArrayList<>();
-
-    public int kthSmallest(TreeNode root, int k) {
-        kthSmallestInorder(root, k);
-        return kthSmallestVal;
-    }
-
-    private void kthSmallestInorder(TreeNode node, int k) {
-        if (node != null) {
-            kthSmallestInorder(node.left, k);
-            kthSmallestCount++;
-            if (kthSmallestCount == k) {
-                kthSmallestVal = node.val;
-            }
-            if (kthSmallestCount > k) {
-                return;
-            }
-            kthSmallestInorder(node.right, k);
-        }
-    }
-
-    public int kthSmallestIter(TreeNode root, int k) {
-        Stack<TreeNode> stack = new Stack<>();
-        while (root != null || !stack.isEmpty()) {
-            while (root != null) {
-                stack.push(root);
-                root = root.left;
-            }
-            root = stack.pop();
-            if (--k == 0)
-                break;
-            root = root.right;
-        }
-        return root.val;
-    }
 
     // 328. Odd Even Linked List
     public ListNode oddEvenList(ListNode head) {
@@ -3586,60 +3089,6 @@ public class AllPractices {
         return low;
     }
 
-    // 142. Linked List Cycle II
-    public ListNode detectCycle(ListNode head) {
-        if (head == null)
-            return null;
-        ListNode slow = head, fast = head;
-        do {
-            if (slow == null || fast == null || fast.next == null)
-                return null;
-            slow = slow.next;
-            fast = fast.next.next;
-        } while (slow != fast);
-
-        fast = head;
-        while (fast != slow) {
-            fast = fast.next;
-            slow = slow.next;
-        }
-        return fast;
-    }
-
-    public ListNode detectCycleTwo(ListNode head) {
-        if (head == null)
-            return null;
-        ListNode slow = head, fast = head;
-        while (fast.next != null && fast.next.next != null) {
-            slow = slow.next;
-            fast = fast.next.next;
-            if (slow == fast) {
-                fast = head;
-                while (slow != fast) {
-                    slow = slow.next;
-                    fast = fast.next;
-                }
-                return fast;
-            }
-        }
-        return null;
-    }
-
-    // 62. Unique Paths
-    public int uniquePaths(int m, int n) {
-        int[][] dp = new int[n][m];
-        Arrays.fill(dp[0], 1);
-        for (int i = 0; i < n; i++) {
-            dp[i][0] = 1;
-        }
-        for (int i = 1; i < n; i++) {
-            for (int j = 1; j < m; j++) {
-                dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
-            }
-        }
-        return dp[n - 1][m - 1];
-    }
-
     // 48. Rotate Image
     public void rotate(int[][] matrix) {
         int l = matrix[0].length, tmp;
@@ -3654,52 +3103,6 @@ public class AllPractices {
         }
     }
 
-    // 215. Kth Largest Element in an Array
-    public int findKthLargest(int[] nums, int k) {
-        int start = 0, end = nums.length - 1, index = nums.length - k;
-        while (start < end) {
-            int pivot = findKthLargestHelper(nums, start, end);
-            if (pivot < index)
-                start = pivot + 1;
-            else if (pivot > index)
-                end = pivot - 1;
-            else
-                return nums[pivot];
-        }
-        return nums[start];
-    }
-
-    private int findKthLargestHelper(int[] nums, int start, int end) {
-        int pivot = start, temp;
-        while (start <= end) {
-            while (start <= end && nums[start] <= nums[pivot])
-                start++;
-            while (start <= end && nums[end] > nums[pivot])
-                end--;
-            if (start > end)
-                break;
-            temp = nums[start];
-            nums[start] = nums[end];
-            nums[end] = temp;
-        }
-        temp = nums[end];
-        nums[end] = nums[pivot];
-        nums[pivot] = temp;
-        return end;
-    }
-
-    public int findKthLargestPq(int[] nums, int k) {
-        PriorityQueue<Integer> pq = new PriorityQueue<>((a, b) -> a - b);
-        for (int n : nums) {
-            if (pq.size() < k || n > pq.peek()) {
-                pq.offer(n);
-            }
-            if (pq.size() > k) {
-                pq.poll();
-            }
-        }
-        return pq.peek();
-    }
 
     // 334. Increasing Triplet Subsequence
     public boolean increasingTriplet(int[] nums) {
@@ -3790,50 +3193,6 @@ public class AllPractices {
         return false;
     }
 
-    // 300. Longest Increasing Subsequence
-    public int lengthOfLIS(int[] nums) {
-        int[] tails = new int[nums.length];
-        int size = 0;
-        for (int n : nums) {
-            int i = 0, j = size;
-            while (i != j) {
-                int m = (i + j) / 2;
-                if (tails[m] < n) {
-                    i = m + 1;
-                } else {
-                    j = m;
-                }
-            }
-            tails[i] = n;
-            if (i == size)
-                ++size;
-        }
-        return size;
-    }
-
-    public int lengthOfLISdp(int[] nums) {
-        if (nums.length <= 1)
-            return nums.length;
-
-        int T[] = new int[nums.length];
-        for (int i = 0; i < nums.length; i++) {
-            T[i] = 1;
-        }
-        for (int i = 1; i < nums.length; i++) {
-            for (int j = 0; j < i; j++) {
-                if (nums[j] < nums[i]) {
-                    if (T[j] + 1 > T[i]) {
-                        T[i] = T[j] + 1;
-                    }
-                }
-            }
-        }
-        int result = 0;
-        for (int i = 0; i < T.length; i++) {
-            result = Math.max(result, T[i]);
-        }
-        return result;
-    }
 
     // 36. Valid Sudoku
     public boolean isValidSudoku(char[][] board) {
@@ -3852,22 +3211,6 @@ public class AllPractices {
         return true;
     }
 
-    // 279. Perfect Squares
-    public int numSquares(int n) {
-        int[] dp = new int[n + 1];
-        Arrays.fill(dp, Integer.MAX_VALUE);
-        dp[0] = 0;
-        for (int i = 1; i <= n; i++) {
-            int min = Integer.MAX_VALUE;
-            int j = 1;
-            while (i - j * j >= 0) {
-                min = Math.min(min, dp[i - j * j] + 1);
-                j++;
-            }
-            dp[i] = min;
-        }
-        return dp[n];
-    }
 
     // 289. Game of Life
     public void gameOfLife(int[][] board) {
@@ -3978,30 +3321,6 @@ public class AllPractices {
         return result;
     }
 
-    // 200. Number of Islands
-
-    public int numIslands(char[][] grid) {
-        int count = 0;
-        for (int i = 0; i < grid.length; i++) {
-            for (int j = 0; j < grid[0].length; j++) {
-                if (grid[i][j] == '1') {
-                    numIslandsHelper(grid, i, j);
-                    count++;
-                }
-            }
-        }
-        return count;
-    }
-
-    private void numIslandsHelper(char[][] grid, int i, int j) {
-        if (i < 0 || j < 0 || i >= grid.length || j >= grid[0].length || grid[i][j] != '1')
-            return;
-        grid[i][j] = '0';
-        numIslandsHelper(grid, i + 1, j);
-        numIslandsHelper(grid, i - 1, j);
-        numIslandsHelper(grid, i, j + 1);
-        numIslandsHelper(grid, i, j - 1);
-    }
 
     // 17. Letter Combinations of a Phone Number (backtrack)
     public List<String> letterCombinations(String digits) {
@@ -4063,52 +3382,7 @@ public class AllPractices {
 
 
 
-    // 395. Longest Substring with At Least K Repeating Characters
-    public int longestSubstring(String s, int k) {
-        char[] chars = s.toCharArray();
-        return longestSubstringHelper(chars, 0, s.length(), k);
-    }
 
-    private int longestSubstringHelper(char[] chars, int start, int end, int k) {
-        if (end - start < k)
-            return 0;
-        int[] count = new int[26];
-        for (int i = start; i < end; i++) {
-            int idx = chars[i] - 'a';
-            count[idx]++;
-        }
-        for (int i = 0; i < 26; i++) {
-            if (count[i] < k && count[i] > 0) {
-                for (int j = start; j < end; j++) {
-                    if (chars[j] == i + 'a') {
-                        int left = longestSubstringHelper(chars, start, j, k);
-                        int right = longestSubstringHelper(chars, j + 1, end, k);
-                        return Math.max(left, right);
-                    }
-                }
-            }
-        }
-        return end - start;
-    }
-
-
-
-    // 19. Remove Nth Node From End of List
-    public ListNode removeNthFromEnd(ListNode head, int n) {
-        ListNode start = new ListNode(0);
-        ListNode slow = start, fast = start;
-        slow.next = head;
-
-        for (int i = 1; i <= n + 1; i++) {
-            fast = fast.next;
-        }
-        while (fast != null) {
-            slow = slow.next;
-            fast = fast.next;
-        }
-        slow.next = slow.next.next;
-        return start.next;
-    }
 
     // 56. Merge Intervals
     public List<Interval> merge(List<Interval> intervals) {
@@ -4133,72 +3407,6 @@ public class AllPractices {
         return result;
     }
 
-    // 33. Search in Rotated Sorted Array
-    public int search(int[] nums, int target) {
-        int start = 0;
-        int end = nums.length - 1;
-        while (start <= end) {
-            int mid = (start + end) / 2;
-            if (nums[mid] == target)
-                return mid;
-            if (nums[mid] > target) {
-                if (nums[start] <= nums[mid] && nums[end] <= nums[start] && nums[start] > target) {
-                    start = mid + 1;
-                } else {
-                    end = mid - 1;
-                }
-            } else {
-                if (nums[mid] <= nums[end] && nums[end] <= nums[start] && nums[end] < target) {
-                    end = mid - 1;
-                } else {
-                    start = mid + 1;
-                }
-            }
-        }
-        return -1;
-    }
-
-    // 81. Search in Rotated Sorted Array II
-    public boolean searchRotatedTwo(int[] nums, int target) {
-        int start = 0, end = nums.length - 1;
-        while (start <= end) {
-            int mid = start + (end - start) / 2;
-            if (nums[mid] == target)
-                return true;
-            if (nums[mid] < nums[end]) {
-                if (target > nums[mid] && target <= nums[end]) {
-                    start = mid + 1;
-                } else {
-                    end = mid - 1;
-                }
-            } else if (nums[mid] > nums[end]) {
-                if (target >= nums[start] && target < nums[mid]) {
-                    end = mid - 1;
-                } else {
-                    start = mid + 1;
-                }
-            } else {
-                end--;
-            }
-        }
-        return false;
-    }
-
-    // 139. Word Break
-    public boolean wordBreak(String s, List<String> wordDict) {
-        if (s == null || s.length() == 0) {
-            return false;
-        }
-        boolean[] dp = new boolean[s.length() + 1];
-        dp[0] = true;
-        for (int i = 1; i <= s.length(); i++) {
-            dp[i] = false;
-            for (int j = 0; j < i; j++) {
-                dp[i] = dp[i] || (dp[j] && wordDict.contains(s.substring(j, i)));
-            }
-        }
-        return dp[s.length()];
-    }
 
     // 34. Search for a Range
     public int[] searchRange(int[] nums, int target) {
@@ -4258,43 +3466,6 @@ public class AllPractices {
         return re;
     }
 
-    // 148. Sort List
-    public ListNode sortList(ListNode head) {
-        if (head == null || head.next == null)
-            return head;
-        ListNode prev = null, slow = head, fast = head;
-        while (fast != null && fast.next != null) {
-            prev = slow;
-            slow = slow.next;
-            fast = fast.next.next;
-        }
-
-        prev.next = null;
-        ListNode l1 = sortList(head);
-        ListNode l2 = sortList(slow);
-
-        return merge(l1, l2);
-    }
-
-    private ListNode merge(ListNode l1, ListNode l2) {
-        ListNode l = new ListNode(0), p = l;
-        while (l1 != null && l2 != null) {
-            if (l1.val < l2.val) {
-                p.next = l1;
-                l1 = l1.next;
-            } else {
-                p.next = l2;
-                l2 = l2.next;
-            }
-            p = p.next;
-        }
-        if (l1 != null)
-            p.next = l1;
-        if (l2 != null)
-            p.next = l2;
-
-        return l.next;
-    }
 
     // 134. Gas Station
     public int canCompleteCircuit(int[] gas, int[] cost) {
@@ -4316,7 +3487,6 @@ public class AllPractices {
     }
 
 
-
     // 55. Jump Game
     public boolean canJump(int[] nums) {
         int max = 0;
@@ -4326,45 +3496,6 @@ public class AllPractices {
             max = Math.max(nums[i] + i, max);
         }
         return true;
-    }
-
-    // 2. Add Two Numbers
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode c1 = l1, c2 = l2;
-        ListNode sentinel = new ListNode(0);
-        ListNode d = sentinel;
-        int sum = 0;
-        while (c1 != null || c2 != null) {
-            sum /= 10;
-            if (c1 != null) {
-                sum += c1.val;
-                c1 = c1.next;
-            }
-            if (c2 != null) {
-                sum += c2.val;
-                c2 = c2.next;
-            }
-            d.next = new ListNode(sum % 10);
-            d = d.next;
-        }
-        if (sum / 10 == 1) {
-            d.next = new ListNode(1);
-        }
-        return sentinel.next;
-    }
-
-    public ListNode addTwoNumbersTwo(ListNode l1, ListNode l2) {
-        ListNode dummy = new ListNode(0), curr = dummy;
-        int carry = 0;
-        while (l1 != null || l2 != null || carry != 0) {
-            int sum = ((l1 == null ? 0 : l1.val) + (l2 == null ? 0 : l2.val)) + carry;
-            carry = sum / 10;
-            curr.next = new ListNode(sum % 10);
-            curr = curr.next;
-            l1 = l1 == null ? l1 : l1.next;
-            l2 = l2 == null ? l2 : l2.next;
-        }
-        return dummy.next;
     }
 
     // 150. Evaluate Reverse Polish Notation
@@ -4482,39 +3613,6 @@ public class AllPractices {
         return result;
     }
 
-    // 152. Maximum Product Subarray
-    public int maxProduct(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return 0;
-        }
-        int n = nums.length;
-        int[] maxdp = new int[n + 1];
-        int[] mindp = new int[n + 1];
-        int max = Integer.MIN_VALUE;
-        maxdp[0] = 1;
-        mindp[0] = 1;
-        for (int i = 1; i < n + 1; i++) {
-            maxdp[i] = Math.max(maxdp[i - 1] * nums[i - 1], Math.max(mindp[i - 1] * nums[i - 1], nums[i - 1]));
-            mindp[i] = Math.min(maxdp[i - 1] * nums[i - 1], Math.min(mindp[i - 1] * nums[i - 1], nums[i - 1]));
-            max = Math.max(max, maxdp[i]);
-        }
-        return max;
-    }
-
-    // 322. Coin Change
-    public int coinChange(int[] coins, int amount) {
-        int[] dp = new int[amount + 1];
-        Arrays.fill(dp, Integer.MAX_VALUE);
-        dp[0] = 0;
-        for (int coin : coins) {
-            for (int i = coin; i <= amount; i++) {
-                if (dp[i - coin] != Integer.MAX_VALUE) {
-                    dp[i] = Math.min(dp[i], dp[i - coin] + 1);
-                }
-            }
-        }
-        return dp[amount] == Integer.MAX_VALUE ? -1 : dp[amount];
-    }
 
     // 199. Binary Tree Right Side View
     List<Integer> rightSideViewResult = new ArrayList<>();
@@ -4635,53 +3733,6 @@ public class AllPractices {
         return res;
     }
 
-    // 5. Longest Palindromic Substring
-    public String longestPalindromeDp(String s) {
-        int n = s.length();
-        String res = null;
-        boolean[][] dp = new boolean[n][n];
-        for (int i = n - 1; i >= 0; i--) {
-            for (int j = i; j < n; j++) {
-                dp[i][j] = s.charAt(i) == s.charAt(j) && (j - i < 3 || dp[i + 1][j - 1]);
-                if (dp[i][j] && (res == null || j - i + 1 > res.length())) {
-                    res = s.substring(i, j + 1);
-                }
-            }
-        }
-        return res;
-    }
-
-    public String longestPalindromeExpand(String s) {
-        int len = s.length();
-        String result = null;
-        int max = 0;
-        if (len < 2)
-            return s;
-        for (int i = 0; i < len - 1; i++) {
-            String s1 = longestPalindromeExpandHelper(s, i, i);
-            String s2 = longestPalindromeExpandHelper(s, i, i + 1);
-
-            if (s1.length() > max) {
-                max = Math.max(s1.length(), max);
-                result = s1;
-            }
-            if (s2.length() > max) {
-                max = Math.max(s2.length(), max);
-                result = s2;
-            }
-        }
-        return result;
-    }
-
-    private String longestPalindromeExpandHelper(String s, int left, int right) {
-        while (left >= 0 && right < s.length()) {
-            if (s.charAt(left) != s.charAt(right))
-                break;
-            left--;
-            right++;
-        }
-        return s.substring(left + 1, right);
-    }
 
     // 15. 3Sum
     public List<List<Integer>> threeSum(int[] nums) {
@@ -4709,74 +3760,6 @@ public class AllPractices {
         return res;
     }
 
-    // 127. Word Ladder
-    public int ladderLength(String beginWord, String endWord, List<String> wordList) {
-        if (!wordList.contains(endWord))
-            return 0;
-        Set<String> reached = new HashSet<>(), wordDict = new HashSet<>(wordList);
-        reached.add(beginWord);
-        int distance = 1;
-        while (!reached.contains(endWord)) {
-            Set<String> toAdd = new HashSet<>();
-            for (String each : reached) {
-                for (int i = 0; i < each.length(); i++) {
-                    char[] chars = each.toCharArray();
-                    for (char ch = 'a'; ch <= 'z'; ch++) {
-                        chars[i] = ch;
-                        String word = new String(chars);
-                        if (wordDict.contains(word)) {
-                            toAdd.add(word);
-                            wordDict.remove(word);
-                        }
-                    }
-                }
-            }
-            distance++;
-            if (toAdd.size() == 0)
-                return 0;
-            reached = toAdd;
-        }
-        return distance;
-    }
-
-    public int ladderLengthTwoPointer(String beginWord, String endWord, List<String> wordList) {
-        if (!wordList.contains(endWord))
-            return 0;
-        Set<String> dict = new HashSet<>(wordList), visited = new HashSet<>(),
-                beginSet = new HashSet<>(), endSet = new HashSet<>();
-        beginSet.add(beginWord);
-        endSet.add(endWord);
-        int step = 1;
-        while (!beginSet.isEmpty() && !endSet.isEmpty()) {
-            if (beginSet.size() > endSet.size()) {
-                Set<String> set = beginSet;
-                beginSet = endSet;
-                endSet = set;
-            }
-            Set<String> temp = new HashSet<>();
-            for (String word : beginSet) {
-                char[] chars = word.toCharArray();
-                for (int i = 0; i < chars.length; i++) {
-                    for (char c = 'a'; c <= 'z'; c++) {
-                        char old = chars[i];
-                        chars[i] = c;
-                        String target = String.valueOf(chars);
-                        if (endSet.contains(target)) {
-                            return step + 1;
-                        }
-                        if (!visited.contains(target) && dict.contains(target)) {
-                            temp.add(target);
-                            visited.add(target);
-                        }
-                        chars[i] = old;
-                    }
-                }
-            }
-            beginSet = temp;
-            step++;
-        }
-        return step;
-    }
 
     // 8. String to Integer (atoi)
     public int myAtoi(String str) {
@@ -4887,143 +3870,6 @@ public class AllPractices {
         return head.next;
     }
 
-    // 126. Word Ladder II
-    public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
-        List<List<String>> res = new ArrayList<>();
-        Set<String> set = new HashSet<>(wordList);
-        Map<String, Integer> ladder = new HashMap<>();
-        Map<String, Set<String>> map = new HashMap<>();
-        ladder.put(beginWord, 0);
-        Queue<String> queue = new LinkedList<>();
-        queue.add(beginWord);
-
-        while (!queue.isEmpty()) {
-            String word = queue.poll();
-            if (word.equals(endWord))
-                break;
-
-            int step = ladder.get(word) + 1;
-            for (int i = 0; i < word.length(); i++) {
-                StringBuilder sb = new StringBuilder(word);
-                for (char c = 'a'; c <= 'z'; c++) {
-                    if (c == word.charAt(i)) {
-                        continue;
-                    }
-                    sb.setCharAt(i, c);
-                    String newWord = sb.toString();
-                    if (!set.contains(newWord)) {
-                        continue;
-                    }
-                    if (step <= ladder.getOrDefault(newWord, Integer.MAX_VALUE)) {
-                        queue.add(newWord);
-                        ladder.put(newWord, step);
-                        if (!map.containsKey(word)) {
-                            map.put(word, new HashSet<>());
-                        }
-                        map.get(word).add(newWord);
-                    }
-                }
-            }
-        }
-        List<String> list = new ArrayList<>();
-        findLaddersHelper(res, list, map, beginWord, endWord);
-        return res;
-    }
-
-    private void findLaddersHelper(List<List<String>> result, List<String> list, Map<String, Set<String>> map,
-                                   String word, String endWord) {
-        if (word.equals(endWord)) {
-            list.add(word);
-            result.add(new ArrayList<>(list));
-            list.remove(list.size() - 1);
-            return;
-        }
-        list.add(word);
-        if (map.containsKey(word)) {
-            for (String s : map.get(word)) {
-                findLaddersHelper(result, list, map, s, endWord);
-            }
-        }
-        list.remove(list.size() - 1);
-    }
-
-    boolean isConnected = false;
-
-    public List<List<String>> findLaddersBiDirection(String beginWord, String endWord, List<String> wordList) {
-        Set<String> fwd = new HashSet<>(), bwd = new HashSet<>(), dict = new HashSet<>(wordList);
-        fwd.add(beginWord);
-        bwd.add(endWord);
-
-        Map<String, List<String>> hs = new HashMap<>();
-        findLaddersBiDirectionBfs(fwd, bwd, dict, false, hs);
-
-        List<List<String>> result = new ArrayList<>();
-        if (!isConnected)
-            return result;
-
-        List<String> temp = new ArrayList<>();
-        temp.add(beginWord);
-
-        findLaddersBiDirectionDfs(result, temp, beginWord, endWord, hs);
-        return result;
-    }
-
-    private void findLaddersBiDirectionBfs(Set<String> forward, Set<String> backward, Set<String> dict, boolean swap,
-                                           Map<String, List<String>> hs) {
-        if (forward.isEmpty() || backward.isEmpty())
-            return;
-        if (forward.size() > backward.size()) {
-            findLaddersBiDirectionBfs(backward, forward, dict, !swap, hs);
-        }
-        dict.removeAll(forward);
-        dict.removeAll(backward);
-        Set<String> set3 = new HashSet<>();
-
-        for (String str : forward) {
-            for (int i = 0; i < str.length(); i++) {
-                char[] ary = str.toCharArray();
-                for (char j = 'a'; j <= 'z'; j++) {
-                    ary[i] = j;
-                    String temp = new String(ary);
-                    if (!backward.contains(temp) && !dict.contains(temp)) {
-                        continue;
-                    }
-                    String key = !swap ? str : temp;
-                    String val = !swap ? temp : str;
-                    if (!hs.containsKey(key)) {
-                        hs.put(key, new ArrayList<>());
-                    }
-                    if (backward.contains(temp)) {
-                        hs.get(key).add(val);
-                        isConnected = true;
-                    }
-                    if (!isConnected && dict.contains(temp)) {
-                        hs.get(key).add(val);
-                        set3.add(temp);
-                    }
-                }
-            }
-        }
-        if (!isConnected) {
-            findLaddersBiDirectionBfs(set3, backward, dict, swap, hs);
-        }
-    }
-
-    private void findLaddersBiDirectionDfs(List<List<String>> result, List<String> temp, String start, String end,
-                                           Map<String, List<String>> hs) {
-        if (start.equals(end)) {
-            result.add(new ArrayList<>(temp));
-            return;
-        }
-        if (!hs.containsKey(start))
-            return;
-        for (String s : hs.get(start)) {
-            temp.add(s);
-            findLaddersBiDirectionDfs(result, temp, s, end, hs);
-            temp.remove(temp.size() - 1);
-        }
-    }
-
     // 433. Minimum Genetic Mutation
     public int minMutation(String start, String end, String[] bank) {
         if (start.equals(end))
@@ -5112,92 +3958,4 @@ public class AllPractices {
         }
         return -1;
     }
-
-    // 107. Binary Tree Level Order Traversal II
-    public List<List<Integer>> levelOrderBottomDfs(TreeNode root) {
-        List<List<Integer>> result = new LinkedList<>();
-        levelOrderBottomDfsHelper(result, root, 0);
-        return result;
-    }
-
-    private void levelOrderBottomDfsHelper(List<List<Integer>> result, TreeNode root, int level) {
-        if (root == null)
-            return;
-        if (level >= result.size()) {
-            result.add(0, new LinkedList<>());
-        }
-        levelOrderBottomDfsHelper(result, root.left, level + 1);
-        levelOrderBottomDfsHelper(result, root.right, level + 1);
-        result.get(result.size() - level - 1).add(root.val);
-    }
-
-    public List<List<Integer>> levelOrderBottomBfs(TreeNode root) {
-        Queue<TreeNode> queue = new LinkedList<>();
-        List<List<Integer>> result = new LinkedList<>();
-        if (root == null)
-            return result;
-        queue.offer(root);
-        while (!queue.isEmpty()) {
-            int levelNum = queue.size();
-            List<Integer> sub = new LinkedList<>();
-            for (int i = 0; i < levelNum; i++) {
-                if (queue.peek().left != null)
-                    queue.offer(queue.peek().left);
-                if (queue.peek().right != null)
-                    queue.offer(queue.peek().right);
-                sub.add(queue.poll().val);
-            }
-            result.add(0, sub);
-        }
-        return result;
-    }
-
-    // 102. Binary Tree Level Order Traversal
-    public List<List<Integer>> levelOrderBfs(TreeNode root) {
-        List<List<Integer>> result = new LinkedList<>();
-        if (root == null)
-            return result;
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.offer(root);
-        while (!queue.isEmpty()) {
-            int size = queue.size();
-            List<Integer> sub = new LinkedList<>();
-            for (int i = 0; i < size; i++) {
-                TreeNode node = queue.poll();
-                if (node.left != null)
-                    queue.offer(node.left);
-                if (node.right != null)
-                    queue.offer(node.right);
-                sub.add(node.val);
-            }
-            result.add(sub);
-        }
-        return result;
-    }
-
-    public List<List<Integer>> levelOrderDfs(TreeNode root) {
-        List<List<Integer>> result = new LinkedList<>();
-        if (root == null)
-            return result;
-        levelOrderDfsHelper(result, root, 0);
-        return result;
-    }
-
-    private void levelOrderDfsHelper(List<List<Integer>> result, TreeNode root, int level) {
-        if (root == null)
-            return;
-        List<Integer> curr;
-        if (level >= result.size()) {
-            curr = new LinkedList<>();
-            curr.add(root.val);
-            result.add(curr);
-        } else {
-            curr = result.get(level);
-            curr.add(root.val);
-        }
-        levelOrderDfsHelper(result, root.left, level + 1);
-        levelOrderDfsHelper(result, root.right, level + 1);
-    }
-
-
 }

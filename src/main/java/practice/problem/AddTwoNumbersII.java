@@ -32,4 +32,5 @@ public class AddTwoNumbersII {
         }
         return dummy.val == 0 ? dummy.next : dummy;
     }
+
 }

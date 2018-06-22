@@ -19,4 +19,21 @@ public class LargestRectangleInHistogram {
         }
         return maxArea;
     }
+
+    public int largestRectangleAreaTwo(int[] heights) {
+        int len = heights.length;
+        Stack<Integer> stack = new Stack<>();
+        int maxArea = 0;
+        for (int i = 0; i <= len; i++) {
+            int h = i == len ? 0 : heights[i];
+            if (stack.isEmpty() || h >= heights[stack.peek()]) {
+                stack.push(i);
+            } else {
+                int height = heights[stack.pop()];
+                maxArea = Math.max(maxArea, height * (stack.isEmpty() ? i : i - stack.peek() - 1));
+                i--;
+            }
+        }
+        return maxArea;
+    }
 }

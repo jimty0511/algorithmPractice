@@ -1,8 +1,14 @@
 import practice.AllPractices;
 import practice.domain.*;
 import practice.problem.*;
+import practice.sort.BubbleSort;
+import practice.sort.InsertionSort;
+import practice.sort.MergeSort;
+import practice.sort.QuickSort;
 
+import java.awt.*;
 import java.util.*;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -36,8 +42,9 @@ public class App {
 
 //        int n = pathSum(treeNode1, 2);
 
-//        int i = 8;
-////        hammingWeight(i);
+//        NumberOfOneBits numberOfOneBits = new NumberOfOneBits();
+//        numberOfOneBits.hammingWeightTwo(7);
+
 ////        boolean res = isUgly(300);
 //        int[] ints = new int[]{1, 12, -5, -6, 50, 3};
 //        int[] ints2 = new int[]{1, 12, -5, -6, 12, 1};
@@ -51,7 +58,7 @@ public class App {
         l2.next = new ListNode(4);
         l2.next.next = new ListNode(6);
 //
-        ListNode l3 = mergeTwoLists.mergeTwoListsIter(l1, l2);
+//        ListNode l3 = mergeTwoLists.mergeTwoListsIter(l1, l2);
 ////        int length = removeElement(ints2, 1);
 //        int[] ints4 = new int[]{1, 3, 5, 6};
 ////        int[] plusOne = plusOne(ints4);
@@ -87,7 +94,10 @@ public class App {
 ////        System.out.println(isToeplitzMatrix(matrix));
 //
 ////        System.out.println(hasAlternatingBits(43));
-////        System.out.println(countBits(15));
+
+//        CountBits countBits = new CountBits();
+//        System.out.println(countBits.countBitsDp(7));
+
 //        int[][] trianglePoints = {{0, 0}, {0, 1}, {1, 0}, {2, 0}, {0, 2}};
 ////        System.out.println(largestTriangleArea(trianglePoints));
 //
@@ -95,8 +105,9 @@ public class App {
 ////        System.out.println(matrixReshape(oldMatrix, 1, 4));
 //
 ////        System.out.println(countPrimes(100));
-//
-////        System.out.println(letterCasePermutation("a1b2"));
+
+//        LetterCasePermutation letterCasePermutation = new LetterCasePermutation();
+//        System.out.println(letterCasePermutation.letterCasePermutation("a1b2"));
 //        int[][] flip = {{1, 1, 0}, {1, 0, 1}, {0, 0, 0}};
 //
 //        System.out.println(flipAndInvertImage(flip));
@@ -245,7 +256,8 @@ public class App {
 //
 //        System.out.println(longestCommonPrefix(new String[]{"flower", "flow", "flight"}));
 //
-//        System.out.println(nthUglyNumber(15));
+//        UglyNumberII uglyNumberII = new UglyNumberII();
+//        System.out.println(uglyNumberII.nthUglyNumberDp(15));
 //
 //        System.out.println(findLengthOfLCIS(new int[]{1, 3, 5, 4, 6, 7, 8, 9}));
 
@@ -382,9 +394,8 @@ public class App {
 //
 //        System.out.println(findAnagrams("abcdecabedabde", "abc"));
 
-//        System.out.println(minWindow("ADEFOQWEBECODEGBANC", "ABC"));
-
-//        System.out.println(lengthOfLongestSubstring("pwwpkewx"));
+//        LongestSubstringWithoutRepeatingCharacters longestSubstringWithoutRepeatingCharacters = new LongestSubstringWithoutRepeatingCharacters();
+//        System.out.println(longestSubstringWithoutRepeatingCharacters.lengthOfLongestSubstringThree("pwwpkewx"));
 
 //        System.out.println(findSubstring("barfoobarfoothefoobarman", new String[]{"foo", "bar", "foo"}));
 
@@ -450,7 +461,8 @@ public class App {
 
 //        System.out.println(findRadius(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}, new int[]{1, 7, 8}));
 
-//        System.out.println(reverseBits(29471923));
+//        ReverseBits reverseBits = new ReverseBits();
+//        System.out.println(reverseBits.reverseBits(29471923));
 
 //        System.out.println(findUnsortedSubarray(new int[]{2, 4, 8, 6, 1, 7, 10}));
 
@@ -494,9 +506,18 @@ public class App {
 
 //        System.out.println(fizzBuzz(15));
 
-//        System.out.println(singleNumber(new int[]{1, 4, 4, 3, 1, 3, 7}));
+//        SingleNumber singleNumber = new SingleNumber();
+//        System.out.println(singleNumber.singleNumberBit(new int[]{1, 4, 4, 3, 1, 3, 7}));
 
-//        System.out.println(getSum(10,9));
+//        SingleNumberII singleNumberII = new SingleNumberII();
+//        singleNumberII.singleNumber(new int[]{2, 3, 2, 3, 7, 3, 2,});
+//        singleNumberII.singleNumberWithK(new int[]{2, 3, 2, 2, 2}, 4);
+
+//        SingleNumberIII singleNumberIII = new SingleNumberIII();
+//        singleNumberIII.singleNumber(new int[]{1, 2, 3, 2, 1, 5});
+
+//        SumOfTwoIntegers sumOfTwoIntegers = new SumOfTwoIntegers();
+//        System.out.println(sumOfTwoIntegers.getSumIterative(1, 3));
 
 //        RomanToInt romanToInt = new RomanToInt();
 //        System.out.println(romanToInt.romanToInt("MCMXCIV"));
@@ -517,7 +538,8 @@ public class App {
         reverseList.next.next = new ListNode(5);
         reverseList.next.next.next = new ListNode(7);
 
-//        System.out.println(ap.reverseList(reverseList));
+//        ReverseLinkedList reverseLinkedList = new ReverseLinkedList();
+//        System.out.println(reverseLinkedList.reverseList(reverseList));
 
 //        System.out.println(reverseListRecursive(reverseList));
 
@@ -531,11 +553,12 @@ public class App {
         listToBST.next.next.next = new ListNode(5);
         listToBST.next.next.next.next = new ListNode(9);
 
-        System.out.println(ap.sortedListToBST(listToBST));
+//        System.out.println(ap.sortedListToBST(listToBST));
 
 //        System.out.println(isHappy(198));
 
-//        System.out.println(climbStairs(10));
+//        ClimbingStairs climbingStairs = new ClimbingStairs();
+//        System.out.println(climbingStairs.climbStairsThreeSteps(10));
 
 //        System.out.println(isPowerOfThree(80));
 
@@ -641,11 +664,13 @@ public class App {
 
 //        System.out.println(ap.detectCycle(withCircle));
 
-//        System.out.println(uniquePaths(7, 3));
+//        UniquePaths uniquePaths = new UniquePaths();
+//        System.out.println(uniquePaths.uniquePaths(7, 3));
 
 //        rotate(new int[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}});
 
-//        System.out.println(findKthLargestPq(new int[]{3, 2, 3, 1, 2, 4, 5, 5, 6}, 4));
+//        KthLargestElementInAnArray kthLargestElementInAnArray = new KthLargestElementInAnArray();
+//        System.out.println(kthLargestElementInAnArray.findKthLargestTwo(new int[]{3, 2, 6, 5, 1, 3, 2, 7, 1}, 3));
 
 //        RandomizedSet randomSet = new RandomizedSet();
 //        randomSet.insert(1);
@@ -662,7 +687,8 @@ public class App {
 
 //        System.out.println(findPeakElement(new int[]{1, 2, 1, 3, 5, 6, 4}));
 
-//        System.out.println(lengthOfLISdp(new int[]{10, 9, 2, 5, 3, 7, 101, 18}));
+//        LongestIncreasingSubsequence longestIncreasingSubsequence = new LongestIncreasingSubsequence();
+//        System.out.println(longestIncreasingSubsequence.lengthOfLISdp(new int[]{10, 9, 2, 5, 3, 7, 101, 18}));
 
 //        System.out.println(lengthOfLIS(new int[]{10, 9, 2, 5, 3, 7, 101, 18}));
 
@@ -678,7 +704,8 @@ public class App {
 //                {'.', '.', '.', '.', '8', '.', '.', '7', '9'}
 //        }));
 
-//        System.out.println(numSquares(13));
+//        PerfectSquares perfectSquares = new PerfectSquares();
+//        System.out.println(perfectSquares.numSquares(13));
 
 //        gameOfLife(new int[][]{
 //                {1, 0, 0, 1, 0, 1, 0},
@@ -715,7 +742,8 @@ public class App {
 
 //        connect(treeLinkNode1);
 
-//        System.out.println(longestSubstring("ababdbbcababab", 2));
+//        LongestSubstringWithAtLeastKRepeatingCharacters longestSubstringWithAtLeastKRepeatingCharacters = new LongestSubstringWithAtLeastKRepeatingCharacters();
+//        System.out.println(longestSubstringWithAtLeastKRepeatingCharacters.longestSubstring("ababdbbcababab", 2));
 
 //        ConstructBinaryTreefromPreorderandInorderTraversal constructBinaryTreefromPreorderandInorderTraversal = new ConstructBinaryTreefromPreorderandInorderTraversal();
 //        System.out.println(constructBinaryTreefromPreorderandInorderTraversal.buildTreeTwo(new int[]{3, 9, 20, 15, 7}, new int[]{9, 3, 15, 20, 7}));
@@ -737,7 +765,8 @@ public class App {
 
 //        System.out.println(search(new int[]{4, 5, 6, 7, 0, 1, 2}, 0));
 
-//        System.out.println(wordBreak("applepenapple", Arrays.asList("apple", "pen")));
+//        WordBreak wordBreak = new WordBreak();
+//        System.out.println(wordBreak.wordBreakTwo("applepenapple", Arrays.asList("apple", "pen")));
 
 //        System.out.println(searchRange(new int[]{5, 7, 7, 8, 8, 10}, 8));
 
@@ -758,7 +787,8 @@ public class App {
 
 //        System.out.println(ap.sortList(mergeSortList));
 
-//        System.out.println(ap.insertionSortList(mergeSortList));
+//        InsertionSortList insertionSortList = new InsertionSortList();
+//        System.out.println(insertionSortList.insertionSortList(mergeSortList));
 
 //        System.out.println(ap.canCompleteCircuit(new int[]{1, 2, 3, 4, 5}, new int[]{3, 4, 5, 5, 6}));
 
@@ -772,7 +802,12 @@ public class App {
         ListNode addTwoNumbers2 = new ListNode(5);
         addTwoNumbers2.next = new ListNode(6);
         addTwoNumbers2.next.next = new ListNode(4);
-//        System.out.println(ap.addTwoNumbersTwo(addTwoNumbers1, addTwoNumbers2));
+//        AddTwoNumbers addTwoNumbers = new AddTwoNumbers();
+//        System.out.println(addTwoNumbers.addTwoNumbers(addTwoNumbers1, addTwoNumbers2));
+
+//        AddTwoNumbersII addTwoNumbersII = new AddTwoNumbersII();
+        addTwoNumbers1.next.next.next = new ListNode(9);
+//        addTwoNumbersII.addTwoNumbers(addTwoNumbers1, addTwoNumbers2);
 
 //        System.out.println(ap.evalRPN(new String[]{"10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"}));
 
@@ -788,7 +823,8 @@ public class App {
 
 //        System.out.println(ap.maxProduct(new int[]{2, 3, 0, -2, 4, -3}));
 
-//        System.out.println(ap.coinChange(new int[]{1, 2, 5}, 11));
+//        CoinChange coinChange = new CoinChange();
+//        System.out.println(coinChange.coinChange(new int[]{1, 2, 5}, 11));
 
 //        Codec codec = new Codec();
 //        codec.decode(codec.encode("www.google.com"));
@@ -827,11 +863,13 @@ public class App {
 //
 //        System.out.println(example);
 
-//        System.out.println(ap.longestPalindromeExpand("abcefgfeddefg"));
+//        LongestPalindromicSubstring longestPalindromicSubstring = new LongestPalindromicSubstring();
+//        System.out.println(longestPalindromicSubstring.longestPalindromeDp("abcefgfeddefg"));
 
 //        System.out.println(ap.threeSum(new int[]{-1, 0, 1, 2, -1, -4, 3}));
 
-//        System.out.println(ap.ladderLengthTwoPointer("hit", "cog", Arrays.asList("hot", "dot", "dog", "lot", "log", "cog")));
+//        WordLadder wordLadder = new WordLadder();
+//        System.out.println(wordLadder.ladderLengthQueue("hit", "cog", Arrays.asList("hot", "dot", "dog", "lot", "log", "cog")));
 
 //        System.out.println(ap.myAtoi("    -42"));
 
@@ -910,7 +948,8 @@ public class App {
 //        cache.get(3);       // returns 3
 //        cache.get(4);
 
-//        System.out.println(ap.findLaddersBiDirection("hit", "cog", Arrays.asList("hot", "dot", "dog", "lot", "log", "cog")));
+//        WordLadderII wordLadderII = new WordLadderII();
+//        System.out.println(wordLadderII.findLaddersBiDirectionTwo("hit", "cog", Arrays.asList("hot", "dot", "dog", "lot", "log", "cog")));
 
 //        BreadthFirstSearchExampleNeighbourList.BfsNode node40 = new BreadthFirstSearchExampleNeighbourList.BfsNode(40);
 //        BreadthFirstSearchExampleNeighbourList.BfsNode node10 = new BreadthFirstSearchExampleNeighbourList.BfsNode(10);
@@ -974,8 +1013,11 @@ public class App {
 
 //        System.out.println(ap.pacificAtlanticBfs(new int[][]{{1, 2, 2, 3, 5}, {3, 2, 3, 4, 4}, {2, 4, 5, 3, 1}, {6, 7, 1, 4, 5}, {5, 1, 1, 2, 4}}));
 
+//        TrappingRainWater trappingRainWater = new TrappingRainWater();
+//        trappingRainWater.trapTwo(new int[]{1, 0, 2, 1, 0, 1, 3, 2, 1, 2});
+
 //        TrappingRainWaterII trappingRainWaterII = new TrappingRainWaterII();
-//        System.out.println(trappingRainWaterII.trapRainWater(new int[][]{{1, 4, 3, 1, 3, 2}, {3, 2, 1, 3, 2, 4}, {2, 3, 3, 2, 3, 1}}));
+//        System.out.println(trappingRainWaterII.trapRainWaterTwo(new int[][]{{1, 4, 3, 1, 3, 2}, {3, 2, 1, 3, 2, 4}, {2, 3, 3, 2, 3, 1}}));
 
 //        ap.wallsAndGatesMultiEndBfs(new int[][]{
 //                {Integer.MAX_VALUE, -1, 0, Integer.MAX_VALUE},
@@ -1021,17 +1063,22 @@ public class App {
 
 //        System.out.println(ap.threeSumClosest(new int[]{-1, 2, 1, -4, 7}, 1));
 
-//        System.out.println(ap.majorityElementMoore(new int[]{2, 2, 1, 1, 3, 2, 2}));
+//        MajorityElement majorityElement = new MajorityElement();
+//        majorityElement.majorityElementBit(new int[]{2, 2, 1, 1, 1, 2, 2});
+//        System.out.println(majorityElement.majorityElementMoore(new int[]{2, 2, 1, 1, 3, 2, 2}));
 
-//        System.out.println(ap.majorityElementTwo(new int[]{1, 3, 1, 3, 3, 2, 2, 2}));
+
+//        System.out.println(majorityElement.majorityElementTwo(new int[]{1, 3, 1, 3, 3, 2, 2, 2}));
 
 //        System.out.println(ap.summaryRanges(new int[]{0, 2, 3, 4, 6, 8, 9}));
 
 //        ap.nextPermutation(new int[]{6, 5, 4, 8, 7, 5, 1});
 
-//        System.out.println(ap.minimumTotal(Arrays.asList(Arrays.asList(2), Arrays.asList(3, 4), Arrays.asList(6, 5, 7), Arrays.asList(4, 1, 8, 3))));
+//        Triangle triangle = new Triangle();
+//        System.out.println(triangle.minimumTotal(Arrays.asList(Arrays.asList(2), Arrays.asList(3, 4), Arrays.asList(6, 5, 7), Arrays.asList(4, 1, 8, 3))));
 
-//        System.out.println(ap.minPathSum(new int[][]{{1, 3, 1, 2}, {1, 5, 5, 2}, {4, 2, 1, 3}}));
+//        MinimumPathSum minimumPathSum = new MinimumPathSum();
+//        System.out.println(minimumPathSum.minPathSum(new int[][]{{1, 3, 1, 2}, {1, 5, 5, 2}, {4, 2, 1, 3}}));
 
 //        System.out.println(ap.leastInterval(new char[]{'A', 'A', 'A', 'B', 'B', 'B', 'C', 'C', 'D'}, 3));
 
@@ -1129,7 +1176,7 @@ public class App {
 //        removeKDigits.removeKdigits("10200", 1);
 
 //        LargestRectangleInHistogram largestRectangleInHistogram = new LargestRectangleInHistogram();
-//        largestRectangleInHistogram.largestRectangleArea(new int[]{6, 2, 5, 4, 5, 1, 6});
+//        largestRectangleInHistogram.largestRectangleAreaTwo(new int[]{6, 2, 5, 4, 5, 1, 6});
 
 //        MaximalRectangle maximalRectangle = new MaximalRectangle();
 //        maximalRectangle.maximalRectangle(new char[][]{
@@ -1180,7 +1227,7 @@ public class App {
 //        mergeTwoBinaryTrees.mergeTreesDfs(node1, mainTree);
 
 //        UniqueBinarySearchTreesII uniqueBinarySearchTreesII = new UniqueBinarySearchTreesII();
-//        uniqueBinarySearchTreesII.generateTrees(3);
+//        uniqueBinarySearchTreesII.generateTrees(4);
 
 //        BalanceBinaryTree balanceBinaryTree = new BalanceBinaryTree();
 //        balanceBinaryTree.isBalanced(node1);
@@ -1216,7 +1263,7 @@ public class App {
 //        houseRobberIII.rob(rob3);
 
 //        HouseRobber houseRobber = new HouseRobber();
-//        houseRobber.rob(new int[]{2, 7, 9, 3, 1, 20});
+//        houseRobber.robDp(new int[]{2, 7, 9, 3, 1, 20});
 
         TreeNode uniValue = new TreeNode(5);
         uniValue.left = new TreeNode(1);
@@ -1283,8 +1330,128 @@ public class App {
 //        ReversePairs reversePairs = new ReversePairs();
 //        reversePairs.reversePairs(new int[]{2, 4, 3, 5, 1});
 
-        CountOfSmallerNumbersAfterSelf countOfSmallerNumbersAfterSelf = new CountOfSmallerNumbersAfterSelf();
-        countOfSmallerNumbersAfterSelf.countSmaller(new int[]{5, 2, 6, 1});
+//        CountOfSmallerNumbersAfterSelf countOfSmallerNumbersAfterSelf = new CountOfSmallerNumbersAfterSelf();
+//        countOfSmallerNumbersAfterSelf.countSmaller(new int[]{5, 2, 6, 1});
+
+//        MaximumXOROfTwoNumbersInAnArray maximumXOROfTwoNumbersInAnArray = new MaximumXOROfTwoNumbersInAnArray();
+//        maximumXOROfTwoNumbersInAnArray.findMaximumXOR(new int[]{3, 10, 5, 25, 2, 8});
+
+//        MaximumProductOfWordLengths maximumProductOfWordLengths = new MaximumProductOfWordLengths();
+//        maximumProductOfWordLengths.maxProduct(new String[]{"abcw", "baz", "foo", "bar", "xtfn", "abcdef"});
+
+//        GeneralizedAbbreviation generalizedAbbreviation = new GeneralizedAbbreviation();
+//        generalizedAbbreviation.generateAbbreviations("word");
+
+//        LargestNumber largestNumber = new LargestNumber();
+//        largestNumber.largestNumber(new int[]{3, 30, 34, 5, 9});
+
+//        WiggleSort wiggleSort = new WiggleSort();
+//        wiggleSort.wiggleSort(new int[]{3, 5, 2, 1, 6, 4});
+
+//        BubbleSort bubbleSort = new BubbleSort();
+//        bubbleSort.bubbleSortTwo(new int[]{5, 1, 4, 2, 8});
+
+//        InsertionSort insertionSort = new InsertionSort();
+//        insertionSort.insertionSort(new int[]{5, 1, 4, 2, 8});
+
+//        MergeSort mergeSort = new MergeSort();
+//        mergeSort.sort(new int[]{5, 1, 4, 2, 8});
+
+//        QuickSort quickSort = new QuickSort();
+//        quickSort.sort(new int[]{5, 1, 4, 2, 8});
+
+//        LongestConsecutiveSequence longestConsecutiveSequence = new LongestConsecutiveSequence();
+//        longestConsecutiveSequence.longestConsecutiveMap(new int[]{100, 1, 3, 200, 4, 5, 2});
+
+//        PalindromicSubStrings palindromicSubStrings = new PalindromicSubStrings();
+//        palindromicSubStrings.countSubstrings("abcb");
+
+//        BestTimetoBuyAndSellStockWithCooldown bestTimetoBuyAndSellStockWithCooldown = new BestTimetoBuyAndSellStockWithCooldown();
+//        bestTimetoBuyAndSellStockWithCooldown.maxProfit(new int[]{1,2,3,0,2});
+
+//        ArithmeticSlices arithmeticSlices = new ArithmeticSlices();
+//        arithmeticSlices.numberOfArithmeticSlices(new int[]{1, 2, 3});
+
+//        RegularExpressionMatching regularExpressionMatching = new RegularExpressionMatching();
+//        regularExpressionMatching.isMatch("aab", "c*a*b");
+
+//        ReverseWordsInAString reverseWordsInAString = new ReverseWordsInAString();
+//        reverseWordsInAString.reverseWordsTwo("blue sky is bla");
+
+//        Interval interval1 = new Interval(0, 30);
+//        Interval interval2 = new Interval(5, 10);
+//        Interval interval3 = new Interval(15, 20);
+
+//        MeetingRoomII meetingRoomII = new MeetingRoomII();
+//        meetingRoomII.minMeetingRooms(new Interval[]{interval1, interval2, interval3});
+
+//        BinaryTreeVerticalOrderTraversal binaryTreeVerticalOrderTraversal = new BinaryTreeVerticalOrderTraversal();
+//        binaryTreeVerticalOrderTraversal.verticalOrder(node1);
+
+//        MinimumWindowSubstring minimumWindowSubstring = new MinimumWindowSubstring();
+//        minimumWindowSubstring.minWindowTwo("ADOBECODEBANC", "ABC");
+
+//        CourseSchedule courseSchedule = new CourseSchedule();
+//        courseSchedule.canFinishTwo(4, new int[][]{{1, 0}, {0, 1}, {2, 1}, {3, 2}});
+
+//        CourseScheduleII courseScheduleII = new CourseScheduleII();
+//        courseScheduleII.findOrder(4, new int[][]{{0, 1}, {2, 0}, {3, 1}, {3, 2}});
+
+//        ReconstructItinerary reconstructItinerary = new ReconstructItinerary();
+//        reconstructItinerary.findItinerary(new String[][]{{"JFK", "SFO"}, {"JFK", "ATL"}, {"SFO", "ATL"}, {"ATL", "JFK"}, {"ATL", "SFO"}});
+
+//        EvaluateDivision evaluateDivision = new EvaluateDivision();
+//        evaluateDivision.calcEquation(new String[][]{{"a", "b"}, {"b", "c"}}, new double[]{2.0, 3.0},
+//                new String[][]{{"a", "c"}, {"b", "a"}, {"a", "e"}, {"a", "a"}, {"x", "x"}});
+
+//        CouplesHoldingHands couplesHoldingHands = new CouplesHoldingHands();
+//        couplesHoldingHands.minSwapsCouples(new int[]{0, 2, 1, 4, 5, 3});
+//        couplesHoldingHands.miniSwapsArray(new int[]{2, 3, 1, 0, 5, 4});
+
+//        FibonnaciNumber fibonnaciNumber = new FibonnaciNumber();
+//        fibonnaciNumber.fib(9);
+
+//        FirstMissingPositive firstMissingPositive = new FirstMissingPositive();
+//        firstMissingPositive.firstMissingPositive(new int[]{3, 4, -1, 1});
+
+//        PourWater pourWater = new PourWater();
+//        pourWater.pourWater(new int[]{2, 1, 1, 2, 1, 2, 2}, 4, 3);
+
+//        AlienDictionary alienDictionary = new AlienDictionary();
+//        alienDictionary.alienOrder(new String[]{"wrt", "wrf", "er", "ett", "rftt"});
+
+//        GraphValidTree graphValidTree = new GraphValidTree();
+//        graphValidTree.validTree(5, new int[][]{{0, 1}, {1, 2}, {2, 3}, {1, 3}, {1, 4}});
+
+//        EditDistance editDistance = new EditDistance();
+//        editDistance.minDistance("abc", "adc");
+
+//        IntegerToEnglishWords integerToEnglishWords = new IntegerToEnglishWords();
+//        integerToEnglishWords.numberToWords(654321);
+
+//        MultiplyStrings multiplyStrings = new MultiplyStrings();
+//        multiplyStrings.multiply("123", "456");
+
+//        PalindromePairs palindromePairs = new PalindromePairs();
+//        palindromePairs.palindromePairs(new String[]{"abcd", "dcba", "lls", "s", "sssll"});
+
+//        LongestAbsoluteFilePath longestAbsoluteFilePath = new LongestAbsoluteFilePath();
+//        longestAbsoluteFilePath.lengthLongestPath("dir\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdir1\n\tsubdiTwo\n\t\tsubsubdirTwo2\n\t\t\tfile2.ext");
+
+//        DivideTwoIntegers divideTwoIntegers = new DivideTwoIntegers();
+//        divideTwoIntegers.divide(17, 11);
+
+//        MaxPointsOnaLine maxPointsOnaLine = new MaxPointsOnaLine();
+//        maxPointsOnaLine.maxPoints(new Point[]{new Point(4, 0), new Point(4, -1), new Point(4, 5)});
+
+//        PowXN powXN = new PowXN();
+//        powXN.myPowTwo(5, 7);
+
+//        NumberOfDIgitOne numberOfDIgitOne = new NumberOfDIgitOne();
+//        numberOfDIgitOne.countDigitOne(3141092);
+
+        QueueReconstructionByHeight queueReconstructionByHeight = new QueueReconstructionByHeight();
+        queueReconstructionByHeight.reconstructQueue(new int[][]{{7, 0}, {4, 4}, {7, 1}, {5, 0}, {6, 1}, {5, 2}});
     }
 
 }
