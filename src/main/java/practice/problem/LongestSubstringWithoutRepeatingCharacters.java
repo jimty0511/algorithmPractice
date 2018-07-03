@@ -57,13 +57,13 @@ public class LongestSubstringWithoutRepeatingCharacters {
     public int lengthOfLongestSubstringThree(String s) {
         if (s.length() == 0) return 0;
         Set<Character> set = new HashSet<>();
-        int i = 0, j = 0, max = 1;
-        while (j < s.length()) {
-            if (!set.contains(s.charAt(j))) {
-                set.add(s.charAt(j++));
+        int leftMost = 0, curr = 0, max = 1;
+        while (curr < s.length()) {
+            if (!set.contains(s.charAt(curr))) {
+                set.add(s.charAt(curr++));
                 max = Math.max(max, set.size());
             } else {
-                set.remove(s.charAt(i++));
+                set.remove(s.charAt(leftMost++));
             }
         }
         return max;

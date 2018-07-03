@@ -172,20 +172,6 @@ public class AllPractices {
         return triangle;
     }
 
-    // Pascal's triangle II
-    public List<Integer> getRow(int rowIndex) {
-        List<Integer> list = new ArrayList<>();
-        if (rowIndex < 0) {
-            return list;
-        }
-        for (int i = 0; i < rowIndex + 1; i++) {
-            list.add(0, 1);
-            for (int j = 1; j < list.size() - 1; j++) {
-                list.set(j, list.get(j) + list.get(j + 1));
-            }
-        }
-        return list;
-    }
 
     public String reverseVowels(String s) {
         if (s == null || s.length() == 0) return s;
@@ -300,18 +286,6 @@ public class AllPractices {
         return maxDiff;
     }
 
-    // 771. Jewels and Stones
-    public int numJewelsInStonesRex(String J, String S) {
-        return S.replaceAll("[^" + J + "]", "").length();
-    }
-
-    public int numJewelsInStonesSet(String J, String S) {
-        int res = 0;
-        Set setJ = new HashSet();
-        for (char j : J.toCharArray()) setJ.add(j);
-        for (char s : S.toCharArray()) if (setJ.contains(s)) res++;
-        return res;
-    }
 
     // 804. Unique Morse Code Words
     public int uniqueMorseRepresentations(String[] words) {
@@ -425,26 +399,6 @@ public class AllPractices {
         return root;
     }
 
-    // 682. Baseball Game
-    public int calPoints(String[] ops) {
-        int sum = 0;
-        LinkedList<Integer> list = new LinkedList<>();
-        for (String s : ops) {
-            if (s.equals("C")) {
-                sum -= list.removeLast();
-            } else if (s.equals("D")) {
-                list.add(list.peekLast() * 2);
-                sum += list.peekLast();
-            } else if (s.equals("+")) {
-                list.add(list.peekLast() + list.get(list.size() - 2));
-                sum += list.peekLast();
-            } else {
-                list.add(Integer.parseInt(s));
-                sum += list.peekLast();
-            }
-        }
-        return sum;
-    }
 
     // 575. Distribute Candies
     public int distributeCandies(int[] candies) {
@@ -655,16 +609,8 @@ public class AllPractices {
         return res;
     }
 
-    // 653. Two Sum IV - Input is a BST
 
-    Set<Integer> integerSet = new HashSet<>();
 
-    public boolean findTarget(TreeNode root, int k) {
-        if (root == null) return false;
-        if (integerSet.contains(k - root.val)) return true;
-        integerSet.add(root.val);
-        return findTarget(root.left, k) || findTarget(root.right, k);
-    }
 
     // 606. Construct String from Binary Tree
     public String tree2str(TreeNode t) {
@@ -693,34 +639,6 @@ public class AllPractices {
         return true;
     }
 
-    // 819. Most Common Word
-    public String mostCommonWord(String paragraph, String[] banned) {
-        Set<String> bannedSet = new HashSet<>();
-        Map<String, Integer> map = new HashMap<>();
-        Collections.addAll(bannedSet, banned);
-        String maxWord = null;
-        int maxCount = 0;
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < paragraph.length(); i++) {
-            char c = paragraph.charAt(i);
-            if ((c != '!' && c != '?' && c != ',' && c != ';' && c != '.' && c != ' ' && c != '\'') ||
-                    (c == '\'' && i != paragraph.length() - 1 && i + 1 < paragraph.length() && Character.isLetter(paragraph.charAt(i + 1)))) {
-                sb.append(Character.toLowerCase(c));
-            }
-            if ((c == ' ' || paragraph.charAt(paragraph.length() - 1) == c) && sb.length() > 0) {
-                String word = sb.toString();
-                sb.setLength(0);
-                if (!bannedSet.contains(word)) {
-                    map.put(word, map.getOrDefault(word, 0) + 1);
-                    if (map.get(word) > maxCount) {
-                        maxCount = map.get(word);
-                        maxWord = word;
-                    }
-                }
-            }
-        }
-        return maxWord;
-    }
 
     // 830. Positions of Large Groups
     public List<List<Integer>> largeGroupPositions(String S) {
@@ -738,17 +656,6 @@ public class AllPractices {
         return res;
     }
 
-    // 538. Convert BST to Greater Tree
-    int sum538 = 0;
-
-    public TreeNode convertBST(TreeNode root) {
-        if (root == null) return root;
-        convertBST(root.right);
-        root.val = root.val + sum538;
-        sum538 = root.val;
-        convertBST(root.left);
-        return root;
-    }
 
     // 598. Range Addition II
     public int maxCount(int m, int n, int[][] ops) {
@@ -1192,8 +1099,6 @@ public class AllPractices {
     }
 
 
-
-
     // 459. Repeated Substring Pattern
     public boolean repeatedSubstringPattern(String s) {
         int l = s.length();
@@ -1416,96 +1321,6 @@ public class AllPractices {
         return true;
     }
 
-    // 20. Valid Parentheses
-    public boolean isValid(String s) {
-        Stack<Character> stack = new Stack<>();
-        for (char c : s.toCharArray()) {
-            if (c == '(') {
-                stack.push(')');
-            } else if (c == '[') {
-                stack.push(']');
-            } else if (c == '{') {
-                stack.push('}');
-            } else if (stack.isEmpty() || stack.pop() != c) {
-                return false;
-            }
-        }
-        return stack.isEmpty();
-    }
-
-    // 438. Find All Anagrams in a String
-    public List<Integer> findAnagrams(String s, String p) {
-        List<Integer> list = new ArrayList<>();
-        if (s == null || s.length() == 0 || p == null || p.length() == 0 || s.length() < p.length()) return list;
-//        Map<Character, Integer> map = new HashMap<>();
-//        for (char c : p.toCharArray()) {
-//            map.put(c, map.getOrDefault(c, 0) + 1);
-//        }
-//        int counter = map.size();
-//        int begin = 0, end = 0;
-//
-//        while (end < s.length()) {
-//            char c = s.charAt(end);
-//            if (map.containsKey(c)) {
-//                map.put(c, map.get(c) - 1);
-//                if (map.get(c) == 0)
-//                    counter--;
-//            }
-//            end++;
-//
-//            while (counter == 0) {
-//                char tempc = s.charAt(begin);
-//                if (map.containsKey(tempc)) {
-//                    map.put(tempc, map.get(tempc) + 1);
-//                    if (map.get(tempc) > 0) {
-//                        counter++;
-//                    }
-//                }
-//                if (end - begin == p.length()) {
-//                    list.add(begin);
-//                }
-//                begin++;
-//            }
-//        }
-
-        int[] hash = new int[128];
-        for (char c : p.toCharArray()) {
-            hash[c]++;
-        }
-
-//        int left = 0, right = 0, count = p.length();
-//        while (right < s.length()) {
-//            char a = s.charAt(right++);
-//
-//            if (hash[a]-- >= 1)
-//                count--;
-//
-//            if (count == 0)
-//                list.add(left);
-//
-//            if (right - left == p.length() && hash[s.charAt(left++)]++ >= 0)
-//                count++;
-//        }
-
-        int start = 0;
-        for (int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
-            hash[c]--;
-            while (hash[c] < 0) {
-                char cstart = s.charAt(start);
-                hash[cstart]++;
-                start++;
-            }
-            if (i - start + 1 == p.length()) {
-                list.add(start);
-            }
-        }
-
-        return list;
-    }
-
-
-
 
     // 30. Substring with Concatenation of All Words
     public List<Integer> findSubstring(String s, String[] words) {
@@ -1653,38 +1468,6 @@ public class AllPractices {
     }
 
 
-    // 234. Palindrome Linked List
-    public boolean isPalindrome(ListNode head) {
-        ListNode fast = head, slow = head;
-        while (fast != null && fast.next != null) {
-            fast = fast.next.next;
-            slow = slow.next;
-        }
-        if (fast != null) {
-            slow = slow.next;
-        }
-        slow = reverse(slow);
-        fast = head;
-        while (slow != null) {
-            if (fast.val != slow.val)
-                return false;
-            fast = fast.next;
-            slow = slow.next;
-        }
-        return true;
-    }
-
-    private ListNode reverse(ListNode head) {
-        ListNode prev = null;
-        while (head != null) {
-            ListNode next = head.next;
-            head.next = prev;
-            prev = head;
-            head = next;
-        }
-        return prev;
-    }
-
     // 203. Remove Linked List Elements
     public ListNode removeElements(ListNode head, int val) {
         if (head == null) return null;
@@ -1698,30 +1481,6 @@ public class AllPractices {
         return head.val == val ? head.next : head;
     }
 
-    // 219. Contains Duplicate II
-    public boolean containsNearbyDuplicate(int[] nums, int k) {
-//        Map<Integer, Integer> map = new HashMap<>();
-//        for (int i = 0; i < nums.length; i++) {
-//            if (map.containsKey(nums[i])) {
-//                if (Math.abs(i - map.get(nums[i])) <= k) {
-//                    return true;
-//                }
-//                map.replace(nums[i], i);
-//            } else {
-//                map.put(nums[i], i);
-//            }
-//        }
-//        return false;
-
-        Set<Integer> set = new HashSet<>();
-        for (int i = 0; i < nums.length; i++) {
-            if (i > k)
-                set.remove(nums[i - k - 1]);
-            if (!set.add(nums[i]))
-                return true;
-        }
-        return false;
-    }
 
     // 687. Longest Univalue Path
     int univaluePathMax = 0;
@@ -2103,40 +1862,7 @@ public class AllPractices {
         return sb.toString();
     }
 
-    // 692. Top K Frequent Words
-    public List<String> topKFrequent(String[] words, int k) {
-        List<String> result = new ArrayList<>();
-        Map<String, Integer> map = new HashMap<>();
-        for (String w : words) {
-            map.put(w, map.getOrDefault(w, 0) + 1);
-        }
 
-//        List<Map.Entry<String, Integer>> entryList = map.entrySet().stream().sorted((a, b) -> a.getValue() == b.getValue() ?
-//                b.getKey().compareTo(a.getKey()) : a.getValue() - b.getValue())
-//                .collect(Collectors.toList());
-//
-//        if (entryList.size() > k)
-//            entryList = entryList.subList(entryList.size() - k, entryList.size());
-//
-//        for (Map.Entry<String, Integer> entry : entryList) {
-//            result.add(0, entry.getKey());
-//        }
-
-        PriorityQueue<Map.Entry<String, Integer>> pq = new PriorityQueue<>(
-                (a, b) -> a.getValue() == b.getValue() ? b.getKey().compareTo(a.getKey()) : a.getValue() - b.getValue()
-        );
-
-        for (Map.Entry<String, Integer> entry : map.entrySet()) {
-            pq.offer(entry);
-            if (pq.size() > k)
-                pq.poll();
-        }
-
-        while (!pq.isEmpty())
-            result.add(0, pq.poll().getKey());
-
-        return result;
-    }
 
     // Print all nodes at distance k from a given node
     List<Integer> printkdistanceNode = new ArrayList<>();
@@ -2223,23 +1949,6 @@ public class AllPractices {
         return convertToBase7(num / 7) + num % 7;
     }
 
-    // 189. Rotate Array
-    public void rotate(int[] nums, int k) {
-        k %= nums.length;
-        reverse(nums, 0, nums.length - 1);
-        reverse(nums, 0, k - 1);
-        reverse(nums, k, nums.length - 1);
-    }
-
-    private void reverse(int[] nums, int start, int end) {
-        while (start < end) {
-            int temp = nums[start];
-            nums[start] = nums[end];
-            nums[end] = temp;
-            start++;
-            end--;
-        }
-    }
 
     // 7. Reverse Integer
     public int reverse(int x) {
@@ -2315,17 +2024,6 @@ public class AllPractices {
     }
 
 
-    // 122. Best Time to Buy and Sell Stock II
-    public int maxProfitTwo(int[] prices) {
-        int profit = 0;
-        for (int i = 1; i < prices.length; i++) {
-            if (prices[i] > prices[i - 1]) {
-                profit += prices[i] - prices[i - 1];
-            }
-        }
-        return profit;
-    }
-
     // 242. Valid Anagram
     public boolean isAnagram(String s, String t) {
         if (s == null || t == null || s.length() != t.length()) return false;
@@ -2341,33 +2039,10 @@ public class AllPractices {
         return true;
     }
 
-    // 217. Contains Duplicate
-    public boolean containsDuplicate(int[] nums) {
-        Set<Integer> set = new HashSet<>();
-        for (int n : nums) {
-            if (!set.add(n))
-                return true;
-        }
-        return false;
-    }
-
     // 237. Delete Node in a Linked List
     public void deleteNode(ListNode node) {
         node.val = node.next.val;
         node.next = node.next.next;
-    }
-
-    // 387. First Unique Character in a String
-    public int firstUniqChar(String s) {
-        int[] freq = new int[26];
-        for (int i = 0; i < s.length(); i++) {
-            freq[s.charAt(i) - 'a']++;
-        }
-        for (int i = 0; i < s.length(); i++) {
-            if (freq[s.charAt(i) - 'a'] == 1)
-                return i;
-        }
-        return -1;
     }
 
 
@@ -2657,21 +2332,6 @@ public class AllPractices {
         return result;
     }
 
-    // 238. Product of Array Except Self
-    public int[] productExceptSelf(int[] nums) {
-        int n = nums.length;
-        int[] res = new int[n];
-        res[0] = 1;
-        for (int i = 1; i < n; i++) {
-            res[i] = res[i - 1] * nums[i - 1];
-        }
-        int right = 1;
-        for (int i = n - 1; n >= 0; i--) {
-            res[i] *= right;
-            right *= nums[i];
-        }
-        return res;
-    }
 
     // 347. Top K Frequent Elements
     public List<Integer> topKFrequent(int[] nums, int k) {
@@ -3089,20 +2749,6 @@ public class AllPractices {
         return low;
     }
 
-    // 48. Rotate Image
-    public void rotate(int[][] matrix) {
-        int l = matrix[0].length, tmp;
-        for (int r = 0; r < l; r++) {
-            for (int c = r; c < l - r - 1; c++) {
-                tmp = matrix[c][l - r - 1];
-                matrix[c][l - r - 1] = matrix[r][c];
-                matrix[r][c] = matrix[l - 1 - c][r];
-                matrix[l - 1 - c][r] = matrix[l - 1 - r][l - 1 - c];
-                matrix[l - 1 - r][l - 1 - c] = tmp;
-            }
-        }
-    }
-
 
     // 334. Increasing Triplet Subsequence
     public boolean increasingTriplet(int[] nums) {
@@ -3118,21 +2764,6 @@ public class AllPractices {
         return false;
     }
 
-    // 49. Group Anagrams
-    public List<List<String>> groupAnagrams(String[] strs) {
-        Map<String, List<String>> map = new HashMap<>();
-        if (strs == null || strs.length == 0)
-            return new ArrayList<>();
-        for (String s : strs) {
-            char[] chars = s.toCharArray();
-            Arrays.sort(chars);
-            String key = String.valueOf(chars);
-            if (!map.containsKey(key))
-                map.put(key, new ArrayList<>());
-            map.get(key).add(s);
-        }
-        return new ArrayList<>(map.values());
-    }
 
     // 75. Sort Colors
     public void sortColors(int[] nums) {
@@ -3174,23 +2805,6 @@ public class AllPractices {
                 return findPeakElementHelper(nums, m + 1, end);
             }
         }
-    }
-
-    // 240. Search a 2D Matrix II
-    public boolean searchMatrix(int[][] matrix, int target) {
-        if (matrix == null || matrix.length < 1 || matrix[0].length < 1)
-            return false;
-        int row = 0, col = matrix[0].length - 1;
-        while (col >= 0 && row <= matrix.length - 1) {
-            if (matrix[row][col] == target) {
-                return true;
-            } else if (target < matrix[row][col]) {
-                col--;
-            } else if (target > matrix[row][col]) {
-                row++;
-            }
-        }
-        return false;
     }
 
 
@@ -3320,68 +2934,6 @@ public class AllPractices {
         }
         return result;
     }
-
-
-    // 17. Letter Combinations of a Phone Number (backtrack)
-    public List<String> letterCombinations(String digits) {
-        if (digits.length() == 0)
-            return new ArrayList<>();
-        List<String> result = new ArrayList<>();
-        String[] numToLetters = new String[]{"", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
-        String curr = "";
-        letterCombinationsHelper(result, numToLetters, curr, digits, 0);
-        return result;
-    }
-
-    private void letterCombinationsHelper(List<String> result, String[] numToLetters, String curr,
-                                          String digits, int pos) {
-        if (curr.length() == digits.length())
-            result.add(new String(curr));
-        else {
-            for (int i = 0; i < numToLetters[digits.charAt(pos) - '1'].length(); i++) {
-                curr += "" + numToLetters[digits.charAt(pos) - '1'].charAt(i);
-                letterCombinationsHelper(result, numToLetters, curr, digits, pos + 1);
-                curr = curr.substring(0, curr.length() - 1);
-            }
-        }
-    }
-
-    // 73. Set Matrix Zeroes
-    public void setZeroes(int[][] matrix) {
-        boolean fr = false, fc = false;
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[0].length; j++) {
-                if (matrix[i][j] == 0) {
-                    if (i == 0)
-                        fr = true;
-                    if (j == 0)
-                        fc = true;
-                    matrix[0][j] = 0;
-                    matrix[i][0] = 0;
-                }
-            }
-        }
-        for (int i = 1; i < matrix.length; i++) {
-            for (int j = 1; j < matrix[0].length; j++) {
-                if (matrix[i][0] == 0 || matrix[0][j] == 0) {
-                    matrix[i][j] = 0;
-                }
-            }
-        }
-        if (fr) {
-            for (int j = 0; j < matrix[0].length; j++) {
-                matrix[0][j] = 0;
-            }
-        }
-        if (fc) {
-            for (int i = 0; i < matrix.length; i++) {
-                matrix[i][0] = 0;
-            }
-        }
-    }
-
-
-
 
 
     // 56. Merge Intervals
@@ -3613,262 +3165,6 @@ public class AllPractices {
         return result;
     }
 
-
-    // 199. Binary Tree Right Side View
-    List<Integer> rightSideViewResult = new ArrayList<>();
-
-    public List<Integer> rightSideView(TreeNode root) {
-        rightSideViewHelper(root, 0);
-        return rightSideViewResult;
-    }
-
-    private void rightSideViewHelper(TreeNode cur, int curDepth) {
-        if (cur == null)
-            return;
-        if (curDepth == rightSideViewResult.size()) {
-            rightSideViewResult.add(cur.val);
-        }
-        rightSideViewHelper(cur.right, curDepth + 1);
-        rightSideViewHelper(cur.left, curDepth + 1);
-    }
-
-    public List<Integer> rightSideViewIter(TreeNode root) {
-        List<Integer> result = new LinkedList<>();
-        if (root == null)
-            return result;
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.offer(root);
-        while (!queue.isEmpty()) {
-            int size = queue.size();
-            for (int i = 0; i < size; i++) {
-                TreeNode node = queue.poll();
-                if (i == 0) {
-                    result.add(node.val);
-                }
-                if (node.right != null)
-                    queue.offer(node.right);
-                if (node.left != null)
-                    queue.offer(node.left);
-            }
-        }
-        return result;
-    }
-
-    // 89. Gray Code
-    public List<Integer> grayCodeBackTrack(int n) {
-        List<Integer> result = new ArrayList<>();
-        if (n == 0)
-            return result;
-        grayCodeHelper(result, "", n);
-        return result;
-    }
-
-    // Backtracking for playaround
-    private void grayCodeHelper(List<Integer> result, String cur, int n) {
-        if (cur.length() == n) {
-            result.add(Integer.parseInt(cur, 2));
-        } else {
-            for (int i = 0; i <= 1; i++) {
-                cur += String.valueOf(i);
-                grayCodeHelper(result, cur, n);
-                cur = cur.substring(0, cur.length() - 1);
-            }
-        }
-    }
-
-    public List<Integer> grayCode(int n) {
-//        List<Integer> result = new LinkedList<>();
-//        for (int i = 0; i < 1 << n; i++) {
-//            result.add(i ^ i >> 1);
-//        }
-//        return result;
-
-        List<Integer> list = new ArrayList<>();
-        Set<Integer> set = new HashSet<>();
-        list.add(0);
-        set.add(0);
-        for (int i = 1; i < 1 << n; i++) {
-            int k = list.get(i - 1);
-            for (int j = 0; j < n; j++) {
-                if (set.add(k ^ 1 << j)) {
-                    list.add(k ^ 1 << j);
-                    break;
-                }
-            }
-        }
-        return list;
-    }
-
-    // 138. Copy List with Random Pointer
-    public RandomListNode copyRandomList(RandomListNode head) {
-        if (head == null)
-            return head;
-        RandomListNode cur = head;
-        while (cur != null) {
-            RandomListNode sec = new RandomListNode(cur.label);
-            sec.next = cur.next;
-            cur.next = sec;
-            cur = cur.next.next;
-        }
-
-        cur = head;
-        while (cur != null) {
-            if (cur.random != null) {
-                cur.next.random = cur.random.next;
-            }
-            cur = cur.next.next;
-        }
-
-        cur = head;
-        RandomListNode res = head.next;
-        RandomListNode sec = res;
-        while (sec.next != null) {
-            cur.next = cur.next.next;
-            cur = cur.next;
-            sec.next = sec.next.next;
-            sec = sec.next;
-        }
-        cur.next = cur.next.next;
-
-        return res;
-    }
-
-
-    // 15. 3Sum
-    public List<List<Integer>> threeSum(int[] nums) {
-        Arrays.sort(nums);
-        List<List<Integer>> res = new ArrayList<>();
-        for (int i = 0; i < nums.length - 2; i++) {
-            if (i == 0 || (i > 0 && nums[i] != nums[i - 1])) {
-                int low = i + 1, high = nums.length - 1, sum = 0 - nums[i];
-                while (low < high) {
-                    if (nums[low] + nums[high] == sum) {
-                        res.add(Arrays.asList(nums[i], nums[low], nums[high]));
-                        while (low < high && nums[low] == nums[low + 1])
-                            low++;
-                        while (low < high && nums[high] == nums[high - 1])
-                            high--;
-                        low++;
-                        high--;
-                    } else if (nums[low] + nums[high] < sum)
-                        low++;
-                    else
-                        high--;
-                }
-            }
-        }
-        return res;
-    }
-
-
-    // 8. String to Integer (atoi)
-    public int myAtoi(String str) {
-        int index = 0, sign = 1, total = 0;
-        if (str.length() == 0)
-            return 0;
-
-        while (index < str.length() && str.charAt(index) == ' ') {
-            index++;
-            if (index == str.length())
-                return total * sign;
-        }
-
-        if (str.charAt(index) == '+' || str.charAt(index) == '-') {
-            sign = str.charAt(index) == '+' ? 1 : -1;
-            index++;
-        }
-
-        while (index < str.length()) {
-            int digit = str.charAt(index) - '0';
-            if (digit < 0 || digit > 9)
-                break;
-            if (total + digit > Integer.MAX_VALUE / 10 + Integer.MAX_VALUE % 10) {
-                return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
-            }
-            total = 10 * total + digit;
-            index++;
-        }
-        return total * sign;
-    }
-
-
-    // 239. Sliding Window Maximum
-    public int[] maxSlidingWindow(int[] nums, int k) {
-//        if (nums == null || k <= 0)
-//            return new int[0];
-//        int n = nums.length;
-//        int[] answer = new int[n - k + 1];
-//        int index = 0;
-//        Deque<Integer> q = new ArrayDeque<>();
-//        for (int i = 0; i < n; i++) {
-//            while (!q.isEmpty() && q.peek() < i - k + 1) {
-//                q.poll();
-//            }
-//            while (!q.isEmpty() && nums[q.peekLast()] < nums[i]) {
-//                q.pollLast();
-//            }
-//            q.offer(i);
-//            if (i >= k - 1) {
-//                answer[index++] = nums[q.peek()];
-//            }
-//        }
-//        return answer;
-
-        if (k < 2)
-            return nums;
-        int currentMax = Integer.MIN_VALUE, count = 0;
-        int[] answer = new int[nums.length - k + 1];
-        for (int i = 0; i < nums.length; i++) {
-            currentMax = currentMax < nums[i] ? nums[i] : currentMax;
-            count++;
-            if (count == k) {
-                answer[i - k + 1] = currentMax;
-                count--;
-                if (currentMax == nums[i - k + 1]) {
-                    currentMax = nums[i - k + 2];
-                    i = i - k + 1;
-                    count = 0;
-                }
-            }
-        }
-        return answer;  // 3,3,5,5,6,7
-    }
-
-    public int[] maxSlidingWindowPq(int[] nums, int k) {
-        if (k < 2)
-            return nums;
-        PriorityQueue<Integer> pq = new PriorityQueue<>(3, (a, b) -> b - a);
-        int currentMax = Integer.MIN_VALUE, count = 0;
-        int[] answer = new int[nums.length - k + 1];
-        for (int i = 0; i < nums.length; i++) {
-            pq.offer(nums[i]);
-            if (pq.size() == k) {
-                answer[count++] = pq.peek();
-                i = i - k + 1;
-                pq.clear();
-            }
-        }
-        return answer;
-    }
-
-    // 23. Merge k Sorted Lists
-    public ListNode mergeKLists(ListNode[] lists) {
-        if (lists == null || lists.length == 0)
-            return null;
-        Queue<ListNode> heap = new PriorityQueue<>(lists.length, (l1, l2) -> Integer.compare(l1.val, l2.val));
-        ListNode head = new ListNode(0), tail = head;
-        for (ListNode node : lists) {
-            if (node != null)
-                heap.offer(node);
-        }
-        while (!heap.isEmpty()) {
-            tail.next = heap.poll();
-            tail = tail.next;
-            if (tail.next != null)
-                heap.offer(tail.next);
-        }
-        return head.next;
-    }
 
     // 433. Minimum Genetic Mutation
     public int minMutation(String start, String end, String[] bank) {

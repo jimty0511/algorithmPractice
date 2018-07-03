@@ -83,13 +83,14 @@ public class WordLadder {
             int size = queue.size();
             for (int i = 0; i < size; i++) {
                 String curr = queue.poll();
+                if (curr.equals(endWord)) {
+                    return step;
+                }
                 for (int j = 0; j < curr.length(); j++) {
+                    StringBuilder newWord = new StringBuilder(curr);
                     for (char letter = 'a'; letter <= 'z'; letter++) {
-                        StringBuilder newWord = new StringBuilder(curr);
                         newWord.setCharAt(j, letter);
-                        if (endWord.equals(newWord.toString())) {
-                            return step + 1;
-                        } else if (wordDict.contains(newWord.toString())) {
+                        if (wordDict.contains(newWord.toString())) {
                             wordDict.remove(newWord.toString());
                             queue.offer(newWord.toString());
                         }

@@ -15,12 +15,12 @@ public class MeetingRoomII {
         }
         Arrays.sort(starts);
         Arrays.sort(ends);
-        int rooms = 0, endItr = 0;
-        for (int i = 0; i < starts.length; i++) {
-            if (starts[i] < ends[endItr]) {
+        int rooms = 0;
+        for (int i = 0, j = 0; i < starts.length; i++) {
+            if (starts[i] < ends[j]) {
                 rooms++;
             } else {
-                endItr++;
+                j++;
             }
         }
         return rooms;

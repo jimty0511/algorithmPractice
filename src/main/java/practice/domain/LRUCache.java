@@ -1,6 +1,7 @@
 package practice.domain;
 
-import java.util.Hashtable;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LRUCache {
 
@@ -47,7 +48,7 @@ public class LRUCache {
     }
 
 
-    private Hashtable<Integer, DLinkedNode> cache = new Hashtable<>();
+    private Map<Integer, DLinkedNode> cache = new HashMap<>();
     private int count, capacity;
     private DLinkedNode head, tail;
 

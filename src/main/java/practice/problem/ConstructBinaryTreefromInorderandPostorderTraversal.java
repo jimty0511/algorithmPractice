@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * preorder = [3,9,20,15,7]
+ * postorder = [9,15,7,20,3]
  * inorder = [9,3,15,20,7]
  *     3
  *    / \

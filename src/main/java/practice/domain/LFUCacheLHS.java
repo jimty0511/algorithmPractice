@@ -4,14 +4,14 @@ import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
 
-public class LFUCacheLHM {
+public class LFUCacheLHS {
     private int capacity;
     private int min = -1;
     Map<Integer, Integer> vals;
     Map<Integer, Integer> frequencies;
     Map<Integer, LinkedHashSet<Integer>> lists;
 
-    public LFUCacheLHM(int capacity) {
+    public LFUCacheLHS(int capacity) {
         this.capacity = capacity;
         vals = new HashMap<>();
         frequencies = new HashMap<>();

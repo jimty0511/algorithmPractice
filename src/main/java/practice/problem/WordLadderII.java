@@ -162,10 +162,7 @@ public class WordLadderII {
                         continue;
                     sb.setCharAt(i, letter);
                     String newWord = sb.toString();
-                    if (!wordDict.contains(newWord)) {
-                        continue;
-                    }
-                    if (step <= steps.getOrDefault(newWord, Integer.MAX_VALUE)) {
+                    if (wordDict.contains(newWord) && step <= steps.getOrDefault(newWord, Integer.MAX_VALUE)) {
                         steps.put(newWord, step);
                         queue.offer(newWord);
                         if (!graph.containsKey(word)) {
