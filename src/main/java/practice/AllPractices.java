@@ -111,33 +111,6 @@ public class AllPractices {
         return low;
     }
 
-
-    public double findMaxAverage(int[] nums, int k) {
-        long sum = 0;
-        for (int i = 0; i < k; i++) {
-            sum += nums[i];
-        }
-        long max = sum;
-
-        for (int i = k; i < nums.length; i++) {
-            sum += nums[i] - nums[i - k];
-            max = Math.max(max, sum);
-        }
-        return max / 1.0 / k;
-    }
-
-
-    public int removeElement(int[] nums, int val) {
-        int m = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] != val) {
-//                nums[m] = nums[i];
-                m++;
-            }
-        }
-        return m;
-    }
-
     public int[] plusOne(int[] digits) {
         int n = digits.length;
         for (int i = n - 1; i >= 0; i--) {
@@ -150,67 +123,6 @@ public class AllPractices {
         int[] newNumber = new int[n + 1];
         newNumber[0] = 1;
         return newNumber;
-    }
-
-    // 118. Pascal's triangle I
-    public List<List<Integer>> generate(int numRows) {
-        List<List<Integer>> triangle = new ArrayList<>();
-        if (numRows <= 0) {
-            return triangle;
-        }
-        for (int i = 0; i < numRows; i++) {
-            List<Integer> row = new ArrayList<>();
-            for (int j = 0; j < i + 1; j++) {
-                if (j == 0 || j == i) {
-                    row.add(1);
-                } else {
-                    row.add(triangle.get(i - 1).get(j - 1) + triangle.get(i - 1).get(j));
-                }
-            }
-            triangle.add(row);
-        }
-        return triangle;
-    }
-
-
-    public String reverseVowels(String s) {
-        if (s == null || s.length() == 0) return s;
-        String vowels = "aeiouAEIOU";
-        char[] chars = s.toCharArray();
-        int start = 0;
-        int end = s.length() - 1;
-        while (start < end) {
-            while (start < end && !vowels.contains(chars[start] + "")) {
-                start++;
-            }
-            while (start < end && !vowels.contains(chars[end] + "")) {
-                end--;
-            }
-            char temp = chars[start];
-            chars[start] = chars[end];
-            chars[end] = temp;
-
-            start++;
-            end--;
-        }
-        return new String(chars);
-    }
-
-
-    int result = 0;
-
-    public int findTilt(TreeNode root) {
-        postOrder(root);
-        return result;
-    }
-
-    public int postOrder(TreeNode root) {
-        if (root == null) return 0;
-        int left = postOrder(root.left);
-        int right = postOrder(root.right);
-
-        result += Math.abs(left - right);
-        return left + right + root.val;
     }
 
     public String[] findRestaurant(String[] list1, String[] list2) {
@@ -233,212 +145,6 @@ public class AllPractices {
         return res.toArray(new String[res.size()]);
     }
 
-    public int maxIndexDiff(int arr[], int n) {
-        int maxDiff = -1;
-        int i, j;
-
-        for (i = 0; i < n; ++i) {
-            for (j = n - 1; j > i; --j) {
-                if (arr[j] > arr[i] && maxDiff < (j - i)) {
-                    maxDiff = j - i;
-                }
-            }
-        }
-
-        return maxDiff;
-    }
-
-    int max(int x, int y) {
-        return x > y ? x : y;
-    }
-
-    int min(int x, int y) {
-        return x < y ? x : y;
-    }
-
-    public int maxIndexDiffTwo(int arr[], int n) {
-        int maxDiff, i, j;
-
-        int RMax[] = new int[n];
-        int LMin[] = new int[n];
-
-        LMin[0] = arr[0];
-        for (i = 1; i < n; ++i) {
-            LMin[i] = min(arr[i], LMin[i - 1]);
-        }
-
-        RMax[n - 1] = arr[n - 1];
-        for (j = n - 2; j >= 0; --j) {
-            RMax[j] = max(arr[j], RMax[j + 1]);
-        }
-
-        i = 0;
-        j = 0;
-        maxDiff = -1;
-        while (j < n && i < n) {
-            if (LMin[i] < RMax[j]) {
-                maxDiff = max(maxDiff, j - i);
-                j = j + 1;
-            } else {
-                i = i + 1;
-            }
-        }
-        return maxDiff;
-    }
-
-
-    // 804. Unique Morse Code Words
-    public int uniqueMorseRepresentations(String[] words) {
-        String[] d = {".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.."};
-        HashSet<String> s = new HashSet<>();
-        for (String w : words) {
-            String code = "";
-            for (char c : w.toCharArray()) {
-                code += d[c - 'a'];
-            }
-            s.add(code);
-        }
-        return s.size();
-    }
-
-    // 657. Judge Route Circle
-    public boolean judgeCircle(String moves) {
-        int v = 0, h = 0;
-        for (char move : moves.toCharArray()) {
-            switch (move) {
-                case 'U':
-                    v++;
-                    break;
-                case 'D':
-                    v--;
-                    break;
-                case 'L':
-                    h++;
-                    break;
-                case 'R':
-                    h--;
-                    break;
-            }
-        }
-        return v == 0 && h == 0;
-    }
-
-
-    // 728. Self Dividing Numbers
-    public List<Integer> selfDividingNumbers(int left, int right) {
-        List<Integer> list = new ArrayList<>();
-        for (int i = left, n = 0; i <= right; i++) {
-            for (n = i; n > 0; n /= 10) {
-                if (n % 10 == 0 || i % (n % 10) != 0) break;
-            }
-            if (n == 0) list.add(i);
-        }
-        return list;
-    }
-
-    // 561. Array Partition I
-    public int arrayPairSum(int[] nums) {
-        int sum = 0;
-        Arrays.sort(nums);
-        for (int i = 0; i < nums.length; i += 2) {
-            sum += nums[i];
-        }
-        return sum;
-    }
-
-    // 811. Subdomain Visit Count
-    public List<String> subdomainVisits(String[] cpdomains) {
-        Map<String, Integer> map = new HashMap();
-
-        for (String str : cpdomains) {
-            String[] line = str.split(" ");
-            int count = Integer.valueOf(line[0]);
-            String[] domains = line[1].split("\\.");
-            String temp = "";
-            for (int i = domains.length - 1; i >= 0; i--) {
-                temp = domains[i] + (temp.equals("") ? temp : "." + temp);
-                if (!map.containsKey(temp)) {
-                    map.put(temp, count);
-                } else {
-                    map.put(temp, map.get(temp) + count);
-                }
-            }
-        }
-
-        List<String> res = new ArrayList();
-        for (String str : map.keySet()) {
-            res.add(map.get(str) + " " + str);
-        }
-
-        return res;
-    }
-
-    // 806. Number of Lines To Write String
-    public int[] numberOfLines(int[] widths, String S) {
-        int res = 1, cur = 0;
-        for (char c : S.toCharArray()) {
-            int width = widths[c - 'a'];
-            res = cur + width > 100 ? res + 1 : res;
-            cur = cur + width > 100 ? width : cur + width;
-        }
-        return new int[]{res, cur};
-    }
-
-
-    // 669. Trim a Binary Search Tree
-    public TreeNode trimBST(TreeNode root, int L, int R) {
-        if (root == null) return null;
-        if (root.val >= L && root.val <= R) {
-            root.left = trimBST(root.left, L, R);
-            root.right = trimBST(root.right, L, R);
-            return root;
-        }
-        if (root.val < L) return trimBST(root.right, L, R);
-        if (root.val > R) return trimBST(root.left, L, R);
-
-        return root;
-    }
-
-
-    // 575. Distribute Candies
-    public int distributeCandies(int[] candies) {
-        Set<Integer> kinds = new HashSet<>();
-        for (int c : candies) kinds.add(c);
-        return kinds.size() >= candies.length / 2 ? candies.length / 2 : kinds.size();
-    }
-
-    // 766. Toeplitz Matrix
-    public boolean isToeplitzMatrix(int[][] matrix) {
-        for (int i = 0; i < matrix.length - 1; i++) {
-            for (int j = 0; j < matrix[i].length - 1; j++) {
-                if (matrix[i][j] != matrix[i + 1][j + 1]) return false;
-            }
-        }
-        return true;
-    }
-
-    // 637. Average of Levels in Binary Tree
-    public List<Double> averageOfLevels(TreeNode root) {
-        List<Double> result = new ArrayList<>();
-        Queue<TreeNode> q = new LinkedList<>();
-
-        if (root == null) return null;
-        q.add(root);
-        while (!q.isEmpty()) {
-            int n = q.size();
-            double sum = 0.0;
-            for (int i = 0; i < n; i++) {
-                TreeNode node = q.poll();
-                sum += node.val;
-                if (node.left != null) q.offer(node.left);
-                if (node.right != null) q.offer(node.right);
-            }
-            result.add(sum / n);
-        }
-
-        return result;
-    }
-
     // 521. Longest Uncommon Subsequence I
     public int findLUSlength(String a, String b) {
         return a.equals(b) ? -1 : Integer.max(a.length(), b.length());
@@ -450,184 +156,11 @@ public class AllPractices {
         return n % 4 != 0;
     }
 
-    // 762. Prime Number of Set Bits in Binary Representation
-    public int countPrimeSetBits(int L, int R) {
-        Set<Integer> primes = new HashSet<>(Arrays.asList(2, 3, 5, 7, 11, 13, 17, 19));
-        int count = 0;
-        for (int i = L; i <= R; i++) {
-            count += primes.contains(Integer.bitCount(i)) ? 1 : 0;
-        }
-        return count;
-    }
-
-
     // 796. Rotate String
     public boolean rotateString(String A, String B) {
         return A.length() == B.length() && (A + A).contains(B);
     }
 
-    // 485. Max Consecutive Ones
-    public int findMaxConsecutiveOnes(int[] nums) {
-        int max = 0, sum = 0;
-        for (int i = 0; i < nums.length; i++) {
-            sum += nums[i];
-            if (nums[i] == 0) {
-                sum = 0;
-            } else {
-                max = Math.max(max, sum);
-            }
-        }
-        return max;
-    }
-
-    // 812. Largest Triangle Area
-    public double largestTriangleArea(int[][] points) {
-        double max = 0.0;
-        for (int i = 0; i < points.length - 2; i++) {
-            for (int j = i + 1; j < points.length - 1; j++) {
-                for (int k = j + 1; k < points.length; k++) {
-                    max = Math.max(max, areaCal(points[i], points[j], points[k]));
-                }
-            }
-        }
-        return max;
-    }
-
-    public double areaCal(int[] pt1, int[] pt2, int[] pt3) {
-        return Math.abs(pt1[0] * (pt2[1] - pt3[1]) + pt2[0] * (pt3[1] - pt1[1]) + pt3[0] * (pt1[1] - pt2[1])) / 2.0;
-    }
-
-    // 566. Reshape the Matrix
-    public int[][] matrixReshape(int[][] nums, int r, int c) {
-        int m = nums.length, n = nums[0].length;
-        if (m * n != r * c) return nums;
-
-        int[][] result = new int[r][c];
-        int row = 0, col = 0;
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                result[row][col] = nums[i][j];
-                col++;
-                if (col == c) {
-                    col = 0;
-                    row++;
-                }
-            }
-        }
-        return result;
-    }
-
-
-    // 832. Flipping an Image
-    public int[][] flipAndInvertImage(int[][] A) {
-        int n = A.length;
-        for (int[] row : A) {
-            for (int i = 0; i * 2 < n; i++) {
-                if (row[i] == row[n - i - 1]) {
-                    int a = row[i];
-                    int b = row[n - i - 1];
-                    row[i] = row[n - i - 1] ^= 1;
-                }
-            }
-        }
-        return A;
-    }
-
-    // 690. Employee Importance
-    public int getImportance(List<Employee> employees, int id) {
-        Map<Integer, Employee> emp = employees.stream().collect(Collectors.toMap(i -> i.id, e -> e));
-        return getI(emp, id);
-    }
-
-    public int getI(Map<Integer, Employee> emp, int id) {
-        Employee e = emp.get(id);
-        List<Integer> sub = e.subordinates;
-        return (sub.size() == 0) ? e.importance : e.importance + sub.stream().mapToInt(s -> getI(emp, s.intValue())).sum();
-    }
-
-    // 695. Max Area of Island
-    public int maxAreaOfIsland(int[][] grid) {
-        int maxArea = 0;
-        for (int i = 0; i < grid.length; i++) {
-            for (int j = 0; j < grid[0].length; j++) {
-                maxArea = Math.max(maxArea, getMaxArea(grid, i, j));
-            }
-        }
-        return maxArea;
-    }
-
-    private int getMaxArea(int[][] grid, int row, int col) {
-        if (row < 0 || row > grid.length - 1 || col < 0 || col > grid[0].length - 1 || grid[row][col] == 0) {
-            return 0;
-        }
-        grid[row][col] = 0;
-        return 1 + getMaxArea(grid, row + 1, col) + getMaxArea(grid, row - 1, col) + getMaxArea(grid, row, col + 1) + getMaxArea(grid, row, col - 1);
-    }
-
-    // 788. Rotated Digits
-    public int rotatedDigits(int N) {
-        int sum = 0;
-        for (int i = 2; i <= N; ++i) {
-            if (isGood(i)) sum++;
-        }
-        return sum;
-    }
-
-    private boolean isGood(int n) {
-        Map<Character, Character> map = new HashMap<>();
-        map.put('0', '0');
-        map.put('1', '1');
-        map.put('2', '5');
-        map.put('5', '2');
-        map.put('6', '9');
-        map.put('8', '8');
-        map.put('9', '6');
-
-        String original = String.valueOf(n);
-        String des = "";
-        for (char c : original.toCharArray()) {
-            if (map.containsKey(c)) {
-                des += map.get(c);
-            } else {
-                return false;
-            }
-        }
-        return !des.equals(original);
-    }
-
-    // 696. Count Binary Substrings
-    public int countBinarySubstrings(String s) {
-        int pre = 0, cur = 1, res = 0;
-        for (int i = 1; i < s.length(); i++) {
-            if (s.charAt(i) == s.charAt(i - 1)) cur++;
-            else {
-                pre = cur;
-                cur = 1;
-            }
-            if (pre >= cur) res++;
-        }
-        return res;
-    }
-
-
-
-
-    // 606. Construct String from Binary Tree
-    public String tree2str(TreeNode t) {
-        StringBuilder sb = new StringBuilder();
-        if (t == null) return sb.toString();
-        sb.append(t.val);
-        if (t.left != null) {
-            sb.append("(").append(tree2str(t.left)).append(")");
-        }
-        if (t.right != null) {
-            if (t.left == null) {
-                sb.append("()");
-            }
-            sb.append("(").append(tree2str(t.right)).append(")");
-        }
-        return sb.toString();
-    }
 
     // 717. 1-bit and 2-bit Characters
     public boolean isOneBitCharacter(int[] bits) {
@@ -637,196 +170,6 @@ public class AllPractices {
         }
         if (ones % 2 > 0) return false;
         return true;
-    }
-
-
-    // 830. Positions of Large Groups
-    public List<List<Integer>> largeGroupPositions(String S) {
-        int i = 0, j = 0, N = S.length();
-        List<List<Integer>> res = new ArrayList<>();
-        while (j < N) {
-            while (j < N && S.charAt(j) == S.charAt(i)) {
-                j++;
-            }
-            if (j - i >= 3) {
-                res.add(Arrays.asList(i, j - 1));
-            }
-            i = j;
-        }
-        return res;
-    }
-
-
-    // 598. Range Addition II
-    public int maxCount(int m, int n, int[][] ops) {
-        int height = m, width = n;
-        for (int i = 0; i < ops.length; i++) {
-            if (ops[i][0] < height) height = ops[i][0];
-            if (ops[i][1] < width) width = ops[i][1];
-        }
-        return height * width;
-    }
-
-    // 453. Minimum Moves to Equal Array Elements
-    public int minMoves(int[] nums) {
-        if (nums.length == 0) return 0;
-        int min = nums[0];
-        for (int n : nums) {
-            min = Math.min(min, n);
-        }
-        int res = 0;
-        for (int n : nums) {
-            res += n - min;
-        }
-        return res;
-    }
-
-    // 733. Flood Fill
-    public int[][] floodFill(int[][] image, int sr, int sc, int newColor) {
-        dfsFill(image, sr, sc, image[sr][sc], newColor);
-        return image;
-    }
-
-    private void dfsFill(int[][] image, int sr, int sc, int oldColor, int newColor) {
-        if (sr >= 0 && sc >= 0 && sr <= image.length - 1 && sc <= image[0].length - 1 && image[sr][sc] == oldColor && oldColor != newColor) {
-            image[sr][sc] = newColor;
-            dfsFill(image, sr - 1, sc, oldColor, newColor);
-            dfsFill(image, sr + 1, sc, oldColor, newColor);
-            dfsFill(image, sr, sc - 1, oldColor, newColor);
-            dfsFill(image, sr, sc + 1, oldColor, newColor);
-        }
-    }
-
-    // 783. Minimum Distance Between BST Nodes
-    Integer res, prev;
-
-    public int minDiffInBST(TreeNode root) {
-        res = Integer.MAX_VALUE;
-        prev = null;
-        inorder(root);
-        return res;
-    }
-
-    private void inorder(TreeNode root) {
-        if (root == null) return;
-        inorder(root.left);
-        if (prev != null) {
-            res = Math.min(res, root.val - prev);
-        }
-        prev = root.val;
-        inorder(root.right);
-    }
-
-    // 697. Degree of an Array
-    public int findShortestSubArray(int[] nums) {
-//        Map<Integer, List<Integer>> map = new HashMap<>();
-//        int degree = 0;
-//        for (int i = 0; i < nums.length; i++) {
-//            if (!map.containsKey(nums[i])) {
-//                map.put(nums[i], new ArrayList<>());
-//            }
-//            map.get(nums[i]).add(i);
-//            degree = Math.max(degree, map.get(nums[i]).size());
-//        }
-//
-//        int min = Integer.MAX_VALUE;
-//        for (List<Integer> idx : map.values()) {
-//            if (idx.size() == degree) {
-//                min = Math.min(min, idx.get(idx.size() - 1) - idx.get(0) + 1);
-//            }
-//        }
-//        return min;
-
-        int length = 0, degree = 0;
-        Map<Integer, Integer> pos = new HashMap<>(), count = new HashMap<>();
-        for (int i = 0; i < nums.length; i++) {
-            count.put(nums[i], count.getOrDefault(nums[i], 0) + 1);
-            if (!pos.containsKey(nums[i])) pos.put(nums[i], i);
-            if (count.get(nums[i]) == degree) {
-                length = Math.min(length, i - pos.get(nums[i]) + 1);
-            } else if (count.get(nums[i]) > degree) {
-                degree = count.get(nums[i]);
-                length = i - pos.get(nums[i]) + 1;
-            }
-        }
-        return length;
-    }
-
-    // 661. Image Smoother
-    public int[][] imageSmoother(int[][] M) {
-        int[][] res = new int[M.length][M[0].length];
-        int count = 0, sum = 0;
-        for (int i = 0; i < M.length; i++) {
-            for (int j = 0; j < M[0].length; j++) {
-                sum = M[i][j];
-                count = 1;
-                if (i - 1 >= 0) {
-                    sum += M[i - 1][j];
-                    count++;
-                    if (j - 1 > 0) {
-                        sum += M[i - 1][j - 1];
-                        count++;
-                    }
-                    if (j + 1 < M[0].length) {
-                        sum += M[i - 1][j + 1];
-                        count++;
-                    }
-                }
-                if (j + 1 < M[0].length) {
-                    sum += M[i][j + 1];
-                    count++;
-                }
-                if (j - 1 >= 0) {
-                    sum += M[i][j - 1];
-                    count++;
-                    if (i + 1 < M.length) {
-                        sum += M[i + 1][j - 1];
-                        count++;
-                    }
-                }
-                if (i + 1 < M.length) {
-                    sum += M[i + 1][j];
-                    count++;
-                    if (j + 1 < M[0].length) {
-                        sum += M[i + 1][j + 1];
-                        count++;
-                    }
-                }
-                res[i][j] = (int) Math.floor(sum / count);
-            }
-        }
-        return res;
-    }
-
-    public int[][] imageSmootherTwo(int[][] M) {
-        int m = M.length;
-        int n = M[0].length;
-        int[][] res = new int[m][n];
-        if (m == 0 || n == 0) return res;
-        int[][] dirs = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}, {1, 1}, {1, -1}, {-1, 1}, {-1, -1}};
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                int sum = M[i][j];
-                int count = 1;
-                for (int[] dir : dirs) {
-                    int x = i + dir[0];
-                    int y = j + dir[1];
-                    if (x < 0 || y < 0 || x >= m || y >= n) continue;
-                    sum += M[x][y];
-                    count++;
-                }
-                res[i][j] = sum / count;
-            }
-        }
-        return res;
-    }
-
-    // 628. Maximum Product of Three Numbers
-    public int maximumProduct(int[] nums) {
-        Arrays.sort(nums);
-        int a = nums[nums.length - 1] * nums[nums.length - 2] * nums[nums.length - 3];
-        int b = nums[0] * nums[1] * nums[nums.length - 1];
-        return Math.max(a, b);
     }
 
     // 551. Student Attendance Record I
@@ -847,118 +190,6 @@ public class AllPractices {
         return true;
     }
 
-    // 744. Find Smallest Letter Greater Than Target
-    public char nextGreatestLetter(char[] letters, char target) {
-        int n = letters.length, i = 0, j = n - 1;
-        while (i <= j) {
-            int m = i + (j - i) / 2;
-            if (letters[m] <= target)
-                i = m + 1;
-            else
-                j = m - 1;
-        }
-        return i == n ? letters[0] : letters[i];
-    }
-
-
-    // 14. Longest Common Prefix
-    public String longestCommonPrefix(String[] strs) {
-        if (strs == null || strs.length == 0) {
-            return "";
-        }
-//        final String comp = strs[0];
-//        int indexFail = comp.length();
-//        for (int i = 1; i < strs.length; i++) {
-//            indexFail = Math.min(indexFail, strs[i].length());
-//        }
-//        for (int i = 1; i < strs.length; i++) {
-//            for (int j = 0; j < indexFail; j++) {
-//                if (comp.charAt(j) != strs[i].charAt(j)) {
-//                    indexFail = Math.min(indexFail, j);
-//                    break;
-//                }
-//            }
-//        }
-//        return comp.substring(0, indexFail);
-
-        String pre = strs[0];
-        int i = 1;
-        while (i < strs.length) {
-            while (strs[i].indexOf(pre) != 0) {
-                pre = pre.substring(0, pre.length() - 1);
-            }
-            i++;
-        }
-        return pre;
-    }
-
-
-    // 671. Second Minimum Node In a Binary Tree
-    public int findSecondMinimumValue(TreeNode root) {
-        if (root == null || (root.left == null && root.right == null)) return -1;
-
-        int left = root.left.val;
-        if (left == root.val) {
-            left = findSecondMinimumValue(root.left);
-        }
-
-        int right = root.right.val;
-        if (right == root.val) {
-            right = findSecondMinimumValue(root.right);
-        }
-
-        if (left == -1) return right;
-        if (right == -1) return left;
-
-        return Math.min(left, right);
-    }
-
-    // 257. Binary Tree Paths
-    public List<String> binaryTreePaths(TreeNode root) {
-        List<String> res = new ArrayList<>();
-        if (root == null) return res;
-        StringBuilder sb = new StringBuilder();
-        binaryTreePathsHelper(res, sb, root);
-        return res;
-    }
-
-    private void binaryTreePathsHelper(List<String> res, StringBuilder sb, TreeNode root) {
-        if (root == null) return;
-        int tmp = sb.length();
-        if (root.left == null && root.right == null) {
-            sb.append(root.val);
-            res.add(sb.toString());
-            sb.delete(tmp, sb.length());
-            return;
-        }
-        sb.append(root.val + "->");
-        binaryTreePathsHelper(res, sb, root.left);
-        binaryTreePathsHelper(res, sb, root.right);
-        sb.delete(tmp, sb.length());
-        return;
-    }
-
-    // 747. Largest Number At Least Twice of Others
-    public int dominantIndex(int[] nums) {
-        if (nums.length == 0) return -1;
-        int max = nums[0];
-        int index = 0;
-        for (int i = 1; i < nums.length; i++) {
-            if (max < nums[i]) {
-                if (nums[i] / 2 >= max) {
-                    index = i;
-                } else {
-                    index = -1;
-                }
-                max = nums[i];
-            } else {
-                if (max / 2 < nums[i]) {
-                    index = -1;
-                }
-            }
-        }
-        return index;
-    }
 
     // Multiples of 3 and 5
     public int multiplesOf3And5(int n) {
@@ -1028,75 +259,7 @@ public class AllPractices {
         return highestProductOf3;
     }
 
-    // 720. Longest Word in Dictionary
-    public String longestWord(String[] words) {
-        Arrays.sort(words);
-        Set<String> built = new HashSet<>();
-        String res = "";
-        for (String w : words) {
-            if (w.length() == 1 || built.contains(w.substring(0, w.length() - 1))) {
-                res = w.length() > res.length() ? w : res;
-                built.add(w);
-            }
-        }
-        return res;
-    }
 
-    // 572. Subtree of Another Tree
-    public boolean isSubtree(TreeNode s, TreeNode t) {
-        if (s == null) return false;
-        return isSameTree(s, t) || isSubtree(s.left, t) || isSubtree(s.right, t);
-    }
-
-    private boolean isSameTree(TreeNode s, TreeNode t) {
-        if (s != null && t != null) {
-            return s.val == t.val && isSameTree(s.left, t.left) && isSameTree(s.right, t.right);
-        } else {
-            return s == null && t == null;
-        }
-    }
-
-    // 724. Find Pivot Index
-    public int pivotIndex(int[] nums) {
-        if (nums == null || nums.length == 0) return -1;
-        int sum = 0, left = 0;
-        for (int i = 0; i < nums.length; i++) sum += nums[i];
-        for (int i = 0; i < nums.length; i++) {
-            if (i != 0) left += nums[i - 1];
-            if (sum - left - nums[i] == left) return i;
-        }
-        return -1;
-    }
-
-    // 482. License Key Formatting
-    public String licenseKeyFormatting(String S, int K) {
-        StringBuilder sb = new StringBuilder();
-        for (int i = S.length() - 1, count = 0; i > -1; i--) {
-            if (S.charAt(i) != '-') {
-                sb.append(count == K ? "-" : "");
-                count = count == K ? 1 : count + 1;
-                sb.append(Character.isDigit(S.charAt(i)) ? S.charAt(i) : Character.toUpperCase(S.charAt(i)));
-            }
-        }
-        return sb.reverse().toString();
-    }
-
-    // 367. Valid Perfect Square
-    public boolean isPerfectSquare(int num) {
-        if (num == 1) return true;
-        long low = 1, high = num / 2, mid = 0;
-        long nums = (long) num;
-        while (low <= high) {
-            mid = low + (high - low) / 2;
-            if (mid * mid == nums)
-                return true;
-            else if (mid * mid < nums)
-                low = mid + 1;
-            else
-                high = mid - 1;
-        }
-        return false;
-    }
 
 
     // 459. Repeated Substring Pattern
@@ -1720,51 +883,6 @@ public class AllPractices {
         return start;
     }
 
-    // 532. K-diff Pairs in an Array
-    public int findPairs(int[] nums, int k) {
-        if (k < 0) return 0;
-        int count = 0;
-        Map<Integer, Integer> map = new HashMap<>();
-        for (int n : nums) {
-            map.put(n, map.getOrDefault(n, 0) + 1);
-        }
-        for (int n : map.keySet()) {
-            if ((k == 0 && map.get(n) > 1) || (k != 0 && map.containsKey(n - k)))
-                ++count;
-        }
-        return count;
-    }
-
-    // 414. Third Maximum Number
-    public int thirdMax(int[] nums) {
-        Integer max1 = null, max2 = null, max3 = null;
-        for (Integer n : nums) {
-            if (n.equals(max1) || (n.equals(max2) || n.equals(max3)))
-                continue;
-            if (max1 == null || n > max1) {
-                max3 = max2;
-                max2 = max1;
-                max1 = n;
-            } else if (max2 == null || n > max2) {
-                max3 = max2;
-                max2 = n;
-            } else if (max3 == null || n > max3) {
-                max3 = n;
-            }
-        }
-        return max3 == null ? max1 : max3;
-    }
-
-    // 168. Excel Sheet Column Title
-    public String convertToTitle(int n) {
-        StringBuilder sb = new StringBuilder();
-        while (n > 0) {
-            n--;
-            sb.insert(0, (char) ('A' + n % 26));
-            n /= 26;
-        }
-        return sb.toString();
-    }
 
     // 125. Valid Palindrome
     public boolean isPalindrome(String s) {
@@ -1861,7 +979,6 @@ public class AllPractices {
         }
         return sb.toString();
     }
-
 
 
     // Print all nodes at distance k from a given node
@@ -2714,22 +1831,6 @@ public class AllPractices {
         return res;
     }
 
-    // 287. Find the Duplicate Number
-    public int findDuplicate(int[] nums) {
-        int slow = nums[0], fast = nums[0];
-        do {
-            slow = nums[slow];
-            fast = nums[nums[fast]];
-        } while (slow != fast);
-        int point1 = nums[0];
-        int point2 = slow;
-        while (point1 != point2) {
-            point1 = nums[point1];
-            point2 = nums[point2];
-        }
-        return point1;
-    }
-
     public int findDuplicateBinarySearch(int[] nums) {
         if (nums == null || nums.length == 0)
             return 0;
@@ -2748,22 +1849,6 @@ public class AllPractices {
         }
         return low;
     }
-
-
-    // 334. Increasing Triplet Subsequence
-    public boolean increasingTriplet(int[] nums) {
-        int min = Integer.MAX_VALUE, secondMin = Integer.MAX_VALUE;
-        for (int num : nums) {
-            if (num <= min)
-                min = num;
-            else if (num < secondMin)
-                secondMin = num;
-            else if (num > secondMin)
-                return true;
-        }
-        return false;
-    }
-
 
     // 75. Sort Colors
     public void sortColors(int[] nums) {
@@ -2861,125 +1946,6 @@ public class AllPractices {
         return lives;
     }
 
-    // 103. Binary Tree Zigzag Level Order Traversal
-    public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
-        List<List<Integer>> res = new ArrayList<>();
-        zigzagLevelOrderHelper(root, res, 0);
-        return res;
-    }
-
-    private void zigzagLevelOrderHelper(TreeNode curr, List<List<Integer>> list, int level) {
-        if (curr == null)
-            return;
-        if (list.size() <= level) {
-            List<Integer> newLevel = new LinkedList<>();
-            list.add(newLevel);
-        }
-        List<Integer> collection = list.get(level);
-        if (level % 2 == 0)
-            collection.add(curr.val);
-        else
-            collection.add(0, curr.val);
-
-        zigzagLevelOrderHelper(curr.left, list, level + 1);
-        zigzagLevelOrderHelper(curr.right, list, level + 1);
-    }
-
-    public List<List<Integer>> zigzagLevelOrderBfs(TreeNode root) {
-        List<List<Integer>> result = new LinkedList<>();
-        if (root == null) return result;
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.offer(root);
-        int level = 0;
-        while (!queue.isEmpty()) {
-            int size = queue.size();
-            List<Integer> temp = new LinkedList<>();
-            for (int i = 0; i < size; i++) {
-                TreeNode node = queue.poll();
-                if (node.left != null)
-                    queue.offer(node.left);
-                if (node.right != null)
-                    queue.offer(node.right);
-                if (level % 2 == 0) {
-                    temp.add(node.val);
-                } else {
-                    temp.add(0, node.val);
-                }
-            }
-            result.add(temp);
-            level++;
-        }
-        return result;
-    }
-
-    // 11. Container With Most Water
-    public int maxArea(int[] height) {
-        int result = -1;
-        if (height == null || height.length == 0)
-            return result;
-        int left = 0, right = height.length - 1;
-        int lMax = height[left], rMax = height[right];
-        int area = 0;
-        while (left < right) {
-            if (lMax < rMax) {
-                area = (right - left) * lMax;
-                left++;
-                lMax = Math.max(lMax, height[left]);
-            } else {
-                area = (right - left) * rMax;
-                right--;
-                rMax = Math.max(rMax, height[right]);
-            }
-            result = Math.max(area, result);
-        }
-        return result;
-    }
-
-
-    // 56. Merge Intervals
-    public List<Interval> merge(List<Interval> intervals) {
-        if (intervals.size() <= 1)
-            return intervals;
-        intervals.sort((i1, i2) -> Integer.compare(i1.start, i2.start));
-        List<Interval> result = new LinkedList<>();
-        int start = intervals.get(0).start;
-        int end = intervals.get(0).end;
-
-        for (Interval interval : intervals) {
-            if (interval.start <= end)
-                end = Math.max(end, interval.end);
-            else {
-                result.add(new Interval(start, end));
-                start = interval.start;
-                end = interval.end;
-            }
-        }
-
-        result.add(new Interval(start, end));
-        return result;
-    }
-
-
-    // 34. Search for a Range
-    public int[] searchRange(int[] nums, int target) {
-        int low = 0, high = nums.length - 1;
-        while (low <= high) {
-            int mid = low + (high - low) / 2;
-            if (nums[mid] == target) {
-                int left = mid, right = mid;
-                while (left >= 0 && nums[left] == nums[mid])
-                    left--;
-                while (right <= nums.length - 1 && nums[right] == nums[mid])
-                    right++;
-                return new int[]{left + 1, right - 1};
-            } else if (nums[mid] > target) {
-                high = mid - 1;
-            } else {
-                low = mid + 1;
-            }
-        }
-        return new int[]{-1, -1};
-    }
 
     // 227. Basic Calculator II
     public int calculate(String s) {
@@ -3017,154 +1983,6 @@ public class AllPractices {
         }
         return re;
     }
-
-
-    // 134. Gas Station
-    public int canCompleteCircuit(int[] gas, int[] cost) {
-        int start = 0, count = 0, sum = 0;
-        for (int i = 0; i < gas.length * 2; i++) {
-            sum += gas[i % gas.length] - cost[i % gas.length];
-            if (sum < 0) {
-                start = i + 1;
-                sum = 0;
-                count = 0;
-            } else {
-                count++;
-                if (count >= gas.length) {
-                    return start;
-                }
-            }
-        }
-        return -1;
-    }
-
-
-    // 55. Jump Game
-    public boolean canJump(int[] nums) {
-        int max = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (i > max)
-                return false;
-            max = Math.max(nums[i] + i, max);
-        }
-        return true;
-    }
-
-    // 150. Evaluate Reverse Polish Notation
-    public int evalRPN(String[] tokens) {
-        int a, b;
-        Stack<Integer> stack = new Stack<>();
-        for (String s : tokens) {
-            if (s.equals("+")) {
-                stack.add(stack.pop() + stack.pop());
-            } else if (s.equals("/")) {
-                b = stack.pop();
-                a = stack.pop();
-                stack.add(a / b);
-            } else if (s.equals("*")) {
-                stack.add(stack.pop() * stack.pop());
-            } else if (s.equals("-")) {
-                b = stack.pop();
-                a = stack.pop();
-                stack.add(a - b);
-            } else {
-                stack.add(Integer.parseInt(s));
-            }
-        }
-        return stack.pop();
-    }
-
-    // 79. Word Search
-    public boolean exist(char[][] board, String word) {
-        char[] wordChars = word.toCharArray();
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
-                if (existHelper(board, i, j, wordChars, 0))
-                    return true;
-            }
-        }
-        return false;
-    }
-
-    private boolean existHelper(char[][] board, int i, int j, char[] word, int index) {
-        if (index == word.length)
-            return true;
-        if (i < 0 || j < 0 || i == board.length || j == board[i].length)
-            return false;
-        if (board[i][j] != word[index])
-            return false;
-        board[i][j] ^= 256;
-        boolean exist = existHelper(board, i, j + 1, word, index + 1) ||
-                existHelper(board, i, j - 1, word, index + 1) ||
-                existHelper(board, i + 1, j, word, index + 1) ||
-                existHelper(board, i - 1, j, word, index + 1);
-        board[i][j] ^= 256;
-        return exist;
-    }
-
-    // 54. Spiral Matrix
-    public List<Integer> spiralOrder(int[][] matrix) {
-        List<Integer> result = new ArrayList<>();
-        if (matrix == null || matrix.length == 0)
-            return result;
-        int n = matrix.length, m = matrix[0].length;
-        int k = 0, l = 0;
-        while (k < n && l < m) {
-            for (int i = l; i < m; i++) {
-                result.add(matrix[k][i]);
-            }
-            k++;
-            for (int i = k; i < n; i++) {
-                result.add(matrix[i][m - 1]);
-            }
-            m--;
-            if (k < n) {
-                for (int i = m - 1; i >= l; i--) {
-                    result.add(matrix[n - 1][i]);
-                }
-                n--;
-            }
-            if (l < m) {
-                for (int i = n - 1; i >= k; i--) {
-                    result.add(matrix[i][l]);
-                }
-                l++;
-            }
-        }
-        return result;
-    }
-
-    // 59. Spiral Order 2
-    public int[][] generateMatrix(int n) {
-        int[][] result = new int[n][n];
-        if (n == 0)
-            return result;
-        int colStart = 0, rowStart = 0, colEnd = n - 1, rowEnd = n - 1, num = 1;
-        while (colStart <= colEnd && rowStart <= rowEnd) {
-            for (int i = colStart; i <= colEnd; i++) {
-                result[rowStart][i] = num++;
-            }
-            rowStart++;
-            for (int i = rowStart; i <= rowEnd; i++) {
-                result[i][colEnd] = num++;
-            }
-            colEnd--;
-            for (int i = colEnd; i >= colStart; i--) {
-                if (rowStart <= rowEnd) {
-                    result[rowEnd][i] = num++;
-                }
-            }
-            rowEnd--;
-            for (int i = rowEnd; i >= rowStart; i--) {
-                if (colStart <= colEnd) {
-                    result[i][colStart] = num++;
-                }
-            }
-            colStart++;
-        }
-        return result;
-    }
-
 
     // 433. Minimum Genetic Mutation
     public int minMutation(String start, String end, String[] bank) {
@@ -3253,5 +2071,75 @@ public class AllPractices {
             fwd = temp;
         }
         return -1;
+    }
+
+    public static String findGameStatus(char[][] board) {
+        /*
+         * Write your code here.
+         */
+        int height = board.length, width = board[0].length;
+        boolean rWin = false, yWin = false;
+        char[] players = new char[]{'R', 'Y'};
+        for (char p : players) {
+            char currentPlayer = p;
+            outerLoop:
+            for (int r = 0; r < height; r++) {
+                for (int c = 0; c < width; c++) {
+                    if (board[r][c] == '0') {
+                        continue;
+                    }
+                    if (board[r][c] == currentPlayer) {
+                        if (c + 3 < width && currentPlayer == board[r][c + 1] &&
+                                currentPlayer == board[r][c + 2] && currentPlayer == board[r][c + 3]) {
+                            if (currentPlayer == 'R') {
+                                rWin = true;
+                            } else {
+                                yWin = true;
+                            }
+                            break outerLoop;
+                        }
+                        if (r + 3 < height) {
+                            if (currentPlayer == board[r + 1][c] && currentPlayer == board[r + 2][c] &&
+                                    currentPlayer == board[r + 3][c]) {
+                                if (currentPlayer == 'R') {
+                                    rWin = true;
+                                } else {
+                                    yWin = true;
+                                }
+                                break outerLoop;
+                            }
+                            if (c + 3 < width && currentPlayer == board[r + 1][c + 1] &&
+                                    currentPlayer == board[r + 2][c + 2] && currentPlayer == board[r + 3][c + 3]) {
+                                if (currentPlayer == 'R') {
+                                    rWin = true;
+                                } else {
+                                    yWin = true;
+                                }
+                                break outerLoop;
+                            }
+                            if (c - 3 >= 0 && currentPlayer == board[r + 1][c - 1] &&
+                                    currentPlayer == board[r + 2][c - 2] && currentPlayer == board[r + 3][c - 3]) {
+                                if (currentPlayer == 'R') {
+                                    rWin = true;
+                                } else {
+                                    yWin = true;
+                                }
+                                break outerLoop;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        if (rWin && yWin) {
+            return "B";
+        } else if (rWin) {
+            return "R";
+        } else if (yWin) {
+            return "Y";
+        } else {
+            return "N";
+        }
     }
 }

@@ -1,9 +1,14 @@
 import practice.AllPractices;
+import practice.Polygon2D;
 import practice.domain.*;
 import practice.problem.*;
 
+import java.awt.*;
+import java.awt.geom.Path2D;
 import java.util.*;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -16,6 +21,35 @@ public class App {
 //    }
 
     public static void main(String[] args) {
+
+        class ListMax {
+            List<Integer> listMax;
+            int n;
+
+            public ListMax(int n) {
+                this.n = n;
+                this.listMax = new ArrayList<Integer>(this.n);
+                //Initialize to default value of 0 for all n positions
+                for (int i = 0; i < n; i++) {
+                    this.listMax.add(0);
+                }
+            }
+
+            public void doOperation(int a, int b, int k) {
+                for (int i = a - 1; i < b; i++) {
+                    int val = this.listMax.get(i);
+                    val += k;
+                    this.listMax.set(i, val);
+                }
+            }
+
+            public int listMax() {
+                Collections.sort(this.listMax);
+                int size = this.listMax.size();
+                return this.listMax.get(size - 1);
+            }
+        }
+
 
         AllPractices ap = new AllPractices();
 
@@ -42,7 +76,7 @@ public class App {
 
 ////        boolean res = isUgly(300);
 //        int[] ints = new int[]{1, 12, -5, -6, 50, 3};
-//        int[] ints2 = new int[]{1, 12, -5, -6, 12, 1};
+        int[] ints2 = new int[]{3, 2, 2, 3};
 ////        double res = findMaxAverage(ints, 4);
 
         MergeTwoLists mergeTwoLists = new MergeTwoLists();
@@ -54,7 +88,8 @@ public class App {
         l2.next.next = new ListNode(6);
 //
 //        ListNode l3 = mergeTwoLists.mergeTwoListsIter(l1, l2);
-////        int length = removeElement(ints2, 1);
+//        RemoveElement removeElement = new RemoveElement();
+//        int length = removeElement.removeElement(ints2, 2);
 //        int[] ints4 = new int[]{1, 3, 5, 6};
 ////        int[] plusOne = plusOne(ints4);
 ////        getRow(3);
@@ -85,9 +120,10 @@ public class App {
 //        String[] points = {"5", "-2", "4", "C", "D", "9", "+", "+"};
 ////        System.out.println(calPoints(points));
 //
-//        int[][] matrix = {{1, 2, 3, 4}, {5, 1, 2, 3}, {9, 5, 1, 2}};
-////        System.out.println(isToeplitzMatrix(matrix));
-//
+        int[][] matrix = {{1, 2, 3, 4}, {5, 1, 2, 3}, {9, 5, 1, 2}};
+//        ToeplitzMatrix toeplitzMatrix = new ToeplitzMatrix();
+//        System.out.println(toeplitzMatrix.isToeplitzMatrix(matrix));
+
 ////        System.out.println(hasAlternatingBits(43));
 
 //        CountBits countBits = new CountBits();
@@ -124,7 +160,7 @@ public class App {
 
         List<Employee> employeeList = Arrays.asList(employee1, employee2, employee3);
         Stream<List<Employee>> listStream = Stream.of(employeeList);
-        System.out.println(ap.getImportance(employeeList, 1));
+//        System.out.println(ap.getImportance(employeeList, 1));
 
         List<String> a = Arrays.asList("a", "b", "c", "f");
         List<String> b = Arrays.asList("a", "b", "c", "d", "f");
@@ -135,7 +171,7 @@ public class App {
         lists.add(b);
         lists.add(c);
         List<String> collect = lists.stream().flatMap(x -> x.stream()).distinct().collect(Collectors.toList());
-        System.out.println("Common in A & B & C: " + ap.getCommonElements(lists));
+//        System.out.println("Common in A & B & C: " + ap.getCommonElements(lists));
 
         Map<String, List<Integer>> strIntMap = new HashMap<>();
         strIntMap.put("Jim", Arrays.asList(1, 2, 3));
@@ -207,7 +243,8 @@ public class App {
 //
 //        System.out.println(rotatedDigits(15));
 //
-//        System.out.println(countBinarySubstrings("00110001111"));
+        CountBinarySubstrings countBinarySubstrings = new CountBinarySubstrings();
+        System.out.println(countBinarySubstrings.countBinarySubstrings("00110001111"));
 
         TreeNode node1 = new TreeNode(10);
         node1.left = new TreeNode(6);
@@ -218,7 +255,8 @@ public class App {
 
 //        System.out.println(findTarget(node1, 14));
 //
-//        System.out.println(tree2str(node1));
+//        ConstructStringFromBinaryTree constructStringFromBinaryTree = new ConstructStringFromBinaryTree();
+//        System.out.println(constructStringFromBinaryTree.tree2strIterative(node1));
 //
 //        System.out.println(isOneBitCharacter(new int[]{1, 0, 1, 1, 1, 0}));
 
@@ -249,7 +287,8 @@ public class App {
 //
 //        System.out.println(minCostClimbingStairs(new int[]{1, 100, 1, 1, 1, 100, 1, 1, 100, 1}));
 //
-//        System.out.println(longestCommonPrefix(new String[]{"flower", "flow", "flight"}));
+//        LongestCommonPrefix longestCommonPrefix = new LongestCommonPrefix();
+//        System.out.println(longestCommonPrefix.longestCommonPrefixBinarySearch(new String[]{"flower", "flow", "flight"}));
 //
 //        UglyNumberII uglyNumberII = new UglyNumberII();
 //        System.out.println(uglyNumberII.nthUglyNumberDp(15));
@@ -266,7 +305,8 @@ public class App {
         secondMin.right.left.left = new TreeNode(2);
         secondMin.right.left.right = new TreeNode(3);
 
-//        System.out.println(findSecondMinimumValue(secondMin));
+//        SecondMinimumNodeInaBinaryTree secondMinimumNodeInaBinaryTree = new SecondMinimumNodeInaBinaryTree();
+//        System.out.println(secondMinimumNodeInaBinaryTree.findSecondMinimumValue(secondMin));
 //
 //        System.out.println(findLHS(new int[]{1, 2, 2, 3, 1, 2, 1}));
 //
@@ -286,7 +326,8 @@ public class App {
 //
 //        System.out.println(highestProductOf3(new int[]{1, -7, 3, -4, 5, 10, -10}));
 //
-//        System.out.println(longestWord(new String[]{"a", "banana", "app", "appl", "apply", "apple", "b", "ban"}));
+        LongestWordInDictionary longestWordInDictionary = new LongestWordInDictionary();
+        System.out.println(longestWordInDictionary.longestWord(new String[]{"a", "banana", "app", "appl", "apply", "apple", "b", "ban", "ap", "ba", "bana", "banan"}));
 
         TreeNode mainTree = new TreeNode(3);
         mainTree.left = new TreeNode(4);
@@ -472,9 +513,14 @@ public class App {
 
 //        System.out.println(mySqrt(21));
 
-//        System.out.println(thirdMax(new int[]{1, 3, 3, 5, 5, 9, 6}));
+//        ThirdMaximumNumber thirdMaximumNumber = new ThirdMaximumNumber();
+//        System.out.println(thirdMaximumNumber.thirdMax(new int[]{1, 3, 3, 5, 5, 9, 6}));
 
-//        System.out.println(convertToTitle(702));
+//        ExcelSheetColumnTitle excelSheetColumnTitle = new ExcelSheetColumnTitle();
+//        System.out.println(excelSheetColumnTitle.convertToTitle(702));
+
+//        ExcelSheetColumnNumber excelSheetColumnNumber = new ExcelSheetColumnNumber();
+//        excelSheetColumnNumber.titleToNumber("ZZ");
 
 //        System.out.println(largestPalindrome(2));
 
@@ -484,7 +530,8 @@ public class App {
 
 //        System.out.println(findTheDifference("abcd", "abced"));
 
-//        System.out.println(maxIndexDiff(new int[]{34, 8, 10, 3, 2, 80, 30, 33, 1}, 9));
+//        MaxIndexDiffOfArray maxIndexDiffOfArray = new MaxIndexDiffOfArray();
+//        System.out.println(maxIndexDiffOfArray.maxIndexDiffTwo(new int[]{34, 8, 10, 3, 2, 80, 30, 33, 1}, 9));
 
 //        System.out.println(ap.maxSubArray(new int[]{34, 8, -10, 3, 2, -80, 30, 33, 1}));
 
@@ -801,12 +848,17 @@ public class App {
 //        InsertionSortList insertionSortList = new InsertionSortList();
 //        System.out.println(insertionSortList.insertionSortList(mergeSortList));
 
-//        System.out.println(ap.canCompleteCircuit(new int[]{1, 2, 3, 4, 5}, new int[]{3, 4, 5, 5, 6}));
+//        GasStation gasStation = new GasStation();
+//        System.out.println(gasStation.canCompleteCircuit(new int[]{1, 2, 3, 4, 5}, new int[]{3, 4, 5, 1, 2}));
 
 //        LowestCommonAncestorOfABinaryTree lowestCommonAncestorOfABinaryTree = new LowestCommonAncestorOfABinaryTree();
 //        System.out.println(lowestCommonAncestorOfABinaryTree.lowestCommonAncestorIterative(mainTree, mainTree.left.right, mainTree.right));
 
-//        System.out.println(ap.canJump(new int[]{3, 2, 1, 0, 4}));
+//        JumpGame jumpGame = new JumpGame();
+//        System.out.println(jumpGame.canJump(new int[]{3, 2, 1, 0, 4}));
+
+//        JumpGameII jumpGameII = new JumpGameII();
+//        jumpGameII.jumpBfs(new int[]{2, 2, 1, 1, 4});
 
         ListNode addTwoNumbers1 = new ListNode(2);
         addTwoNumbers1.next = new ListNode(4);
@@ -823,11 +875,20 @@ public class App {
 
 //        System.out.println(ap.evalRPN(new String[]{"10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"}));
 
-//        System.out.println(ap.exist(new char[][]{
+//        WordSearch wordSearch = new WordSearch();
+//        System.out.println(wordSearch.exist(new char[][]{
 //                {'A', 'B', 'C', 'E'},
 //                {'S', 'F', 'C', 'S'},
 //                {'A', 'D', 'E', 'E'}
 //        }, "ABCCED"));
+
+//        WordSearchII wordSearchII = new WordSearchII();
+//        wordSearchII.findWords(new char[][]{
+//                {'o', 'a', 'a', 'n'},
+//                {'e', 't', 'a', 'e'},
+//                {'i', 'h', 'k', 'r'},
+//                {'i', 'f', 'l', 'v'}
+//        }, new String[]{"eat", "oath"});
 
 //        ap.spiralOrder(new int[][]{{1, 2, 3, 4, 5, 6}, {7, 8, 9, 10, 11, 12}, {13, 14, 15, 16, 17, 18}});
 
@@ -836,7 +897,7 @@ public class App {
 //        System.out.println(ap.maxProduct(new int[]{2, 3, 0, -2, 4, -3}));
 
 //        CoinChange coinChange = new CoinChange();
-//        System.out.println(coinChange.coinChange(new int[]{1, 2, 5}, 11));
+//        System.out.println(coinChange.coinChangeTwo(new int[]{1, 2, 5}, 11));
 
 //        Codec codec = new Codec();
 //        codec.decode(codec.encode("www.google.com"));
@@ -1525,8 +1586,159 @@ public class App {
 //                {18, 21, 23, 26, 30}
 //        }, 9);
 
-        BasicCalculator basicCalculator = new BasicCalculator();
-        basicCalculator.calculate("(1+(4+5+2)-3)+(6+8)");
+//        BasicCalculator basicCalculator = new BasicCalculator();
+//        basicCalculator.calculate("(1+(4+5+2)-3)+(6+8)");
+
+//        AdditiveNumber additiveNumber = new AdditiveNumber();
+//        additiveNumber.isAdditiveNumber("112358");
+
+//        SubstringWithConcatenationOfAllWords substringWithConcatenationOfAllWords = new SubstringWithConcatenationOfAllWords();
+//        substringWithConcatenationOfAllWords.findSubstring("barfoothefoobarman", new String[]{"bar", "foo"});
+
+//        RestoreIPAddresses restoreIPAddresses = new RestoreIPAddresses();
+//        restoreIPAddresses.restoreIpAddresses("25525511135");
+
+        ListNode reverseKGroup = new ListNode(1);
+        reverseKGroup.next = new ListNode(2);
+        reverseKGroup.next.next = new ListNode(3);
+        reverseKGroup.next.next.next = new ListNode(4);
+        reverseKGroup.next.next.next.next = new ListNode(5);
+        reverseKGroup.next.next.next.next.next = new ListNode(6);
+
+//        ReverseNodesInKGroup reverseNodesInKGroup = new ReverseNodesInKGroup();
+//        reverseNodesInKGroup.reverseKGroup(reverseKGroup, 2);
+
+//        char[][] board = new char[][]{
+//                {'0', '0', '0', '0', '0', 'Y', '0'},
+//                {'0', '0', '0', '0', '0', 'Y', 'Y'},
+//                {'0', '0', '0', '0', 'R', 'Y', 'R'},
+//                {'0', '0', '0', '0', 'Y', 'Y', 'Y'},
+//                {'0', '0', '0', 'R', 'R', 'R', 'R'}
+//        };
+//        ap.findGameStatus(board);
+
+        // [-77.475793, 39.719623], [-80.524269, 39.721209], [-80.520592, 41.986872],
+        // [-74.705273, 41.375059], [-75.142901, 39.881602], [-77.475793, 39.719623]
+        Polygon2D polygon2D = new Polygon2D();
+        polygon2D.addPoint(-77.475793, 39.719623);
+        polygon2D.addPoint(-80.524269, 39.721209);
+        polygon2D.addPoint(-80.520592, 41.986872);
+        polygon2D.addPoint(-74.705273, 41.375059);
+        polygon2D.addPoint(-75.142901, 39.881602);
+        polygon2D.addPoint(-77.475793, 39.719623);
+
+        System.out.println(polygon2D.containsTwo(-77.036133, 40.513799));
+
+        Polygon polygon = new Polygon();
+
+        double[] pointsX = new double[]{-77.475793, -80.524269, -80.520592, -74.705273, -75.142901, -77.475793};
+        double[] pointsY = new double[]{39.719623, 39.721209, 41.986872, 41.375059, 39.881602, 39.719623};
+
+        Path2D path2D = new Path2D.Double();
+        path2D.moveTo(pointsX[0], pointsY[0]);
+        for (int i = 0; i < pointsX.length; i++) {
+            path2D.lineTo(pointsX[i], pointsY[i]);
+        }
+        path2D.closePath();
+//        System.out.println(path2D.contains(-77.036133, 40.513799));
+
+        PowerOfTwo powerOfTwo = new PowerOfTwo();
+        System.out.println(powerOfTwo.isPowerOfTwo(4));
+
+//        Scanner sc = new Scanner(System.in);
+//        String str = sc.nextLine();
+//        int n = Integer.parseInt(str.split(" ")[0]);
+//        int m = Integer.parseInt(str.split(" ")[1]);
+//        int opCounter = 0;
+//        ListMax lm = new ListMax(n);
+//        //If I remember it right these were the constraints for the n and m values.
+//        if (n >= 3 && n <= 10000000 && m >= 1 && m <= 1000000) {
+//            while (opCounter != m) {
+//                String line = sc.nextLine();
+//                int a = Integer.parseInt(line.split(" ")[0]);
+//                int b = Integer.parseInt(line.split(" ")[1]);
+//                int k = Integer.parseInt(line.split(" ")[2]);
+//                //If I remember it right these were the constraints for the a, b and k values.
+//                if (a >= 1 && a <= n && b >= 1 && b <= n && k >= 1 && k <= 1000000000) {
+//                    lm.doOperation(a, b, k);
+//                }
+//                opCounter++;
+//            }
+//        }
+//        System.out.println("Maximum value in the final list: " + lm.listMax());
+
+//        maxMoney(3, 3);
+
+//        commandCount(Arrays.asList("abc:/b1c\\xy", "w:/a\\bc::/12\\xyz"));
+
     }
+
+//    static int maxMoney(int n, long k) {
+//        int[] max = new int[n + 1];
+//        max[0] = 0;
+//        if ((int) k == 1) {
+//            max[1] = 0;
+//        } else {
+//            max[1] = 1;
+//        }
+//        for (int i = 2; i < n + 1; i++) {
+//            if (max[i - 1] + i == (int) k) {
+//                max[i] = Math.max(max[i - 1] - 1, max[i - 2]) + i;
+//            } else {
+//                max[i] = max[i - 1] + i;
+//            }
+//        }
+//        return max[n] < Integer.MAX_VALUE ? max[n] : n % (int) Math.pow(10, 9) + 7;
+
+//        int max = 0, prevMax = 0;
+//        if ((int) k == 1) {
+//            max = 0;
+//        } else {
+//            max = 1;
+//        }
+//        for (int i = 2; i < n + 1; i++) {
+//            if (max + i == (int) k) {
+//                prevMax = max;
+//                max = prevMax + i - 1;
+//            } else {
+//                prevMax = max;
+//                max += i;
+//            }
+//        }
+//        return max < Integer.MAX_VALUE ? max : max % (int) Math.pow(10, 9) + 7;
+//    }
+
+//    static List<Integer> commandCount(List<String> commands) {
+//        List<Integer> result = new ArrayList<>();
+//        if (commands == null || commands.size() == 0)
+//            return result;
+//
+//        String pattern = "(\\w)([0-9]*\\w*\\:*)(\\/)([0-9a-z]+)(\\\\)(\\w+)+";
+//        Pattern r = Pattern.compile(pattern);
+//
+//        for (int i = 0; i < commands.size(); i++) {
+//            String str = commands.get(i);
+//            Matcher m = r.matcher(str);
+//            if (m.find()) {
+//                int total = 0;
+//                String temp = m.group(1) + m.group(2);
+//                int count = temp.replaceAll("\\W", "").length();
+//                total += count * m.group(6).length();
+//                while (m.end(6) < str.length()) {
+//                    String sec = str.substring(m.end(5));
+//                    m = r.matcher(sec);
+//                    if (m.find()) {
+//                        temp = m.group(1) + m.group(2);
+//                        count = temp.replaceAll("\\W", "").length();
+//                        total += count * m.group(6).length();
+//                    }
+//                }
+//                result.add(total);
+//            } else {
+//                result.add(0);
+//            }
+//        }
+//        return result;
+//    }
 
 }
