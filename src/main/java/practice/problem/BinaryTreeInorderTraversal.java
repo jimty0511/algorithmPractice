@@ -11,7 +11,6 @@ public class BinaryTreeInorderTraversal {
         if (root == null)
             return result;
         Stack<TreeNode> stack = new Stack<>();
-        stack.push(root);
         while (root != null || !stack.isEmpty()) {
             while (root != null) {
                 stack.push(root);

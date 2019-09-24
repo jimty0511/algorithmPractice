@@ -1,5 +1,8 @@
 package practice.sort;
 
+/**
+ * Best Case, Average, Worst Case: O(nlog(n))
+ */
 public class MergeSort {
     int[] tempArr;
 

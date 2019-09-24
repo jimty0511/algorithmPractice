@@ -8,9 +8,9 @@ public class ValidPerfectSquare {
         long n = (long) num;
         while (low <= high) {
             mid = low + (high - low) / 2;
-            if (mid * mid == num)
+            if (mid * mid == n)
                 return true;
-            else if (mid * mid < num)
+            else if (mid * mid < n)
                 low = mid + 1;
             else
                 high = mid - 1;

@@ -1,6 +1,8 @@
 package practice.problem;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 // 207. Course Schedule
@@ -63,5 +65,35 @@ public class CourseSchedule {
             }
         }
         return canFinishCount == numCourses;
+    }
+
+    public boolean canFinishThree(int numCourses, int[][] prerequisites) {
+        if (numCourses == 0 || prerequisites == null || prerequisites.length == 0)
+            return true;
+        int[] inDegree = new int[numCourses];
+        List<List<Integer>> graph = new ArrayList<>();
+        for (int i = 0; i < numCourses; i++)
+            graph.add(new ArrayList<>());
+        for (int i = 0; i < prerequisites.length; i++) {
+            inDegree[prerequisites[i][0]]++;
+            graph.get(prerequisites[i][1]).add(prerequisites[i][0]);
+        }
+        Queue<Integer> q = new LinkedList<>();
+        for (int i = 0; i < numCourses; i++) {
+            if (inDegree[i] == 0)
+                q.offer(i);
+        }
+        int canFinish = q.size();
+        while (!q.isEmpty()) {
+            int pre = q.poll();
+            for (int i : graph.get(pre)) {
+                inDegree[i]--;
+                if (inDegree[i] == 0) {
+                    canFinish++;
+                    q.offer(i);
+                }
+            }
+        }
+        return canFinish == numCourses;
     }
 }

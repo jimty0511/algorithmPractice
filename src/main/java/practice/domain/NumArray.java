@@ -1,5 +1,6 @@
 package practice.domain;
 
+// 303. Range Sum Query - Immutable
 public class NumArray {
 
     int[] nums;

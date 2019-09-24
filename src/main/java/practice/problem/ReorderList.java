@@ -4,6 +4,36 @@ import practice.domain.ListNode;
 
 // 143. Reorder List
 public class ReorderList {
+
+    public void reorderListThreeSteps(ListNode head) {
+        if (head == null || head.next == null)
+            return;
+        ListNode slow = head, fast = head;
+        while (fast.next != null && fast.next.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        ListNode preMid = slow, curr = slow.next;
+        while (curr.next != null) {
+            ListNode temp = curr.next;
+            curr.next = temp.next;
+            temp.next = preMid.next;
+            preMid.next = temp;
+        }
+//        slow = head;
+//        fast = preMid.next;
+//        while (slow != preMid) {
+//            preMid.next = fast.next;
+//            fast.next = slow.next;
+//            slow.next = fast;
+//            slow = fast.next;
+//            fast = preMid.next;
+//        }
+        fast = preMid.next;
+        preMid.next = null;
+        reorderListMerge(head, fast);
+    }
+
     public void reorderList(ListNode head) {
         if (head == null || head.next == null)
             return;
@@ -34,8 +64,8 @@ public class ReorderList {
     }
 
     private ListNode reorderListFindMiddle(ListNode head) {
-        ListNode slow = head, fast = head.next;
-        while (fast != null && fast.next != null) {
+        ListNode slow = head, fast = head;
+        while (fast.next != null && fast.next.next != null) {
             slow = slow.next;
             fast = fast.next.next;
         }

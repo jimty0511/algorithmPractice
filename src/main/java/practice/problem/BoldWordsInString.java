@@ -55,4 +55,36 @@ public class BoldWordsInString {
             }
         }
     }
+
+    public String addBoldTagArray(String s, String[] dict) {
+        int n = s.length();
+        int[] mark = new int[n + 1];
+        for (String d : dict) {
+            int i = -1;
+            i = s.indexOf(d, i);
+            while (i != -1) {
+                mark[i]++;
+                mark[i + d.length()]--;
+                i = s.indexOf(d, i + 1);
+            }
+        }
+        StringBuilder sb = new StringBuilder();
+        int count = 0;
+        boolean bold = false;
+        for (int i = 0; i <= n; i++) {
+            count += mark[i];
+            if (count > 0 && !bold) {
+                sb.append("<b>");
+                bold = true;
+            }
+            if (count == 0 && bold) {
+                sb.append("</b>");
+                bold = false;
+            }
+            if (i == n)
+                break;
+            sb.append(s.charAt(i));
+        }
+        return sb.toString();
+    }
 }

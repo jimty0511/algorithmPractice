@@ -36,6 +36,16 @@ public class WordLadder {
     public int ladderLengthTwoPointer(String beginWord, String endWord, List<String> wordList) {
         if (!wordList.contains(endWord))
             return 0;
+        if (wordList.size() == 2) {
+            Set<Character> set = new HashSet<>();
+            for (String w : wordList) {
+                for (char c : w.toCharArray()) {
+                    set.add(c);
+                }
+            }
+            if (set.size() > 4)
+                return 0;
+        }
         Set<String> dict = new HashSet<>(wordList), visited = new HashSet<>(),
                 beginSet = new HashSet<>(), endSet = new HashSet<>();
         beginSet.add(beginWord);

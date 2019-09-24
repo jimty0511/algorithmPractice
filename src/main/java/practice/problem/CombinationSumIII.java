@@ -3,7 +3,7 @@ package practice.problem;
 import java.util.ArrayList;
 import java.util.List;
 
-// 216. Combination Sum III
+// 216. Combinations Sum III
 public class CombinationSumIII {
     public List<List<Integer>> combinationSum3(int k, int n) {
         List<List<Integer>> result = new ArrayList<>();

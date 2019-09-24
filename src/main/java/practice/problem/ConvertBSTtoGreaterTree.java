@@ -17,6 +17,21 @@ public class ConvertBSTtoGreaterTree {
         return root;
     }
 
+    public TreeNode convertBSTTwo(TreeNode root) {
+        helper(root);
+        return root;
+    }
+
+    private void helper(TreeNode root) {
+        if (root == null)
+            return;
+        if (root.right != null)
+            helper(root.right);
+        root.val = (sum538 += root.val);
+        if (root.left != null)
+            helper(root.left);
+    }
+
     public TreeNode convertBSTIterative(TreeNode root) {
         if (root == null)
             return null;

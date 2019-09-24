@@ -14,13 +14,14 @@ public class ShortestWordDistanceII {
         map = new HashMap<>();
         for (int i = 0; i < words.length; i++) {
             String temp = words[i];
-            if (map.containsKey(temp)) {
-                map.get(temp).add(i);
-            } else {
-                List<Integer> list = new ArrayList<>();
-                list.add(i);
-                map.put(temp, list);
-            }
+//            if (map.containsKey(temp)) {
+//                map.get(temp).add(i);
+//            } else {
+//                List<Integer> list = new ArrayList<>();
+//                list.add(i);
+//                map.put(temp, list);
+//            }
+            map.computeIfAbsent(temp, a -> new ArrayList<>()).add(i);
         }
     }
 

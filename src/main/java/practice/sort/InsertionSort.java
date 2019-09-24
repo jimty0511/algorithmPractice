@@ -1,5 +1,9 @@
 package practice.sort;
 
+/**
+ * Best Case: O(n)
+ * Average, Worst Case: O(n^2)
+ */
 public class InsertionSort {
     public void insertionSort(int arr[]) {
         int n = arr.length;

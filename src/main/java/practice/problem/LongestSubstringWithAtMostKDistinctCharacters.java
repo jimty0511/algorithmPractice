@@ -1,6 +1,7 @@
 package practice.problem;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 // 340. Longest Substring with At Most K Distinct Characters
@@ -28,5 +29,23 @@ public class LongestSubstringWithAtMostKDistinctCharacters {
             maxLength = Math.max(maxLength, high - low);
         }
         return maxLength;
+    }
+
+    public int lengthOfLongestSubstringKDistinctLHM(String s, int k) {
+        int left = 0, max = 0;
+        LinkedHashMap<Character, Integer> map = new LinkedHashMap<>();
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (map.containsKey(c))
+                map.remove(c);
+            map.put(c, i);
+            if (map.size() > k) {
+                char next = map.keySet().iterator().next();
+                left = map.get(next) + 1;
+                map.remove(next);
+            }
+            max = Math.max(max, i - left + 1);
+        }
+        return max;
     }
 }

@@ -19,4 +19,19 @@ public class MaximumProductSubarray {
         }
         return max;
     }
+
+    public int maxProductTwo(int[] nums) {
+        if (nums == null || nums.length == 0)
+            return 0;
+        int maxPre = nums[0], minPre = nums[0], max = nums[0];
+        int maxNow, minNow;
+        for (int i = 1; i < nums.length; i++) {
+            maxNow = Math.max(Math.max(maxPre * nums[i], minPre * nums[i]), nums[i]);
+            minNow = Math.min(Math.min(maxPre * nums[i], minPre * nums[i]), nums[i]);
+            max = Math.max(maxNow, max);
+            maxPre = maxNow;
+            minPre = minNow;
+        }
+        return max;
+    }
 }

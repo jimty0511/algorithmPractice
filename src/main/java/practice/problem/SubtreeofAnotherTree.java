@@ -17,4 +17,22 @@ public class SubtreeofAnotherTree {
             return s == null && t == null;
         }
     }
+
+    public boolean isSubtreeTwo(TreeNode s, TreeNode t) {
+        if (s == null)
+            return false;
+        if (helperTwo(s, t))
+            return true;
+        return isSubtreeTwo(s.left, t) || isSubtreeTwo(s.right, t);
+    }
+
+    private boolean helperTwo(TreeNode s, TreeNode t) {
+        if (s == null && t == null)
+            return true;
+        if (s == null || t == null)
+            return false;
+        if (s.val != t.val)
+            return false;
+        return helperTwo(s.left, t.left) && helperTwo(s.right, t.right);
+    }
 }

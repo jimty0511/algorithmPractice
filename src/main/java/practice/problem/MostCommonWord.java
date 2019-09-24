@@ -35,7 +35,7 @@ public class MostCommonWord {
     public String mostCommonWordTwo(String paragraph, String[] banned) {
         String[] splitedArr = paragraph.replaceAll("[!?',;.]", "").toLowerCase().split(" ");
         Map<String, Integer> map = new HashMap<>();
-        List<String> bannedList = Arrays.asList(banned);
+        Set<String> bannedList = new HashSet<>(Arrays.asList(banned));
         for (String str : splitedArr) {
             if (!bannedList.contains(str)) {
                 map.put(str, map.getOrDefault(str, 0) + 1);
@@ -46,6 +46,31 @@ public class MostCommonWord {
         for (String key : map.keySet()) {
             res = map.get(key) > currMax ? key : res;
             currMax = map.get(res);
+        }
+        return res;
+    }
+
+    public String mostCommonWordThree(String paragraph, String[] banned) {
+        Set<String> ban = new HashSet<>(Arrays.asList(banned));
+        Map<String, Integer> map = new HashMap<>();
+        StringBuilder sb = new StringBuilder();
+        String res = "";
+        int max = 0;
+        for (int i = 0; i <= paragraph.length(); i++) {
+            char c = i == paragraph.length() ? '.' : paragraph.charAt(i);
+            if (Character.isLetter(c))
+                sb.append(Character.toLowerCase(c));
+            else if (sb.length() > 0) {
+                String word = sb.toString();
+                if (!ban.contains(word)) {
+                    map.put(word, map.getOrDefault(word, 0) + 1);
+                    if (map.get(word) > max) {
+                        res = word;
+                        max = map.get(word);
+                    }
+                }
+                sb = new StringBuilder();
+            }
         }
         return res;
     }

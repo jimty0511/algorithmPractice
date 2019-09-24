@@ -31,4 +31,28 @@ public class WordBreakII {
         map.put(start, res);
         return res;
     }
+
+    public List<String> wordBreakTwo(String s, List<String> wordDict) {
+        return helperTwo(s, new HashSet<>(wordDict), new HashMap<String, LinkedList<String>>());
+    }
+
+    private List<String> helperTwo(String s, Set<String> wordDict, Map<String, LinkedList<String>> map) {
+        if (map.containsKey(s))
+            return map.get(s);
+        LinkedList<String> res = new LinkedList<>();
+        if (s.length() == 0) {
+            res.add("");
+            return res;
+        }
+        for (String word : wordDict) {
+            if (s.startsWith(word)) {
+                List<String> subList = helperTwo(s.substring(word.length()), wordDict, map);
+                for (String sub : subList) {
+                    res.add(word + (sub.isEmpty() ? "" : " ") + sub);
+                }
+            }
+        }
+        map.put(s, res);
+        return res;
+    }
 }

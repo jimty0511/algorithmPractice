@@ -6,9 +6,9 @@ public class ExcelSheetColumnTitle {
         StringBuilder sb = new StringBuilder();
         while (n > 0) {
             n--;
-            sb.insert(0, (char) ('A' + n % 26));
+            sb.append((char) ('A' + n % 26));
             n /= 26;
         }
-        return sb.toString();
+        return sb.reverse().toString();
     }
 }

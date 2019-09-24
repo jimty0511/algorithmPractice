@@ -9,11 +9,11 @@ import java.util.Map;
 /**
  * preorder = [3,9,20,15,7]
  * inorder = [9,3,15,20,7]
- *     3
- *    / \
- *   9  20
- *     /  \
- *    15   7
+ *   3
+ *  / \
+ * 9  20
+ *   /  \
+ *  15   7
  */
 
 // 105. Construct Binary Tree from Preorder and Inorder Traversal
@@ -51,9 +51,9 @@ public class ConstructBinaryTreefromPreorderandInorderTraversal {
             return null;
         TreeNode root = new TreeNode(preorder[preStart]);
         int inRoot = map.get(root.val);
-        int numsLeft = inRoot - inStart;
-        root.left = buildTreeTwoHelper(preorder, preStart + 1, preStart + numsLeft, inorder, inStart, inRoot - 1, map);
-        root.right = buildTreeTwoHelper(preorder, preStart + numsLeft + 1, preEnd, inorder, inRoot + 1, inEnd, map);
+        int leftNodes = inRoot - inStart;
+        root.left = buildTreeTwoHelper(preorder, preStart + 1, preStart + leftNodes, inorder, inStart, inRoot - 1, map);
+        root.right = buildTreeTwoHelper(preorder, preStart + leftNodes + 1, preEnd, inorder, inRoot + 1, inEnd, map);
         return root;
     }
 

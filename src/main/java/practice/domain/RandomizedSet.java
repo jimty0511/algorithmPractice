@@ -38,11 +38,11 @@ public class RandomizedSet {
         boolean contain = map.containsKey(val);
         if (!contain)
             return false;
-        int m = map.get(val);
-        if (m < nums.size() - 1) {
-            int lastOne = nums.get(nums.size() - 1);
-            nums.set(m, lastOne);
-            map.put(lastOne, m);
+        int curIdx = map.get(val);
+        if (curIdx < nums.size() - 1) {
+            int curLastNum = nums.get(nums.size() - 1);
+            nums.set(curIdx, curLastNum);
+            map.put(curLastNum, curIdx);
         }
         map.remove(val);
         nums.remove(nums.size() - 1);

@@ -6,41 +6,40 @@ import java.util.Map;
 // 76. Minimum Window Substring
 public class MinimumWindowSubstring {
     public String minWindow(String s, String t) {
-        if (t.length() > s.length()) return "";
+        if (t.length() > s.length())
+            return "";
         Map<Character, Integer> map = new HashMap<>();
         for (char c : t.toCharArray()) {
             map.put(c, map.getOrDefault(c, 0) + 1);
         }
         int counter = map.size();
-        int begin = 0, end = 0, head = 0;
+        int left = 0, right = 0, start = 0;
         int len = Integer.MAX_VALUE;
-
-        while (end < s.length()) {
-            char c = s.charAt(end);
+        while (right < s.length()) {
+            char c = s.charAt(right);
             if (map.containsKey(c)) {
                 map.put(c, map.get(c) - 1);
                 if (map.get(c) == 0)
                     counter--;
             }
-            end++;
-
+            right++;
             while (counter == 0) {
-                char cBegin = s.charAt(begin);
-                if (map.containsKey(cBegin)) {
-                    map.put(cBegin, map.get(cBegin) + 1);
-                    if (map.get(cBegin) > 0)
+                char begin = s.charAt(left);
+                if (map.containsKey(begin)) {
+                    map.put(begin, map.get(begin) + 1);
+                    if (map.get(begin) > 0)
                         counter++;
                 }
-                if (end - begin < len) {
-                    len = end - begin;
-                    head = begin;
+                if (right - left < len) {
+                    len = right - left;
+                    start = left;
                 }
-                begin++;
+                left++;
             }
-
         }
-        if (len == Integer.MAX_VALUE) return "";
-        return s.substring(head, head + len);
+        if (len == Integer.MAX_VALUE)
+            return "";
+        return s.substring(start, start + len);
     }
 
     public String minWindowTwo(String s, String t) {

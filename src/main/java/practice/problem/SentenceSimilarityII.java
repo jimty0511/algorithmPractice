@@ -1,7 +1,9 @@
 package practice.problem;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 // 737. Sentence Similarity II
 public class SentenceSimilarityII {
@@ -62,5 +64,38 @@ public class SentenceSimilarityII {
         if (!map.containsKey(s))
             map.put(s, s);
         return s.equals(map.get(s)) ? s : find(map, map.get(s));
+    }
+
+    public boolean areSentencesSimilarDfs(String[] words1, String[] words2, String[][] pairs) {
+        if (words1.length != words2.length)
+            return false;
+        Map<String, Set<String>> graph = new HashMap<>();
+        for (String[] p : pairs) {
+            graph.putIfAbsent(p[0], new HashSet<>());
+            graph.putIfAbsent(p[1], new HashSet<>());
+            graph.get(p[0]).add(p[1]);
+            graph.get(p[1]).add(p[0]);
+        }
+        for (int i = 0; i < words1.length; i++) {
+            if (words1[i].equals(words2[i]))
+                continue;
+            if (!graph.containsKey(words1[i]))
+                return false;
+            if (!dfs(graph, words1[i], words2[i], new HashSet<>()))
+                return false;
+        }
+        return true;
+    }
+
+    private boolean dfs(Map<String, Set<String>> graph, String source, String target, Set<String> visited) {
+        if (graph.get(source).contains(target))
+            return true;
+        if (visited.add(source)) {
+            for (String next : graph.get(source)) {
+                if (!visited.contains(next) && dfs(graph, next, target, visited))
+                    return true;
+            }
+        }
+        return false;
     }
 }

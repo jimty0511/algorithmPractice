@@ -5,21 +5,25 @@ import java.util.*;
 // 46. Permutations
 public class Permutations {
     public List<List<Integer>> permute(int[] nums) {
-        List<List<Integer>> list = new ArrayList<>();
-        permuteBacktrack(list, new ArrayList<>(), nums);
-        return list;
+        List<List<Integer>> res = new ArrayList<>();
+        if (nums == null)
+            return res;
+        helper(res, new ArrayList<>(), nums, new boolean[nums.length]);
+        return res;
     }
 
-    private void permuteBacktrack(List<List<Integer>> list, List<Integer> tempList, int[] nums) {
-        if (tempList.size() == nums.length) {
-            list.add(new ArrayList<>(tempList));
-        } else {
+    private void helper(List<List<Integer>> res, List<Integer> tmp, int[] nums, boolean[] visited) {
+        if (tmp.size() == nums.length)
+            res.add(new ArrayList<>(tmp));
+        else {
             for (int i = 0; i < nums.length; i++) {
-                if (tempList.contains(nums[i]))
+                if (visited[i])
                     continue;
-                tempList.add(nums[i]);
-                permuteBacktrack(list, tempList, nums);
-                tempList.remove(tempList.size() - 1);
+                visited[i] = true;
+                tmp.add(nums[i]);
+                helper(res, tmp, nums, visited);
+                visited[i] = false;
+                tmp.remove(tmp.size() - 1);
             }
         }
     }

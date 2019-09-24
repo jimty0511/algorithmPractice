@@ -1,27 +1,10 @@
 package practice.problem;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 // 350. Intersection of Two Arrays II
 public class IntersectionOfTwoArraysII {
     public int[] intersect(int[] nums1, int[] nums2) {
-//        Map<Integer, Integer> map = new HashMap<>();
-//        List<Integer> res = new ArrayList<>();
-//        for (int i = 0; i < nums1.length; i++) {
-//            map.put(nums1[i], map.getOrDefault(nums1[i], 0) + 1);
-//        }
-//        for (int i = 0; i < nums2.length; i++) {
-//            if (map.containsKey(nums2[i]) && map.get(nums2[i]) > 0) {
-//                res.add(nums2[i]);
-//                map.put(nums2[i], map.get(nums2[i]) - 1);
-//            }
-//        }
-//
-//        int[] result = res.stream().mapToInt(i -> i).toArray();
-//        return result;
-
         Arrays.sort(nums1);
         Arrays.sort(nums2);
         int n1 = 0, n2 = 0;
@@ -39,5 +22,20 @@ public class IntersectionOfTwoArraysII {
         }
         int[] result = list.stream().mapToInt(i -> i).toArray();
         return result;
+    }
+
+    public int[] intersectOn(int[] nums1, int[] nums2) {
+        Map<Integer, Integer> map = new HashMap<>();
+        List<Integer> res = new ArrayList<>();
+        for (int n : nums1) {
+            map.put(n, map.getOrDefault(n, 0) + 1);
+        }
+        for (int n : nums2) {
+            if (map.containsKey(n) && map.get(n) > 0) {
+                res.add(n);
+                map.put(n, map.get(n) - 1);
+            }
+        }
+        return res.stream().mapToInt(i -> i).toArray();
     }
 }

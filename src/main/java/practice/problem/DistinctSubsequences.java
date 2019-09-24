@@ -20,4 +20,19 @@ public class DistinctSubsequences {
         return mem[t.length()][s.length()];
     }
 
+    public int numDistinctTwo(String s, String t) {
+        int[][] mem = new int[t.length() + 1][s.length() + 1];
+        Arrays.fill(mem[0], 1);
+        for (int i = 1; i <= t.length(); i++) {
+            for (int j = 1; j <= s.length(); j++) {
+                if (t.charAt(i - 1) == s.charAt(j - 1)) {
+                    mem[i][j] = mem[i - 1][j - 1] + mem[i][j - 1];
+                } else {
+                    mem[i][j] = mem[i][j - 1];
+                }
+            }
+        }
+        return mem[t.length()][s.length()];
+    }
+
 }

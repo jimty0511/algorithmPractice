@@ -36,4 +36,31 @@ public class CourseScheduleII {
         }
         return visited == numCourses ? order : new int[0];
     }
+
+    public int[] findOrderTwo(int numCourses, int[][] prerequisites) {
+        int[] inDegree = new int[numCourses];
+        int[] res = new int[numCourses];
+        for (int i = 0; i < prerequisites.length; i++) {
+            inDegree[prerequisites[i][0]]++;
+        }
+        Queue<Integer> queue = new LinkedList<>();
+        for (int i = 0; i < numCourses; i++) {
+            if (inDegree[i] == 0)
+                queue.offer(i);
+        }
+        int visited = 0;
+        while (!queue.isEmpty()) {
+            int pre = queue.poll();
+            res[visited++] = pre;
+            for (int i = 0; i < prerequisites.length; i++) {
+                if (prerequisites[i][1] == pre) {
+                    inDegree[prerequisites[i][0]]--;
+                    if (inDegree[prerequisites[i][0]] == 0) {
+                        queue.offer(prerequisites[i][0]);
+                    }
+                }
+            }
+        }
+        return visited == numCourses ? res : new int[0];
+    }
 }

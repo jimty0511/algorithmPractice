@@ -7,32 +7,25 @@ import java.util.Map;
 public class MajorityElement {
     public int majorityElement(int[] nums) {
         Map<Integer, Integer> map = new HashMap<>();
-        Map.Entry<Integer, Integer> res = null;
         for (int n : nums) {
             map.put(n, map.getOrDefault(n, 0) + 1);
+            if (map.get(n) > nums.length / 2)
+                return n;
         }
-        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-            if (entry.getValue() > nums.length / 2) {
-                res = entry;
-            }
-        }
-        return res.getKey();
+        return 0;
     }
 
     public int majorityElementMoore(int[] nums) {
-        int len = nums.length, candidate = nums[0], count = 1;
-        for (int i = 1; i < len; i++) {
-            if (nums[i] == candidate) {
-                count++;
-            } else {
+        int res = 0, count = 0;
+        for (int n : nums) {
+            if (count == 0)
+                res = n;
+            if (res != n)
                 count--;
-                if (count == 0) {
-                    candidate = nums[i];
-                    count = 1;
-                }
-            }
+            else
+                count++;
         }
-        return candidate;
+        return res;
     }
 
     public int majorityElementBit(int[] nums) {

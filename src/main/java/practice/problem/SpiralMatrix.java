@@ -9,29 +9,31 @@ public class SpiralMatrix {
         List<Integer> result = new ArrayList<>();
         if (matrix == null || matrix.length == 0)
             return result;
-        int n = matrix.length, m = matrix[0].length;
-        int row = 0, col = 0;
-        while (row < n && col < m) {
-            for (int i = col; i < m; i++) {
-                result.add(matrix[row][i]);
+        int rowEnd = matrix.length - 1, colEnd = matrix[0].length - 1;
+        int rowBegin = 0, colBegin = 0;
+        while (rowBegin <= rowEnd && colBegin <= colEnd) {
+            for (int i = colBegin; i <= colEnd; i++) {
+                result.add(matrix[rowBegin][i]);
             }
-            row++;
-            for (int i = row; i < n; i++) {
-                result.add(matrix[i][m - 1]);
+            rowBegin++;
+            for (int i = rowBegin; i <= rowEnd; i++) {
+                result.add(matrix[i][colEnd]);
             }
-            m--;
-            if (row < n) {
-                for (int i = m - 1; i >= col; i--) {
-                    result.add(matrix[n - 1][i]);
+            colEnd--;
+            if (rowBegin <= rowEnd) {
+                for (int i = colEnd; i >= colBegin; i--) {
+                    result.add(matrix[rowEnd][i]);
                 }
-                n--;
+                rowEnd--;
             }
-            if (col < m) {
-                for (int i = n - 1; i >= row; i--) {
-                    result.add(matrix[i][col]);
+
+            if (colBegin <= colEnd) {
+                for (int i = rowEnd; i >= rowBegin; i--) {
+                    result.add(matrix[i][colBegin]);
                 }
-                col++;
+                colBegin++;
             }
+
         }
         return result;
     }

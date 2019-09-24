@@ -2,6 +2,9 @@ package practice.problem;
 
 import practice.domain.TreeNode;
 
+import java.util.HashMap;
+import java.util.Map;
+
 // 337. House Robber III
 public class HouseRobberIII {
     int oddValue = 0, evenValue = 0;
@@ -43,5 +46,24 @@ public class HouseRobberIII {
         res[0] = Math.max(left[0], left[1]) + Math.max(right[0], right[1]);
         res[1] = left[0] + right[0] + root.val;
         return res;
+    }
+
+    public int robTwo(TreeNode root) {
+        return helperTwo(root, new HashMap<>());
+    }
+
+    private int helperTwo(TreeNode root, Map<TreeNode, Integer> map) {
+        if (root == null)
+            return 0;
+        if (map.containsKey(root))
+            return map.get(root);
+        int val = 0;
+        if (root.left != null)
+            val += helperTwo(root.left.left, map) + helperTwo(root.left.right, map);
+        if (root.right != null)
+            val += helperTwo(root.right.left, map) + helperTwo(root.right.right, map);
+        val = Math.max(val + root.val, helperTwo(root.left, map) + helperTwo(root.right, map));
+        map.put(root, val);
+        return val;
     }
 }

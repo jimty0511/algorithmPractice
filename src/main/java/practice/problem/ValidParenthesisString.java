@@ -1,5 +1,7 @@
 package practice.problem;
 
+import java.util.Stack;
+
 // 678. Valid Parenthesis String
 public class ValidParenthesisString {
     public boolean checkValidString(String s) {
@@ -33,6 +35,8 @@ public class ValidParenthesisString {
             if (sum < 0)
                 return false;
         }
+        if (sum == 0)
+            return true;
         sum = 0;
         for (int i = s.length() - 1; i >= 0; i--) {
             if (s.charAt(i) == '*' || s.charAt(i) == ')')
@@ -43,5 +47,30 @@ public class ValidParenthesisString {
                 return false;
         }
         return true;
+    }
+
+    public boolean checkValidStringStack(String s) {
+        Stack<Integer> left = new Stack<>();
+        Stack<Integer> star = new Stack<>();
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c == '(')
+                left.push(i);
+            else if (c == '*')
+                star.push(i);
+            else {
+                if (left.isEmpty() && star.isEmpty())
+                    return false;
+                if (!left.isEmpty())
+                    left.pop();
+                else
+                    star.pop();
+            }
+        }
+        while (!left.isEmpty() && !star.isEmpty()) {
+            if (left.pop() > star.pop())
+                return false;
+        }
+        return left.isEmpty();
     }
 }

@@ -15,7 +15,7 @@ public class LargestNumberAtLeastTwiceofOthers {
                 secMax = max;
                 max = nums[i];
                 index = i;
-            } else if (nums[i] != max && nums[i] > secMax) {
+            } else if (nums[i] > secMax) {
                 secMax = nums[i];
             }
         }

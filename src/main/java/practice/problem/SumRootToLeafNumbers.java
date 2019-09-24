@@ -2,9 +2,7 @@ package practice.problem;
 
 import practice.domain.TreeNode;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 // 129. Sum Root to Leaf Numbers
 public class SumRootToLeafNumbers {
@@ -64,6 +62,31 @@ public class SumRootToLeafNumbers {
             }
             if (cur.left == null && cur.right == null)
                 res += Integer.valueOf(curStr);
+        }
+        return res;
+    }
+
+    public int sumNumbersIterativeTwo(TreeNode root) {
+        if (root == null)
+            return 0;
+        Queue<TreeNode> treeNodeQueue = new LinkedList<>();
+        Queue<Integer> integerQueue = new LinkedList<>();
+        treeNodeQueue.offer(root);
+        integerQueue.offer(root.val);
+        int res = 0;
+        while (!treeNodeQueue.isEmpty()) {
+            TreeNode node = treeNodeQueue.poll();
+            int val = integerQueue.poll();
+            if (node.left != null) {
+                treeNodeQueue.offer(node.left);
+                integerQueue.offer(val * 10 + node.left.val);
+            }
+            if (node.right != null) {
+                treeNodeQueue.offer(node.right);
+                integerQueue.offer(val * 10 + node.right.val);
+            }
+            if (node.left == null && node.right == null)
+                res += val;
         }
         return res;
     }

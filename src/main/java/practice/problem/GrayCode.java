@@ -50,4 +50,11 @@ public class GrayCode {
         }
         return list;
     }
+
+    public ArrayList<Integer> grayCodeTwo(int n) {
+        ArrayList<Integer> result = new ArrayList<>();
+        for (int i = 0; i < (1 << n); i++)
+            result.add(i ^ (i >> 1));
+        return result;
+    }
 }

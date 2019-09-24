@@ -13,18 +13,16 @@ public class PathSumIII {
         return helper(root, 0, sum, preSum);
     }
 
-    private int helper(TreeNode root, int sum, int target, Map<Integer, Integer> preSum) {
-        if (root == null) {
+    private int helper(TreeNode root, int curSum, int target, Map<Integer, Integer> map){
+        if(root==null)
             return 0;
-        }
-
-        sum += root.val;
-        int res = preSum.getOrDefault(sum - target, 0);
-        preSum.put(sum, preSum.getOrDefault(sum, 0) + 1);
-        int left = helper(root.left, sum, target, preSum);
-        int right = helper(root.right, sum, target, preSum);
-        res += left + right;
-        preSum.put(sum, preSum.get(sum) - 1);
+        curSum += root.val;
+        int res = map.getOrDefault(curSum-target,0);
+        map.put(curSum, map.getOrDefault(curSum,0)+1);
+        int left = helper(root.left, curSum, target, map);
+        int right = helper(root.right, curSum, target, map);
+        res += left+right;
+        map.put(curSum, map.get(curSum)-1);
         return res;
     }
 

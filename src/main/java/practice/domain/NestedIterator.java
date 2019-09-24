@@ -23,7 +23,7 @@ public class NestedIterator implements Iterator<Integer> {
                 return true;
             }
             stack.pop();
-            for (int i = nestedInteger.getList().size() - 1; i >= 0; i++) {
+            for (int i = nestedInteger.getList().size() - 1; i >= 0; i--) {
                 stack.push(nestedInteger.getList().get(i));
             }
         }

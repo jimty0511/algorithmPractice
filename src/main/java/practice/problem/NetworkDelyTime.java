@@ -93,6 +93,33 @@ public class NetworkDelyTime {
             res = d > res ? d : res;
         }
         return res;
+    }
 
+    public int networkDelayTimeBfsThree(int[][] times, int N, int K) {
+        Map<Integer, Map<Integer, Integer>> map = new HashMap<>();
+        for (int[] time : times) {
+            map.putIfAbsent(time[0], new HashMap<>());
+            map.get(time[0]).put(time[1], time[2]);
+        }
+        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> a[1] - b[1]);
+        pq.add(new int[]{K, 0});
+        boolean[] visited = new boolean[N + 1];
+        int res = 0;
+        while (!pq.isEmpty()) {
+            int[] curr = pq.poll();
+            int currNode = curr[0];
+            int currDis = curr[1];
+            if (visited[currNode])
+                continue;
+            visited[currNode] = true;
+            res = currDis;
+            N--;
+            if (map.containsKey(currNode)) {
+                for (int nextNode : map.get(currNode).keySet()) {
+                    pq.add(new int[]{nextNode, currDis + map.get(currNode).get(nextNode)});
+                }
+            }
+        }
+        return N == 0 ? res : -1;
     }
 }

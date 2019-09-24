@@ -6,11 +6,11 @@ public class TrieNodeLeetCode {
     public boolean isWord;
     public TrieNodeLeetCode[] children = new TrieNodeLeetCode[26];
 
-    public TrieNodeLeetCode() {
-    }
+//    public TrieNodeLeetCode() {
+//    }
 
-    public TrieNodeLeetCode(char val) {
-        TrieNodeLeetCode node = new TrieNodeLeetCode();
-        node.val = val;
+    public TrieNodeLeetCode(char c) {
+//        TrieNodeLeetCode node = new TrieNodeLeetCode();
+        this.val = c;
     }
 }

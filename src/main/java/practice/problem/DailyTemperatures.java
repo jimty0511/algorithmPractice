@@ -15,4 +15,18 @@ public class DailyTemperatures {
         }
         return res;
     }
+
+    public int[] dailyTemperaturesArray(int[] T) {
+        int[] stack = new int[T.length];
+        int top = -1;
+        int[] res = new int[T.length];
+        for (int i = 0; i < T.length; i++) {
+            while (top > -1 && T[i] > T[stack[top]]) {
+                int idx = stack[top--];
+                res[idx] = i - idx;
+            }
+            stack[++top] = i;
+        }
+        return res;
+    }
 }

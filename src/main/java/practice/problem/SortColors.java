@@ -33,4 +33,20 @@ public class SortColors {
             index++;
         }
     }
+
+    public void sortColorsOnePassTwo(int[] nums) {
+        int left = 0, right = nums.length - 1, index = 0;
+        while (index < nums.length) {
+            if (nums[index] == 0 && index > left) {
+                nums[index] = nums[left];
+                nums[left] = 0;
+                left++;
+            } else if (nums[index] == 2 && index < right) {
+                nums[index] = nums[right];
+                nums[right] = 2;
+                right--;
+            } else
+                index++;
+        }
+    }
 }

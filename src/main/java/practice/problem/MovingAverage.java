@@ -3,6 +3,7 @@ package practice.problem;
 import java.util.LinkedList;
 import java.util.Queue;
 
+// 346. Moving Average from Data Stream
 public class MovingAverage {
 
     private double preSum = 0.0;

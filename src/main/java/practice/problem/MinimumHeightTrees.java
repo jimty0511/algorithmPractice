@@ -75,4 +75,41 @@ public class MinimumHeightTrees {
         }
         return res;
     }
+
+    public List<Integer> findMinHeightTreesEz(int n, int[][] edges) {
+        List<Integer> res = new ArrayList<>();
+        if (n <= 0)
+            return res;
+        if (n == 1)
+            return Collections.singletonList(0);
+        List<Integer>[] graph = new List[n];
+        for (int i = 0; i < n; i++)
+            graph[i] = new ArrayList<>();
+        for (int[] e : edges) {
+            graph[e[0]].add(e[1]);
+            graph[e[1]].add(e[0]);
+        }
+        int[] indegree = new int[n];
+        int cnt = n;
+        Queue<Integer> q = new LinkedList<>();
+        for (int i = 0; i < n; i++) {
+            indegree[i] = graph[i].size();
+            if (indegree[i] == 1)
+                q.offer(i);
+        }
+        while (cnt > 2) {
+            int size = q.size();
+            cnt -= size;
+            for (int i = 0; i < size; i++) {
+                int cur = q.poll();
+                for (int next : graph[cur]) {
+                    indegree[next]--;
+                    if (indegree[next] == 1)
+                        q.offer(next);
+                }
+            }
+        }
+        res.addAll(q);
+        return res;
+    }
 }

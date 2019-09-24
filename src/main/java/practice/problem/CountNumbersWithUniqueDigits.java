@@ -11,4 +11,18 @@ public class CountNumbersWithUniqueDigits {
         }
         return ans;
     }
+
+    public int countNumbersWithUniqueDigitsTwo(int n) {
+        if (n == 0)
+            return 1;
+        int res = 10;
+        int uniqDigits = 9;
+        int available = 9;
+        while (n-- > 1 && available > 0) {
+            uniqDigits = uniqDigits * available;
+            res += uniqDigits;
+            available--;
+        }
+        return res;
+    }
 }

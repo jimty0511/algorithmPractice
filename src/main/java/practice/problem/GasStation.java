@@ -18,4 +18,24 @@ public class GasStation {
         }
         return result;
     }
+
+    public int canCompleteCircuitTwo(int[] gas, int[] cost) {
+        int tank = 0;
+        for (int i = 0; i < gas.length; i++) {
+            tank += gas[i] - cost[i];
+        }
+        if (tank < 0)
+            return -1;
+        int start = 0, sum = 0;
+        for (int i = 0; i < gas.length; i++) {
+            int cur = gas[i] - cost[i];
+            if (sum + cur < 0) {
+                start = i + 1;
+                sum = 0;
+            } else {
+                sum += cur;
+            }
+        }
+        return start;
+    }
 }

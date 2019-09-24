@@ -20,4 +20,19 @@ public class LongestAbsoluteFilePath {
         }
         return result;
     }
+
+    public int lengthLongestPathTwo(String input) {
+        String[] paths = input.split("\n");
+        int[] stack = new int[paths.length + 1];
+        int max = 0;
+        for (String s : paths) {
+            int level = s.lastIndexOf("\t") + 1;
+            int len = s.length() - level;
+            if (s.contains("."))
+                max = Math.max(max, stack[level] + len);
+            else
+                stack[level + 1] = stack[level] + len + 1;
+        }
+        return max;
+    }
 }

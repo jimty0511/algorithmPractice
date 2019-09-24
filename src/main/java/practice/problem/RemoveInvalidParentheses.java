@@ -4,6 +4,50 @@ import java.util.*;
 
 // 301. Remove Invalid Parentheses
 public class RemoveInvalidParentheses {
+
+    public List<String> removeInvalidParentheses(String s) {
+        // Write your code here
+        List<String> res = new ArrayList<>();
+        if (s == null)
+            return res;
+        Queue<String> q = new LinkedList<>();
+        Set<String> visited = new HashSet<>();
+        q.offer(s);
+        visited.add(s);
+        boolean found = false;
+        while (!q.isEmpty()) {
+            int size = q.size();
+            while (size-- > 0) {
+                String cur = q.poll();
+                if (isValid(cur.toCharArray())) {
+                    found = true;
+                    res.add(cur);
+                }
+                for (int i = 0; i < cur.length(); i++) {
+                    if (cur.charAt(i) != '(' && cur.charAt(i) != ')')
+                        continue;
+                    String tmp = cur.substring(0, i) + cur.substring(i + 1);
+                    if (visited.add(tmp))
+                        q.offer(tmp);
+                }
+            }
+            if (found)
+                break;
+        }
+        return res;
+    }
+
+    private boolean isValid(char[] chars) {
+        int cnt = 0;
+        for (char c : chars) {
+            if (c == '(')
+                cnt++;
+            else if (c == ')' && cnt-- == 0)
+                return false;
+        }
+        return cnt == 0;
+    }
+
     public List<String> removeInvalidParenthesesBfs(String s) {
         List<String> result = new ArrayList<>();
         if (s == null) return result;

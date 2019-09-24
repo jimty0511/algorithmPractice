@@ -1,5 +1,9 @@
 package practice.domain;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class SerializeDeserializeBinarySearchTree {
 
     // Encodes a tree to a single string.
@@ -21,25 +25,42 @@ public class SerializeDeserializeBinarySearchTree {
     public TreeNode deserialize(String data) {
         if (data.length() == 0)
             return null;
-        String[] list = data.split(" ");
-        TreeNode dummy = new TreeNode(0);
-        deserializeDfs(list, 0, dummy, true, Integer.MIN_VALUE, Integer.MAX_VALUE);
-        return dummy.left;
+        Queue<String> q = new LinkedList<>(Arrays.asList(data.split(" ")));
+        return deserializeDfs(q, Integer.MIN_VALUE, Integer.MAX_VALUE);
     }
 
-    private int deserializeDfs(String[] list, int pos, TreeNode par, boolean isLeft, int lower, int upper) {
-        if (pos >= list.length)
-            return pos;
-        int val = Integer.valueOf(list[pos]);
+    private TreeNode deserializeDfs(Queue<String> q, int lower, int upper) {
+        if (q.isEmpty())
+            return null;
+        String s = q.peek();
+        int val = Integer.parseInt(s);
         if (val < lower || val > upper)
-            return pos - 1;
-        TreeNode cur = new TreeNode(val);
-        if (isLeft)
-            par.left = cur;
-        else
-            par.right = cur;
-        pos = deserializeDfs(list, ++pos, cur, true, lower, val);
-        pos = deserializeDfs(list, ++pos, cur, false, val, upper);
-        return pos;
+            return null;
+        q.poll();
+        TreeNode root = new TreeNode(val);
+        root.left = deserializeDfs(q, lower, val);
+        root.right = deserializeDfs(q, val, upper);
+        return root;
+    }
+
+    public TreeNode deserializeTwo(String data) {
+        String[] strs = data.split(" ");
+        Queue<Integer> q = new LinkedList<>();
+        for (String s : strs) {
+            q.offer(Integer.valueOf(s));
+        }
+        return buildTree(q);
+    }
+
+    private TreeNode buildTree(Queue<Integer> q) {
+        if (q.isEmpty())
+            return null;
+        TreeNode root = new TreeNode(q.poll());
+        Queue<Integer> smaller = new LinkedList<>();
+        while (!q.isEmpty() && q.peek() < root.val)
+            smaller.offer(q.poll());
+        root.left = buildTree(smaller);
+        root.right = buildTree(q);
+        return root;
     }
 }

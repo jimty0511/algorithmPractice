@@ -1,5 +1,11 @@
 package practice.sort;
 
+
+/**
+ * Best Case: O(nlog(n))
+ * Average: O(nlog(n))
+ * Worst Case: O(n^2)
+ */
 public class QuickSort {
     public void sort(int[] arr) {
         quickSort(arr, 0, arr.length - 1);

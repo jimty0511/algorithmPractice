@@ -1,5 +1,7 @@
 package practice.problem;
 
+import java.util.Arrays;
+
 // 151. Reverse Words in a String
 public class ReverseWordsInAString {
     public String reverseWords(String s) {
@@ -20,6 +22,7 @@ public class ReverseWordsInAString {
                 start--;
             sb.append(s.substring(start + 1, end + 1)).append(" ");
         }
+        char[] chars = new char[s.length()];
         return sb.toString().trim();
     }
 }

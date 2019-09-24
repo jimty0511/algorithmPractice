@@ -39,7 +39,7 @@ public class SearchInRotatedSortedArray {
                     start = mid + 1;
             }
             if (nums[mid] <= nums[end]) {
-                if (nums[mid] < target & target <= nums[end])
+                if (nums[mid] < target && target <= nums[end])
                     start = mid + 1;
                 else
                     end = mid - 1;

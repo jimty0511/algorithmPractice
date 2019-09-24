@@ -31,4 +31,35 @@ public class NQueensII {
             diag2.remove(row - i);
         }
     }
+
+
+    int res = 0;
+
+    public int totalNQueensTwo(int n) {
+        boolean[] visited = new boolean[n];
+        boolean[] diag = new boolean[2 * n - 1];
+        boolean[] antiDiag = new boolean[2 * n - 1];
+        helperTwo(n, visited, diag, antiDiag, 0);
+        return res;
+    }
+
+    private void helperTwo(int n, boolean[] visited, boolean[] diag, boolean[] antiDiag, int row) {
+        if (n == row) {
+            res++;
+            return;
+        }
+        for (int col = 0; col < n; col++) {
+            if (visited[col] || diag[row - col + n - 1] || antiDiag[row + col])
+                continue;
+            visited[col] = true;
+            diag[row - col + n - 1] = true;
+            antiDiag[row + col] = true;
+
+            helperTwo(n, visited, diag, antiDiag, row + 1);
+
+            visited[col] = false;
+            diag[row - col + n - 1] = false;
+            antiDiag[row + col] = false;
+        }
+    }
 }

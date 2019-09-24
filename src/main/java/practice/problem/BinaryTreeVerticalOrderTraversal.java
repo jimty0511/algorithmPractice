@@ -2,10 +2,7 @@ package practice.problem;
 
 import practice.domain.TreeNode;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 // 314. Binary Tree Vertical Order Traversal
 public class BinaryTreeVerticalOrderTraversal {
@@ -45,5 +42,34 @@ public class BinaryTreeVerticalOrderTraversal {
         range[1] = Math.max(range[1], col);
         getRange(root.left, range, col - 1);
         getRange(root.right, range, col + 1);
+    }
+
+    public List<List<Integer>> verticalOrderWoHelper(TreeNode root) {
+        List<List<Integer>> ans = new ArrayList<>();
+        if (root == null)
+            return ans;
+        Map<Integer, List<Integer>> map = new HashMap<>();
+        Queue<Integer> colQ = new LinkedList<>();
+        Queue<TreeNode> nodeQ = new LinkedList<>();
+        colQ.offer(0);
+        nodeQ.offer(root);
+        while (!colQ.isEmpty()) {
+            int c = colQ.poll();
+            TreeNode node = nodeQ.poll();
+            map.putIfAbsent(c, new ArrayList<>());
+            map.get(c).add(node.val);
+            if (node.left != null) {
+                nodeQ.offer(node.left);
+                colQ.offer(c - 1);
+            }
+            if (node.right != null) {
+                nodeQ.offer(node.right);
+                colQ.offer(c + 1);
+            }
+        }
+        for (int i = Collections.min(map.keySet()); i <= Collections.max(map.keySet()); i++) {
+            ans.add(map.get(i));
+        }
+        return ans;
     }
 }

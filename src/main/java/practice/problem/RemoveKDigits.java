@@ -29,6 +29,6 @@ public class RemoveKDigits {
         sb.reverse();
         while (sb.length() > 1 && sb.charAt(0) == '0')
             sb.deleteCharAt(0);
-        return sb.toString();
+        return sb.length() == 0 ? "0" : sb.toString();
     }
 }

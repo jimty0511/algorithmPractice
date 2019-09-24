@@ -23,4 +23,42 @@ public class MaximumXOROfTwoNumbersInAnArray {
         }
         return max;
     }
+
+    class Trie {
+        Trie[] children;
+
+        public Trie() {
+            children = new Trie[2];
+        }
+    }
+
+    public int findMaximumXORTrie(int[] nums) {
+        if (nums == null || nums.length == 0)
+            return 0;
+        Trie root = new Trie();
+        for (int n : nums) {
+            Trie cur = root;
+            for (int i = 6; i >= 0; i--) {
+                int curBit = (n >>> i) & 1;
+                if (cur.children[curBit] == null)
+                    cur.children[curBit] = new Trie();
+                cur = cur.children[curBit];
+            }
+        }
+        int max = Integer.MIN_VALUE;
+        for (int n : nums) {
+            Trie cur = root;
+            int curSum = 0;
+            for (int i = 6; i >= 0; i--) {
+                int curBit = (n >>> i) & 1;
+                if (cur.children[curBit ^ 1] != null) {
+                    curSum += (1 << i);
+                    cur = cur.children[curBit ^ 1];
+                } else
+                    cur = cur.children[curBit];
+            }
+            max = Math.max(curSum, max);
+        }
+        return max;
+    }
 }

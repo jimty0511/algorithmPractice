@@ -79,4 +79,36 @@ public class KthLargestElementInAnArray {
         A[i] = A[j];
         A[j] = tmp;
     }
+
+    public int findKthLargestThree(int[] nums, int k) {
+        if (nums == null || nums.length == 0)
+            return 0;
+        int left = 0, right = nums.length - 1;
+        while (true) {
+            int pos = quickSelect(nums, left, right);
+            if (pos + 1 == k) {
+                return nums[pos];
+            } else if (pos + 1 > k) {
+                right = pos - 1;
+            } else {
+                left = pos + 1;
+            }
+        }
+    }
+
+    private int quickSelect(int[] nums, int left, int right) {
+        int pivot = nums[left];
+        int l = left + 1, r = right;
+        while (l <= r) {
+            if (nums[l] < pivot && nums[r] > pivot) {
+                swap(nums, l++, r--);
+            }
+            if (nums[l] >= pivot)
+                l++;
+            if (nums[r] <= pivot)
+                r--;
+        }
+        swap(nums, left, r);
+        return r;
+    }
 }

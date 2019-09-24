@@ -5,18 +5,17 @@ import practice.domain.ListNode;
 // 19. Remove Nth Node From End of List
 public class RemoveNthNodeFromEndOfList {
     public ListNode removeNthFromEnd(ListNode head, int n) {
-        ListNode start = new ListNode(0);
-        ListNode slow = start, fast = start;
-        slow.next = head;
-
-        for (int i = 1; i <= n + 1; i++) {
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode start = dummy, fast = dummy;
+        for (int i = 0; i < n; i++) {
             fast = fast.next;
         }
-        while (fast != null) {
-            slow = slow.next;
+        while (fast.next != null) {
+            start = start.next;
             fast = fast.next;
         }
-        slow.next = slow.next.next;
-        return start.next;
+        start.next = start.next.next;
+        return dummy.next;
     }
 }

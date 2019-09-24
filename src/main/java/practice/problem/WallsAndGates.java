@@ -7,6 +7,7 @@ import java.util.Queue;
 
 // 286. Walls and Gates
 public class WallsAndGates {
+    int[][] dirs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
     public void wallsAndGates(int[][] rooms) {
         if (rooms.length == 0 || rooms[0].length == 0)
             return;
@@ -60,6 +61,57 @@ public class WallsAndGates {
                 if (0 <= p && p < n && 0 <= q && q < m && rooms[p][q] == Integer.MAX_VALUE) {
                     rooms[p][q] = rooms[i][j] + 1;
                     queue.offer(p * m + q);
+                }
+            }
+        }
+    }
+
+    public void wallsAndGatesLC(int[][] rooms) {
+        // write your code here
+        if (rooms == null || rooms.length == 0)
+            return;
+        Queue<int[]> q = new LinkedList<>();
+        int m = rooms.length, n = rooms[0].length;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (rooms[i][j] == 0)
+                    q.offer(new int[]{i, j});
+            }
+        }
+        while (!q.isEmpty()) {
+            int[] cur = q.poll();
+            for (int[] d : dirs) {
+                int x = cur[0] + d[0], y = cur[1] + d[1];
+                if (x < 0 || x >= m || y < 0 || y >= n || rooms[x][y] != Integer.MAX_VALUE)
+                    continue;
+                rooms[x][y] = rooms[cur[0]][cur[1]] + 1;
+                q.offer(new int[]{x, y});
+            }
+        }
+    }
+
+    public void wallsAndGatesLCTwo(int[][] rooms) {
+        // write your code here
+        if (rooms == null || rooms.length == 0)
+            return;
+        Queue<int[]> q = new LinkedList<>();
+        int m = rooms.length, n = rooms[0].length;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (rooms[i][j] == 0)
+                    q.offer(new int[]{i, j});
+            }
+        }
+        while (!q.isEmpty()) {
+            int size = q.size();
+            while (size-- > 0) {
+                int[] cur = q.poll();
+                for (int[] d : dirs) {
+                    int x = cur[0] + d[0], y = cur[1] + d[1];
+                    if (x < 0 || x >= m || y < 0 || y >= n || rooms[x][y] != Integer.MAX_VALUE)
+                        continue;
+                    rooms[x][y] = rooms[cur[0]][cur[1]] + 1;
+                    q.offer(new int[]{x, y});
                 }
             }
         }

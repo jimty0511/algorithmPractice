@@ -77,4 +77,38 @@ public class PalindromePairs {
         }
         return true;
     }
+
+    public List<List<Integer>> palindromePairsTwo(String[] words) {
+        List<List<Integer>> res = new ArrayList<>();
+        if (words == null || words.length == 0)
+            return res;
+        Map<String, Integer> map = new HashMap<>();
+        for (int i = 0; i < words.length; i++)
+            map.put(words[i], i);
+        for (int i = 0; i < words.length; i++) {
+            for (int j = 0; j <= words[i].length(); j++) {
+                String str1 = words[i].substring(0, j);
+                String str2 = words[i].substring(j);
+                if (isPalindrome(str1)) {
+                    String str2Reverse = new StringBuilder(str2).reverse().toString();
+                    if (map.containsKey(str2Reverse) && map.get(str2Reverse) != i) {
+                        List<Integer> temp = new ArrayList<>();
+                        temp.add(map.get(str2Reverse));
+                        temp.add(i);
+                        res.add(temp);
+                    }
+                }
+                if (isPalindrome(str2)) {
+                    String str1Reverse = new StringBuilder(str1).reverse().toString();
+                    if (map.containsKey(str1Reverse) && map.get(str1Reverse) != i && str2.length() != 0) {
+                        List<Integer> temp = new ArrayList<>();
+                        temp.add(i);
+                        temp.add(map.get(str1Reverse));
+                        res.add(temp);
+                    }
+                }
+            }
+        }
+        return res;
+    }
 }

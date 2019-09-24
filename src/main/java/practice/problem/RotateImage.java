@@ -15,6 +15,7 @@ public class RotateImage {
         }
     }
 
+    // clockwise
     public void rotateTwo(int[][] matrix) {
         if (matrix == null || matrix.length == 0)
             return;
@@ -28,10 +29,32 @@ public class RotateImage {
             high--;
         }
         for (int i = 0; i < row; i++) {
-            for (int j = 0; j < i; j++) {
+            for (int j = i + 1; j < col; j++) {
                 int temp = matrix[i][j];
                 matrix[i][j] = matrix[j][i];
                 matrix[j][i] = temp;
+            }
+        }
+    }
+
+    // anticlockwise
+    public void rotateThree(int[][] matrix) {
+        int m = matrix.length, n = matrix[0].length;
+        for (int i = 0; i < m; i++) {
+            int left = 0, right = n - 1;
+            while (left < right) {
+                int tmp = matrix[i][left];
+                matrix[i][left] = matrix[i][right];
+                matrix[i][right] = tmp;
+                left++;
+                right--;
+            }
+        }
+        for (int i = 0; i < m; i++) {
+            for (int j = i + 1; j < n; j++) {
+                int tmp = matrix[i][j];
+                matrix[i][j] = matrix[j][i];
+                matrix[j][i] = tmp;
             }
         }
     }

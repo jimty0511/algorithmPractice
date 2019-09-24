@@ -17,4 +17,24 @@ public class SelfDividingNumbers {
         }
         return result;
     }
+
+    public List<Integer> selfDividingNumbersTwo(int left, int right) {
+        List<Integer> res = new ArrayList<>();
+        for (int i = left; i <= right; i++) {
+            if (helper(i))
+                res.add(i);
+        }
+        return res;
+    }
+
+    private boolean helper(int num) {
+        int cur = num;
+        while (cur != 0) {
+            int digit = cur % 10;
+            if (digit == 0 || num % digit != 0)
+                return false;
+            cur /= 10;
+        }
+        return true;
+    }
 }

@@ -1,5 +1,6 @@
 package practice.problem;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
@@ -19,5 +20,19 @@ public class NextGreaterElementI {
             nums1[i] = map.getOrDefault(nums1[i], -1);
         }
         return nums1;
+    }
+
+    public int[] nextGreaterElementTwo(int[] nums) {
+        Stack<Integer> stk = new Stack<>();
+        int[] res = new int[nums.length];
+        Arrays.fill(res, -1);
+        for (int i = 0; i < nums.length; i++) {
+            int n = nums[i];
+            while (!stk.isEmpty() && nums[stk.peek()] < n) {
+                res[stk.pop()] = n;
+            }
+            stk.push(i);
+        }
+        return res;
     }
 }

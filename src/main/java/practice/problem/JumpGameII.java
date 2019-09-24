@@ -9,6 +9,8 @@ public class JumpGameII {
             if (i == curEnd) {
                 jump++;
                 curEnd = curFarthest;
+                if (curEnd >= nums.length - 1)
+                    break;
             }
         }
         return jump;
@@ -17,15 +19,14 @@ public class JumpGameII {
     public int jumpBfs(int[] nums) {
         if (nums.length <= 1)
             return 0;
-        int curMax = 0, level = 0, i = 0;
+        int curMax = 0, level = 0, i = 0, furthest = 0;
         while (i <= curMax) {
-            int furthest = curMax;
+            level++;
             for (; i <= curMax; i++) {
                 furthest = Math.max(furthest, nums[i] + i);
                 if (furthest >= nums.length - 1)
-                    return level + 1;
+                    return level;
             }
-            level++;
             curMax = furthest;
         }
         return -1;

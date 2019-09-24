@@ -5,7 +5,6 @@ import java.util.Arrays;
 // 268. Missing Number
 public class MissingNumber {
     public int missingNumber(int[] nums) {
-        Arrays.sort(nums);
         int sum = nums.length;
         int missing = 0;
         for (int i = 0; i < nums.length; i++) {
@@ -16,7 +15,7 @@ public class MissingNumber {
     }
 
     public int missingNumberBit(int[] nums) {
-        int xor = 0, i = 0;
+        int xor = 0, i;
         for (i = 0; i < nums.length; i++) {
             xor = xor ^ i ^ nums[i];
         }

@@ -1,12 +1,11 @@
 package practice;
 
-import practice.domain.*;
+import practice.domain.ListNode;
+import practice.domain.TreeNode;
+import practice.domain.Tuple;
 
-import java.awt.*;
 import java.util.*;
-import java.util.List;
 import java.util.stream.Collectors;
-import java.lang.String;
 
 public class AllPractices {
 
@@ -66,24 +65,6 @@ public class AllPractices {
         return new int[]{duplicate, (int) sum + duplicate};
     }
 
-    public int findLHS(int[] nums) {
-        Arrays.sort(nums);
-        int res = 0, stIdx = 0, nextStIdx = 0;
-        for (int i = 1; i < nums.length; i++) {
-            if (nums[i] - nums[stIdx] > 1) {
-                stIdx = nextStIdx;
-            }
-            if (nums[i] - nums[stIdx] == 1) {
-                res = Math.max(i - stIdx + 1, res);
-            }
-            if (nums[i] != nums[i - 1]) {
-                nextStIdx = i;
-            }
-        }
-        return res;
-    }
-
-
     public ListNode deleteDuplicates(ListNode head) {
         ListNode current = head;
         while (current != null && current.next != null) {
@@ -96,55 +77,6 @@ public class AllPractices {
         return head;
     }
 
-    public int searchInsert(int[] nums, int target) {
-        int low = 0, high = nums.length - 1;
-        while (low <= high) {
-            int mid = (low + high) / 2;
-            if (nums[mid] == target) {
-                return mid;
-            } else if (nums[mid] > target) {
-                high = mid - 1;
-            } else {
-                low = mid + 1;
-            }
-        }
-        return low;
-    }
-
-    public int[] plusOne(int[] digits) {
-        int n = digits.length;
-        for (int i = n - 1; i >= 0; i--) {
-            if (digits[i] < 9) {
-                digits[i]++;
-                return digits;
-            }
-            digits[i] = 0;
-        }
-        int[] newNumber = new int[n + 1];
-        newNumber[0] = 1;
-        return newNumber;
-    }
-
-    public String[] findRestaurant(String[] list1, String[] list2) {
-        Map<String, Integer> map = new HashMap<>();
-        List<String> res = new ArrayList<>();
-        int minSum = Integer.MAX_VALUE;
-        for (int i = 0; i < list1.length; i++) {
-            map.put(list1[i], i);
-        }
-        for (int i = 0; i < list2.length; i++) {
-            Integer j = map.get(list2[i]);
-            if (j != null && i + j <= minSum) {
-                if (i + j < minSum) {
-                    res.clear();
-                    minSum = i + j;
-                }
-                res.add(list2[i]);
-            }
-        }
-        return res.toArray(new String[res.size()]);
-    }
-
     // 521. Longest Uncommon Subsequence I
     public int findLUSlength(String a, String b) {
         return a.equals(b) ? -1 : Integer.max(a.length(), b.length());
@@ -154,11 +86,6 @@ public class AllPractices {
     // 292. Nim Game
     public boolean canWinNim(int n) {
         return n % 4 != 0;
-    }
-
-    // 796. Rotate String
-    public boolean rotateString(String A, String B) {
-        return A.length() == B.length() && (A + A).contains(B);
     }
 
 
@@ -260,54 +187,6 @@ public class AllPractices {
     }
 
 
-
-
-    // 459. Repeated Substring Pattern
-    public boolean repeatedSubstringPattern(String s) {
-        int l = s.length();
-        for (int i = l / 2; i >= 1; i--) {
-            if (l % i == 0) {
-                int m = l / i;
-                String subS = s.substring(0, i);
-                StringBuilder sb = new StringBuilder();
-                for (int j = 0; j < m; j++) {
-                    sb.append(subS);
-                }
-                if (sb.toString().equals(s)) return true;
-            }
-        }
-        return false;
-    }
-
-    // 836. Rectangle Overlap
-    public boolean isRectangleOverlap(int[] rec1, int[] rec2) {
-        return Math.max(rec1[0], rec2[0]) < Math.min(rec1[2], rec2[2]) && Math.max(rec1[1], rec2[1]) < Math.min(rec1[3], rec2[3]);
-    }
-
-    // 501. Find Mode in Binary Search Tree
-    int max = 0;
-
-    public int[] findMode(TreeNode root) {
-        Map<Integer, Integer> map = new HashMap<>();
-        List<Integer> integerList = new ArrayList<>();
-        findModeHelper(root, map);
-        for (Integer k : map.keySet()) {
-            if (map.get(k) == max) integerList.add(k);
-        }
-        int[] res = new int[integerList.size()];
-        for (int i = 0; i < integerList.size(); i++) res[i] = integerList.get(i);
-
-        return res;
-    }
-
-    private void findModeHelper(TreeNode root, Map<Integer, Integer> map) {
-        if (root == null) return;
-        map.put(root.val, map.getOrDefault(root.val, 0) + 1);
-        max = Math.max(max, map.get(root.val));
-        findModeHelper(root.left, map);
-        findModeHelper(root.right, map);
-    }
-
     // 172. Factorial Trailing Zeroes
     public int trailingZeroes(int n) {
         if (n == 0) return 0;
@@ -319,35 +198,6 @@ public class AllPractices {
 //        return n == 0 ? 0 : n / 5 + trailingZeroes(n / 5);
     }
 
-    // 38. Count and Say
-    public String countAndSay(int n) {
-        String cur = "1";
-        while (--n > 0) {
-            int count = 1;
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < cur.length(); i++) {
-                if (i == cur.length() - 1 || cur.charAt(i) != cur.charAt(i + 1)) {
-                    sb.append(count).append(cur.charAt(i));
-                    count = 1;
-                } else {
-                    count++;
-                }
-            }
-            cur = sb.toString();
-        }
-        return cur;
-    }
-
-    // 26. Remove Duplicates from Sorted Array
-    public int removeDuplicates(int[] nums) {
-        int index = 1;
-        for (int i = 1; i < nums.length; i++) {
-            if (nums[i] != nums[i - 1]) {
-                nums[index++] = nums[i];
-            }
-        }
-        return index;
-    }
 
     // 434. Number of Segments in a String
     public int countSegments(String s) {
@@ -359,129 +209,6 @@ public class AllPractices {
                 count++;
         }
         return count;
-    }
-
-    // 441. Arranging Coins
-    public int arrangeCoins(int n) {
-        /* 数学推导
-        (1+k)*k/2 = n
-        k+k*k = 2*n
-        k*k + k + 0.25 = 2*n + 0.25
-        (k + 0.5) ^ 2 = 2*n +0.25
-        k + 0.5 = sqrt(2*n + 0.25)
-        k = sqrt(2*n + 0.25) - 0.5
-        */
-//        return (int) (Math.sqrt(2*(long)n+0.25) - 0.5);
-        int count = 0, left = n;
-        for (int i = 1; left >= i; i++) {
-            count++;
-            left -= i;
-        }
-        return count;
-    }
-
-    // 9. Palindrome Number
-    public boolean isPalindrome(int x) {
-        if (x < 0 || (x != 0 && x % 10 == 0)) return false;
-        int rev = 0;
-        while (x > rev) {
-            rev = rev * 10 + x % 10;
-            x = x / 10;
-        }
-        return (x == rev || x == rev / 10);
-    }
-
-    // 443. String Compression
-    public int compress(char[] chars) {
-        if (chars == null || chars.length == 0) return 0;
-        if (chars.length == 1) return 1;
-        int count = 1;
-        int index = 0;
-        for (int i = 0; i < chars.length; i++) {
-            if (i != chars.length - 1 && chars[i] == chars[i + 1]) {
-                count++;
-            } else {
-                chars[index] = chars[i];
-                index++;
-                if (count > 1) {
-                    String num = String.valueOf(count);
-                    for (int j = 0; j < num.length(); j++) {
-                        chars[index] = num.charAt(j);
-                        index++;
-                    }
-                    count = 1;
-                }
-            }
-        }
-        return index;
-    }
-
-
-    // 205. Isomorphic Strings
-    public boolean isIsomorphic(String s, String t) {
-//        if (s == null || s.length() <= 1) return true;
-//        HashMap<Character, Character> map = new HashMap<>();
-//        for (int i = 0; i < s.length(); i++) {
-//            char a = s.charAt(i), b = t.charAt(i);
-//            if (map.containsKey(a)) {
-//                if (map.get(a).equals(b))
-//                    continue;
-//                else
-//                    return false;
-//            } else {
-//                if (!map.containsValue(b))
-//                    map.put(a, b);
-//                else
-//                    return false;
-//            }
-//        }
-//        return true;
-
-        int[] m = new int[512];
-        for (int i = 0; i < s.length(); i++) {
-            if (m[s.charAt(i)] != m[t.charAt(i) + 256]) return false;
-            m[s.charAt(i)] = m[t.charAt(i) + 256] = i + 1;
-        }
-        return true;
-    }
-
-    // 67. Add Binary
-    public String addBinary(String a, String b) {
-        StringBuilder sb = new StringBuilder();
-        int i = a.length() - 1, j = b.length() - 1, carry = 0;
-        while (i >= 0 || j >= 0) {
-            int sum = carry;
-            if (i >= 0) {
-                sum += a.charAt(i--) - '0';
-            }
-            if (j >= 0) {
-                sum += b.charAt(j--) - '0';
-            }
-            sb.append(sum % 2);
-            carry = sum / 2;
-        }
-        if (carry != 0) sb.append(carry);
-        return sb.reverse().toString();
-    }
-
-    // 290. Word Pattern
-    public boolean wordPattern(String pattern, String str) {
-        List<String> stringList = Arrays.asList(str.split(" "));
-        Map<Character, String> map = new HashMap<>();
-        if (pattern.length() != stringList.size()) return false;
-        for (int i = 0; i < pattern.length(); i++) {
-            if (map.containsKey(pattern.charAt(i))) {
-                if (!map.get(pattern.charAt(i)).equals(stringList.get(i)))
-                    return false;
-            } else {
-                if (!map.containsValue(stringList.get(i))) {
-                    map.put(pattern.charAt(i), stringList.get(i));
-                } else {
-                    return false;
-                }
-            }
-        }
-        return true;
     }
 
 
@@ -591,143 +318,6 @@ public class AllPractices {
         return res;
     }
 
-    // 111. Minimum Depth of Binary Tree
-    public int minDepth(TreeNode root) {
-        if (root == null) return 0;
-//        int left = minDepth(root.left);
-//        int right = minDepth(root.right);
-//        return (left == 0 || right == 0) ? left + right + 1 : Math.min(left, right) + 1;
-        if (root.left == null)
-            return minDepth(root.right) + 1;
-        if (root.right == null)
-            return minDepth(root.left) + 1;
-
-        int leftDepth = minDepth(root.left);
-        int rightDepth = minDepth(root.right);
-
-        return Math.min(leftDepth, rightDepth) + 1;
-    }
-
-    public int minDepthBfs(TreeNode root) {
-        if (root == null)
-            return 0;
-        int depth = 1;
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.offer(root);
-        while (!queue.isEmpty()) {
-            int size = queue.size();
-            for (int i = 0; i < size; i++) {
-                TreeNode temp = queue.poll();
-                if (temp.left == null && temp.right == null)
-                    return depth;
-                if (temp.left != null)
-                    queue.offer(temp.left);
-                if (temp.right != null)
-                    queue.offer(temp.right);
-            }
-            depth++;
-        }
-        return depth;
-    }
-
-
-    // 203. Remove Linked List Elements
-    public ListNode removeElements(ListNode head, int val) {
-        if (head == null) return null;
-        ListNode pointer = head;
-        while (pointer.next != null) {
-            if (pointer.next.val == val)
-                pointer.next = pointer.next.next;
-            else
-                pointer = pointer.next;
-        }
-        return head.val == val ? head.next : head;
-    }
-
-
-    // 687. Longest Univalue Path
-    int univaluePathMax = 0;
-
-    public int longestUnivaluePath(TreeNode root) {
-        if (root != null) {
-            longestUnivaluePathHelper(root);
-        }
-        return univaluePathMax;
-    }
-
-    private int longestUnivaluePathHelper(TreeNode root) {
-        int l = root.left != null ? longestUnivaluePathHelper(root.left) : 0;
-        int r = root.right != null ? longestUnivaluePathHelper(root.right) : 0;
-        int resl = root.left != null && root.left.val == root.val ? l + 1 : 0;
-        int resr = root.right != null && root.right.val == root.val ? r + 1 : 0;
-        univaluePathMax = Math.max(univaluePathMax, resl + resr);
-        return Math.max(resl, resr);
-    }
-
-    // 507. Perfect Number
-    public boolean checkPerfectNumber(int num) {
-        if (num <= 1) return false;
-        int sum = 0;
-        for (int i = 2; i <= Math.sqrt(num); i++) {
-            if (num % i == 0) {
-                sum += i;
-                if (i != num / i) // we only need to add the same factor once
-                    sum += num / i;
-            }
-        }
-        sum++;
-        return sum == num;
-    }
-
-    // 633. Sum of Square Numbers
-    public boolean judgeSquareSum(int c) {
-        if (c < 0) return false;
-        int left = 0, right = (int) Math.sqrt(c);
-        while (left <= right) {
-            int cur = left * left + right * right;
-            if (cur < c) {
-                left++;
-            } else if (cur > c) {
-                right--;
-            } else {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    // 88. Merge Sorted Array
-    public void mergeSortedArray(int[] nums1, int m, int[] nums2, int n) {
-        int i = m + n - 1;
-        m--;
-        n--;
-        while (n >= 0) {
-            if (m < 0 || nums1[m] < nums2[n]) {
-                nums1[i--] = nums2[n--];
-            } else {
-                nums1[i--] = nums1[m--];
-            }
-        }
-    }
-
-    // 680. Valid Palindrome II
-    public boolean validPalindrome(String s) {
-        for (int i = 0, j = s.length() - 1; i < j; i++, j--) {
-            if (s.charAt(i) != s.charAt(j)) {
-                int i1 = i, j1 = j - 1, i2 = i + 1, j2 = j;
-                while (i1 < j1 && s.charAt(i1) == s.charAt(j1)) {
-                    i1++;
-                    j1--;
-                }
-                while (i2 < j2 && s.charAt(i2) == s.charAt(j2)) {
-                    i2++;
-                    j2--;
-                }
-                return i1 >= j1 || i2 >= j2;
-            }
-        }
-        return true;
-    }
 
     // 58. Length of Last Word
     public int lengthOfLastWord(String s) {
@@ -736,176 +326,6 @@ public class AllPractices {
         return res[res.length - 1].length();
     }
 
-    // 686. Repeated String Match
-    public int repeatedStringMatch(String A, String B) {
-        StringBuilder sb = new StringBuilder();
-        int n = B.length() / A.length();
-        for (int i = 0; i < n + 2; i++) {
-            sb.append(A);
-            String temp = sb.toString();
-            if (temp.contains(B))
-                return i + 1;
-        }
-        return -1;
-    }
-
-    // 160. Intersection of Two Linked Lists
-    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        if (headA == null || headB == null) return null;
-        ListNode a = headA;
-        ListNode b = headB;
-        while (a != b) {
-            a = a == null ? headB : a.next;
-            b = b == null ? headA : b.next;
-        }
-        return a;
-    }
-
-    // 605. Can Place Flowers
-    public boolean canPlaceFlowers(int[] flowerbed, int n) {
-        int count = 1, result = 0;
-        for (int i = 0; i < flowerbed.length; i++) {
-            if (flowerbed[i] == 0) {
-                count++;
-            } else {
-                result += (count - 1) / 2;
-                count = 0;
-            }
-        }
-        if (count != 0)
-            result += count / 2;
-        return result >= n;
-    }
-
-    // 400. Nth Digit
-    public int findNthDigit(int n) {
-        int length = 1;
-        long count = 9;
-        int start = 1;
-        while (n > length * count) {
-            n -= length * count;
-            length += 1;
-            count *= 10;
-            start *= 10;
-        }
-        start += (n - 1) / length;
-        String s = Integer.toString(start);
-        return Character.getNumericValue(s.charAt((n - 1) % length));
-    }
-
-    // 475. Heaters
-    public int findRadius(int[] houses, int[] heaters) {
-//        Arrays.sort(heaters);
-//        int result = Integer.MIN_VALUE;
-//        for (int house : houses) {
-//            int index = Arrays.binarySearch(heaters, house);
-//            if (index < 0) {
-//                index = -(index + 1);
-//            }
-//            int dist1 = index - 1 >= 0 ? house - heaters[index - 1] : Integer.MAX_VALUE;
-//            int dist2 = index < heaters.length ? heaters[index] - house : Integer.MAX_VALUE;
-//
-//            result = Math.max(result, Math.min(dist1, dist2));
-//        }
-//        return result;
-
-        Arrays.sort(houses);
-        Arrays.sort(heaters);
-        int i = 0, j = 0, res = 0;
-//        while (i < houses.length) {
-//            while (j < heaters.length - 1 && Math.abs(heaters[j + 1] - houses[i]) <= Math.abs(heaters[j] - houses[i])) {
-//                j++;
-//            }
-//            res = Math.max(res, Math.abs(heaters[j] - houses[i]));
-//            i++;
-//        }
-        for (int house : houses) {
-            while (i < heaters.length - 1 && heaters[i] + heaters[i + 1] <= house * 2) {
-                i++;
-            }
-            res = Math.max(res, Math.abs(heaters[i] - house));
-        }
-        return res;
-    }
-
-
-    // 581. Shortest Unsorted Continuous Subarray
-    public int findUnsortedSubarray(int[] nums) {
-//        int[] clone = nums.clone();
-//        Arrays.sort(clone);
-//        int start = clone.length, end = 0;
-//        for (int i = 0; i < clone.length; i++) {
-//            if (clone[i] != nums[i]) {
-//                start = Math.min(start, i);
-//                end = Math.max(end, i);
-//            }
-//        }
-//        return end - start >= 0 ? end - start + 1 : 0;
-
-        int n = nums.length, beg = -1, end = -2, min = nums[n - 1], max = nums[0];
-        for (int i = 1; i < n; i++) {
-            max = Math.max(max, nums[i]);
-            min = Math.min(min, nums[n - 1 - i]);
-            if (nums[i] < max)
-                end = i;
-            if (nums[n - 1 - i] > min)
-                beg = n - 1 - i;
-        }
-        return end - beg + 1;
-    }
-
-    // 28. Implement strStr()
-    public int strStr(String haystack, String needle) {
-        if (needle.length() == 0) return 0;
-        if (haystack.length() == 0 || haystack.length() < needle.length()) return -1;
-        for (int i = 0; i <= haystack.length() - needle.length(); i++) {
-            if (haystack.substring(i, i + needle.length()).equals(needle))
-                return i;
-        }
-        return -1;
-    }
-
-    // 69. Sqrt(x)
-    public int mySqrt(int x) {
-        if (x == 0) return 0;
-        int start = 1, end = x;
-        while (start + 1 < end) {
-            int mid = start + (end - start) / 2;
-            int val = x / mid;
-            if (val == mid) {
-                return mid;
-            } else if (val > mid) {
-                start = mid;
-            } else {
-                end = mid;
-            }
-        }
-        return start;
-    }
-
-
-    // 125. Valid Palindrome
-    public boolean isPalindrome(String s) {
-        if (s == "") return true;
-        int left = 0, right = s.length() - 1;
-        char head, tail;
-        while (left <= right) {
-            head = s.charAt(left);
-            tail = s.charAt(right);
-            if (!Character.isLetterOrDigit(head)) {
-                left++;
-            } else if (!Character.isLetterOrDigit(tail)) {
-                right--;
-            } else {
-                if (Character.toLowerCase(head) != Character.toLowerCase(tail)) {
-                    return false;
-                }
-                left++;
-                right--;
-            }
-        }
-        return true;
-    }
 
     // 479. Largest Palindrome Product
     public int largestPalindrome(int n) {
@@ -1025,38 +445,6 @@ public class AllPractices {
         return -1;
     }
 
-    // 824. Goat Latin
-    public String toGoatLatin(String S) {
-        StringBuilder res = new StringBuilder();
-        String[] strings = S.split(" ");
-        int a = 1;
-        for (String s : strings) {
-            if (isVowel(s.charAt(0))) {
-                res.append(s).append("ma");
-                for (int i = 0; i < a; i++) {
-                    res.append("a");
-                }
-                res.append(" ");
-                a++;
-            } else {
-                res.append(s.substring(1)).append(s.charAt(0)).append("ma");
-                for (int i = 0; i < a; i++) {
-                    res.append("a");
-                }
-                res.append(" ");
-                a++;
-            }
-        }
-        return res.toString().trim();
-    }
-
-    private boolean isVowel(char c) {
-        if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U') {
-            return true;
-        }
-        return false;
-    }
-
     // 504. Base 7
     public String convertToBase7(int num) {
         if (num < 0)
@@ -1067,95 +455,6 @@ public class AllPractices {
     }
 
 
-    // 7. Reverse Integer
-    public int reverse(int x) {
-        StringBuilder sb = new StringBuilder(Integer.toString(Math.abs(x)));
-        try {
-            String reversed = sb.reverse().toString();
-            return Integer.parseInt(reversed.replaceFirst("^0+(?!$)", "")) * (x / Math.abs(x));
-        } catch (Exception e) {
-            return 0;
-        }
-    }
-
-    // 665. Non-decreasing Array
-    public boolean checkPossibility(int[] nums) {
-        if (nums == null || nums.length <= 1) return true;
-        boolean found = false;
-        for (int i = 1; i < nums.length; i++) {
-            if (nums[i - 1] > nums[i]) {
-                if (found)
-                    return false;
-                else {
-                    if (i - 2 >= 0 && nums[i - 2] > nums[i])
-                        nums[i] = nums[i - 1];
-                    found = true;
-                }
-            }
-        }
-        return true;
-    }
-
-    // 344. Reverse String
-    public String reverseString(String s) {
-        if (s == null || s.length() == 0)
-            return "";
-        char[] chars = s.toCharArray();
-        for (int i = 0, j = s.length() - 1; i <= s.length() / 2; i++, j--) {
-            char temp = s.charAt(i);
-            chars[j] = temp;
-            chars[i] = s.charAt(j);
-        }
-        return String.valueOf(chars);
-    }
-
-    // 412. Fizz Buzz
-    public List<String> fizzBuzz(int n) {
-        List<String> res = new ArrayList<>(n);
-        for (int i = 1; i <= n; i++) {
-            if (i % 3 == 0 && i % 5 == 0) {
-                res.add("FizzBuzz");
-            } else if (i % 3 == 0) {
-                res.add("Fizz");
-            } else if (i % 5 == 0) {
-                res.add("Buzz");
-            } else {
-                res.add(String.valueOf(i));
-            }
-        }
-        return res;
-    }
-
-
-    // 283. Move Zeroes
-    public void moveZeroes(int[] nums) {
-        if (nums == null || nums.length == 0) return;
-        int index = 0;
-        for (int num : nums) {
-            if (num != 0)
-                nums[index++] = num;
-        }
-        while (index < nums.length) {
-            nums[index++] = 0;
-        }
-    }
-
-
-    // 242. Valid Anagram
-    public boolean isAnagram(String s, String t) {
-        if (s == null || t == null || s.length() != t.length()) return false;
-        int[] res = new int[26];
-        for (int i = 0; i < s.length(); i++) {
-            res[s.charAt(i) - 'a']++;
-            res[t.charAt(i) - 'a']--;
-        }
-        for (int n : res) {
-            if (n != 0)
-                return false;
-        }
-        return true;
-    }
-
     // 237. Delete Node in a Linked List
     public void deleteNode(ListNode node) {
         node.val = node.next.val;
@@ -1163,90 +462,50 @@ public class AllPractices {
     }
 
 
-    // 108. Convert Sorted Array to Binary Search Tree
-    public TreeNode sortedArrayToBST(int[] nums) {
-        return sortedArrayToBSTHelper(nums, 0, nums.length - 1);
-    }
-
-    private TreeNode sortedArrayToBSTHelper(int[] nums, int low, int high) {
-        if (low > high)
-            return null;
-        int mid = (low + high + 1) / 2;
-        TreeNode node = new TreeNode(nums[mid]);
-        node.left = sortedArrayToBSTHelper(nums, low, mid - 1);
-        node.right = sortedArrayToBSTHelper(nums, mid + 1, high);
-        return node;
-    }
-
-    // 109. Convert Sorted List to Binary Search Tree
-    public TreeNode sortedListToBST(ListNode head) {
-        if (head == null) return null;
-        return sortedListToBSTHelper(head, null);
-    }
-
-    private TreeNode sortedListToBSTHelper(ListNode head, ListNode tail) {
-        ListNode slow = head;
-        ListNode fast = head;
-        if (head == tail) return null;
-        while (fast != tail && fast.next != tail) {
-            fast = fast.next.next;
-            slow = slow.next;
-        }
-        TreeNode treeNode = new TreeNode(slow.val);
-        treeNode.left = sortedListToBSTHelper(head, slow);
-        treeNode.right = sortedListToBSTHelper(slow.next, tail);
-        return treeNode;
-    }
-
-
-    // 202. Happy Number
-    public boolean isHappy(int n) {
-        Set<Integer> set = new HashSet<>();
-        while (set.add(n)) {
-            int sum = 0;
-            while (n > 0) {
-                int digit = n % 10;
-                sum += digit * digit;
-                n /= 10;
-            }
-            if (sum == 1)
-                return true;
-            else {
-                n = sum;
-            }
-        }
-        return false;
-    }
-
-
     public List<Integer> cellCompete(int[] states, int days) {
         // WRITE YOUR CODE HERE
-        List<Integer> result = new ArrayList<>();
+//        List<Integer> result = new ArrayList<>();
+//        int n = states.length;
+//        int[] temp = states;
+//        while (days-- > 0) {
+//
+//            // Finding next values for corner cells
+//            temp[0] = 0 ^ states[1];
+//            temp[n - 1] = 0 ^ states[n - 2];
+//
+//            // Compute values of intermediate cells
+//            // If both cells active or inactive, then
+//            // temp[i]=0 else temp[i] = 1.
+//            for (int i = 1; i <= n - 2; i++)
+//                temp[i] = states[i - 1] ^ states[i + 1];
+//
+//            // Copy temp[] to cells[] for next iteration
+//            for (int i = 0; i < n; i++)
+//                states[i] = temp[i];
+//        }
+//        for (int i : states) {
+//            result.add(i);
+//        }
+//        return result;
+
+        List<Integer> res = new ArrayList<>();
         int n = states.length;
         int[] temp = new int[n];
-
         for (int i = 0; i < n; i++)
             temp[i] = states[i];
         while (days-- > 0) {
-
-            // Finding next values for corner cells
             temp[0] = 0 ^ states[1];
             temp[n - 1] = 0 ^ states[n - 2];
-
-            // Compute values of intermediate cells
-            // If both cells active or inactive, then
-            // temp[i]=0 else temp[i] = 1.
-            for (int i = 1; i <= n - 2; i++)
+            for (int i = 1; i <= n - 2; i++) {
                 temp[i] = states[i - 1] ^ states[i + 1];
-
-            // Copy temp[] to cells[] for next iteration
+            }
             for (int i = 0; i < n; i++)
                 states[i] = temp[i];
         }
         for (int i : states) {
-            result.add(i);
+            res.add(i);
         }
-        return result;
+        return res;
     }
 
     public int generalizedGCD(int num, int[] arr) {
@@ -1450,68 +709,6 @@ public class AllPractices {
     }
 
 
-    // 347. Top K Frequent Elements
-    public List<Integer> topKFrequent(int[] nums, int k) {
-        if (nums.length == 1)
-            return Arrays.asList(nums[0]);
-
-        List<Integer> result = new ArrayList<>();
-        Map<Integer, Integer> map = new HashMap<>();
-
-        Arrays.stream(nums).forEach(x -> map.put(x, map.getOrDefault(x, 0) + 1));
-
-        PriorityQueue<Map.Entry<Integer, Integer>> max = new PriorityQueue<>((a, b) -> b.getValue() - a.getValue());
-        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-            max.add(entry);
-        }
-
-        while (result.size() < k) {
-            Map.Entry<Integer, Integer> entry = max.poll();
-            result.add(entry.getKey());
-        }
-        return result;
-    }
-
-    // 22. Generate Parentheses
-    public List<String> generateParenthesis(int n) {
-        List<String> result = new ArrayList<>();
-        generateParenthesisHelper(result, "", 0, 0, n);
-        return result;
-    }
-
-    private void generateParenthesisHelper(List<String> list, String str, int open, int close, int max) {
-        if (str.length() == max * 2) {
-            list.add(str);
-            return;
-        }
-
-        if (open < max) {
-            generateParenthesisHelper(list, str + "(", open + 1, close, max);
-        }
-        if (close < open) {
-            generateParenthesisHelper(list, str + ")", open, close + 1, max);
-        }
-    }
-
-    public List<String> generateParenthesisTwo(int n) {
-        List<String> list = new ArrayList();
-        generateParenthesisTwoHelper(list, "", n, n);
-        return list;
-    }
-
-    private void generateParenthesisTwoHelper(List<String> list, String tempStr, int l, int r) {
-        if (l == 0 && r == 0) {
-            list.add(tempStr);
-        } else {
-            if (r > l) {
-                generateParenthesisTwoHelper(list, tempStr + ")", l, r - 1);
-            }
-            if (l > 0) {
-                generateParenthesisTwoHelper(list, tempStr + "(", l - 1, r);
-            }
-        }
-    }
-
     /**
      * BackTracking related problems
      */
@@ -1541,260 +738,13 @@ public class AllPractices {
         }
     }
 
-    // 46. Permutations
-    public List<List<Integer>> permute(int[] nums) {
-        List<List<Integer>> list = new ArrayList<>();
-        permuteBacktrack(list, new ArrayList<>(), nums);
-        return list;
-    }
-
-    private void permuteBacktrack(List<List<Integer>> list, List<Integer> tempList, int[] nums) {
-        if (tempList.size() == nums.length) {
-            list.add(new ArrayList<>(tempList));
-        } else {
-            for (int i = 0; i < nums.length; i++) {
-                if (tempList.contains(nums[i]))
-                    continue;
-                tempList.add(nums[i]);
-                permuteBacktrack(list, tempList, nums);
-                tempList.remove(tempList.size() - 1);
-            }
-        }
-    }
-
-    public List<List<Integer>> permuteIterative(int[] nums) {
-        List<List<Integer>> list = new ArrayList<>();
-        int l = nums.length;
-        if (nums == null || l == 0)
-            return list;
-
-        Queue<List<Integer>> queue = new ArrayDeque<>();
-        for (int n : nums) {
-            queue.offer(Arrays.asList(n));
-        }
-
-        while (!queue.isEmpty()) {
-            List<Integer> next = queue.poll();
-            if (l == next.size()) {
-                list.add(next);
-                continue;
-            }
-            for (int n : nums) {
-                if (!next.contains(n)) {
-                    List<Integer> u = new ArrayList<>(next);
-                    u.add(n);
-                    queue.offer(u);
-                }
-            }
-        }
-        return list;
-    }
-
-    // 47. Permutations II
-    public List<List<Integer>> permuteUnique(int[] nums) {
-        List<List<Integer>> result = new ArrayList<>();
-        Arrays.sort(nums);
-        permuteUniqueHelper(result, new ArrayList<>(), nums, new boolean[nums.length]);
-        return result;
-    }
-
-    private void permuteUniqueHelper(List<List<Integer>> list, List<Integer> tempList, int[] nums, boolean[] used) {
-        if (tempList.size() == nums.length) {
-            list.add(new ArrayList<>(tempList));
-        } else {
-            for (int i = 0; i < nums.length; i++) {
-                if (used[i] || i > 0 && nums[i] == nums[i - 1] && !used[i - 1])
-                    continue;
-                used[i] = true;
-                tempList.add(nums[i]);
-                permuteUniqueHelper(list, tempList, nums, used);
-                used[i] = false;
-                tempList.remove(tempList.size() - 1);
-            }
-        }
-    }
-
-
-    // 90. Subsets II
-    public List<List<Integer>> subsetsWithDup(int[] nums) {
-        List<List<Integer>> result = new ArrayList<>();
-        Arrays.sort(nums);
-        subsetsWithDupHelper(result, new ArrayList<>(), nums, 0);
-        return result;
-    }
-
-    private void subsetsWithDupHelper(List<List<Integer>> list, List<Integer> tempList, int[] nums, int start) {
-        list.add(new ArrayList<>(tempList));
-        for (int i = start; i < nums.length; i++) {
-            if (i > start && nums[i] == nums[i - 1])
-                continue;
-            tempList.add(nums[i]);
-            subsetsWithDupHelper(list, tempList, nums, i + 1);
-            tempList.remove(tempList.size() - 1);
-        }
-    }
-
-    // 39. Combination Sum
-    public List<List<Integer>> combinationSum(int[] candidates, int target) {
-        List<List<Integer>> result = new ArrayList<>();
-        Arrays.sort(candidates);
-        combinationSumHelper(result, new ArrayList<>(), candidates, target, 0);
-        return result;
-    }
-
-    private void combinationSumHelper(List<List<Integer>> list, List<Integer> tempList,
-                                      int[] candidates, int remain, int start) {
-        if (remain < 0) {
-            return;
-        } else if (remain == 0) {
-            list.add(new ArrayList<>(tempList));
-        } else {
-            for (int i = start; i < candidates.length; i++) {
-                tempList.add(candidates[i]);
-                combinationSumHelper(list, tempList, candidates, remain - candidates[i], i);
-                tempList.remove(tempList.size() - 1);
-            }
-        }
-    }
-
-    // 40. Combination Sum II
-    public List<List<Integer>> combinationSum2(int[] candidates, int target) {
-        List<List<Integer>> result = new ArrayList<>();
-        Arrays.sort(candidates);
-        combinationSum2Helper(result, new ArrayList<>(), candidates, target, 0);
-        return result;
-    }
-
-    private void combinationSum2Helper(List<List<Integer>> list, List<Integer> tempList, int[] candidates,
-                                       int remain, int start) {
-        if (remain < 0) {
-            return;
-        } else if (remain == 0) {
-            list.add(new ArrayList<>(tempList));
-        } else {
-            for (int i = start; i < candidates.length; i++) {
-                if (i > start && candidates[i] == candidates[i - 1]) {
-                    continue;
-                }
-                tempList.add(candidates[i]);
-                combinationSum2Helper(list, tempList, candidates, remain - candidates[i], i + 1);
-                tempList.remove(tempList.size() - 1);
-            }
-        }
-    }
-
-    // 131. Palindrome Partitioning
-    public List<List<String>> partition(String s) {
-        List<List<String>> result = new ArrayList<>();
-        partitionHelper(result, new ArrayList<>(), s, 0);
-        return result;
-    }
-
-    private void partitionHelper(List<List<String>> list, List<String> tempList, String s, int start) {
-        if (start == s.length()) {
-            list.add(new ArrayList<>(tempList));
-        } else {
-            for (int i = start; i < s.length(); i++) {
-                if (isPalindromePartition(s, start, i)) {
-                    tempList.add(s.substring(start, i + 1));
-                    partitionHelper(list, tempList, s, i + 1);
-                    tempList.remove(tempList.size() - 1);
-                }
-            }
-        }
-    }
-
-    private boolean isPalindromePartition(String s, int low, int high) {
-        while (low < high) {
-            if (s.charAt(low++) != s.charAt(high--))
-                return false;
-        }
-        return true;
-    }
 
     /**
      * End of backtracking questions
      */
 
-    // 18. 4Sum
-    public List<List<Integer>> fourSum(int[] nums, int target) {
-        List<List<Integer>> result = new ArrayList<>();
-        Arrays.sort(nums);
-        fourSumHelper(result, new ArrayList<>(), nums, target, 0);
-        return result;
-    }
-
-    private void fourSumHelper(List<List<Integer>> list, List<Integer> tempList, int[] nums, int remain, int start) {
-        if (tempList.size() == 4 && remain == 0 && !list.contains(tempList)) {
-            list.add(new ArrayList<>(tempList));
-        } else if (tempList.size() == 4) {
-            return;
-        } else {
-            for (int i = start; i < nums.length; i++) {
-                if (nums[i] + nums[nums.length - 1] * (3 - tempList.size()) < remain)
-                    continue;
-                if (nums[i] * (4 - tempList.size()) > remain)
-                    return;
-                tempList.add(nums[i]);
-                fourSumHelper(list, tempList, nums, remain - nums[i], i + 1);
-                tempList.remove(tempList.size() - 1);
-            }
-        }
-    }
-
-    // 454. 4Sum II
-    public int fourSumCount(int[] A, int[] B, int[] C, int[] D) {
-        Map<Integer, Integer> map = new HashMap<>();
-
-        for (int i = 0; i < C.length; i++) {
-            for (int j = 0; j < D.length; j++) {
-                int sum = C[i] + D[j];
-                map.put(sum, map.getOrDefault(sum, 0) + 1);
-            }
-        }
-
-        int res = 0;
-        for (int i = 0; i < A.length; i++) {
-            for (int j = 0; j < B.length; j++) {
-                res += map.getOrDefault(-1 * (A[i] + B[j]), 0);
-            }
-        }
-
-        return res;
-    }
-
-
-    // 328. Odd Even Linked List
-    public ListNode oddEvenList(ListNode head) {
-        if (head == null || head.next == null)
-            return head;
-        ListNode odd = head, even = head.next, p = odd, q = even;
-        while (q != null && q.next != null) {
-            p.next = q.next;
-            p = q.next;
-            q.next = p.next;
-            q = p.next;
-        }
-        p.next = even;
-        return odd;
-    }
 
     // 378. Kth Smallest Element in a Sorted Matrix
-    public int kthSmallest(int[][] matrix, int k) {
-        int n = matrix.length;
-        PriorityQueue<Tuple> pq = new PriorityQueue<>();
-        for (int j = 0; j <= n - 1; j++) {
-            pq.offer(new Tuple(0, j, matrix[0][j]));
-        }
-        for (int i = 0; i < k - 1; i++) {
-            Tuple t = pq.poll();
-            if (t.x == n - 1)
-                continue;
-            pq.offer(new Tuple(t.x + 1, t.y, matrix[t.x + 1][t.y]));
-        }
-        return pq.poll().val;
-    }
-
     public int kthSmallestBinarySearch(int[][] matrix, int k) {
         int low = matrix[0][0], high = matrix[matrix.length - 1][matrix[0].length - 1] + 1;
         while (low < high) {
@@ -1867,32 +817,6 @@ public class AllPractices {
         }
     }
 
-    // 162. Find Peak Element
-    public int findPeakElement(int[] nums) {
-        return findPeakElementHelper(nums, 0, nums.length - 1);
-    }
-
-    private int findPeakElementHelper(int[] nums, int start, int end) {
-        if (start == end) {
-            return start;
-        } else if (start + 1 == end) {
-            if (nums[start] > nums[end]) {
-                return start;
-            }
-            return end;
-        } else {
-            int m = (start + end) / 2;
-            if (nums[m] > nums[m - 1] && nums[m] > nums[m + 1]) {
-                return m;
-            } else if (nums[m - 1] > nums[m] && nums[m] > nums[m + 1]) {
-                return findPeakElementHelper(nums, start, m - 1);
-            } else {
-                return findPeakElementHelper(nums, m + 1, end);
-            }
-        }
-    }
-
-
     // 36. Valid Sudoku
     public boolean isValidSudoku(char[][] board) {
         Set<String> seen = new HashSet<>();
@@ -1911,167 +835,7 @@ public class AllPractices {
     }
 
 
-    // 289. Game of Life
-    public void gameOfLife(int[][] board) {
-        if (board == null || board.length == 0)
-            return;
-        int m = board.length, n = board[0].length;
 
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                int lives = gameOfLifeHelper(board, m, n, i, j);
-                if (board[i][j] == 1 && lives >= 2 && lives <= 3) {
-                    board[i][j] = 3;
-                }
-                if (board[i][j] == 0 && lives == 3) {
-                    board[i][j] = 2;
-                }
-            }
-        }
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                board[i][j] >>= 1;
-            }
-        }
-    }
-
-    private int gameOfLifeHelper(int[][] board, int m, int n, int i, int j) {
-        int lives = 0;
-        for (int x = Math.max(i - 1, 0); x <= Math.min(i + 1, m - 1); x++) {
-            for (int y = Math.max(j - 1, 0); y <= Math.min(j + 1, n - 1); y++) {
-                lives += board[x][y] & 1;
-            }
-        }
-        lives -= board[i][j] & 1;
-        return lives;
-    }
-
-
-    // 227. Basic Calculator II
-    public int calculate(String s) {
-        int len = s.length();
-        if (s == null || s.length() == 0)
-            return 0;
-        Stack<Integer> stack = new Stack<>();
-        int num = 0;
-        char sign = '+';
-        for (int i = 0; i < s.length(); i++) {
-            if (Character.isDigit(s.charAt(i))) {
-                num = num * 10 + s.charAt(i) - '0';
-            }
-            if (!Character.isDigit(s.charAt(i)) && s.charAt(i) != ' ' || i == len - 1) {
-                if (sign == '-') {
-                    stack.push(-num);
-                }
-                if (sign == '+') {
-                    stack.push(num);
-                }
-                if (sign == '*') {
-                    stack.push(stack.pop() * num);
-                }
-                if (sign == '/') {
-                    stack.push(stack.pop() / num);
-                }
-                sign = s.charAt(i);
-                num = 0;
-            }
-        }
-
-        int re = 0;
-        for (int i : stack) {
-            re += i;
-        }
-        return re;
-    }
-
-    // 433. Minimum Genetic Mutation
-    public int minMutation(String start, String end, String[] bank) {
-        if (start.equals(end))
-            return 0;
-        Set<String> bankSet = new HashSet<>();
-        for (String s : bank)
-            bankSet.add(s);
-        if (!bankSet.contains(end))
-            return -1;
-        char[] charSet = new char[]{'A', 'C', 'G', 'T'};
-
-        int level = 0;
-        Set<String> visited = new HashSet<>();
-        Queue<String> queue = new LinkedList<>();
-        queue.offer(start);
-        visited.add(start);
-
-        while (!queue.isEmpty()) {
-            int size = queue.size();
-            while (size-- > 0) {
-                String curr = queue.poll();
-                if (curr.equals(end))
-                    return level;
-                char[] currChars = curr.toCharArray();
-                for (int i = 0; i < currChars.length; i++) {
-                    char oldChar = currChars[i];
-                    for (char c : charSet) {
-                        currChars[i] = c;
-                        String next = new String(currChars);
-                        if (!visited.contains(next) && bankSet.contains(next)) {
-                            visited.add(next);
-                            queue.offer(next);
-                        }
-                    }
-                    currChars[i] = oldChar;
-                }
-            }
-            level++;
-        }
-        return -1;
-    }
-
-    public int minMutationBiDirection(String start, String end, String[] bank) {
-        if (bank == null || bank.length == 0)
-            return -1;
-        Set<String> bankSet = new HashSet<>();
-        for (String s : bank)
-            bankSet.add(s);
-        if (!bankSet.contains(end))
-            return -1;
-
-        char[] charSet = new char[]{'A', 'C', 'G', 'T'};
-        Set<String> fwd = new HashSet<>(), bwd = new HashSet<>();
-        fwd.add(start);
-        bwd.add(end);
-
-        int level = 0;
-        while (!fwd.isEmpty() && !bwd.isEmpty()) {
-            if (fwd.size() > bwd.size()) {
-                Set<String> tempSet = fwd;
-                fwd = bwd;
-                bwd = tempSet;
-            }
-            Set<String> temp = new HashSet<>();
-            for (String s : fwd) {
-                char[] currChars = s.toCharArray();
-                for (int i = 0; i < s.length(); i++) {
-                    char old = currChars[i];
-                    for (char c : charSet) {
-                        if (c == old)
-                            continue;
-                        currChars[i] = c;
-                        String newString = new String(currChars);
-                        if (bwd.contains(newString))
-                            return level + 1;
-                        if (bankSet.contains(newString)) {
-                            temp.add(newString);
-                            bankSet.remove(newString);
-                        }
-                        currChars[i] = old;
-                    }
-                }
-            }
-            level++;
-            fwd = temp;
-        }
-        return -1;
-    }
 
     public static String findGameStatus(char[][] board) {
         /*
@@ -2140,6 +904,63 @@ public class AllPractices {
             return "Y";
         } else {
             return "N";
+        }
+    }
+
+    public List<List<Integer>> solution(int[] input) {
+        List<List<Integer>> res = new ArrayList<>();
+        if (input == null || input.length == 0)
+            return res;
+        helper(input, 0, 0, new ArrayList<>(), res);
+        return res;
+    }
+
+    private void helper(int[] input, int index, int sum, List<Integer> temp, List<List<Integer>> res) {
+        if (temp.size() == 3) {
+            if (sum == 0) {
+                res.add(new ArrayList<>(temp));
+            }
+        } else {
+            for (int i = index; i < input.length; i++) {
+                int current = input[i]; // 5
+                sum += current;         // 5
+                temp.add(i);            // 0
+                helper(input, i, sum, temp, res);
+                temp.remove(temp.size() - 1); // 0
+            }
+        }
+    }
+
+    /**
+     * Hackerrank
+     */
+    public void plusMinus(int[] arr) {
+        double positive = 0, negative = 0, len = arr.length;
+        for (int n : arr) {
+            if (n > 0)
+                positive++;
+            else if (n < 0)
+                negative++;
+        }
+        double p = positive / len, n = negative / len, z = (len - positive - negative) / len;
+        System.out.println(String.format("%.6f", p));
+        System.out.println(String.format("%.6f", n));
+        System.out.println(String.format("%.6f", z));
+    }
+
+    public void staircase(int n) {
+        for (int i = n - 1; i >= 0; i--) {
+            StringBuilder sb = new StringBuilder();
+            int j = 0;
+            while (j < i) {
+                sb.append(" ");
+                j++;
+            }
+            while (j < n) {
+                sb.append("#");
+                j++;
+            }
+            System.out.println(sb.toString());
         }
     }
 }

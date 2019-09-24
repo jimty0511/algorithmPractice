@@ -2,6 +2,9 @@ package practice.problem;
 
 import practice.domain.RandomListNode;
 
+import java.util.HashMap;
+import java.util.Map;
+
 // 138. Copy List with Random Pointer
 public class CopyListWithRandomPointer {
     public RandomListNode copyRandomList(RandomListNode head) {
@@ -35,5 +38,23 @@ public class CopyListWithRandomPointer {
         cur.next = cur.next.next;
 
         return res;
+    }
+
+    public RandomListNode copyRandomListTwo(RandomListNode head) {
+        if (head == null)
+            return null;
+        Map<RandomListNode, RandomListNode> map = new HashMap<>();
+        RandomListNode node = head;
+        while (node != null) {
+            map.put(node, new RandomListNode(node.label));
+            node = node.next;
+        }
+        node = head;
+        while (node != null) {
+            map.get(node).next = map.get(node.next);
+            map.get(node).random = map.get(node.random);
+            node = node.next;
+        }
+        return map.get(head);
     }
 }

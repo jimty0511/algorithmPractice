@@ -14,4 +14,31 @@ public class PrimeNumberOfSetBitsInBinaryRepresentation {
         }
         return count;
     }
+
+    public int countPrimeSetBitsTwo(int L, int R) {
+        int sum = 0;
+        while (L <= R) {
+            int x = L;
+            int count = 0;
+            while (L != 0) {
+                if ((L & 1) == 1)
+                    count++;
+                L >>= 1;
+            }
+            L = x + 1;
+            if (isPrime(count))
+                sum++;
+        }
+        return sum;
+    }
+
+    private boolean isPrime(int n) {
+        if (n < 2 || n % 2 == 0)
+            return n == 2;
+        for (int i = 3; i * i <= n; i += 2) {
+            if (n % i == 0)
+                return false;
+        }
+        return true;
+    }
 }

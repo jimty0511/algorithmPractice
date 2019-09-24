@@ -23,7 +23,7 @@ public class SubstringWithConcatenationOfAllWords {
                 String word = s.substring(i + j * len, i + (j + 1) * len);
                 if (map.containsKey(word)) {
                     seen.put(word, seen.getOrDefault(word, 0) + 1);
-                    if (seen.get(word) > map.getOrDefault(word, 0)) {
+                    if (seen.get(word) > map.get(word)) {
                         break;
                     }
                 } else {

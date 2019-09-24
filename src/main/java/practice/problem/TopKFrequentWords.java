@@ -37,4 +37,30 @@ public class TopKFrequentWords {
 
         return result;
     }
+
+    public List<String> topKFrequentBucketSort(String[] words, int k) {
+        Map<String, Integer> map = new HashMap<>();
+        int max = 0;
+        for (String w : words) {
+            map.put(w, map.getOrDefault(w, 0) + 1);
+            max = Math.max(max, map.get(w));
+        }
+        List<String>[] bucket = new List[max + 1];
+        for (String key : map.keySet()) {
+            int freq = map.get(key);
+            if (bucket[freq] == null)
+                bucket[freq] = new ArrayList<>();
+            bucket[freq].add(key);
+        }
+        List<String> res = new ArrayList<>();
+        for (int i = max; i >= 0 && k >= 0; i--) {
+            if (bucket[i] != null) {
+                Collections.sort(bucket[i]);
+                List<String> temp = bucket[i].subList(0, Math.min(bucket[i].size(), k));
+                res.addAll(temp);
+                k -= bucket[i].size();
+            }
+        }
+        return res;
+    }
 }

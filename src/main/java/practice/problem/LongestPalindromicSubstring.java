@@ -3,11 +3,30 @@ package practice.problem;
 // 5. Longest Palindromic Substring
 public class LongestPalindromicSubstring {
     public String longestPalindromeDp(String s) {
+        if (s == null || s.length() == 0)
+            return "";
         int n = s.length();
         String res = null;
         boolean[][] dp = new boolean[n][n];
         for (int i = n - 1; i >= 0; i--) {
             for (int j = i; j < n; j++) {
+                dp[i][j] = s.charAt(i) == s.charAt(j) && (j - i < 3 || dp[i + 1][j - 1]);
+                if (dp[i][j] && (res == null || j - i + 1 > res.length())) {
+                    res = s.substring(i, j + 1);
+                }
+            }
+        }
+        return res;
+    }
+
+    public String longestPalindromeDpTwo(String s) {
+        if (s == null || s.length() == 0)
+            return "";
+        int n = s.length();
+        String res = null;
+        boolean[][] dp = new boolean[n][n];
+        for (int j = 0; j < s.length(); j++) {
+            for (int i = j; i >= 0; i--) {
                 dp[i][j] = s.charAt(i) == s.charAt(j) && (j - i < 3 || dp[i + 1][j - 1]);
                 if (dp[i][j] && (res == null || j - i + 1 > res.length())) {
                     res = s.substring(i, j + 1);

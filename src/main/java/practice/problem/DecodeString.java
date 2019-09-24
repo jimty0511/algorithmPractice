@@ -2,6 +2,7 @@ package practice.problem;
 
 import java.util.Stack;
 
+// 394. Decode String
 public class DecodeString {
     public String decodeString(String s) {
         Stack<Integer> count = new Stack<>();
@@ -32,5 +33,31 @@ public class DecodeString {
             i++;
         }
         return result.pop();
+    }
+
+    public String decodeStringTwo(String s) {
+        Stack<Integer> cnt = new Stack<>();
+        Stack<StringBuilder> str = new Stack<>();
+        StringBuilder res = new StringBuilder();
+        int num = 0;
+        for (char c : s.toCharArray()) {
+            if (Character.isDigit(c)) {
+                num = num * 10 + c - '0';
+            } else if (c == '[') {
+                cnt.push(num);
+                str.push(res);
+                res = new StringBuilder();
+                num = 0;
+            } else if (c == ']') {
+                StringBuilder tmp = res;
+                res = str.pop();
+                int times = cnt.pop();
+                while (times-- > 0)
+                    res.append(tmp);
+            } else {
+                res.append(c);
+            }
+        }
+        return res.toString();
     }
 }

@@ -1,7 +1,6 @@
 package practice.problem;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 // 212. Word Search II
 public class WordSearchII {
@@ -56,5 +55,50 @@ public class WordSearchII {
         if (j < board[0].length - 1)
             helper(board, i, j + 1, p, res);
         board[i][j] = c;
+    }
+
+    private int[][] dirs = new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+
+    public List<String> findWordsTwo(char[][] board, List<String> words) {
+        if (board == null || board.length == 0)
+            return null;
+        boolean[][] visited = new boolean[board.length][board[0].length];
+        Map<String, Boolean> prefix = buildPrefix(words);
+        Set<String> set = new HashSet<>();
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
+                visited[i][j] = true;
+                dfs(board, visited, i, j, String.valueOf(board[i][j]), prefix, set);
+                visited[i][j] = false;
+            }
+        }
+        return new ArrayList<>(set);
+    }
+
+    private Map<String, Boolean> buildPrefix(List<String> words) {
+        Map<String, Boolean> prefix = new HashMap<>();
+        for (String w : words) {
+            for (int i = 0; i < w.length() - 1; i++) {
+                String pre = w.substring(0, i + 1);
+                prefix.putIfAbsent(pre, false);
+            }
+            prefix.put(w, true);
+        }
+        return prefix;
+    }
+
+    private void dfs(char[][] board, boolean[][] visited, int x, int y, String word, Map<String, Boolean> prefix, Set<String> set) {
+        if (!prefix.containsKey(word))
+            return;
+        if (prefix.get(word))
+            set.add(word);
+        for (int[] d : dirs) {
+            int xx = x + d[0], yy = y + d[1];
+            if (xx < 0 || xx >= board.length || yy < 0 || yy >= board[0].length || visited[xx][yy])
+                continue;
+            visited[xx][yy] = true;
+            dfs(board, visited, xx, yy, word + board[xx][yy], prefix, set);
+            visited[xx][yy] = false;
+        }
     }
 }

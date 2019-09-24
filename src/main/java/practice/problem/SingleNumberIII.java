@@ -1,5 +1,8 @@
 package practice.problem;
 
+import java.util.HashSet;
+import java.util.Set;
+
 // 260. Single Number III
 public class SingleNumberIII {
     public int[] singleNumber(int[] nums) {
@@ -17,5 +20,14 @@ public class SingleNumberIII {
             }
         }
         return res;
+    }
+
+    public int[] singleNumberTwo(int[] nums) {
+        Set<Integer> set = new HashSet<>();
+        for (int n : nums) {
+            if (!set.add(n))
+                set.remove(n);
+        }
+        return set.stream().mapToInt(n -> n).toArray();
     }
 }

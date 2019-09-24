@@ -16,11 +16,12 @@ public class SubdomainVisitCount {
             String temp = "";
             for (int i = domains.length - 1; i >= 0; i--) {
                 temp = domains[i] + (temp.equals("") ? temp : "." + temp);
-                if (!map.containsKey(temp)) {
-                    map.put(temp, count);
-                } else {
-                    map.put(temp, map.get(temp) + count);
-                }
+                map.put(temp, map.getOrDefault(temp, 0) + count);
+//                if (!map.containsKey(temp)) {
+//                    map.put(temp, count);
+//                } else {
+//                    map.put(temp, map.get(temp) + count);
+//                }
             }
         }
         List<String> result = new ArrayList<>();

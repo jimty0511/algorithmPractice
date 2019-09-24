@@ -22,4 +22,11 @@ public class minCostClimbingStairs {
         }
         return Math.min(res[res.length - 1], res[res.length - 2]);
     }
+
+    public int minCostClimbingStairsThree(int[] cost) {
+        for (int i = 2; i < cost.length; i++) {
+            cost[i] += Math.min(cost[i - 1], cost[i - 2]);
+        }
+        return Math.min(cost[cost.length - 1], cost[cost.length - 2]);
+    }
 }

@@ -9,11 +9,11 @@ import java.util.Map;
 /**
  * postorder = [9,15,7,20,3]
  * inorder = [9,3,15,20,7]
- *     3
- *    / \
- *   9  20
- *     /  \
- *    15   7
+ *   3
+ *  / \
+ * 9  20
+ *   /  \
+ *  15   7
  */
 
 // 106. Construct Binary Tree from Inorder and Postorder Traversal
@@ -54,9 +54,10 @@ public class ConstructBinaryTreefromInorderandPostorderTraversal {
         if (postStart > postEnd || inStart > inEnd)
             return null;
         TreeNode root = new TreeNode(postorder[postEnd]);
-        int point = map.get(root.val);
-        root.left = buildTreeTwoHelper(postorder, postStart, postStart + point - inStart - 1, inorder, inStart, point - 1, map);
-        root.right = buildTreeTwoHelper(postorder, postStart + point - inStart, postEnd - 1, inorder, point + 1, inEnd, map);
+        int index = map.get(root.val);
+        int sum = index - inStart;
+        root.left = buildTreeTwoHelper(postorder, postStart, postStart + sum - 1, inorder, inStart, index - 1, map);
+        root.right = buildTreeTwoHelper(postorder, postStart + sum, postEnd - 1, inorder, index + 1, inEnd, map);
         return root;
     }
 

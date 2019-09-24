@@ -23,4 +23,29 @@ public class DegreeOfAnArray {
         }
         return ans;
     }
+
+    public int findShortestSubArrayTwo(int[] nums) {
+        if (nums == null || nums.length == 0)
+            return 0;
+        Map<Integer, int[]> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            if (!map.containsKey(nums[i]))
+                map.put(nums[i], new int[]{1, i, i});
+            else {
+                int[] tmp = map.get(nums[i]);
+                tmp[0]++;
+                tmp[2] = i;
+            }
+        }
+        int degree = Integer.MIN_VALUE, res = Integer.MAX_VALUE;
+        for (int[] val : map.values()) {
+            if (val[0] > degree) {
+                degree = val[0];
+                res = val[2] - val[1] + 1;
+            } else if (val[0] == degree) {
+                res = Math.min(res, val[2] - val[1] + 1);
+            }
+        }
+        return res;
+    }
 }

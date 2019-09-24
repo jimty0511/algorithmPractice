@@ -18,6 +18,26 @@ public class HouseRobberII {
         return Math.max(prevNo, prevYes);
     }
 
+    public int helperTwo(int[] nums, int low, int high) {
+        int rob = 0, notRob = 0;
+        for (int i = low; i <= high; i++) {
+            int currRob = notRob + nums[i];
+            notRob = Math.max(notRob, rob);
+            rob = currRob;
+        }
+        return Math.max(notRob, rob);
+    }
+
+    public int helperThree(int[] nums, int low, int high) {
+        int[] mark = new int[nums.length + 1];
+        mark[0] = 0;
+        mark[1] = nums[0];
+        for (int i = low; i < high; i++) {
+            mark[i] = Math.max(nums[i - 1] + mark[i - 2], mark[i - 1]);
+        }
+        return mark[high];
+    }
+
     public int robDp(int[] nums) {
         if (nums == null || nums.length == 0) return 0;
         if (nums.length < 2) return nums[0];
