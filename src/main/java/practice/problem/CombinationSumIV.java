@@ -11,7 +11,7 @@ public class CombinationSumIV {
         dp[0] = 1;
         for (int i = 1; i <= target; i++) {
             for (int n : nums) {
-                if (i - n >= 0)
+                if (i >= n)
                     dp[i] += dp[i - n];
             }
         }

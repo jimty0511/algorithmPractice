@@ -51,4 +51,31 @@ public class SearchInRotatedSortedArrayII {
         }
         return false;
     }
+
+    public boolean searchThree(int[] nums, int target) {
+        if (nums == null || nums.length == 0)
+            return false;
+        int s = 0, e = nums.length - 1;
+        while (s + 1 < e) {
+            int m = s + (e - s) / 2;
+            if (nums[m] == target)
+                return true;
+            if (nums[s] < nums[m]) {
+                if (nums[s] <= target && target <= nums[m])
+                    e = m;
+                else
+                    s = m;
+            } else if (nums[m] < nums[s]) {
+                if (nums[m] < target && target < nums[s])
+                    s = m;
+                else
+                    e = m;
+            } else
+                e--;
+        }
+        if (nums[s] == target || nums[e] == target)
+            return true;
+        else
+            return false;
+    }
 }

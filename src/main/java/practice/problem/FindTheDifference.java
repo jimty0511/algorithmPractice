@@ -1,6 +1,7 @@
 package practice.problem;
 
 // 389. Find the Difference
+// Microsoft ladder
 public class FindTheDifference {
     public char findTheDifference(String s, String t) {
         int charCode = t.charAt(s.length());

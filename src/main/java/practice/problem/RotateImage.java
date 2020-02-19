@@ -1,6 +1,7 @@
 package practice.problem;
 
 // 48. Rotate Image
+// Microsoft ladder
 public class RotateImage {
     public void rotate(int[][] matrix) {
         int l = matrix[0].length, tmp;

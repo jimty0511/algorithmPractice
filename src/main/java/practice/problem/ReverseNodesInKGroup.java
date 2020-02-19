@@ -3,6 +3,7 @@ package practice.problem;
 import practice.domain.ListNode;
 
 // 25. Reverse Nodes in k-Group
+// Microsoft ladder
 public class ReverseNodesInKGroup {
     public ListNode reverseKGroup(ListNode head, int k) {
         int n = 0;
@@ -45,5 +46,39 @@ public class ReverseNodesInKGroup {
             }
         }
         return dummy.next;
+    }
+
+    public ListNode reverseKGroupThree(ListNode head, int k) {
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        head = dummy;
+        while (true) {
+            head = reverseK(head, k);
+            if (head == null)
+                break;
+        }
+        return dummy.next;
+    }
+
+    private ListNode reverseK(ListNode head, int k) {
+        ListNode nodeK = head;
+        for (int i = 0; i < k; i++) {
+            if (nodeK == null)
+                return null;
+            nodeK = nodeK.next;
+        }
+        if (nodeK == null)
+            return null;
+        ListNode nodeOne = head.next, nextPart = nodeK.next;
+        ListNode pre = null, cur = nodeOne;
+        while (cur != nextPart) {
+            ListNode tmp = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = tmp;
+        }
+        head.next = nodeK;
+        nodeOne.next = nextPart;
+        return nodeOne;
     }
 }

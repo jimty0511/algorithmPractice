@@ -33,4 +33,68 @@ public class KEditDistance {
         }
         return dp[m][n] < k;
     }
+
+    class Trie {
+        TrieNode root;
+
+        public Trie() {
+            root = new TrieNode();
+        }
+
+        public void insert(String word) {
+            TrieNode cur = root;
+            for (int i = 0; i < word.length(); i++) {
+                char c = word.charAt(i);
+                if (cur.children[c - 'a'] == null)
+                    cur.children[c - 'a'] = new TrieNode();
+                cur = cur.children[c - 'a'];
+            }
+            cur.word = word;
+            cur.isWord = true;
+        }
+    }
+
+    class TrieNode {
+        TrieNode[] children;
+        boolean isWord;
+        String word;
+
+        public TrieNode() {
+            children = new TrieNode[26];
+            isWord = false;
+            word = null;
+        }
+    }
+
+    public List<String> kDistanceTwo(String[] words, String target, int k) {
+        Trie trie = new Trie();
+        for (String w : words)
+            trie.insert(w);
+        List<String> res = new ArrayList<>();
+        int n = target.length();
+        int[] dp = new int[n + 1];
+        for (int i = 0; i <= n; i++)
+            dp[i] = i;
+        helper(trie.root, res, k, target, dp);
+        return res;
+    }
+
+    private void helper(TrieNode node, List<String> res, int k, String target, int[] dp) {
+        int n = target.length();
+        if (node.isWord && dp[n] <= k)
+            res.add(node.word);
+        int[] next = new int[n + 1];
+        for (int i = 0; i < 26; i++) {
+            if (node.children[i] != null) {
+                next[0] = dp[0] + 1;
+                for (int j = 1; j <= n; j++) {
+                    if (target.charAt(j - 1) - 'a' == i)
+                        next[j] = Math.min(dp[j - 1], Math.min(next[j - 1] + 1, dp[j] + 1));
+                    else
+                        next[j] = Math.min(dp[j - 1] + 1, Math.min(next[j - 1] + 1, dp[j] + 1));
+                }
+                helper(node.children[i], res, k, target, next);
+            }
+        }
+    }
 }

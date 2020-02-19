@@ -3,6 +3,7 @@ package practice.problem;
 import practice.domain.TreeNode;
 
 // 654. Maximum Binary Tree
+// Microsoft ladder
 public class MaximumBinaryTree {
     public TreeNode constructMaximumBinaryTree(int[] nums) {
         if (nums == null || nums.length == 0)
@@ -13,6 +14,8 @@ public class MaximumBinaryTree {
     private TreeNode build(int[] nums, int start, int end) {
         if (start > end)
             return null;
+        if (start == end)
+            return new TreeNode(nums[start]);
         int idx = start;
         for (int i = start + 1; i <= end; i++) {
             if (nums[i] > nums[idx])

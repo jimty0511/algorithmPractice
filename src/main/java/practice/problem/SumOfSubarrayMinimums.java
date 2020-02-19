@@ -33,4 +33,29 @@ public class SumOfSubarrayMinimums {
         }
         return ans;
     }
+
+    public int sumSubarrayMinsTwo(int[] A) {
+        int res = 0, mod = (int) 1e9 + 7, n = A.length;
+        int[] left = new int[n], right = new int[n];
+        Stack<int[]> stk = new Stack<>();
+        for (int i = 0; i < n; i++) {
+            int cnt = 1;
+            while (!stk.isEmpty() && stk.peek()[0] > A[i])
+                cnt += stk.pop()[1];
+            stk.push(new int[]{A[i], cnt});
+            left[i] = cnt;
+        }
+        stk = new Stack<>();
+        for (int i = n - 1; i >= 0; i--) {
+            int cnt = 1;
+            while (!stk.isEmpty() && stk.peek()[0] >= A[i])
+                cnt += stk.pop()[1];
+            stk.push(new int[]{A[i], cnt});
+            right[i] = cnt;
+        }
+        for (int i = 0; i < n; i++) {
+            res = (res + A[i] * left[i] * right[i]) % mod;
+        }
+        return res;
+    }
 }

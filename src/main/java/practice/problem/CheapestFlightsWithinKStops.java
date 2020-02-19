@@ -3,6 +3,7 @@ package practice.problem;
 import java.util.*;
 
 // 787. Cheapest Flights Within K Stops
+// Airbnb ladder
 public class CheapestFlightsWithinKStops {
     private class City implements Comparable<City> {
         int id, costFromSrc, stopFromSrc;

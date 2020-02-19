@@ -71,6 +71,8 @@ public class BoggleGame {
                     dfs(board, i, j, root, root, visited, words);
                 }
             }
+            words.remove(words.size() - 1);
+            return;
         }
         for (int[] d : dirs) {
             dfs(board, x + d[0], y + d[1], root, cur, visited, words);

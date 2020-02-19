@@ -22,6 +22,7 @@ public class RemoveInvalidParentheses {
                 if (isValid(cur.toCharArray())) {
                     found = true;
                     res.add(cur);
+                    continue;
                 }
                 for (int i = 0; i < cur.length(); i++) {
                     if (cur.charAt(i) != '(' && cur.charAt(i) != ')')

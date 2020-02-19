@@ -52,4 +52,14 @@ public class HouseRobber {
 
         return f2;
     }
+
+    public int robFour(int[] nums) {
+        int rob = 0, notRob = 0;
+        for (int n : nums) {
+            int tmp = n + notRob;
+            notRob = Math.max(rob, notRob);
+            rob = tmp;
+        }
+        return Math.max(notRob, rob);
+    }
 }

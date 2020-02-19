@@ -1,6 +1,7 @@
 package practice.problem;
 
 // 167. Two Sum II - Input array is sorted
+// Microsoft ladder
 public class TwoSumII {
     public int[] twoSum(int[] numbers, int target) {
         int[] res = new int[2];

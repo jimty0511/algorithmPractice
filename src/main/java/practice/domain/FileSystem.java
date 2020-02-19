@@ -8,7 +8,6 @@ public class FileSystem {
 
     public FileSystem() {
         pathMap = new HashMap<>();
-
     }
 
     public boolean create(String path, int value) {

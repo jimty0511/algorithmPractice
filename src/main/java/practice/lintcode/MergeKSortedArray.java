@@ -1,5 +1,9 @@
 package practice.lintcode;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.PriorityQueue;
+
 public class MergeKSortedArray {
     public int[] mergekSortedArrays(int[][] arrays) {
         // write your code here
@@ -37,5 +41,34 @@ public class MergeKSortedArray {
         while (j < n)
             res[idx++] = nums2[j++];
         return res;
+    }
+
+    class Element {
+        int row, col, val;
+
+        public Element(int row, int col, int val) {
+            this.row = row;
+            this.col = col;
+            this.val = val;
+        }
+    }
+
+    public int[] mergekSortedArraysTwo(int[][] arrays) {
+        if (arrays == null || arrays.length == 0)
+            return new int[0];
+        List<Integer> res = new ArrayList<>();
+        PriorityQueue<Element> pq = new PriorityQueue<>((a, b) -> a.val - b.val);
+        int m = arrays.length, n = arrays[0].length;
+        for (int i = 0; i < m; i++) {
+            pq.offer(new Element(i, 0, arrays[i][0]));
+        }
+        while (!pq.isEmpty()) {
+            Element cur = pq.poll();
+            res.add(cur.val);
+            int row = cur.row, col = cur.col;
+            if (col < arrays[row].length - 1)
+                pq.offer(new Element(row, col + 1, arrays[row][col + 1]));
+        }
+        return res.stream().mapToInt(i -> i).toArray();
     }
 }

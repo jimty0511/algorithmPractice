@@ -14,20 +14,20 @@ public class LongestConsecutiveSequence {
         for (int n : nums)
             set.add(n);
         int max = 1;
-        for (int num : nums) {
-            if (set.remove(num)) {
-                int val = num;
+        for (int n : nums) {
+            if (set.remove(n)) {
+                int val = n;
                 int sum = 1;
                 while (set.remove(val - 1)) {
                     val--;
+                    sum++;
                 }
-                sum += num - val;
-                val = num;
+                val = n;
                 while (set.remove(val + 1)) {
                     val++;
+                    sum++;
                 }
-                sum += val - num;
-                max = Math.max(max, sum);
+                max = Math.max(sum, max);
             }
         }
         return max;

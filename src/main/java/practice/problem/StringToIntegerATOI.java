@@ -1,6 +1,7 @@
 package practice.problem;
 
 // 8. String to Integer (atoi)
+// Microsoft ladder
 public class StringToIntegerATOI {
     public int myAtoi(String str) {
         if (str.isEmpty() || str.trim().isEmpty())
@@ -14,8 +15,11 @@ public class StringToIntegerATOI {
             int digit = str.charAt(idx) - '0';
             if (digit < 0 || digit > 9)
                 break;
-            if (Integer.MAX_VALUE / 10 < total || Integer.MAX_VALUE / 10 == total && Integer.MAX_VALUE % 10 < digit)
+//            if (Integer.MAX_VALUE / 10 < total || Integer.MAX_VALUE / 10 == total && Integer.MAX_VALUE % 10 < digit)
+//                return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
+            if (total + digit > Integer.MAX_VALUE / 10 + Integer.MAX_VALUE % 10) {
                 return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
+            }
             total = total * 10 + digit;
             idx++;
         }

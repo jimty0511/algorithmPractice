@@ -32,4 +32,37 @@ public class BinaryTreeLongestConsecutiveSequenceII {
         max = Math.max(max, dcr + inr - 1);
         return new int[]{inr, dcr};
     }
+
+    class ResultType {
+        int maxLen, maxDown, maxUp;
+
+        public ResultType(int maxLen, int maxDown, int maxUp) {
+            this.maxLen = maxLen;
+            this.maxDown = maxDown;
+            this.maxUp = maxUp;
+        }
+    }
+
+    public int longestConsecutiveTwo(TreeNode root) {
+        return helperTwo(root).maxLen;
+    }
+
+    private ResultType helperTwo(TreeNode root) {
+        if (root == null)
+            return new ResultType(0, 0, 0);
+        ResultType left = helperTwo(root.left);
+        ResultType right = helperTwo(root.right);
+        int down = 0, up = 0;
+        if (root.left != null && root.left.val + 1 == root.val)
+            down = Math.max(down, left.maxDown + 1);
+        if (root.left != null && root.left.val - 1 == root.val)
+            up = Math.max(up, left.maxUp + 1);
+        if (root.right != null && root.right.val + 1 == root.val)
+            down = Math.max(down, right.maxDown + 1);
+        if (root.right != null && root.right.val - 1 == root.val)
+            up = Math.max(up, right.maxUp + 1);
+        int len = 1 + down + up;
+        len = Math.max(len, Math.max(left.maxLen, right.maxLen));
+        return new ResultType(len, down, up);
+    }
 }

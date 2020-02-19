@@ -22,7 +22,6 @@ public class ReverseWordsInAString {
                 start--;
             sb.append(s.substring(start + 1, end + 1)).append(" ");
         }
-        char[] chars = new char[s.length()];
         return sb.toString().trim();
     }
 }

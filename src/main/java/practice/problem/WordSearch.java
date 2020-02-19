@@ -1,6 +1,7 @@
 package practice.problem;
 
 // 79. Word Search
+// Microsoft ladder
 public class WordSearch {
     int[][] dir = new int[][]{{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
 

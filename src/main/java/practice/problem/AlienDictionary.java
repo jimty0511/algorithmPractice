@@ -5,6 +5,7 @@ import java.util.*;
 import java.util.List;
 
 // 269. Alien Dictionary
+// Airbnb ladder
 public class AlienDictionary {
     public String alienOrder(String[] words) {
         List<Point> pairs = new LinkedList<>();

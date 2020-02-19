@@ -3,6 +3,7 @@ package practice.problem;
 import java.util.Stack;
 
 // 591. Tag Validator
+// Microsoft ladder
 public class TagValidator {
     public boolean isValid(String code) {
         Stack<String> stack = new Stack<>();

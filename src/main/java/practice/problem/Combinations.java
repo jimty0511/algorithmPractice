@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 // 77. Combinations
+// Microsoft ladder
 public class Combinations {
     public List<List<Integer>> combine(int n, int k) {
         List<List<Integer>> res = new ArrayList<>();

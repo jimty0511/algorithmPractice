@@ -111,4 +111,70 @@ public class PalindromePairs {
         }
         return res;
     }
+
+    class TrieNode {
+        int id;
+        TrieNode[] children;
+        List<Integer> list;
+
+        public TrieNode() {
+            this.id = -1;
+            this.children = new TrieNode[26];
+            this.list = new ArrayList<>();
+        }
+    }
+
+    public List<List<Integer>> palindromePairsTrie(String[] words) {
+        List<List<Integer>> res = new ArrayList<>();
+        if (words == null || words.length == 0)
+            return res;
+        TrieNode root = new TrieNode();
+        for (int i = 0; i < words.length; i++)
+            insert(root, words[i], i);
+        for (int i = 0; i < words.length; i++)
+            search(words[i], root, i, res);
+        return res;
+    }
+
+    private void search(String word, TrieNode root, int idx, List<List<Integer>> res) {
+        for (int i = 0; i < word.length(); i++) {
+            if (root.id >= 0 && root.id != idx && isPalindromeTwo(word, i, word.length() - 1)) {
+                res.add(Arrays.asList(idx, root.id));
+            }
+            int k = word.charAt(i) - 'a';
+            root = root.children[k];
+            if (root == null)
+                return;
+        }
+        for (int i : root.list) {
+            if (i == idx)
+                continue;
+            res.add(Arrays.asList(idx, i));
+        }
+    }
+
+    private void insert(TrieNode root, String word, int idx) {
+        TrieNode node = root;
+        for (int i = word.length() - 1; i >= 0; i--) {
+            int k = word.charAt(i) - 'a';
+            if (node.children[k] == null)
+                node.children[k] = new TrieNode();
+            if (isPalindromeTwo(word, 0, i)) {
+                node.list.add(idx);
+            }
+            node = node.children[k];
+        }
+        node.list.add(idx);
+        node.id = idx;
+    }
+
+    private boolean isPalindromeTwo(String s, int l, int r) {
+        while (l < r) {
+            if (s.charAt(l) != s.charAt(r))
+                return false;
+            l++;
+            r--;
+        }
+        return true;
+    }
 }

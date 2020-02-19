@@ -1,6 +1,7 @@
 package practice.problem;
 
 // 55. Jump Game
+// Microsoft ladder
 public class JumpGame {
     public boolean canJump(int[] nums) {
         int max = 0;

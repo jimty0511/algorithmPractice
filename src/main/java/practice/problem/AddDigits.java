@@ -6,11 +6,11 @@ public class AddDigits {
         int cur = num;
         int sum = 0;
         while (true) {
-            while (cur / 10 != 0) {
+            while (cur != 0) {
                 sum += cur % 10;
                 cur /= 10;
             }
-            sum += cur;
+//            sum += cur;
             if (sum / 10 == 0)
                 return sum;
             else {

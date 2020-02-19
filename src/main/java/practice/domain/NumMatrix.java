@@ -23,6 +23,7 @@ public class NumMatrix {
 //        int cMin = Math.min(col1, col2);
 //        int cMax = Math.max(col1, col2);
 //        return dp[rMax + 1][cMax + 1] - dp[rMax + 1][cMin] - dp[rMin][cMax + 1] + dp[rMin][cMin];
+    //dp[row2 + 1][col2 + 1] - dp[row1][col2 + 1] - dp[row2 + 1][col1] + dp[row1][col1];
 //    }
 
     public NumMatrix(int[][] matrix) {

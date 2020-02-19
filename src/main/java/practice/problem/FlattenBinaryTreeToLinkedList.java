@@ -5,6 +5,7 @@ import practice.domain.TreeNode;
 import java.util.Stack;
 
 // 114. Flatten Binary Tree to Linked List
+// Microsoft ladder
 public class FlattenBinaryTreeToLinkedList {
     private TreeNode prev = null;
 

@@ -1,11 +1,9 @@
 package practice.problem;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 // 210. Course Schedule II
+// Microsoft ladder
 public class CourseScheduleII {
     public int[] findOrder(int numCourses, int[][] prerequisites) {
         int[] indegree = new int[numCourses];

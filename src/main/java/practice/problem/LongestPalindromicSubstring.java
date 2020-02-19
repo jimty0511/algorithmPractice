@@ -1,6 +1,7 @@
 package practice.problem;
 
 // 5. Longest Palindromic Substring
+// Microsoft ladder
 public class LongestPalindromicSubstring {
     public String longestPalindromeDp(String s) {
         if (s == null || s.length() == 0)
@@ -66,5 +67,44 @@ public class LongestPalindromicSubstring {
             right++;
         }
         return s.substring(left + 1, right);
+    }
+
+    public String longestPalindromeOn(String s) {
+        if (s == null || s.length() == 0)
+            return "";
+        String str = generateString(s);
+        int[] palindrome = new int[str.length()];
+        int mid = 0, longest = 1;
+        palindrome[0] = 1;
+        for (int i = 1; i < str.length(); i++) {
+            int len = 1;
+            if (mid + longest > i) {
+                int mirrorOfI = mid - (i - mid);
+                len = Math.min(palindrome[mirrorOfI], mid + longest - i);
+            }
+            while (i + len < str.length() && i - len >= 0) {
+                if (str.charAt(i - len) != str.charAt(i + len)) {
+                    break;
+                }
+                len++;
+            }
+            if (len > longest) {
+                longest = len;
+                mid = i;
+            }
+            palindrome[i] = len;
+        }
+        longest = longest - 1;
+        int start = (mid - 1) / 2 - (longest - 1) / 2;
+        return s.substring(start, start + longest);
+    }
+
+    private String generateString(String s) {
+        StringBuilder sb = new StringBuilder();
+        for (char c : s.toCharArray()) {
+            sb.append("#").append(c);
+        }
+        sb.append("#");
+        return sb.toString();
     }
 }

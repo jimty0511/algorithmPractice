@@ -1,12 +1,24 @@
+import org.apache.spark.SparkConf;
+import org.apache.spark.api.java.JavaRDD;
+import org.apache.spark.api.java.JavaSparkContext;
 import practice.AllPractices;
+import practice.airbnb.*;
 import practice.domain.*;
-import practice.hackerrank.GradingStudents;
+import practice.googleContest.ForegoneSolution;
+import practice.googleContest.YouCanGoYourOwnWay;
+import practice.lcdesign.ConsistentHashing;
+import practice.lcdesign.DesignTwitter;
+import practice.lcdesign.Geohash;
+import practice.lcdesign.RateLimiter;
 import practice.lintcode.*;
-import practice.lintcode.TernaryExpressionParser;
+import practice.lintcode.RangeSumOfBST;
+import practice.lintcode.ReverseOnlyLetters;
+import practice.lintcode.ThirdMaximumNumber;
+import practice.lintcode.WordSubsets;
 import practice.problem.*;
 
-import java.text.MessageFormat;
 import java.util.*;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -18,7 +30,9 @@ public class App {
 //        return "Hello world.";
 //    }
 
-    public static void main(String[] args) {
+    public static Pattern SPACE_DELIMITER = Pattern.compile(" ");
+
+    public static void main(String[] args) throws Exception {
 
         class ListMax {
             List<Integer> listMax;
@@ -615,7 +629,7 @@ public class App {
 //        System.out.println(romanToInt.romanToInt("MCMXCIV"));
 
 //        IntToRoman intToRoman = new IntToRoman();
-//        intToRoman.intToRoman(1998);
+//        intToRoman.intToRoman(11998);
 
 //        moveZeroes(new int[]{1, 0, 3, 0, 12, 0, 5});
 
@@ -797,7 +811,7 @@ public class App {
 //        System.out.println(findPeakElement(new int[]{1, 2, 1, 3, 5, 6, 4}));
 
 //        LongestIncreasingSubsequence longestIncreasingSubsequence = new LongestIncreasingSubsequence();
-//        System.out.println(longestIncreasingSubsequence.lengthOfLIS(new int[]{10, 9, 2, 5, 3, 7, 101, 18}));
+//        System.out.println(longestIncreasingSubsequence.lengthOfLIS(new int[]{10, 9, 2, 5, 7, 3, 101, 18}));
 
 //        System.out.println(lengthOfLIS(new int[]{10, 9, 2, 5, 3, 7, 101, 18}));
 
@@ -918,8 +932,11 @@ public class App {
 //        GasStation gasStation = new GasStation();
 //        System.out.println(gasStation.canCompleteCircuitTwo(new int[]{1, 2, 3, 4, 5}, new int[]{3, 4, 5, 1, 2}));
 
+//        GasStationII gasStationII = new GasStationII();
+//        gasStationII.getTimes(25, 10, new int[]{10, 14, 20, 21}, new int[]{10, 5, 2, 4});
+
 //        LowestCommonAncestorOfABinaryTree lowestCommonAncestorOfABinaryTree = new LowestCommonAncestorOfABinaryTree();
-//        System.out.println(lowestCommonAncestorOfABinaryTree.lowestCommonAncestor236(mainTree, mainTree.left.right, mainTree.left));
+//        System.out.println(lowestCommonAncestorOfABinaryTree.lowestCommonAncestorIterative(mainTree, mainTree.left.right, mainTree.left));
 
 //        JumpGame jumpGame = new JumpGame();
 //        System.out.println(jumpGame.canJump(new int[]{3, 2, 2, 0, 4}));
@@ -969,6 +986,8 @@ public class App {
 
 //        CoinChangeII coinChangeII = new CoinChangeII();
 //        coinChangeII.change(6, new int[]{1, 2, 3});
+//        coinChangeII.change(6, new int[]{1, 2, 3}, new int[]{6, 2, 2});
+        // 1,1,1,1,1,1    1,1,1,1,2    1,1,2,2    1,1,1,3    3,3    1,2,3
 
 //        Codec codec = new Codec();
 //        codec.decode(codec.encode("www.google.com"));
@@ -976,7 +995,8 @@ public class App {
 //        BinaryTreeRightSideView binaryTreeRightSideView = new BinaryTreeRightSideView();
 //        System.out.println(binaryTreeRightSideView.rightSideViewIter(mainTree));
 
-//        System.out.println(ap.grayCode(3));
+//        GrayCode grayCode = new GrayCode();
+//        grayCode.grayCodeTwo(7);
 
         RandomListNode randomListNode1 = new RandomListNode(1);
         RandomListNode randomListNode2 = new RandomListNode(2);
@@ -1009,11 +1029,12 @@ public class App {
 //        System.out.println(example);
 
 //        LongestPalindromicSubstring longestPalindromicSubstring = new LongestPalindromicSubstring();
-//        System.out.println(longestPalindromicSubstring.longestPalindromeDp("abcefgfeddefg"));
+//        System.out.println(longestPalindromicSubstring.longestPalindromeOn("abcefgfeddefg"));
 
 //        System.out.println(ap.threeSum(new int[]{-1, 0, 1, 2, -1, -4, 3}));
 
 //        WordLadder wordLadder = new WordLadder();
+//        wordLadder.lc("a", "c", new HashSet<>(Arrays.asList("b")));
 //        System.out.println(wordLadder.ladderLengthTwoPointer("hot", "dog", Arrays.asList("hot", "dog")));
 
 //        System.out.println(ap.myAtoi("    -42"));
@@ -1318,7 +1339,7 @@ public class App {
 //        nextGreaterElementIII.nextGreaterElement(98745631);
 
 //        DecodeString decodeString = new DecodeString();
-//        decodeString.decodeString("2[qwe]3[a2[c]]");
+//        decodeString.decodeStringTwo("2[qwe]3[a2[c]]");
 
 //        DecodeWaysII decodeWaysII = new DecodeWaysII();
 //        decodeWaysII.numDecodingsTwo("1*2*3");
@@ -1433,7 +1454,7 @@ public class App {
 //        countPrimes.getAllPrime(50);
 
 //        FlattenBinaryTreeToLinkedList flattenBinaryTreeToLinkedList = new FlattenBinaryTreeToLinkedList();
-//        flattenBinaryTreeToLinkedList.flatten(node1);
+//        flattenBinaryTreeToLinkedList.flattenIterative(node1);
 
         TreeNode rob3 = new TreeNode(2);
         rob3.left = new TreeNode(1);
@@ -1444,7 +1465,7 @@ public class App {
 //        houseRobberIII.rob(rob3);
 
 //        HouseRobber houseRobber = new HouseRobber();
-//        houseRobber.rob(new int[]{2, 7, 9, 3, 1, 20});
+//        houseRobber.robTwo(new int[]{2, 7, 9, 3, 1, 20});
 
         TreeNode uniValue = new TreeNode(5);
         uniValue.left = new TreeNode(1);
@@ -1503,7 +1524,7 @@ public class App {
 //        zigZagConversion.convert("PAYPALISHIRING", 4);
 
 //        ValidParenthesisString validParenthesisString = new ValidParenthesisString();
-//        validParenthesisString.checkValidStringTwo("()(*))");
+//        validParenthesisString.checkValidString("(**))");
 
 //        ReversePairsLC reversePairsLC = new ReversePairsLC();
 //        reversePairsLC.reversePairs(new int[]{2, 4, 1, 3, 5});
@@ -1600,7 +1621,8 @@ public class App {
 //        fibonnaciNumber.fib(9);
 
 //        FirstMissingPositive firstMissingPositive = new FirstMissingPositive();
-//        firstMissingPositive.firstMissingPositive(new int[]{3, 4, -1, 1});
+//        firstMissingPositive.firstMissingPositive(new int[]{3, 4, 5, -1, 1, -2});
+//        firstMissingPositive.firstMissingPositive(new int[]{7, 8, 9, 10, 11});
 
 //        PourWater pourWater = new PourWater();
 //        pourWater.pourWater(new int[]{2, 1, 1, 2, 1, 2, 2}, 4, 3);
@@ -1625,19 +1647,19 @@ public class App {
 //        multiplyStrings.multiply("123", "456");
 
 //        PalindromePairs palindromePairs = new PalindromePairs();
-//        palindromePairs.palindromePairsTwo(new String[]{"abcd", "dcba", "lls", "s", "sssll"});
+//        palindromePairs.palindromePairsTrie(new String[]{"abcd", "dcba", "lls", "sss", "sssll"});
 
 //        LongestAbsoluteFilePath longestAbsoluteFilePath = new LongestAbsoluteFilePath();
 //        longestAbsoluteFilePath.lengthLongestPathTwo("dir\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdir1\n\tsubdiTwo\n\t\tsubsubdirTwo2\n\t\t\tfile2.ext");
 
 //        DivideTwoIntegers divideTwoIntegers = new DivideTwoIntegers();
-//        divideTwoIntegers.divide(17, 11);
+//        divideTwoIntegers.divideTwo(17, 3);
 
 //        MaxPointsOnaLine maxPointsOnaLine = new MaxPointsOnaLine();
 //        maxPointsOnaLine.maxPoints(new Point[]{new Point(4, 0), new Point(4, -1), new Point(4, 5)});
 
 //        PowXN powXN = new PowXN();
-//        System.out.println(powXN.myPowThree(5, 6));
+//        System.out.println(powXN.myPowThree(4, 9));
 
 //        NumberOfDIgitOne numberOfDIgitOne = new NumberOfDIgitOne();
 //        numberOfDIgitOne.countDigitOne(3141092);
@@ -1650,6 +1672,7 @@ public class App {
 
 //        WordBreakII wordBreakII = new WordBreakII();
 //        wordBreakII.wordBreakTwo("penapplepineapple", Arrays.asList("apple", "pen", "applepen", "pine", "pineapple"));
+//        wordBreakII.wordBreakTwo("a", Arrays.asList(""));
 
 //        RemoveDuplicateLetters removeDuplicateLetters = new RemoveDuplicateLetters();
 //        removeDuplicateLetters.removeDuplicateLetters("bcabcb");
@@ -1664,10 +1687,11 @@ public class App {
 //        bestTimeToBuyAndSellStockII.maxProfitTwoII(new int[]{7, 1, 5, 3, 6, 4});
 
 //        BestTimeToBuyAndSellStockIII bestTimeToBuyAndSellStockIII = new BestTimeToBuyAndSellStockIII();
-//        bestTimeToBuyAndSellStockIII.maxProfitTwo(new int[]{3, 3, 5, 0, 0, 3, 1, 4});
+//        bestTimeToBuyAndSellStockIII.maxProfit(new int[]{3, 3, 5, 0, 0, 3, 1, 4});
 
 //        TheSkylineProblem theSkylineProblem = new TheSkylineProblem();
 //        theSkylineProblem.getSkyline(new int[][]{{2, 9, 10}, {3, 7, 15}, {5, 12, 12}, {15, 20, 10}, {19, 24, 8}});
+//        theSkylineProblem.getSkylineLC(new int[][]{{1, 3, 3}, {2, 4, 4}, {5, 6, 1}});
 
 //        LexicographicalNumbers lexicographicalNumbers = new LexicographicalNumbers();
 //        lexicographicalNumbers.lexicalOrder(23);
@@ -1784,6 +1808,9 @@ public class App {
 //        System.out.println(powerOfTwo.isPowerOfTwo(4));
 
 //        Scanner sc = new Scanner(System.in);
+//        while (sc.hasNext()) {
+//            System.out.println("next is " + sc.nextInt());
+//        }
 //        String str = sc.nextLine();
 //        int n = Integer.parseInt(str.split(" ")[0]);
 //        int m = Integer.parseInt(str.split(" ")[1]);
@@ -1925,6 +1952,7 @@ public class App {
 
 //        MinimumWindowSubsequence minimumWindowSubsequence = new MinimumWindowSubsequence();
 //        minimumWindowSubsequence.minWindowDp("abcdebdde", "bde");
+//        minimumWindowSubsequence.minWindowIntArr(new int[]{1, 2, 3, 5, 8, 7, 6, 9, 5, 7, 3, 0, 5, 2, 3, 4, 4, 7}, new int[]{5, 7});
 
 //        ExpressiveWords expressiveWords = new ExpressiveWords();
 //        expressiveWords.expressiveWords("heeellooo", new String[]{"hello", "hi", "helo"});
@@ -2013,7 +2041,7 @@ public class App {
 //        longestRepeatingCharacterReplacement.characterReplacement("AABCDEAFAA", 2);
 
 //        LongestPalindromicSubsequence longestPalindromicSubsequence = new LongestPalindromicSubsequence();
-//        longestPalindromicSubsequence.longestPalindromeSubseq("abecseba");
+//        longestPalindromicSubsequence.longestPalindromeSubseqDpTwo("abecsebbb");
 
 //        New21Game new21Game = new New21Game();
 //        new21Game.new21Game(21, 17, 10);
@@ -2222,7 +2250,9 @@ public class App {
 //        twentyFourGame.judgePoint24(new int[]{4, 1, 8, 7});
 
 //        OptimalAccountBalancing optimalAccountBalancing = new OptimalAccountBalancing();
-//        optimalAccountBalancing.minTransfers(new int[][]{{0, 1, 10}, {1, 0, 1}, {1, 2, 15}, {2, 0, 4}});
+//        optimalAccountBalancing.balanceGraphDp(new int[][]{{0, 1, 10}, {1, 0, 1}, {1, 2, 15}, {2, 0, 4}});
+//        optimalAccountBalancing.balanceGraphDp(new int[][]{{0, 1, 10}, {1, 0, 10}, {1, 2, 5}, {2, 0, 5}, {3, 0, 25}, {3, 2, 15}, {2, 4, 5}, {4, 2, 5}});
+
 
 //        FriendCircles friendCircles = new FriendCircles();
 //        List<String> friend = new ArrayList<>(Arrays.asList("YYNN", "YYYN", "NYYN", "NNNY"));
@@ -2269,7 +2299,7 @@ public class App {
 //        salaryAdjustment.getCap(new int[]{1, 2, 3, 4}, 13);
 
 //        ExpressionAddOperators expressionAddOperators = new ExpressionAddOperators();
-//        expressionAddOperators.addOperators("105", 5);
+//        expressionAddOperators.addOperatorsTwo("246", 10);
 
 //        DataStreamAsDisjointIntervals dataStreamAsDisjointIntervals = new DataStreamAsDisjointIntervals();
 //        dataStreamAsDisjointIntervals.addNumTwo(1);
@@ -2324,13 +2354,13 @@ public class App {
 //        preferenceList.getPreference(Arrays.asList(Arrays.asList(3, 5, 7, 9), Arrays.asList(2, 3, 8), Arrays.asList(5, 8)));
 
 //        NumberofIntersectedRectangles numberofIntersectedRectangles = new NumberofIntersectedRectangles();
-////        numberofIntersectedRectangles.countIntersection(new int[][][]{
-////                {{-3, -2}, {2, 1}},
-////                {{10, 8}, {15, 10}},
-////                {{1, 0}, {7, 4}},
-////                {{12, 9}, {16, 12}},
-////                {{-2, -1}, {5, 3}}
-////        });
+//        numberofIntersectedRectangles.countIntersection(new int[][][]{
+//                {{-3, -2}, {2, 1}},
+//                {{10, 8}, {15, 10}},
+//                {{1, 0}, {7, 4}},
+//                {{12, 9}, {16, 12}},
+//                {{-2, -1}, {5, 3}}
+//        });
 
 //        ImplementQueuewithFixedSizeofArrays.QueueWithFixedArray queueWithFixedArray =
 //                new ImplementQueuewithFixedSizeofArrays().new QueueWithFixedArray(5);
@@ -2389,7 +2419,7 @@ public class App {
 //        friendWishLists.put("Buddy1", wishList1);
 //        friendWishLists.put("Buddy2", wishList2);
 //        friendWishLists.put("Buddy3", wishList3);
-//        TravelBuddy.ShuffleAnArray solution = new TravelBuddy().new ShuffleAnArray(myWishList, friendWishLists);
+//        TravelBuddy.Solution solution = new TravelBuddy().new Solution(myWishList, friendWishLists);
 //        solution.recommend(10);
 
 //        HilbertCurve hilbertCurve = new HilbertCurve();
@@ -2419,11 +2449,11 @@ public class App {
 //        }
 //        List<String> wizards = Arrays.asList("1 2 3", "8 6 4",
 //                "7 8 3", "8 1", "6", "8 7", "9 4", "4 6", "1", "1 4");
-//        List<String> wizards = Arrays.asList("1 2 3", "1", "1", "6", "", "", "8", "", "", "");
+////        List<String> wizards = Arrays.asList("1 2 3", "1", "1", "6", "", "", "8", "", "", "");
 //        hogwartsMeetup.getShortestPathTwo(wizards);
 
 //        PancakeSorting pancakeSorting = new PancakeSorting();
-//        pancakeSorting.pancakeSort(new int[]{3, 2, 4, 1});
+//        pancakeSorting.pancakeSort(new int[]{3, 2, 5, 4, 1});
 
 //        ParseLispExpression parseLispExpression = new ParseLispExpression();
 //        parseLispExpression.evaluate("(let x 2 (mult x (let x 3 y 4 (add x y))))");
@@ -2510,7 +2540,7 @@ public class App {
 //        studentAttendanceRecordII.checkRecord(3);
 
 //        SubarraySumsDivisiblebyK subarraySumsDivisiblebyK = new SubarraySumsDivisiblebyK();
-//        subarraySumsDivisiblebyK.subarraysDivByK(new int[]{4, 5, 0, -2, -3, 1}, 5);
+//        subarraySumsDivisiblebyK.subarraysDivByKTwo(new int[]{4, 5, 0, -2, -3, 1}, 5);
 
 //        SubarraysWithKDifferentIntegers subarraysWithKDifferentIntegers = new SubarraysWithKDifferentIntegers();
 //        subarraysWithKDifferentIntegers.subarraysWithKDistinctTwo(new int[]{1, 2, 1, 3, 4}, 3);
@@ -2519,7 +2549,7 @@ public class App {
 //        sumOfDistancesInTree.sumOfDistancesInTree(6, new int[][]{{0, 1}, {0, 2}, {2, 3}, {2, 4}, {2, 5}});
 
 //        SumOfSubarrayMinimums sumOfSubarrayMinimums = new SumOfSubarrayMinimums();
-//        sumOfSubarrayMinimums.sumSubarrayMins(new int[]{2, 9, 7, 8, 3, 4, 6, 1});
+//        sumOfSubarrayMinimums.sumSubarrayMinsTwo(new int[]{2, 9, 7, 8, 3, 4, 6, 1});
 
 //        SumOfSubsequenceWidths sumOfSubsequenceWidths = new SumOfSubsequenceWidths();
 //        sumOfSubsequenceWidths.sumSubseqWidths(new int[]{2, 1, 3});
@@ -2645,7 +2675,7 @@ public class App {
 //        maskingPersonalInformation.maskPII("86-(10)12345678");
 
 //        MaximumSumf3NonOverlappingSubarrays maximumSumf3NonOverlappingSubarrays = new MaximumSumf3NonOverlappingSubarrays();
-//        maximumSumf3NonOverlappingSubarrays.maxSumOfThreeSubarraysTwo(new int[]{1, 2, 1, 2, 6, 7, 5, 1, 20}, 2);
+//        maximumSumf3NonOverlappingSubarrays.maxSumOfThreeSubarraysTwo(new int[]{9, 1, 2, 5, 1, 2, 8, 6, 7, 5, 1, 20}, 3);
 
 //        MaximumSwap maximumSwap = new MaximumSwap();
 //        maximumSwap.maximumSwap(2736);
@@ -2790,7 +2820,7 @@ public class App {
 //        constructBinaryTreeFromString.str2tree("-4(2(3)(1))(6(5))");
 
 //        LongestArithmeticSequence longestArithmeticSequence = new LongestArithmeticSequence();
-//        longestArithmeticSequence.longestArithSeqLength(new int[]{20, 1, 15, 3, 10, 5, 8});
+//        longestArithmeticSequence.longestArithSeqLengthTwo(new int[]{20, 1, 15, 3, 10, 5, 8});
 
 //        MaximumSubarray maximumSubarray = new MaximumSubarray();
 //        maximumSubarray.maxSubArrayTwo(new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4});
@@ -2997,7 +3027,7 @@ public class App {
 //        ternaryExpressionParser.parseTernary("F?1:T?3:1");
 
 //        TaskScheduler taskScheduler = new TaskScheduler();
-//        taskScheduler.leastIntervalFour(new char[]{'A', 'A', 'A', 'B', 'B', 'B', 'C', 'C'}, 3);
+//        taskScheduler.leastIntervalThree(new char[]{'A', 'A', 'A', 'B', 'B', 'B', 'C', 'C'}, 3);
 
 //        ShortestUncommonSubsequence shortestUncommonSubsequence = new ShortestUncommonSubsequence();
 //        shortestUncommonSubsequence.solution("babab", "babba");
@@ -3018,7 +3048,7 @@ public class App {
 //        reorderLogFiles.reorderLogFilesTwo(new String[]{"dig1 8 1 5 1", "let1 art can", "dig2 3 6", "let2 own kit dig", "let3 art zero"});
 
 //        MergeKSortedArray mergeKSortedArray = new MergeKSortedArray();
-//        mergeKSortedArray.mergekSortedArrays(new int[][]{{1, 3, 5, 7}, {2, 4, 6}, {0, 8, 9, 10, 11}});
+//        mergeKSortedArray.mergekSortedArraysTwo(new int[][]{{1, 3, 5, 7}, {2, 4, 6}, {0, 8, 9, 10, 11}});
 
 //        SnakesAndLadders snakesAndLadders = new SnakesAndLadders();
 //        snakesAndLadders.snakesAndLadders(new int[][]{
@@ -3099,7 +3129,576 @@ public class App {
 //        flatten2DVector.next();
 //        flatten2DVector.hasNext();
 
+//        RearrangeAStringWithIntegers rearrangeAStringWithIntegers = new RearrangeAStringWithIntegers();
+//        rearrangeAStringWithIntegers.rearrangeTwo("AC2BEW3");
+
+//        FriendsOfAppropriateAges friendsOfAppropriateAges = new FriendsOfAppropriateAges();
+//        friendsOfAppropriateAges.numFriendRequests(new int[]{20, 30, 100, 110, 120});
+
+//        WordSquares wordSquares = new WordSquares();
+//        wordSquares.wordSquares(new String[]{"area", "lead", "wall", "lady", "ball"});
+
+//        ConvertANumberToHexadecimal convertANumberToHexadecimal = new ConvertANumberToHexadecimal();
+//        convertANumberToHexadecimal.toHex(156);
+
+//        DesignTwitter designTwitter = new DesignTwitter();
+//        designTwitter.postTweet(1, "LintCode is Good!!!");
+//        designTwitter.getNewsFeed(1);
+//        designTwitter.getTimeline(1);
+//        designTwitter.follow(2, 1);
+//        designTwitter.getNewsFeed(2);
+//        designTwitter.unfollow(2, 1);
+//        designTwitter.getNewsFeed(2);
+
+//        ConsistentHashing consistentHashing = new ConsistentHashing();
+//        consistentHashing.consistentHashingTwo(5);
+
+//        RateLimiter rateLimiter = new RateLimiter();
+//        rateLimiter.isRatelimited(1000, "login", "3/m", true);
+//        rateLimiter.isRatelimited(1001, "login", "3/m", true);
+//        rateLimiter.isRatelimited(1021, "login", "3/m", true);
+//        rateLimiter.isRatelimited(1070, "login", "3/m", true);
+
+//        Geohash geohash = new Geohash();
+//        geohash.encode(-90, 180, 12);
+
+//        MovingStonesUntilConsecutiveII movingStonesUntilConsecutiveII = new MovingStonesUntilConsecutiveII();
+//        movingStonesUntilConsecutiveII.numMovesStonesII(new int[]{6, 5, 4, 3, 10});
+
+//        HeightChecker heightChecker = new HeightChecker();
+//        heightChecker.heightChecker(new int[]{1, 1, 4, 2, 1, 3});
+
+//        DecreaseElementsToMakeArrayZigzag decreaseElementsToMakeArrayZigzag = new DecreaseElementsToMakeArrayZigzag();
+//        decreaseElementsToMakeArrayZigzag.movesToMakeZigzag(new int[]{9, 6, 1, 6, 2});
+
+//        BinaryTreeColoringGame binaryTreeColoringGame = new BinaryTreeColoringGame();
+//        binaryTreeColoringGame.btreeGameWinningMove(mainTree, 8, 4);
+
+//        SnapshotArray snapshotArray = new SnapshotArray(4);
+//        snapshotArray.set(0, 5);  // Set array[0] = 5
+//        snapshotArray.snap();  // Take a snapshot, return snap_id = 0
+//        snapshotArray.set(0, 6);
+//        snapshotArray.get(0, 0);
+
+//        LongestChunkedPalindromeDecomposition longestChunkedPalindromeDecomposition = new LongestChunkedPalindromeDecomposition();
+//        longestChunkedPalindromeDecomposition.longestDecomposition("ghiabcdefhelloadamhelloabcdefghi");
+
+//        SwapForLongestRepeatedCharacterSubstring swapForLongestRepeatedCharacterSubstring = new SwapForLongestRepeatedCharacterSubstring();
+//        swapForLongestRepeatedCharacterSubstring.maxRepOpt1("bbaaaa");
+
+//        AsFarFromLandAsPossible asFarFromLandAsPossible = new AsFarFromLandAsPossible();
+//        asFarFromLandAsPossible.maxDistance(new int[][]{{1, 0, 1}, {0, 0, 0}, {1, 0, 1}});
+
+//        RemoveZeroSumConsecutiveNodesFromLinkedList removeZeroSumConsecutiveNodesFromLinkedList = new RemoveZeroSumConsecutiveNodesFromLinkedList();
+//        ListNode tmp = new ListNode(1);
+//        tmp.next = new ListNode(3);
+//        tmp.next.next = new ListNode(2);
+//        tmp.next.next.next = new ListNode(-3);
+//        tmp.next.next.next.next = new ListNode(-2);
+//        tmp.next.next.next.next.next = new ListNode(5);
+//        tmp.next.next.next.next.next.next = new ListNode(100);
+//        tmp.next.next.next.next.next.next.next = new ListNode(-100);
+//        tmp.next.next.next.next.next.next.next.next = new ListNode(4);
+//        removeZeroSumConsecutiveNodesFromLinkedList.removeZeroSumSublists(tmp);
+
+//        CanMakePalindromeFromSubstring canMakePalindromeFromSubstring = new CanMakePalindromeFromSubstring();
+//        canMakePalindromeFromSubstring.canMakePaliQueriesTwo("abcda", new int[][]{{3, 3, 0}, {1, 2, 0}, {0, 3, 1}, {0, 3, 2}, {0, 4, 1}});
+
+//        CompareStringsByFrequencyOfTheSmallestCharacter compareStringsByFrequencyOfTheSmallestCharacter = new CompareStringsByFrequencyOfTheSmallestCharacter();
+//        compareStringsByFrequencyOfTheSmallestCharacter.numSmallerByFrequency(new String[]{"bbb", "cc"}, new String[]{"a", "aa", "aaa", "aaaa"});
+
+//        NumberOfValidWordsForEachPuzzle numberOfValidWordsForEachPuzzle = new NumberOfValidWordsForEachPuzzle();
+//        numberOfValidWordsForEachPuzzle.findNumOfValidWords(new String[]{"aaaa", "asas", "able", "ability", "actt", "actor", "access"}, new String[]{"acefji", "aboveyz", "abrodyz", "abslute", "absoryz", "actresz", "gaswxyz"});
+
+//        BitSet bitSet = new BitSet();
+//        BitSet bitSet2 = new BitSet();
+//        String test = "acegikCD";
+//        for (char ch : test.toCharArray())
+//            bitSet.set(1 << (ch - 'A'));
+//        String test2 = "bdfhjAB";
+//        for (char ch : test2.toCharArray())
+//            bitSet2.set(1 << (ch - 'A'));
+//        bitSet2.and(bitSet);
+//        System.out.println(bitSet);
+
+//        int[] arr = new int[]{1, 3, 5, 7};
+//        int idx = Arrays.binarySearch(arr, 2);
+
+//        MakeArrayStrictlyIncreasing makeArrayStrictlyIncreasing = new MakeArrayStrictlyIncreasing();
+//        makeArrayStrictlyIncreasing.makeArrayIncreasingTwo(new int[]{1, 5, 3, 6, 7}, new int[]{1, 3, 2, 4});
+
+//        ReverseSubstringsBetweenEachPairOfParentheses reverseSubstringsBetweenEachPairOfParentheses = new ReverseSubstringsBetweenEachPairOfParentheses();
+//        reverseSubstringsBetweenEachPairOfParentheses.reverseParenthesesOn("(ed(et(oc))el)");
+
+//        KConcatenationMaximumSum kConcatenationMaximumSum = new KConcatenationMaximumSum();
+//        kConcatenationMaximumSum.kConcatenationMaxSum(new int[]{-1, 3, 2, -7}, 3);
+
+//        CriticalConnectionsInANetwork criticalConnectionsInANetwork = new CriticalConnectionsInANetwork();
+//        criticalConnectionsInANetwork.criticalConnections(4, Arrays.asList(Arrays.asList(0, 1), Arrays.asList(1, 2), Arrays.asList(2, 0), Arrays.asList(1, 3)));
+
+//        SmallestStringWithSwaps smallestStringWithSwaps = new SmallestStringWithSwaps();
+//        smallestStringWithSwaps.smallestStringWithSwaps("dcab", Arrays.asList(Arrays.asList(0, 3), Arrays.asList(1, 2)));
+
+//        ArrayToBinaryTreeCompareLeftOrRightSum arrayToBinaryTreeCompareLeftOrRightSum = new ArrayToBinaryTreeCompareLeftOrRightSum();
+//        arrayToBinaryTreeCompareLeftOrRightSum.solution(new long[]{1, 4, 100, 5});
+
+//        ClimbingStairsThree climbingStairsThree = new ClimbingStairsThree();
+//        climbingStairsThree.solution(5);
+
+//        UniqueCharacters uniqueCharacters = new UniqueCharacters();
+//        uniqueCharacters.isUnique("abc_____");
+
+//        MedianIndex medianIndex = new MedianIndex();
+//        medianIndex.getAns(new int[]{4, 5, 1, 2, 3});
+
+//        InsertNodeInSortedLinkedList insertNodeInSortedLinkedList = new InsertNodeInSortedLinkedList();
+        ListNode tmp = new ListNode(1);
+        tmp.next = new ListNode(4);
+        tmp.next.next = new ListNode(6);
+        tmp.next.next.next = new ListNode(8);
+        tmp.next.next.next.next = new ListNode(10);
+//        insertNodeInSortedLinkedList.insertNode(tmp, 5);
+
+//        MiddleOfTheLinkedList middleOfTheLinkedList = new MiddleOfTheLinkedList();
+//        middleOfTheLinkedList.middleNodeTwo(tmp);
+
+//        MajorElementIII majorElementIII = new MajorElementIII();
+//        majorElementIII.majorityNumber(Arrays.asList(3, 1, 2, 3, 2, 3, 3, 4, 4, 4), 3);
+
+//        CombinationAndJudgmentPrimeNumber combinationAndJudgmentPrimeNumber = new CombinationAndJudgmentPrimeNumber();
+//        combinationAndJudgmentPrimeNumber.getWays(new int[]{3, 7, 12, 19}, 3);
+
+//        TurnBasedGame turnBasedGame = new TurnBasedGame();
+//        turnBasedGame.getAnsTwo(new int[]{1, 3, 2, 5});
+
+//        IntervalStatistics intervalStatistics = new IntervalStatistics();
+//        intervalStatistics.intervalStatistics(new int[]{0, 0, 1, 0, 1, 1, 0}, 1);
+
+//        DoingHomework doingHomework = new DoingHomework();
+//        doingHomework.doingHomework(new int[]{3, 7, 3, 2, 5}, new int[]{10, 20, 12, 8, 17, 25});
+
+//        StackPushPopSequence stackPushPopSequence = new StackPushPopSequence();
+//        stackPushPopSequence.isLegalSeqTwo(new int[]{1, 2, 4, 3}, new int[]{2, 3, 4, 1});
+
+//        CanReachTheEndpoint canReachTheEndpoint = new CanReachTheEndpoint();
+//        canReachTheEndpoint.reachEndpoint(new int[][]{{1, 1, 1}, {1, 0, 1}, {1, 0, 9}});
+
+//        ConvertBinaryTreeToLinkedListsByDepth convertBinaryTreeToLinkedListsByDepth = new ConvertBinaryTreeToLinkedListsByDepth();
+//        convertBinaryTreeToLinkedListsByDepth.binaryTreeToLists(mainTree);
+
+//        BestTimeToBuyAndSellStockV bestTimeToBuyAndSellStockV = new BestTimeToBuyAndSellStockV();
+//        bestTimeToBuyAndSellStockV.getAns(new int[]{16, 40, 33, 43, 87, 26, 22, 100, 53, 38, 72, 40, 82, 19, 25, 52, 3, 83});
+//        bestTimeToBuyAndSellStockV.getAns(new int[]{9, 5, 9, 10, 5});
+
+//        PouringCola pouringCola = new PouringCola();
+//        pouringCola.getMinTimes(4, 1, 3);
+
+//        IntervalXORII intervalXORII = new IntervalXORII();
+//        intervalXORII.intervalXOR(new int[]{1, 2, 4, 8}, Arrays.asList(new Interval(0, 2), new Interval(2, 2)));
+
+//        LuckyNumber luckyNumber = new LuckyNumber();
+//        luckyNumber.luckyNumberTwo("8850857390316639046360264240742576882");
+//        luckyNumber.luckyNumberTwo("51443924594061573070619476735114529340233670970104091717691753660643");
+//        luckyNumber.luckyNumberTwo("9999");
+//        luckyNumber.luckyNumberTwo("355556");
+//        luckyNumber.luckyNumberTwo("355533");
+
+//        KSumIII kSumIII = new KSumIII();
+//        kSumIII.getAns(new int[]{2, 9, 2}, 1, 2);
+
+//        Poker poker = new Poker();
+//        poker.getAns(new int[]{4, 9, 1, 4, 5, 7, 9, 1, 8, 1});
+//        poker.getAns(new int[]{1, 2, 3, 4, 5, 5, 6, 7, 8, 9});
+//        poker.getAns(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 2});
+//        poker.getAnsThree(new int[]{6, 4, 8, 3, 6, 5, 8, 7, 4, 2, 5, 5, 4, 6, 1, 1, 4, 7, 5, 9, 6, 8, 6, 6, 4, 7, 4, 5, 2, 7});
+
+//        KillMonster killMonster = new KillMonster();
+//        killMonster.killMonster(5, new int[][]{{1, 1, 1, 1, 1}, {1, 1, 1, 1, 1}, {1, 2, 2, 2, 2}, {1, 3, 1, 1, 1}, {1, 4, 2, 2, 2}, {1, 4, 1, 1, 1}});
+//        killMonster.killMonsterTwo(5, new int[][]{{3, 9, 2, 1, 5}, {0, 9, 6, 5, 9}, {6, 1, 8, 6, 3}, {3, 7, 0, 4, 4}, {9, 9, 0, 6, 5}, {5, 6, 5, 6, 7}});
+//        killMonster.killMonsterTwo(10, new int[][]{{7, 1, 6, 3, 3}, {7, 1, 3, 6, 3}, {3, 4, 1, 0, 7}, {8, 8, 0, 2, 6}, {8, 9, 0, 3, 1}, {3, 8, 7, 4, 7}, {3, 6, 5, 1, 9}, {3, 1, 3, 3, 3}, {4, 5, 8, 3, 8}, {2, 9, 7, 7, 9}, {2, 2, 9, 7, 4}});
+
+//        CardGameII cardGameII = new CardGameII();
+//        cardGameII.cardGame(new int[]{1, 2, 3, 4, 5}, new int[]{1, 2, 3, 4, 5}, 10, 10);
+
+//        MinimumPathSumIII minimumPathSumIII = new MinimumPathSumIII();
+//        minimumPathSumIII.minimumPathSumIII(new int[][]{{1, 1}, {2, -1}});
+
+//        SmallestRectangleEnclosingBlackPixels smallestRectangleEnclosingBlackPixels = new SmallestRectangleEnclosingBlackPixels();
+//        smallestRectangleEnclosingBlackPixels.minArea(new char[][]{{'0', '0', '1', '0'}, {'0', '1', '1', '0'}, {'0', '1', '0', '0'}}, 0, 2);
+
+//        WoodCut woodCut = new WoodCut();
+//        woodCut.woodCut(new int[]{232, 124, 456}, 7);
+
+//        TeamSquad teamSquad = new TeamSquad();
+//        teamSquad.getAns(new int[]{17, 17, 37, 20, 35, 21, 33, 16, 3, 45}, new int[]{21, 44, 5, 21, 33, 38, 23, 5, 25, 43});
+
+//        ShortestPathToTheDestination shortestPathToTheDestination = new ShortestPathToTheDestination();
+//        shortestPathToTheDestination.shortestPath(new int[][]{{0, 0, 1, 0}, {0, 1, 2, 0}, {1, 1, 0, 1}});
+
+//        BinaryTreeMaximumNode binaryTreeMaximumNode = new BinaryTreeMaximumNode();
+//        binaryTreeMaximumNode.maxNode(mainTree);
+
+//        IPToCIDR ipToCIDR = new IPToCIDR();
+//        ipToCIDR.ipToCIDR("255.0.0.7", 10);
+
+//        MicrosoftTest microsoftTest = new MicrosoftTest();
+//        microsoftTest.solution("abcabcabcdddbd");
+//        microsoftTest.riddleSolution("rd?e?w?g??");
+//        microsoftTest.insert5Solution(-987);
+
+//        CutTheCake cutTheCake = new CutTheCake();
+//        cutTheCake.getTheShortestCutLength(3, 4, 3, new int[][]{{1, 2}, {2, 3}, {3, 2}});
+
+//        IntervalsAddAndGetValue intervalsAddAndGetValue = new IntervalsAddAndGetValue();
+//        intervalsAddAndGetValue.intervalsAddAndGetValue(new int[]{0, 1, 2, 3, 4}, new int[][]{{1, 1, 0, 0}, {0, 1, 2, 1}, {1, 2, 0, 0}});
+//        intervalsAddAndGetValue.intervalsAddAndGetValue(new int[]{0, 1, 5, 7, 7, 6, 7, 9, 5, 8, 3, 0, 1, 7, 9, 7, 8, 1, 8, 4},
+//                new int[][]{{0, 2, 11, 56}, {0, 12, 18, 55}, {0, 7, 11, 57}, {1, 4, 0, 0}, {0, 14, 19, 64}, {1, 4, 0, 0}, {1, 13, 0, 0}, {0, 1, 8, 69}, {1, 11, 0, 0}, {1, 13, 0, 0}, {0, 1, 3, 47}});
+
+//        LongestCommonSubsequenceIII longestCommonSubsequenceIII = new LongestCommonSubsequenceIII();
+//        longestCommonSubsequenceIII.longestCommonSubsequenceIII(new int[]{6, 9, 4, 2, 8, 1, 3, 5, 7}, new int[]{8, 1, 2, 4, 5, 3, 7, 9, 6});
+
+//        MinimumCost minimumCost = new MinimumCost();
+//        minimumCost.getAns(new int[]{10, 1, 50, 50, 20, 5});
+//        minimumCost.getAns(new int[]{3, 4, 5, 6});
+
+//        MonsterHunter monsterHunter = new MonsterHunter();
+//        monsterHunter.killMonsterThree(new int[]{8, 1, 4, 4}, new int[]{2, 4, 5, 2});
+//        monsterHunter.killMonsterDp(new int[]{8, 1, 4, 4}, new int[]{2, 4, 5, 2});
+//        monsterHunter.killMonsterThree(new int[]{1, 4, 5, 4}, new int[]{3, 4, 9, 1});
+//        monsterHunter.killMonsterDp(new int[]{1, 4, 5, 4}, new int[]{3, 4, 9, 1});
+//        monsterHunter.killMonsterThree(new int[]{3, 5, 7}, new int[]{0, 2, 0});
+//        monsterHunter.killMonsterDp(new int[]{3, 5, 7}, new int[]{0, 2, 0});
+//        monsterHunter.killMonsterThree(new int[]{5, 3, 3, 0, 4, 3, 1, 4, 5, 9, 0, 7, 6, 9, 6, 9, 7, 0, 3, 2, 4, 1, 2, 5, 1, 9, 7, 0, 0, 4, 8, 4, 7, 6, 1, 8, 2, 0, 4, 1, 5, 7, 0, 4, 2, 6, 7, 3, 4, 8, 4, 4, 1, 7, 6, 6, 3, 0, 2, 7, 0, 7, 8, 3, 3, 9, 3, 1, 4, 1, 3, 2, 1, 4, 0, 9, 4, 1, 2, 0, 2, 8, 6, 1, 5, 6, 9, 8, 5, 7, 0, 4, 3, 5, 1, 4, 7, 6, 6, 1, 7, 4, 1, 3, 9, 4, 6, 4, 9, 5, 7, 0, 2, 5, 0, 6, 0, 2, 3, 5, 7, 8, 7, 5, 1, 0, 7, 3, 1, 6, 2, 7, 2, 1, 3, 2, 5, 5, 6, 5, 9, 7, 3, 3, 7, 2, 2, 1, 4, 6, 5, 1, 9, 4, 3, 4, 4, 5, 8, 7, 3, 8, 4, 8, 5, 6, 7, 4, 7, 0, 5, 0, 2, 2, 5, 6, 1, 7, 9, 9, 0, 5, 0, 4, 6, 3, 7, 5, 9, 2, 0, 1, 6, 1, 9, 8, 4, 8, 8, 6},
+//                new int[]{3, 8, 3, 3, 3, 3, 6, 9, 0, 5, 2, 8, 1, 4, 4, 2, 4, 5, 2, 4, 2, 8, 7, 1, 5, 6, 7, 2, 3, 2, 5, 8, 6, 3, 3, 8, 8, 9, 7, 7, 4, 2, 2, 7, 1, 0, 9, 6, 0, 3, 7, 2, 3, 6, 5, 2, 5, 4, 0, 6, 3, 6, 0, 1, 0, 7, 2, 5, 1, 1, 8, 2, 0, 9, 9, 0, 8, 8, 1, 4, 6, 7, 1, 3, 0, 1, 9, 2, 2, 4, 1, 6, 9, 1, 1, 7, 9, 9, 5, 7, 1, 3, 5, 9, 6, 4, 9, 3, 7, 1, 2, 6, 8, 1, 4, 2, 8, 0, 4, 3, 1, 1, 1, 1, 2, 1, 1, 8, 3, 3, 4, 6, 5, 4, 7, 0, 2, 4, 5, 5, 4, 1, 6, 8, 3, 9, 2, 0, 6, 2, 1, 5, 0, 8, 9, 3, 5, 0, 7, 2, 9, 8, 5, 2, 1, 8, 1, 9, 5, 2, 0, 2, 9, 1, 9, 2, 1, 4, 2, 3, 0, 0, 6, 0, 1, 9, 7, 1, 3, 6, 8, 7, 9, 9, 4, 7, 5, 3, 9, 4});
+
+//        KnightShortestPathIII knightShortestPathIII = new KnightShortestPathIII();
+//        knightShortestPathIII.shortestPath(new boolean[][]{{false, false, false}, {false, false, false}, {false, false, false}}, new KnightShortestPathIII.Point(0, 0), new KnightShortestPathIII.Point(2, 2));
+
+//        TravelingSalesman travelingSalesman = new TravelingSalesman();
+//        travelingSalesman.minCost(5, new int[][]{{1, 2, 9}, {2, 3, 1}, {3, 4, 9}, {4, 5, 4}, {2, 4, 3}, {1, 3, 2}, {5, 4, 9}});
+
+//        BankSystem bankSystem = new BankSystem();
+//        bankSystem.deposite(0, 1268, 5);
+//        bankSystem.withdraw(0, 1797, 15);
+//        bankSystem.check(0, 2, 17);
+//        bankSystem.check(0, 20, 32);
+//        bankSystem.withdraw(0, 1535, 57);
+//        bankSystem.deposite(0, 1179, 66);
+//        bankSystem.deposite(0, 1158, 66);
+//        bankSystem.deposite(0, 1356, 75);
+//        bankSystem.withdraw(0, 126, 79);
+//        bankSystem.deposite(0, 856, 114);
+//        bankSystem.check(0, 115, 118);
+
+//        SumPath sumPath = new SumPath();
+//        sumPath.sumPathTwo(new int[][]{{2, 1, 5}, {3, 10, 1}, {1, 3, 0}}, 9);
+//        sumPath.sumPathFive(new int[][]{{2, 1}, {3, 4}}, 9);
+//        sumPath.sumPathFive(new int[][]{{2, 1, 5}, {3, 10, 1}, {1, 3, 0}}, 9);
+//        sumPath.sumPathFive(new int[][]{{1, 1, 1}, {1, 1, 1}, {1, 1, 1}}, 5);
+//        sumPath.sumPathFive(new int[][]{{67733446, 91176976, 12634101, 42781526, 16747567, 23150831, 31586916, 3107867, 36703782, 38115073, 60476069, 57720394},
+//                        {81283803, 53866479, 52526823, 93793588, 99719251, 75557249, 17455031, 85970273, 18219287, 27995246, 43809465, 26711423},
+//                        {52679061, 58144753, 20157842, 53222563, 35921921, 33056372, 53063503, 71004597, 22233018, 47807471, 32084387, 10181041},
+//                        {72991894, 66226701, 55370753, 44231057, 41515644, 84324437, 27852371, 75691861, 74693425, 74462117, 92475405, 58454041},
+//                        {60733916, 18855001, 69920625, 96980354, 46214595, 42541154, 22391161, 18645661, 45255798, 55222528, 23884561, 69073001},
+//                        {75851003, 33504801, 6763601, 14818561, 74485767, 683441, 73974217, 29750471, 99281921, 61389133, 27987841, 29568132},
+//                        {64944553, 50603721, 6125457, 2246091, 32182091, 44419247, 30266593, 63626601, 11233033, 6773259, 68067237, 73152433},
+//                        {63688683, 17230711, 29786034, 29202528, 77288176, 27383930, 56451673, 72566242, 88441034, 92769201, 89685126, 94779298},
+//                        {23171726, 65586281, 7377617, 20214303, 83604569, 65322385, 23451251, 65104223, 52194481, 82614821, 57725734, 71027449},
+//                        {32047364, 71654691, 26814294, 29615919, 92316380, 74731765, 60012022, 57225226, 83850855, 71885961, 25433607, 22397409},
+//                        {10999931, 43810559, 67234686, 75300817, 50426826, 8888587, 96651547, 68844997, 55264263, 6049683, 47384279, 41032829},
+//                        {24376462, 11256251, 22964032, 63952018, 51911559, 15305093, 5858269, 79906915, 84572271, 70871926, 59225389, 67670037},
+//                        {24091171, 23250184, 43234321, 78813255, 69574113, 60921975, 9975238, 6093848, 44287560, 75892973, 85003977, 28971263},
+//                        {23927298, 10638137, 43957136, 77130091, 52531595, 83956503, 5793601, 45969843, 23399033, 9449992, 71760031, 94019811},
+//                        {60833401, 68362720, 1069095, 16018521, 35138365, 38230080, 35830481, 43299053, 9078466, 68119090, 24753326, 15621497},
+//                        {90177266, 1468547, 27526280, 21905310, 70890897, 31971444, 69282221, 1503304, 24774241, 19375502, 46022117, 12868834},
+//                        {2670645, 69619990, 33103628, 64797301, 14640561, 72576889, 19689206, 88147017, 29313297, 93502065, 9150249, 91310159},
+//                        {97866575, 53247897, 38108169, 93998551, 89959161, 1876289, 22090409, 59938708, 24321626, 53277461, 3974433, 77032680}},
+//                1543008561);
+//        sumPath.sumPath(new int[][]{{1, 1, 1, 1, 1, 1, 1}, {1, 1, 1, 1, 1, 1, 1}, {1, 1, 1, 1, 1, 1, 1}, {1, 1, 1, 1, 1, 1, 1}, {1, 1, 1, 1, 1, 1, 1}, {1, 1, 1, 1, 1, 1, 1}, {1, 1, 1, 1, 1, 1, 1}}, 35);
+
+
+//        SlidingOnIceSurface slidingOnIceSurface = new SlidingOnIceSurface();
+//        slidingOnIceSurface.getAns(new String[]{"S.*.", "...*", ".*.T"});
+//        slidingOnIceSurface.getAns(new String[]{"S*..", "....", "*.T."});
+
+//        Knightship knightship = new Knightship();
+//        System.out.println(knightship.getSteps(new String[]{
+//                "10110",
+//                "01*11",
+//                "10111",
+//                "00110",
+//                "00000"
+//        }));
+//        System.out.println(knightship.getStepsTwo(new String[]{
+//                "10110",
+//                "01*11",
+//                "10111",
+//                "00110",
+//                "00000"
+//        }));
+//        System.out.println(knightship.getStepsThree(new String[]{
+//                "10110",
+//                "01*11",
+//                "10111",
+//                "00110",
+//                "00000"
+//        }));
+//        System.out.println(knightship.getStepsFour(new String[]{
+//                "10110",
+//                "01*11",
+//                "10111",
+//                "00110",
+//                "00000"
+//        }));
+
+//        Twitch twitch = new Twitch();
+//        twitch.dayOfTheWeek("qwe", 2);
+//        twitch.dayOfTheWeek("Sun", 4);
+//        twitch.dayOfTheWeek("Sat", 23);
+
+//        twitch.battleshipTwo(4, "1B 2C,2D 4D", "2B 2D 3D 4D 4A");
+//        twitch.battleshipTwo(3, "1A 1B,2C 2C", "1B");
+//        twitch.battleshipTwo(12, "1A 2A,12A 12A", "12A");
+
+//        ConstructionQueueII constructionQueueII = new ConstructionQueueII();
+//        constructionQueueII.getQueue(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9}, new int[]{1, 5, 4, 0, 0, 0, 0, 1, 0});
+//        constructionQueueII.getQueueTwo(new int[]{1, 2, 3, 4, 5}, new int[]{1, 1, 0, 0, 0});
+//        constructionQueueII.getQueueTwo(new int[]{1, 2, 3, 4, 5}, new int[]{4, 2, 0, 0, 0});
+//        constructionQueueII.getQueueTwo(new int[]{1, 3, 7, 6}, new int[]{0, 0, 0, 0});
+
+//        ReverseOnlyLetters reverseOnlyLetters = new ReverseOnlyLetters();
+//        reverseOnlyLetters.ReverseOnlyLetters("ab-cd");
+
+//        RangeSumOfBST rangeSumOfBST = new RangeSumOfBST();
+//        rangeSumOfBST.rangeSumBST(node1, 8, 11);
+
+//        RogueKnightSven rogueKnightSven = new RogueKnightSven();
+//        rogueKnightSven.getNumberOfWays()
+
+//        CollectingDiamonds collectingDiamonds = new CollectingDiamonds();
+//        collectingDiamonds.getCountDpTwo(4, 3, new int[]{10, 20, 30, 40}, new int[][]{{1, 2}, {1, 3}, {2, 4}, {3, 4}});
+//        collectingDiamonds.getCountDp(6, 2, new int[]{5, 9, 8, 4, 9, 2}, new int[][]{{1, 6}, {6, 2}, {2, 5}, {5, 3}, {5, 4}});
+//        collectingDiamonds.getCountPq(6, 3, new int[]{5, 9, 8, 4, 9, 2}, new int[][]{{1, 6}, {6, 2}, {2, 5}, {5, 3}, {5, 4}});
+//        collectingDiamonds.getCountDpTwo(50, 44, new int[]{578, 607, 414, 993, 583, 532, 15, 207, 817, 859, 52, 711, 274, 842, 485, 200, 46, 596, 843, 16, 976, 671, 656, 277, 594, 404, 735, 114, 406, 680, 427, 432, 604, 604, 558, 170, 155, 864, 648, 714, 328, 753, 181, 104, 986, 844, 710, 664, 52, 799},
+//                new int[][]{{48, 29}, {47, 29}, {35, 29}, {10, 47}, {39, 10}, {50, 29}, {43, 10}, {46, 35}, {14, 47}, {37, 14}, {8, 46}, {1, 14}, {7, 14}, {40, 14}, {49, 10}, {34, 14}, {36, 37}, {12, 10}, {45, 39}, {16, 47}, {21, 45}, {18, 16}, {41, 34}, {6, 14}, {33, 12}, {23, 21}, {24, 49}, {15, 24}, {38, 24}, {19, 36}, {3, 36}, {26, 8}, {25, 7}, {32, 6}, {22, 1}, {31, 49}, {27, 34}, {20, 46}, {42, 27}, {11, 36}, {9, 35}, {13, 23}, {28, 27}, {44, 13}, {2, 16}, {4, 28}, {17, 27}, {30, 45}, {5, 21}});
+//        collectingDiamonds.getCountPq(20, 19, new int[]{668, 236, 330, 626, 973, 288, 177, 3, 763, 976, 202, 257, 190, 970, 704, 806, 825, 473, 993, 632},
+//                new int[][]{{14, 15}, {8, 14}, {5, 14}, {1, 14}, {17, 5}, {10, 8}, {13, 8}, {3, 15}, {20, 17}, {11, 10}, {19, 13}, {6, 1}, {4, 11}, {9, 4}, {2, 8}, {18, 1}, {7, 3}, {12, 11}, {16, 4}});
+//        collectingDiamonds.getCount(30, 19, new int[]{947, 978, 180, 984, 539, 85, 710, 114, 592, 519, 943, 265, 507, 103, 208, 600, 489, 539, 534, 114, 35, 975, 199, 153, 230, 614, 409, 174, 536, 506}, new int[][]{{24, 29}, {
+//                17, 29}, {1, 17}, {3, 17}, {11, 29}, {8, 1}, {19, 1}, {12, 24}, {15, 3}, {10, 3}, {28, 17}, {20, 19}, {18, 28}, {2, 12}, {
+//                26, 20}, {14, 12}, {7, 3}, {22, 1}, {27, 7}, {23, 26}, {30, 19}, {6, 30}, {9, 1}, {21, 30}, {5, 3}, {25, 8}, {4, 3}, {13, 17}, {
+//                16, 13}});
+
+//        ClimbUp climbUp = new ClimbUp();
+//        climbUp.getWinnerTwo(mainTree, 10, 6);
+
+//        BackPack backPack = new BackPack();
+//        backPack.backPack(12, new int[]{2, 3, 5, 7});
+
+//        BackPackV backPackV = new BackPackV();
+//        backPackV.backPackV(new int[]{1, 2, 3, 3, 7}, 7);
+
+//        BackPackVI backPackVI = new BackPackVI();
+//        backPackVI.backPackVI(new int[]{1, 2, 4}, 4);
+
+//        BackPackVII backPackVII = new BackPackVII();
+//        backPackVII.backPackVIITwo(8, new int[]{3, 2}, new int[]{300, 160}, new int[]{1, 6});
+
+//        FloatCombinationSum floatCombinationSum = new FloatCombinationSum();
+//        floatCombinationSum.getArray(new double[]{1.3, 1.4, 2.1, 4.5, 3.3}, 12);
+
+//        CollatzConjecture collatzConjecture = new CollatzConjecture();
+//        collatzConjecture.findLongestSteps(20);
+
+//        DisplayPage displayPage = new DisplayPage();
+//        displayPage.displayPagesTwo(new ArrayList<>(Arrays.asList("1,28,300.1,SanFrancisco",
+//                "4,5,209.1,SanFrancisco",
+//                "20,7,208.1,SanFrancisco",
+//                "23,8,207.1,SanFrancisco",
+//                "16,10,206.1,Oakland",
+//                "1,16,205.1,SanFrancisco",
+//                "6,29,204.1,SanFrancisco",
+//                "7,20,203.1,SanFrancisco",
+//                "8,21,202.1,SanFrancisco",
+//                "2,18,201.1,SanFrancisco",
+//                "2,30,200.1,SanFrancisco",
+//                "15,27,109.1,Oakland",
+//                "10,13,108.1,Oakland",
+//                "11,26,107.1,Oakland",
+//                "12,9,106.1,Oakland",
+//                "13,1,105.1,Oakland",
+//                "22,17,104.1,Oakland",
+//                "1,2,103.1,Oakland",
+//                "28,24,102.1,Oakland",
+//                "18,14,11.1,SanJose",
+//                "6,25,10.1,Oakland",
+//                "19,15,9.1,SanJose",
+//                "3,19,8.1,SanJose",
+//                "3,11,7.1,Oakland",
+//                "27,12,6.1,Oakland",
+//                "1,3,5.1,Oakland",
+//                "25,4,4.1,SanJose",
+//                "5,6,3.1,SanJose",
+//                "29,22,2.1,SanJose",
+//                "30,23,1.1,SanJose")), 12);
+
+//        KEditDistance kEditDistance = new KEditDistance();
+//        kEditDistance.kDistanceTwo(new String[]{"abc", "abd", "abcd", "adc"}, "ac", 1);
+
+//        TheBiggestScoreOnTheTree theBiggestScoreOnTheTree = new TheBiggestScoreOnTheTree();
+//        theBiggestScoreOnTheTree.getMaxScore(new int[]{0, 0, 0}, new int[]{1, 2, 3}, new int[]{1, 1, 1}, new int[]{1, 1, 2, 3});
+
+//        WordSubsets wordSubsets = new WordSubsets();
+//        wordSubsets.wordSubsets(new String[]{"amazon", "apple", "facebook", "google", "lintcode"}, new String[]{"e", "oo"});
+
+//        CalculateBoardScore calculateBoardScore = new CalculateBoardScore();
+//        calculateBoardScore.calculateScore(new String[]{"L0 W1 W1 W0 F2",
+//                "W0 W0 T0 T0 T0",
+//                "W0 W1 T0 R2 R1",
+//                "L0 K0 L1 L0 L0",
+//                "R0 C2 C0 L1 T0"});
+
+//        SimplifiedXMLValidator simplifiedXMLValidator = new SimplifiedXMLValidator();
+//        simplifiedXMLValidator.validXml("<a>text<b>other text</></b>");
+
+//        FindStringsThatDifferByOneCharacter findStringsThatDifferByOneCharacter = new FindStringsThatDifferByOneCharacter();
+//        findStringsThatDifferByOneCharacter.findTwo(new String[]{"abc", "xyz", "abd"});
+
+//        LowestCommonAncestorOfTwoRegions lowestCommonAncestorOfTwoRegions = new LowestCommonAncestorOfTwoRegions();
+//        List<List<String>> input = new ArrayList();
+//        input.add(new ArrayList<String>(
+//                Arrays.asList("Earth", "South America", "North America", "Asia", "Africa", "Pacific")));
+//        input.add(new ArrayList<String>(Arrays.asList("Asia", "China", "Korea", "Japan", "India")));
+//        input.add(new ArrayList<String>(Arrays.asList("North America", "USA", "Canada")));
+//        input.add(new ArrayList<String>(Arrays.asList("South America", "Brazil", "Columbia")));
+//        input.add(new ArrayList<String>(Arrays.asList("Africa", "Algeria", "Libya")));
+//        input.add(new ArrayList<String>(Arrays.asList("China", "Beijing", "Shanghai")));
+//        input.add(new ArrayList<String>(Arrays.asList("Japan", "Tokyo", "Kyoto")));
+//        input.add(new ArrayList<String>(Arrays.asList("India", "Hyderabad", "Chennai")));
+//        input.add(new ArrayList<String>(Arrays.asList("Korea", "Seoul")));
+//        lowestCommonAncestorOfTwoRegions.solution(Arrays.asList(
+//                new String[]{"Earth", "South America", "North America", "Asia", "Africa", "Pacific"},
+//                new String[]{"Asia", "China", "Korea", "Japan", "India"},
+//                new String[]{"North America", "USA", "Canada"},
+//                new String[]{"Africa", "Algeria", "Libya"},
+//                new String[]{"China", "Beijing", "Shanghai"},
+//                new String[]{"Japan", "Tokyo", "Kyoto"},
+//                new String[]{"India", "Hyderabad", "Chennai"},
+//                new String[]{"Korea", "Seoul"}
+//                ),
+//                Arrays.asList(new String[]{"Asia", "North America"}, new String[]{"Beijing", "Japan"}, new String[]{"Beijing", "Hyderabad"}));
+//        lowestCommonAncestorOfTwoRegions.buildMap(input);
+//        System.out.println(lowestCommonAncestorOfTwoRegions.getCommonAncestor("Asia", "North America"));
+//        System.out.println(lowestCommonAncestorOfTwoRegions.getCommonAncestor("Beijing", "Japan"));
+//        System.out.println(lowestCommonAncestorOfTwoRegions.getCommonAncestor("Beijing", "Hyderabad"));
+
+//        CoverAllVerticesWithTheLeastNumberOfVertices coverAllVerticesWithTheLeastNumberOfVertices = new CoverAllVerticesWithTheLeastNumberOfVertices();
+//        coverAllVerticesWithTheLeastNumberOfVertices.findMinNodes(6, new int[][]{{0, 1}, {2, 1}, {1, 0}, {1, 3}, {5, 4}});
+
+//        ShortestPathInDirectedGraphThatCanVisitEachVertexAtLeastOnce shortestPathInDirectedGraphThatCanVisitEachVertexAtLeastOnce = new ShortestPathInDirectedGraphThatCanVisitEachVertexAtLeastOnce();
+//        shortestPathInDirectedGraphThatCanVisitEachVertexAtLeastOnce.shortestPathLength(6, new int[][]{{1, 2}, {2, 3}, {3, 5}, {5, 6}, {4, 6}, {1, 4}});
+
+//        MenuCombinationSum menuCombinationSum = new MenuCombinationSum();
+//        menuCombinationSum.solution(new double[]{10.02, 1.11, 2.22, 3.01, 4.02, 2.00, 5.03}, 7.03);
+
+//        SimulateDiplomacy simulateDiplomacy = new SimulateDiplomacy();
+//        simulateDiplomacy.solutionTwo(Arrays.asList("A Munich Hold", "B Bohemia Move Munich", "C Warsaw Support B"));
+//        simulateDiplomacy.solution(Arrays.asList("A Munich Hold", "B Bohemia Move Munich", "C Prussia Move Munich", "D Warsaw Hold"));
+//        simulateDiplomacy.solutionTwo(Arrays.asList("A Munich Support B", "B Bohemia Move Prussia", "C Prussia Hold", "D Warsaw Move Munich"));
+
+//        MaximumPossibleValue maximumPossibleValue = new MaximumPossibleValue();
+//        maximumPossibleValue.MaximumPossibleValue(-123);
+
+//        double up = 500, down = 1.06;
+//        for (int i = 1; i <= 10; i++) {
+//            double newDown = Math.pow(down, i);
+//            System.out.println(up / newDown);
+//        }
+
+//        TicTacToePrac ticTacToePrac = new TicTacToePrac();
+//        ticTacToePrac.add('X', 0, 1);
+//        Scanner scanner = new Scanner(System.in);
+//        System.out.println("Enter row col, split by space");
+//        int row = scanner.nextInt();
+//        int col = scanner.nextInt();
+//        System.out.println("Row: " + row + "; Col: " + col);
+//        scanner.next();
+//        while (true) {
+//            ticTacToePrac.add('X', 0, 1);
+//            ticTacToePrac.aiMove();
+//            ticTacToePrac.print();
+//        }
+
+//        MinAdjacentSwapsToMakePalindrome minAdjacentSwapsToMakePalindrome = new MinAdjacentSwapsToMakePalindrome();
+//        minAdjacentSwapsToMakePalindrome.solution("aabbcc");
+
+//        LexicographicallySmallestString lexicographicallySmallestString = new LexicographicallySmallestString();
+//        lexicographicallySmallestString.solution("dabczd");
+
+//        MinDeletionsToMakeFrequencyOfEachLetterUnique minDeletionsToMakeFrequencyOfEachLetterUnique = new MinDeletionsToMakeFrequencyOfEachLetterUnique();
+//        minDeletionsToMakeFrequencyOfEachLetterUnique.solution("example");
+
+//        StringWithoutThreeIdenticalConsecutiveLetters stringWithoutThreeIdenticalConsecutiveLetters = new StringWithoutThreeIdenticalConsecutiveLetters();
+//        stringWithoutThreeIdenticalConsecutiveLetters.solution("uuuuxaaaaxuuu");
+
+//        LongestSemiAlternatingSubstring longestSemiAlternatingSubstring = new LongestSemiAlternatingSubstring();
+//        longestSemiAlternatingSubstring.solution("baaabbabbb");
+
+//        StrStrII strStrII = new StrStrII();
+//        strStrII.strStr2("abcdefg", "cde");
+
+//        MinDeletionsToObtainStringInRightFormat minDeletionsToObtainStringInRightFormat = new MinDeletionsToObtainStringInRightFormat();
+//        minDeletionsToObtainStringInRightFormat.solution("BAAABAB");
+
+//        MinSwapsToGroupRedBalls minSwapsToGroupRedBalls = new MinSwapsToGroupRedBalls();
+//        minSwapsToGroupRedBalls.solution("WWRWWWRWRWRWR");
+
+//        TakeTheElementAndQueryTheSum takeTheElementAndQueryTheSum = new TakeTheElementAndQueryTheSum();
+//        takeTheElementAndQueryTheSum.takeTheElementAndQueryTheSum(new int[]{1, 2, 3, 4, 5});
+
+//        MinimumString minimumString = new MinimumString();
+//        minimumString.MinimumString("cba".toCharArray(), 2);
+
+//        NumberOfValidSubarrays numberOfValidSubarrays = new NumberOfValidSubarrays();
+//        numberOfValidSubarrays.solution(new int[]{1, 4, 2, 5, 3});
+
+//        PalindromeDataStream palindromeDataStream = new PalindromeDataStream();
+//        palindromeDataStream.getStream("abcdeabcd");
+
+//        StringReplace stringReplace = new StringReplace();
+//        stringReplace.stringReplace(new String[]{"ab", "aba"}, new String[]{"cc", "ccc"}, "ababa");
+
+//        InorderPredecessorInBST inorderPredecessorInBST = new InorderPredecessorInBST();
+//        inorderPredecessorInBST.inorderPredecessorTwo(node1, node1.right);
+
+//        BinaryStream binaryStream = new BinaryStream();
+//        binaryStream.getOutput("11011");
+
+//        getDays(Arrays.asList(Arrays.asList(1, 0, 0), Arrays.asList(0, 0, 0), Arrays.asList(0, 0, 0)));
+
+//        HowManyProblemCanIAccept howManyProblemCanIAccept = new HowManyProblemCanIAccept();
+//        howManyProblemCanIAccept.canAccept(100l, 5);
+
+//        JosephProblem josephProblem = new JosephProblem();
+//        josephProblem.josephProblem(100, 7);
+
+//        PossibleValidWords possibleValidWords = new PossibleValidWords();
+//        possibleValidWords.solution(new char[]{'e', 'o', 'b', 'a', 'm', 'g', 'l', 'g', 'l'}, new String[]{"go", "bat", "me", "eat", "goal", "boy", "run", "ggll"});
+
+//        FarthestCoprime farthestCoprime = new FarthestCoprime();
+//        farthestCoprime.farthestCoprimes(250);
+
+//        Scanner input = new Scanner(System.in);
+//        int numCases = input.nextInt();
+//        YouCanGoYourOwnWay youCanGoYourOwnWay = new YouCanGoYourOwnWay();
+//        for (int i = 1; i <= numCases; i++) {
+//            int num = input.nextInt();
+//            String str = input.next();
+//            System.out.println("Case #" + num + ": " + youCanGoYourOwnWay.solution(num, str));
+//        }
+
+        sparkExample();
     }
+
 
     /**
      * Interview questions
@@ -3584,4 +4183,56 @@ public class App {
 //        }
 //        return map.get(max);
 //    }
+//    public static int getDays(List<List<Integer>> grid) {
+//        if (grid == null || grid.size() == 0)
+//            return 0;
+//        int m = grid.size(), n = grid.get(0).size();
+//        // use a boolean array to track which position we already visited
+//        boolean[][] visited = new boolean[m][n];
+//        // use queue to store all the 1's in current day.
+//        Queue<int[]> q = new LinkedList<>();
+//        for (int i = 0; i < m; i++) {
+//            for (int j = 0; j < n; j++) {
+//                if (grid.get(i).get(j) == 1) {
+//                    visited[i][j] = true;
+//                    q.offer(new int[]{i, j});
+//                }
+//            }
+//        }
+//        // if no 1 found or all position are already 1, just return 0
+//        if (q.size() == 0 || q.size() == m * n)
+//            return 0;
+//        int days = 0;
+//        int[][] dirs = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}}; // 4 direction move
+//        while (!q.isEmpty()) {
+//            int size = q.size(); // we only iterate all the 1's in current day.
+//            while (size-- > 0) {
+//                int[] cur = q.poll();
+//                for (int[] d : dirs) {
+//                    int x = cur[0] + d[0], y = cur[1] + d[1];
+//                    // if out of range or already visited, just skip
+//                    if (x < 0 || x >= m || y < 0 || y >= n || visited[x][y])
+//                        continue;
+//                    // mark the unvisted to be visited and put it into the queue
+//                    visited[x][y] = true;
+//                    q.offer(new int[]{x, y});
+//                }
+//            }
+//            days++;
+//        }
+//        return days;
+//    }
+    public static void sparkExample() {
+        SparkConf conf = new SparkConf().setMaster("local[*]").setAppName("SparkFileSumApp");
+        JavaSparkContext sc = new JavaSparkContext(conf);
+        JavaRDD<String> input = sc.textFile("file:///Users/tang/Documents/workspace/algorithmPractice/src/main/resources/numbers.txt");
+        JavaRDD<String> numberStrings = input.flatMap(s -> Arrays.asList(SPACE_DELIMITER.split(s)).iterator());
+        JavaRDD<String> validNumberString = numberStrings.filter(string -> !string.isEmpty());
+        JavaRDD<Integer> numbers = validNumberString.map(numberString -> Integer.valueOf(numberString));
+        int finalSum = numbers.reduce((x, y) -> x + y);
+
+        System.out.println("Final sum is: " + finalSum);
+
+        sc.close();
+    }
 }

@@ -3,6 +3,7 @@ package practice.domain;
 import java.util.HashMap;
 import java.util.Map;
 
+// Microsoft ladder
 public class LRUCache {
 
     class DLinkedNode {

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 // 442. Find All Duplicates in an Array
+// Microsoft ladder
 public class FindAllDuplicatesInAnArray {
     public List<Integer> findDuplicates(int[] nums) {
         List<Integer> res = new ArrayList<>();

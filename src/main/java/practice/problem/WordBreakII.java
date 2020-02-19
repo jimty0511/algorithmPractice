@@ -45,10 +45,12 @@ public class WordBreakII {
             return res;
         }
         for (String word : wordDict) {
-            if (s.startsWith(word)) {
-                List<String> subList = helperTwo(s.substring(word.length()), wordDict, map);
-                for (String sub : subList) {
-                    res.add(word + (sub.isEmpty() ? "" : " ") + sub);
+            if (!word.isEmpty()) {
+                if (s.startsWith(word)) {
+                    List<String> subList = helperTwo(s.substring(word.length()), wordDict, map);
+                    for (String sub : subList) {
+                        res.add(word + (sub.isEmpty() ? "" : " ") + sub);
+                    }
                 }
             }
         }

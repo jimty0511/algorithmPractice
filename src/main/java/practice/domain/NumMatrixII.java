@@ -89,23 +89,29 @@ public class NumMatrixII {
         nums = matrix;
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                init(i, j, matrix[i][j]);
+//                init(i, j, matrix[i][j]);
+                update(i, j, matrix[i][j]);
             }
         }
     }
 
-    private void init(int row, int col, int val) {
-        for (int i = row + 1; i <= m; i += i & (-i)) {
-            for (int j = col + 1; j <= n; j += j & (-j)) {
-                tree[i][j] += val;
-            }
-        }
-    }
+//    private void init(int row, int col, int val) {
+//        for (int i = row + 1; i <= m; i += i & (-i)) {
+//            for (int j = col + 1; j <= n; j += j & (-j)) {
+//                tree[i][j] += val;
+//            }
+//        }
+//    }
 
     public void update(int row, int col, int val) {
         int diff = val - nums[row][col];
         nums[row][col] = val;
-        init(row, col, diff);
+//        init(row, col, diff);
+        for (int i = row + 1; i <= m; i += i & (-i)) {
+            for (int j = col + 1; j <= n; j += j & (-j)) {
+                tree[i][j] += diff;
+            }
+        }
     }
 
     public int sumRegion(int row1, int col1, int row2, int col2) {

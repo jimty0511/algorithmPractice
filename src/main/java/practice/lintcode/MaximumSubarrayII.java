@@ -30,4 +30,35 @@ public class MaximumSubarrayII {
         }
         return max;
     }
+
+    public int maxTwoSubArraysTwo(List<Integer> nums) {
+        int n = nums.size();
+        int[] left = new int[n], right = new int[n];
+        int curSum = 0, maxSum = Integer.MIN_VALUE;
+        for (int i = 0; i < n; i++) {
+            if (curSum <= 0)
+                curSum = nums.get(i);
+            else
+                curSum += nums.get(i);
+            maxSum = Math.max(maxSum, curSum);
+            left[i] = maxSum;
+        }
+        curSum = 0;
+        maxSum = Integer.MIN_VALUE;
+        for (int i = n - 1; i >= 0; i--) {
+            if (curSum <= 0)
+                curSum = nums.get(i);
+            else
+                curSum += nums.get(i);
+            maxSum = Math.max(maxSum, curSum);
+            right[i] = maxSum;
+        }
+        maxSum = Integer.MIN_VALUE;
+        for (int i = 0; i < n - 1; i++) {
+            if (left[i] + right[i + 1] > maxSum) {
+                maxSum = left[i] + right[i + 1];
+            }
+        }
+        return maxSum;
+    }
 }

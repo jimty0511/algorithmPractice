@@ -3,6 +3,7 @@ package practice.problem;
 import practice.domain.ListNode;
 
 // 2. Add Two Numbers
+// Microsoft ladder
 public class AddTwoNumbers {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode dummy = new ListNode(0), curr = dummy;

@@ -24,17 +24,17 @@ public class ReadNCharactersGivenRead4 {
     public int read(char[] buf, int n) {
         char[] buffer = new char[4];
         boolean endOfFile = false;
-        int readBtyes = 0;
-        while (readBtyes < n && !endOfFile) {
+        int readBytes = 0;
+        while (readBytes < n && !endOfFile) {
             int cur = read4(buffer);
             if (cur != 4)
                 endOfFile = true;
-            int len = Math.min(n - readBtyes, cur);
+            int len = Math.min(n - readBytes, cur);
             for (int i = 0; i < len; i++) {
-                buf[readBtyes + i] = buffer[i];
+                buf[readBytes + i] = buffer[i];
             }
-            readBtyes += len;
+            readBytes += len;
         }
-        return readBtyes;
+        return readBytes;
     }
 }

@@ -5,6 +5,7 @@ import practice.domain.Interval;
 import java.util.*;
 
 // 56. Merge Intervals
+// Microsoft ladder
 public class MergeInterval {
     public List<Interval> merge(List<Interval> intervals) {
         if (intervals.size() <= 1) {

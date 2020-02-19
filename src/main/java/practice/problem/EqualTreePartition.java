@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 // 663. Equal Tree Partition (864 LC)
+// Microsoft ladder
 public class EqualTreePartition {
 
     private Map<Integer, Integer> map = new HashMap<>();

@@ -1,7 +1,63 @@
 package practice.problem;
 
+import java.util.Arrays;
+
 // 324. Wiggle Sort II
 public class WiggleSortII {
+
+    public void wiggleSortLC(int[] nums) {
+        int n = nums.length;
+        int mid = partition(nums, 0, n - 1, (n + 1) / 2);
+        int odd = 1, even = n % 2 == 0 ? n - 2 : n - 1;
+        int[] tmp = new int[n];
+        for (int i = 0; i < n; i++) {
+            if (nums[i] > mid) {
+                tmp[odd] = nums[i];
+                odd += 2;
+            } else if (nums[i] < mid) {
+                tmp[even] = nums[i];
+                even -= 2;
+            }
+        }
+        while (odd < n) {
+            tmp[odd] = mid;
+            odd += 2;
+        }
+        while (even >= 0) {
+            tmp[even] = mid;
+            odd -= 2;
+        }
+        for (int i = 0; i < n; i++)
+            nums[i] = tmp[i];
+    }
+
+    private int partition(int[] nums, int start, int end, int k) {
+        if (start >= end)
+            return nums[k];
+        int l = start, r = end;
+        int pivot = nums[(start + end) / 2];
+        while (l <= r) {
+            while (l <= r && nums[l] < pivot)
+                l++;
+            while (l <= r && nums[r] > pivot)
+                r--;
+            if (l <= r) {
+                int tmp = nums[l];
+                nums[l] = nums[r];
+                nums[r] = tmp;
+                l++;
+                r--;
+            }
+        }
+        if (k <= r) {
+            return partition(nums, start, r, k);
+        }
+        if (k >= l) {
+            return partition(nums, l, end, k);
+        }
+        return nums[k];
+    }
+
     public void wiggleSort(int[] nums) {
         int median = findKlargestElement(nums, (nums.length + 1) / 2);
         int n = nums.length;

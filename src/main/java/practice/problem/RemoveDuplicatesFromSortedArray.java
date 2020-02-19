@@ -1,6 +1,7 @@
 package practice.problem;
 
 // 26. Remove Duplicates from Sorted Array
+// Microsoft ladder
 public class RemoveDuplicatesFromSortedArray {
     public int removeDuplicates(int[] nums) {
         if (nums == null || nums.length == 0)

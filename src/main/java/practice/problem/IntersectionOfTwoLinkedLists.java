@@ -3,6 +3,7 @@ package practice.problem;
 import practice.domain.ListNode;
 
 // 160. Intersection of Two Linked Lists
+// Microsoft ladder
 public class IntersectionOfTwoLinkedLists {
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         if (headA == null || headB == null)

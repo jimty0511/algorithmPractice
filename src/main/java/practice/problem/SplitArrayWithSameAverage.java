@@ -3,13 +3,15 @@ package practice.problem;
 import java.util.Arrays;
 
 // 805. Split Array With Same Average
+//  totalSum/n = Asum/k = Bsum/(n-k), where k = A.size() and 1 <= k <= n/2;
+//  Asum = totalSum*k/n, which is an integer. So we have totalSum*k%n == 0;
 public class SplitArrayWithSameAverage {
     public boolean splitArraySameAverage(int[] A) {
         int sum = Arrays.stream(A).sum();
         int n = A.length;
         Arrays.sort(A);
-        for (int lenOfB = 1; lenOfB <= n / 2; lenOfB++) {
-            if (sum * lenOfB % n == 0 && combinationSum(A, 0, lenOfB, sum * lenOfB / n))
+        for (int lenOfA = 1; lenOfA <= n / 2; lenOfA++) {
+            if (sum * lenOfA % n == 0 && combinationSum(A, 0, lenOfA, sum * lenOfA / n))
                 return true;
         }
         return false;

@@ -5,6 +5,7 @@ import java.util.Deque;
 import java.util.PriorityQueue;
 
 // 239. Sliding Window Maximum
+// Microsoft ladder
 public class SlidingWindowMaximum {
     public int[] maxSlidingWindow(int[] nums, int k) {
         if (nums == null || k <= 0)

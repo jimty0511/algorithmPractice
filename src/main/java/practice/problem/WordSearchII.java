@@ -3,6 +3,7 @@ package practice.problem;
 import java.util.*;
 
 // 212. Word Search II
+// Microsoft ladder
 public class WordSearchII {
 
     class TrieNode {
@@ -36,28 +37,42 @@ public class WordSearchII {
         return result;
     }
 
-    private void helper(char[][] board, int i, int j, TrieNode p, List<String> res) {
-        char c = board[i][j];
-        if (c == '#' || p.next[c - 'a'] == null)
+    int[][] dirs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+
+    private void helper(char[][] board, int i, int j, TrieNode node, List<String> res) {
+        if (i < 0 || i >= board.length || j < 0 || j >= board[0].length || board[i][j] == '#' || node.next[board[i][j] - 'a'] == null)
             return;
-        p = p.next[c - 'a'];
-        if (p.word != null) {
-            res.add(p.word);
-            p.word = null;
+        char c = board[i][j];
+        node = node.next[c - 'a'];
+        if (node.word != null) {
+            res.add(node.word);
+            node.word = null;
         }
         board[i][j] = '#';
-        if (i > 0)
-            helper(board, i - 1, j, p, res);
-        if (j > 0)
-            helper(board, i, j - 1, p, res);
-        if (i < board.length - 1)
-            helper(board, i + 1, j, p, res);
-        if (j < board[0].length - 1)
-            helper(board, i, j + 1, p, res);
+        for (int[] d : dirs) {
+            helper(board, i + d[0], j + d[1], node, res);
+        }
         board[i][j] = c;
-    }
 
-    private int[][] dirs = new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+//        char c = board[i][j];
+//        if (c == '#' || p.next[c - 'a'] == null)
+//            return;
+//        p = p.next[c - 'a'];
+//        if (p.word != null) {
+//            res.add(p.word);
+//            p.word = null;
+//        }
+//        board[i][j] = '#';
+//        if (i > 0)
+//            helper(board, i - 1, j, p, res);
+//        if (j > 0)
+//            helper(board, i, j - 1, p, res);
+//        if (i < board.length - 1)
+//            helper(board, i + 1, j, p, res);
+//        if (j < board[0].length - 1)
+//            helper(board, i, j + 1, p, res);
+//        board[i][j] = c;
+    }
 
     public List<String> findWordsTwo(char[][] board, List<String> words) {
         if (board == null || board.length == 0)

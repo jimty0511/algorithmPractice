@@ -57,4 +57,31 @@ public class MinimumWindowSubsequence {
         }
         return len == Integer.MAX_VALUE ? "" : S.substring(start, start + len);
     }
+
+    public int[] minWindowIntArr(int[] S, int[] T) {
+        int sIdx = 0, tIdx = 0;
+        int minLeft = 0, minLen = Integer.MAX_VALUE;
+        while (sIdx < S.length) {
+            if (S[sIdx] == T[tIdx])
+                tIdx++;
+            while (tIdx == T.length) {
+                int left = sIdx;
+                while (left >= minLeft) {
+                    if (S[left] == T[tIdx - 1])
+                        tIdx--;
+                    if (tIdx == 0)
+                        break;
+                    left--;
+                }
+                if (sIdx - left + 1 < minLen) {
+                    minLen = sIdx - left + 1;
+                    minLeft = left;
+                }
+                tIdx = 0;
+                sIdx = left + 1;
+            }
+            sIdx++;
+        }
+        return minLen == Integer.MAX_VALUE ? new int[2] : new int[]{minLeft, minLen};
+    }
 }

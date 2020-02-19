@@ -36,11 +36,11 @@ public class FindMinimumInRotatedSortedArrayII {
                 start = mid + 1;
             } else if (nums[mid] < nums[start]) {
                 end = mid;
-                start++;
+//                start++;
             } else {
                 end--;
             }
         }
-        return nums[start];
+        return Math.min(nums[end], nums[start]);
     }
 }

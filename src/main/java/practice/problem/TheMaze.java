@@ -41,16 +41,14 @@ public class TheMaze {
             return true;
         int[][] dir = new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
         boolean[][] visited = new boolean[m][n];
-        Queue<Point> queue = new LinkedList<>();
-        queue.offer(new Point(start[0], start[1]));
-        while (!queue.isEmpty()) {
-            Point p = queue.poll();
-            int x = p.x, y = p.y;
+        Queue<int[]> q = new LinkedList<>();
+        q.offer(start);
+        visited[start[0]][start[1]] = true;
+        while (!q.isEmpty()) {
+            int[] cur = q.poll();
+            int x = cur[0], y = cur[1];
             if (x == destination[0] && y == destination[1])
                 return true;
-            if (visited[x][y])
-                continue;
-            visited[x][y] = true;
             for (int[] d : dir) {
                 int xx = x, yy = y;
                 while (xx >= 0 && xx < m && yy >= 0 && yy < n && maze[xx][yy] == 0) {
@@ -59,7 +57,10 @@ public class TheMaze {
                 }
                 xx -= d[0];
                 yy -= d[1];
-                queue.offer(new Point(xx, yy));
+                if (!visited[xx][yy]) {
+                    q.offer(new int[]{xx, yy});
+                    visited[xx][yy] = true;
+                }
             }
         }
         return false;

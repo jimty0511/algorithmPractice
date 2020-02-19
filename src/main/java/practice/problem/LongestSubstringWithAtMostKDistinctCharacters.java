@@ -48,4 +48,23 @@ public class LongestSubstringWithAtMostKDistinctCharacters {
         }
         return max;
     }
+
+    public int lengthOfLongestSubstringKDistinctThree(String s, int k) {
+        int[] cnt = new int[256];
+        char[] chars = s.toCharArray();
+        int sum = 0, res = 0;
+        for (int l = 0, r = 0; r < s.length(); r++) {
+            cnt[chars[r]]++;
+            if (cnt[chars[r]] == 1)
+                sum++;
+            while (sum > k) {
+                cnt[chars[l]]--;
+                if (cnt[chars[l]] == 0)
+                    sum--;
+                l++;
+            }
+            res = Math.max(res, r - l + 1);
+        }
+        return res;
+    }
 }

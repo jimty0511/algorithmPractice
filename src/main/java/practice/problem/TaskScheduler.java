@@ -3,6 +3,7 @@ package practice.problem;
 import java.util.*;
 
 // 621. Task Scheduler
+// Microsoft ladder
 public class TaskScheduler {
     public int leastInterval(char[] tasks, int n) {
         int[] counter = new int[26];

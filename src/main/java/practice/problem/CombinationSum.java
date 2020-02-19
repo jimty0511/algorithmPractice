@@ -21,6 +21,8 @@ public class CombinationSum {
             list.add(new ArrayList<>(tempList));
         } else {
             for (int i = start; i < candidates.length; i++) {
+                if (i > 0 && candidates[i] == candidates[i - 1])
+                    continue;
                 tempList.add(candidates[i]);
                 combinationSumHelper(list, tempList, candidates, remain - candidates[i], i);
                 tempList.remove(tempList.size() - 1);

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 // 204. Count Primes
+// Microsoft ladder
 public class CountPrimes {
     public int countPrimes(int n) {
         boolean[] notPrime = new boolean[n];

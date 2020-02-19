@@ -2,6 +2,7 @@ package practice.problem;
 
 import java.util.*;
 
+// https://github.com/allaboutjst/airbnb
 public class PreferenceList {
     public List<Integer> getPreference(List<List<Integer>> preferences) {
         Map<Integer, Integer> inDegree = new HashMap<>();

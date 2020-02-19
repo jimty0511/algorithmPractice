@@ -1,12 +1,72 @@
 package practice.problem;
 
-import java.awt.*;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
 // 973. K Closest Points to Origin
+// Microsoft ladder
 public class KClosestPointsToOrigin {
+
+    class Point {
+        int x;
+        int y;
+
+        Point() {
+            x = 0;
+            y = 0;
+        }
+
+        Point(int a, int b) {
+            x = a;
+            y = b;
+        }
+    }
+
+    private Point origin;
+
+    public Point[] kClosestLC(Point[] points, Point origin, int k) {
+        this.origin = origin;
+        Point[] res = new Point[k];
+        if (k > points.length)
+            return res;
+        quickSelectLC(points, 0, points.length - 1, k);
+        return Arrays.copyOfRange(points, 0, k);
+    }
+
+    private void quickSelectLC(Point[] points, int start, int end, int k) {
+        if (start >= end)
+            return;
+        int left = start, right = end;
+        Point pivot = points[(start + end) / 2];
+        while (left <= right) {
+            while (left <= right && compareLC(points[left], pivot) < 0)
+                left++;
+            while (left <= right && compareLC(points[right], pivot) > 0)
+                right--;
+            if (left <= right) {
+                Point tmp = points[left];
+                points[left] = points[right];
+                points[right] = tmp;
+                left++;
+                right--;
+            }
+        }
+        if (start < right)
+            quickSelectLC(points, start, right, k);
+        if (left < end)
+            quickSelectLC(points, left, end, k);
+    }
+
+    private int compareLC(Point a, Point b) {
+        int diff = distance(a, origin) - distance(b, origin);
+        if (diff == 0)
+            diff = a.x - b.x;
+        if (diff == 0)
+            diff = a.y - b.y;
+        return diff;
+    }
+
     public int[][] kClosest(int[][] points, int K) {
         PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> b[0] * b[0] + b[1] * b[1] - a[0] * a[0] - a[1] * a[1]);
         for (int[] p : points) {

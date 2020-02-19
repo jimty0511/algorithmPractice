@@ -51,30 +51,30 @@ public class NQueens {
         return result;
     }
 
-    private void helperTwo(int n, List<String> tmp, boolean[] visited, boolean[] diag, boolean[] antiDiag, int idx) {
-        if (idx == n) {
+    private void helperTwo(int n, List<String> tmp, boolean[] visited, boolean[] diag, boolean[] antiDiag, int row) {
+        if (row == n) {
             result.add(new ArrayList<>(tmp));
             return;
         }
-        for (int i = 0; i < n; i++) {
-            if (visited[i] || diag[idx - i + n - 1] || antiDiag[idx + i])
+        for (int col = 0; col < n; col++) {
+            if (visited[col] || diag[row - col + n - 1] || antiDiag[row + col])
                 continue;
             char[] chars = new char[n];
             Arrays.fill(chars, '.');
-            chars[i] = 'Q';
+            chars[col] = 'Q';
             String str = new String(chars);
             tmp.add(str);
-            visited[i] = true;
-            diag[idx - i + n - 1] = true;
-            antiDiag[idx + i] = true;
+            visited[col] = true;
+            diag[row - col + n - 1] = true;
+            antiDiag[row + col] = true;
 
-            helperTwo(n, tmp, visited, diag, antiDiag, idx + 1);
+            helperTwo(n, tmp, visited, diag, antiDiag, row + 1);
 
             tmp.remove(tmp.size() - 1);
-            chars[i] = '.';
-            visited[i] = false;
-            diag[idx - i + n - 1] = false;
-            antiDiag[idx + i] = false;
+            chars[col] = '.';
+            visited[col] = false;
+            diag[row - col + n - 1] = false;
+            antiDiag[row + col] = false;
         }
     }
 }

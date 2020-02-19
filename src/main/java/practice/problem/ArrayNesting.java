@@ -15,4 +15,25 @@ public class ArrayNesting {
         }
         return max;
     }
+
+    /**
+     * @param nums: an array
+     * @return: the longest length of set S
+     */
+    public int arrayNestingTwo(int[] nums) {
+        // Write your code here
+        int max = 0;
+        for (int i = 0; i < nums.length; i++) {
+            int size = 0;
+            int idx = i;
+            while (nums[idx] != -1) {
+                int next = nums[idx];
+                nums[idx] = -1;
+                idx = next;
+                size++;
+            }
+            max = Math.max(max, size);
+        }
+        return max;
+    }
 }

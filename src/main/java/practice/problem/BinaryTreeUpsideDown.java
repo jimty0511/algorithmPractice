@@ -2,6 +2,8 @@ package practice.problem;
 
 import practice.domain.TreeNode;
 
+import java.util.Stack;
+
 // 156. Binary Tree Upside Down
 public class BinaryTreeUpsideDown {
     public TreeNode upsideDownBinaryTree(TreeNode root) {
@@ -29,5 +31,28 @@ public class BinaryTreeUpsideDown {
             curr = next;
         }
         return prev;
+    }
+
+    public TreeNode upsideDownBinaryTreeIterativeStk(TreeNode root) {
+        if (root == null)
+            return null;
+        Stack<TreeNode> stk = new Stack<>();
+        while (root != null) {
+            stk.push(root);
+            root = root.left;
+        }
+        root = stk.peek();
+        while (!stk.isEmpty()) {
+            TreeNode node = stk.pop();
+            node.left = null;
+            node.right = null;
+            if (stk.isEmpty())
+                break;
+            TreeNode upNode = stk.peek();
+            node.right = upNode;
+            if (upNode.right != null)
+                node.left = upNode.right;
+        }
+        return root;
     }
 }

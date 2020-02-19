@@ -83,8 +83,8 @@ public class WordLadder {
     }
 
     public int ladderLengthQueue(String beginWord, String endWord, List<String> wordList) {
-        if (!wordList.contains(endWord))
-            return 0;
+//        if (!wordList.contains(endWord))
+//            return 0;
         Queue<String> queue = new LinkedList<>();
         Set<String> wordDict = new HashSet<>(wordList);
         int step = 1;
@@ -110,5 +110,61 @@ public class WordLadder {
             step++;
         }
         return 0;
+    }
+
+    public int lc(String start, String end, Set<String> dict) {
+        if (dict == null)
+            return 0;
+        if (start.equals(end))
+            return 1;
+        dict.add(start);
+        dict.add(end);
+        HashSet<String> hash = new HashSet<>();
+        Queue<String> queue = new LinkedList<>();
+        queue.offer(start);
+        hash.add(start);
+        int length = 1;
+        while (!queue.isEmpty()) {            //开始bfs
+            length++;
+            int size = queue.size();        //当前步数的队列大小
+            for (int i = 0; i < size; i++) {
+                String word = queue.poll();
+                for (String nextWord : getNextWords(word, dict)) {    //得到新单词
+                    if (hash.contains(nextWord)) {
+                        continue;
+                    }
+                    if (nextWord.equals(end)) {
+                        return length;
+                    }
+                    hash.add(nextWord);
+                    queue.offer(nextWord);            //存入队列继续搜索
+                }
+            }
+        }
+        return 0;
+    }
+
+    // replace character of a string at given index to a given character
+    // return a new string
+    private String replace(String s, int index, char c) {
+        char[] chars = s.toCharArray();
+        chars[index] = c;
+        return new String(chars);
+    }
+
+    private List<String> getNextWords(String word, Set<String> dict) {
+        List<String> nextWords = new ArrayList<>();
+        for (char c = 'a'; c <= 'z'; c++) {                    //枚举当前替换字母
+            for (int i = 0; i < word.length(); i++) {        //枚举替换位置
+                if (c == word.charAt(i)) {
+                    continue;
+                }
+                String nextWord = replace(word, i, c);
+                if (dict.contains(nextWord)) {        //如果dict中包含新单词，存入nextWords
+                    nextWords.add(nextWord);
+                }
+            }
+        }
+        return nextWords;                            //构造当前单词的全部下一步方案
     }
 }

@@ -1,6 +1,7 @@
 package practice.problem;
 
 // 171. Excel Sheet Column Number
+// Microsoft ladder
 public class ExcelSheetColumnNumber {
     public int titleToNumber(String s) {
         int result = 0;

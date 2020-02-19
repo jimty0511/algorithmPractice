@@ -3,6 +3,7 @@ package practice.problem;
 import practice.domain.ListNode;
 
 // 19. Remove Nth Node From End of List
+// Microsoft ladder
 public class RemoveNthNodeFromEndOfList {
     public ListNode removeNthFromEnd(ListNode head, int n) {
         ListNode dummy = new ListNode(0);

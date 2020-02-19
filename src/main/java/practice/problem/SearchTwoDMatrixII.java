@@ -19,6 +19,7 @@ public class SearchTwoDMatrixII {
     }
 
     // 38 LC
+    // Microsoft ladder
     public int searchMatrixLC(int[][] matrix, int target) {
         // write your code here
         if (matrix == null || matrix.length == 0 || matrix[0].length == 0)

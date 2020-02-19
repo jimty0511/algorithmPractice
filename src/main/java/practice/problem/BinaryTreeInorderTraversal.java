@@ -5,6 +5,7 @@ import practice.domain.TreeNode;
 import java.util.*;
 
 // 94. Binary Tree Inorder Traversal
+// Microsoft ladder
 public class BinaryTreeInorderTraversal {
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> result = new ArrayList<>();
